@@ -52,7 +52,7 @@ Route::group(['middleware' => "auth"], static function(){
 
         Route::resource('category', AdminCategoryController::class);
 
-        Route::resource('news', AdminNewsController::class);
+        Route::resource('home', AdminNewsController::class);
 
         Route::resource('user', AdminUserController::class);
 
@@ -67,12 +67,12 @@ Route::group(['prefix'=>""],static function(){
     Route::get('/info', [InfoController::class,"index" ])
         ->name('info');
 
-    Route::get('/news/{id}', [NewsController::class, "index"])
-        ->name('news');
+    Route::get('/home/{id}', [NewsController::class, "index"])
+        ->name('home');
 
-    Route::get('/news/show/{id}', [NewsController::class, "show"])
+    Route::get('/home/show/{id}', [NewsController::class, "show"])
         ->where('id','\d+')
-        ->name('news.show');
+        ->name('home.show');
 });
 
 

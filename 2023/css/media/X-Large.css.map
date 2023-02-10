@@ -1,0 +1,1 @@
+{"version":3,"sources":["media/X-Large.scss","media/X-Large.css"],"names":[],"mappings":"AAAA;EACI;IACF,UAAA;ECCA;AACF","file":"X-Large.css","sourcesContent":["@media(max-width: 1199px) {\r\n    :root {\r\n\t\t--fz: 18px;\r\n\t}\r\n\t\r\n}","@media (max-width: 1199px) {\n  :root {\n    --fz: 18px;\n  }\n}"]}

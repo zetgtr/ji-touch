@@ -1,0 +1,48 @@
+.header {
+  top: 0;
+}
+
+.first {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.services {
+  margin-top: 84vh;
+  z-index: 2;
+}
+
+.porfolio {
+  background: #fff;
+  z-index: 2;
+}
+
+.order-container__wrapper {
+  z-index: 2;
+  position: relative;
+  background: #fff;
+}
+
+.footer {
+  z-index: 2;
+  position: relative;
+}
+
+.animate {
+  z-index: -1;
+}
+
+.about {
+  z-index: 2;
+}
+
+.order {
+  background-color: #fff;
+  z-index: 2;
+}
+/*# sourceMappingURL=dop.css.map */

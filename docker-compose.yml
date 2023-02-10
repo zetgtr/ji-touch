@@ -18,7 +18,7 @@ services:
             - '.:/application'
         environment:
             - MYSQL_ROOT_PASSWORD=Admin
-            - MYSQL_DATABASE=news
+            - MYSQL_DATABASE=home
             - MYSQL_USER=user
             - MYSQL_PASSWORD=root
         ports:

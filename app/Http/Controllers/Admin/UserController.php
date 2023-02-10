@@ -47,7 +47,7 @@ class UserController extends Controller
     {
         $user = $user->fill($request->validated());
         if ($user->save()) {
-            return \redirect()->route('admin.user.index')->with('success', __('messages.admin.news.update.success'));
+            return \redirect()->route('admin.user.index')->with('success', __('messages.admin.home.update.success'));
         }
 
         return \back()->with('error', __('messages.admin.user.update.fail'));
@@ -63,10 +63,10 @@ class UserController extends Controller
     {
         try {
             $user->delete();
-            $response = ['status' => true,'message' => __('messages.admin.news.destroy.success')];
+            $response = ['status' => true,'message' => __('messages.admin.home.destroy.success')];
         } catch (Exception $exception)
         {
-            $response = ['status' => false,'message' => __('messages.admin.news.destroy.fail').$exception->getMessage()];
+            $response = ['status' => false,'message' => __('messages.admin.home.destroy.fail').$exception->getMessage()];
         }
 
         return $response;

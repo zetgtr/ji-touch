@@ -14,7 +14,7 @@
         @endif
 
 
-        <form method="post" action="{{ route('admin.news.update', ['news' => $news]) }}">
+        <form method="post" action="{{ route('admin.home.update', ['home' => $news]) }}">
             @csrf
             @method('put')
             <div class="mb-3">

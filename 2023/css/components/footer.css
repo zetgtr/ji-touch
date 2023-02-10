@@ -1,0 +1,22 @@
+.footer {
+  height: 85px;
+  background-color: #212121;
+}
+.footer-container {
+  height: 100%;
+}
+.footer__wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer__wrapper p, .footer__wrapper a {
+  font-size: 14px;
+  color: var(--c-white);
+  margin-bottom: 0;
+}
+.footer__wrapper a:hover {
+  color: var(--c-primary);
+}
+/*# sourceMappingURL=footer.css.map */

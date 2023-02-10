@@ -15,7 +15,7 @@ class NewsControllerTest extends TestCase
      */
     public function testIndexSuccessStatus(): void
     {
-        $response = $this->get(route('admin.news.index'));
+        $response = $this->get(route('admin.home.index'));
 
         $response->assertStatus(200)
             ->assertOk()
@@ -28,7 +28,7 @@ class NewsControllerTest extends TestCase
     public function testCreateSuccessStatus(): void
     {
 
-        $response = $this->get(route('admin.news.create'));
+        $response = $this->get(route('admin.home.create'));
 
         $response->assertStatus(200)
             ->assertOk()

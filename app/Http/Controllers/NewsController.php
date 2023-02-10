@@ -16,7 +16,7 @@ class NewsController extends Controller
     public function index(int $id,NewsBuilder $newsBuilder, CategoriesBuilder $categoriesBuilder): View
     {
         return \view('news.news', [
-            'news'=>$newsBuilder->getCategoriesNews($id),
+            'home'=>$newsBuilder->getCategoriesNews($id),
             'id' => $id,
             'category'=>$categoriesBuilder->getAll()
         ]);
@@ -24,7 +24,7 @@ class NewsController extends Controller
 
     public function show(Request $request,int $id,NewsBuilder $newsBuilder, CategoriesBuilder $categoriesBuilder): View
     {
-        return \view('news.show', ['news'=>$newsBuilder->get($id),
+        return \view('news.show', ['home'=>$newsBuilder->get($id),
             'showForm'=>\view('components.form.showNews',['id'=>$id]),
             'status'=> $request->query('status'),
             'category'=>$categoriesBuilder->getAll()]);

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#111111" />
+    <title>Мебель</title>
+    <script
+      src="https://kit.fontawesome.com/183eaea10d.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js" integrity="sha512-f5HTYZYTDZelxS7LEQYv8ppMHTZ6JJWglzeQmr0CVTS70vJgaJiIO15ALqI7bhsracojbXkezUIL+35UXwwGrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/vendor.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  </head>
+
+  <body id="body" >
+    <div class="site-container">
+
+      <section class="animate">
+        <div class="animate-container">
+
+        </div>
+        </section>
+      <section class="bur" id="buger">
+    <div class="container">
+        <div class="bur__wrapper">
+            <ul class="bur__menu list-reset">
+                <li style="--clr:#00ade1"><a data-text="&nbsp;Главная&nbsp;" href="">&nbsp;Главная&nbsp;</a></li>
+                <li style="--clr:#ff6493"><a data-text="&nbsp;Портфолио&nbsp;" href="">&nbsp;Портфолио&nbsp;</a></li>
+                <li style="--clr:#ffdd1c"><a data-text="&nbsp;Услуги&nbsp;" href="">&nbsp;Услуги&nbsp;</a></li>
+                <li style="--clr:#00dc82"><a data-text="&nbsp;Отзывы&nbsp;" href="">&nbsp;Отзывы&nbsp;</a></li>
+                <li style="--clr:#dc00d4"><a data-text="&nbsp;О компании&nbsp;" href="">&nbsp;О компании&nbsp;</a></li>
+                <li style="--clr:#ef7f1a"><a data-text="&nbsp;Вакансии&nbsp;" href="">&nbsp;Вакансии&nbsp;</a></li>
+            </ul>
+            <div class="bur__footer">
+                <div class="address">
+                  <h4 class="title">г. Санкт-Петербург</h4>
+                  <p>г. Петергоф, Санкт-Петербургский пр., <br>
+                    д. 60, лит. Ф, БЦ «Ракета», офис 210</p>
+                </div>
+                <div class="contacts">
+                    <a href="tel:+7 905 262 49 68">+7 905 262 49 68</a>
+                    <b></b>
+                    <a href="mailto:info@ji-touch.ru">info@ji-touch.ru</a>
+                </div>
+                <div class="social">
+                  <a href="https://vk.com/jitouch" target="_blank" class="item vk"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+        </section>
+
+      <header id="header" class="header">
+    <div class="container header-container">
+        <div class="header__wrapper">
+            <div class="header__logo">
+                <a href="">
+                    <img src="./img/logotype.svg" alt="Logo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav__list list-reset">
+                    <li class="nav__item"><a class="link" href="/">Проекты</a></li>
+                    <li class="nav__item"><a class="link" href="/services/">Услуги</a></li>
+                    <li class="nav__item"><a class="link" href="/price/">Агенство</a></li>
+                    <li class="nav__item"><a class="link" href="/education/">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header__right">
+                <a class="header__num" href="tel:+7 905 262 49 68">+7 905 262 49 68</a>
+
+            </div>
+        </div>
+        <button class="burger btn-reset" id="burger-btn">
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+    </div>
+</header>
+
+      <section id="first" class="first">
+    <div class="container first-container">
+        <div class="first__wrapper">
+            <div class="caption">
+                <h1 class="wow zoomInUp" data-wow-delay="0.3s">Разрабатываем web-сайты и<br>
+                    мобильные приложения</h1>
+                <p class="wow zoomInUp" data-wow-delay="0.3s">Надежный партнёр вашего бизнеса!</p>
+                <a href="" class="button button-click button--orange first__btn wow fadeIn" data-wow-delay="0.5s">
+                    <span>Оставить заявку</span>
+                    <b></b>
+                    <s></s>
+                </a>
+                <!-- <div class="new-button-container">
+                    <a href="" class="new-button">
+                        <span>Оставить заявку</span>
+                        <span>Оставить заявку</span>
+                    </a>
+                </div> -->
+            </div>
+            <div class="bg__img">
+                <?xml version="1.0" encoding="utf-8"?>
+                <!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+                <svg version="1.1" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px" y="0px" width="490px" height="488px" viewBox="0 0 490 488" enable-background="new 0 0 1200 581" xml:space="preserve">
+                <polygon fill="#EBF7F9" points="0,0 197.969,487.953 282.661,281.865 489.63,197.88 "/>
+                </svg>
+            </div>
+        </div>
+        <div class="section-caption">
+            DIgital-Агентство
+        </div>
+    </div>
+</section>
+      <section id="services" class="services">
+    <div class="container services-container">
+        <div class="services__header wow fadeIn" data-wow-delay="0.2s">
+            <p>Ji-Touch предоставляет комплекс услуг в сфере digital:
+                аналитические, креативные и технические решения</p>
+        </div>
+        <div class="services__wrapper wow fadeIn" data-wow-delay="0.4s">
+            <div class="swiper serviceSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="services__item">
+                            <div class="row">
+                                <div class="col-5">
+                                    <div class="services__left">
+                                        <h2 class="services__item-title">Разработка<br>
+                                            web-сайтов</h2>
+                                        <div class="slider__btns-container">
+                                            <div class="swiper-button-prev">
+                                                <svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_11_36)">
+                                                    <path d="M0.21968 5.46967C-0.0732197 5.76256 -0.0732197 6.23744 0.21968 6.53033L4.99268 11.3033C5.28558 11.5962 5.76048 11.5962 6.05338 11.3033C6.34618 11.0104 6.34618 10.5355 6.05338 10.2426L1.81068 6L6.05338 1.7574C6.34618 1.4645 6.34618 0.989604 6.05338 0.696704C5.76048 0.403804 5.28558 0.403804 4.99268 0.696704L0.21968 5.46967ZM37.329 5.25L0.75008 5.25L0.75008 6.75L37.329 6.75L37.329 5.25Z" fill="black"/>
+                                                    <rect x="29" y="5" width="2" height="2" fill="white"/>
+                                                    <rect x="34" y="5" width="1" height="2" fill="white"/>
+                                                    </g>
+                                                    <defs>
+                                                    <clipPath id="clip0_11_36">
+                                                    <rect width="38" height="12" fill="white"/>
+                                                    </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                            <div class="swiper-button-next">
+                                                <svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_6_2)">
+                                                    <path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"/>
+                                                    <rect x="7" y="5" width="2" height="2" fill="white"/>
+                                                    <rect x="3" y="5" width="2" height="2" fill="white"/>
+                                                    </g>
+                                                    <defs>
+                                                    <clipPath id="clip0_6_2">
+                                                    <rect width="38" height="12" fill="white"/>
+                                                    </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-7">
+                                    <div class="services__item-content">
+                                        <h4 class="services__item-subtitle">Делаем присутствие компаний<br>
+                                            в интернете эффектным</h4>
+                                        <p>Разработка проектов любой сложности<br>
+                                            от простых сайтов-визиток и промо-страниц<br>
+                                            до сложного портала.
+                                        </p>
+                                        <a class="more" href=""><span>Узнать больше</span>
+                                            <svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_6_2)">
+                                                <path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"/>
+                                                <rect x="7" y="5" width="2" height="2" fill="white"/>
+                                                <rect x="3" y="5" width="2" height="2" fill="white"/>
+                                                </g>
+                                                <defs>
+                                                <clipPath id="clip0_6_2">
+                                                <rect width="38" height="12" fill="white"/>
+                                                </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="count">1</div> -->
+                        </div>
+
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="services__item">
+                            <div class="row">
+                                <div class="col-5">
+                                    <h2 class="services__item-title">Поддержка<br>
+                                        web-сайтов</h2>
+                                    <div class="slider__btns-container">
+                                        <div class="swiper-button-prev">
+                                            <svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_11_36)">
+                                                <path d="M0.21968 5.46967C-0.0732197 5.76256 -0.0732197 6.23744 0.21968 6.53033L4.99268 11.3033C5.28558 11.5962 5.76048 11.5962 6.05338 11.3033C6.34618 11.0104 6.34618 10.5355 6.05338 10.2426L1.81068 6L6.05338 1.7574C6.34618 1.4645 6.34618 0.989604 6.05338 0.696704C5.76048 0.403804 5.28558 0.403804 4.99268 0.696704L0.21968 5.46967ZM37.329 5.25L0.75008 5.25L0.75008 6.75L37.329 6.75L37.329 5.25Z" fill="black"/>
+                                                <rect x="29" y="5" width="2" height="2" fill="white"/>
+                                                <rect x="34" y="5" width="1" height="2" fill="white"/>
+                                                </g>
+                                                <defs>
+                                                <clipPath id="clip0_11_36">
+                                                <rect width="38" height="12" fill="white"/>
+                                                </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                        <div class="swiper-button-next">
+                                            <svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_6_2)">
+                                                <path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"/>
+                                                <rect x="7" y="5" width="2" height="2" fill="white"/>
+                                                <rect x="3" y="5" width="2" height="2" fill="white"/>
+                                                </g>
+                                                <defs>
+                                                <clipPath id="clip0_6_2">
+                                                <rect width="38" height="12" fill="white"/>
+                                                </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-7">
+                                    <div class="services__item-content">
+                                        <h4 class="services__item-subtitle">Делаем присутствие компаний<br>
+                                            в интернете эффектным</h4>
+                                        <p>Разработка проектов любой сложности<br>
+                                            от простых сайтов-визиток и промо-страниц<br>
+                                            до сложного портала.
+                                        </p>
+                                        <a class="more link" href=""><span>Узнать больше</span>
+                                            <svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_6_2)">
+                                                <path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"/>
+                                                <rect x="7" y="5" width="2" height="2" fill="white"/>
+                                                <rect x="3" y="5" width="2" height="2" fill="white"/>
+                                                </g>
+                                                <defs>
+                                                <clipPath id="clip0_6_2">
+                                                <rect width="38" height="12" fill="white"/>
+                                                </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="count">1</div>
+        </div>
+        <div thumbsSlider="" class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="thumb__item wow fadeInUp" data-wow-delay="0.2s">
+                        <span>Разработка web-сайтов</span>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="thumb__item wow fadeInUp" data-wow-delay="0.2s">
+                        <span>Разработка web-сайтов</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-caption color">
+            Services
+        </div>
+    </div>
+</section>
+      <section id="porfolio" class="porfolio">
+    <div class="container porfolio-container">
+        <div class="porfolio__header wow fadeIn" data-wow-delay="0.2s">
+            <h2>Наши проекты, которыми<br>мы гордимся</h2>
+            <a class="more" href="">
+                <span>Все проекты</span>
+                <svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_6_2)">
+                    <path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"/>
+                    <rect x="7" y="5" width="2" height="2" fill="white"/>
+                    <rect x="3" y="5" width="2" height="2" fill="white"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_6_2">
+                    <rect width="38" height="12" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg>
+            </a>
+        </div>
+        <div class="porfolio__wrapper wow fadeIn" data-wow-delay="0.2s">
+            <div class="porfolio__item" >
+                <a class="main-container shadow-bottom" stas="Poollavka" href="">
+                    <img src="./img/001.png" alt="">
+                    <div class="contentBx">
+                        <div>
+                            <img src="./img/tesat.png" alt="">
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="porfolio__item-mobile"><img   src="./img/001-2.png" alt=""></a>
+                <div class="porfolio__item__logo">
+                    <img src="./img/logo-001.png" alt="">
+                </div>
+                <div class="porfolio__item__text">
+                    <span>Poollavka</span>
+                    <a href="">poollavka.ru</a>
+                </div>
+
+            </div>
+            <div class="porfolio__item" >
+                <a class="main-container shadow-bottom" stas="Sushipalki" href="">
+                    <img src="./img/002.jpg" alt="">
+                    <div class="contentBx shadow-bottom">
+                        <div>
+                            <img src="./img/004.jpg" alt="">
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="porfolio__item-mobile"><img  src="./img/002-2.png" alt=""></a>
+                <div class="porfolio__item__logo">
+                    <img src="./img/logo-002.png" alt="">
+                </div>
+                <div class="porfolio__item__text">
+                    <span>Служба доставки «Суши Палки»</span>
+                    <a href="">sushipalki.ru</a>
+                </div>
+            </div>
+            <div class="porfolio__item" >
+                <a class="main-container shadow-bottom" stas="Энергетик" href="">
+                    <img src="./img/003.jpg" alt="">
+                    <div class="contentBx shadow-bottom">
+                        <div>
+                            <img src="./img/004.jpg" alt="">
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="porfolio__item-mobile"><img  src="./img/003-3.png" alt=""></a>
+                <div class="porfolio__item__logo">
+                    <img src="./img/logo-003.png" alt="">
+                </div>
+                <div class="porfolio__item__text">
+                    <span>ДСОК «Энергетик»</span>
+                    <a href="">energetik-deti.ru</a>
+                </div>
+            </div>
+            <div class="porfolio__item" >
+                <a class="main-container shadow-bottom" stas="Линия Здоровья" href="">
+                    <img src="./img/004.jpg" alt="">
+                    <div class="contentBx shadow-bottom">
+                        <div>
+                            <img src="./img/004.jpg" alt="">
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="porfolio__item-mobile"><img  src="./img/004-4.png" alt=""></a>
+                <div class="porfolio__item__logo">
+                    <img src="./img/logo-004.png" alt="">
+                </div>
+                <div class="porfolio__item__text">
+                    <span>МК «Линия Здоровья»</span>
+                    <a href="">klinika-lz.ru</a>
+                </div>
+            </div>
+        </div>
+        <div class="porfolio__footer">
+            <a href="" class="button button-click button--orange first__btn">
+                <span>Показать ещё</span>
+                <b></b>
+                <s></s>
+            </a>
+        </div>
+        <div class="section-caption">
+            Portfolio
+        </div>
+    </div>
+</section>
+      <section id="about" class="about">
+    <div class="container about-container">
+        <div class="about__header wow fadeIn" data-wow-delay="0.4s">
+            <h2>С 2009 года специализируемся на разработке<br>
+                web-сайтов и мобильных приложений</h2>
+        </div>
+        <div class="about__wrapper " >
+            <div class="row about__wrapper-content">
+                <div class="col-6 wow fadeIn" data-wow-delay="0.4s">
+                    <div class="about__item-title-container">
+                        <h3 class="about__item-title">Надёжный партнёр<br>
+                            вашего бизнеса</h2>
+                    </div>
+                </div>
+                <div class="col-6 wow fadeIn" data-wow-delay="0.4s">
+                    <div class="about__item-right">
+                        <h3 class="about__item-subtitle">Обладаем широкими знаниями в области<br>
+                            интернет-маркетинга</h3>
+                        <p>Мы погружаемся в бизнес заказчика, хорошо понимаем
+                            его цели и задачи, поэтому с большинством клиентов
+                            работаем годами.</p>
+                        <a class="more" href=""><span>Узнать больше</span>
+                            <svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_6_2)">
+                                <path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"/>
+                                <rect x="7" y="5" width="2" height="2" fill="white"/>
+                                <rect x="3" y="5" width="2" height="2" fill="white"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_6_2">
+                                <rect width="38" height="12" fill="white"/>
+                                </clipPath>
+                                </defs>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-caption color">
+            Company
+        </div>
+    </div>
+</section>
+      <section id="order" class="order">
+    <div class="container order-container">
+            <div class="order-container__wrapper">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="order-left">
+                            <h2>Расскажите<br>
+                                о вашем проекте
+                            </h2>
+                            <p>Кратко опишите свою задачу, и мы свяжемся
+                                с вами в кратчайшие сроки для обсуждения
+                                деталей проекта.
+                            </p>
+                            <div class="order-contacts">
+                                <a class="order-contacts-tel" href="tel:+7 905 262 49 68">+7 905 262 49 68</a>
+                                <a class="order-contacts-mail" href="mailto:info@ji-touch.ru">info@ji-touch.ru</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form">
+                            <form action="">
+                                <div class="form__wrapper">
+                                    <div class="inputbox">
+                                        <input required="required" type="text">
+                                        <span>Ваше имя</span>
+                                        <i></i>
+                                    </div>
+                                    <div class="inputbox">
+                                        <input required="required" type="text">
+                                        <span>Телефон</span>
+                                        <i></i>
+                                    </div>
+                                    <div class="inputbox">
+                                        <input required="required" type="text">
+                                        <span>Компания</span>
+                                        <i></i>
+                                    </div>
+                                    <div class="inputbox">
+                                        <input required="required" type="text">
+                                        <span>Email</span>
+                                        <i></i>
+                                    </div>
+
+                                    <div class="inputbox ">
+                                        <div class="dropdown">
+                                            <input type="text" class="textBox def"
+                                             placeholder="Бюджет проекта" readonly>
+                                            <div class="option">
+                                                <div>1</div>
+                                                <div>2</div>
+                                                <div>3</div>
+                                                <div>4</div>
+                                            </div>
+                                            <i></i>
+                                        </div>
+                                    </div>
+                                    <div class="inputbox ">
+                                        <div class="dropdown">
+                                            <input type="text" class="textBox def"
+                                             placeholder="Откуда узнали о нас" readonly>
+                                            <div class="option">
+                                                <div>1</div>
+                                                <div>2</div>
+                                                <div>3</div>
+                                                <div>4</div>
+                                            </div>
+                                            <i></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="inputbox in2">
+                                        <textarea placeholder="Описание проекта"></textarea>
+                                        <i></i>
+                                    </div>
+                                    <div class="file">
+                                        <span>В чём заключается задача? Какие сроки реализации?<br>
+                                            Несколько слов о компании.
+                                        </span>
+                                        <div class="order__upload">
+
+
+                                            <label class="file-input__label" for="myfile">
+                                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11.8545 9.96878L10.6797 11.1438L7.38924 14.4342C6.10061 15.7225 4.00324 15.7225 2.71384 14.4337C1.42467 13.1449 1.42503 11.0477 2.71384 9.75877L4.5944 7.87803L10.198 2.27443C11.0792 1.39327 12.5139 1.39327 13.3953 2.27443C14.2765 3.15595 14.2765 4.59019 13.3953 5.47175L9.78949 9.07723L8.36797 10.4986L6.51495 12.3518C6.05288 12.8138 5.30105 12.8133 4.83935 12.3518C4.37728 11.8897 4.37728 11.1377 4.83935 10.6756L7.52566 7.98948L8.11352 7.40126L10.6249 4.89022L9.84196 4.10745L6.74307 7.20635L4.05639 9.8937C3.16319 10.7865 3.16301 12.2409 4.05639 13.1348C4.95012 14.0282 6.40431 14.0282 7.2975 13.1348L8.9874 11.4447L10.5722 9.85996L14.1775 6.2543C15.4907 4.94148 15.4907 2.80502 14.1775 1.49161C12.8646 0.178416 10.7278 0.178416 9.41477 1.49161L6.65956 4.24718L3.91141 6.99533L1.93138 8.97572C0.210902 10.696 0.210902 13.4958 1.93138 15.2162C3.65186 16.9369 6.45126 16.9369 8.17188 15.2162L12.637 10.7511L14.8207 8.56753L14.0383 7.78457L11.8545 9.96878Z" fill="#00779F"/>
+                                                </svg>
+                                                Прикрепить файл
+                                            </label>
+                                            <input class="input file-input" type="file" name="attach[]" multiple="" id="myfile">
+                                        </div>
+                                    </div>
+                                    <div class="file-display--container d-none">
+                                        <div class="mb-2 small">Список файлов:</div>
+                                        <div class="file-display small" id="file_display">
+
+                                        </div>
+                                      </div>
+                                    <div class="subm">
+                                        <button class="button button-click button--orange order__btn" type="submit">
+                                            <span>Отправить</span>
+                                            <b></b>
+                                            <s></s>
+                                        </button>
+
+                                        <p class="sogl">Нажимая на кнопку «Отправить», вы даете согласие на
+                                            обработку персональных данных и соглашаетесь с
+                                            политикой конфиденциальности.</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="section-caption">
+            Contacts
+        </div>
+    </div>
+</section>
+      <footer class="footer">
+    <div class="container footer-container">
+        <div class="footer__wrapper">
+            <p>2009-2023 © Digital-агентство «Ji-Touch»</p>
+            <p>Надёжный партнёр Вашего бизнеса!</p>
+            <a  href="">Политика конфиденциальности</a>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script src="js/vanilia.min.js"></script>
+    <script src="js/vendor.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </body>
+</html>

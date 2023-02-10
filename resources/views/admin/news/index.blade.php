@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Новости</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="{{ route('admin.news.create') }}">Добавить новость</a>
+            <a href="{{ route('admin.home.create') }}">Добавить новость</a>
         </div>
     </div>
     <div class="table-responsive">
@@ -30,7 +30,7 @@
                     <td>{{ $news->status }}</td>
                     <td>{{ $news->description }}</td>
                     <td>{{ $news->created_at }}</td>
-                    <td><a href="{{ route('admin.news.edit', ['news' => $news]) }}">Изм.</a> &nbsp; <a href="{{ route('admin.news.destroy', ['news' => $news]) }}" class="delete" style="color: red;"> Уд.</a> </td>
+                    <td><a href="{{ route('admin.home.edit', ['home' => $news]) }}">Изм.</a> &nbsp; <a href="{{ route('admin.home.destroy', ['home' => $news]) }}" class="delete" style="color: red;"> Уд.</a> </td>
                 </tr>
             @empty
                 <tr>

@@ -4,7 +4,7 @@
             <h4 class="text-white">Категории</h4>
             <ul class="list-unstyled">
                 @foreach($category as $item)
-                    <li><a href="{{ route('news',$item['id']) }}" class="text-white">{{$item['title']}}</a></li>
+                    <li><a href="{{ route('home',$item['id']) }}" class="text-white">{{$item['title']}}</a></li>
                 @endforeach
             </ul>
         </div>

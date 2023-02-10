@@ -1,0 +1,1 @@
+{"version":3,"sources":["media/XX-Large.scss","media/XX-Large.css"],"names":[],"mappings":"AAGA;EACI;IACF,UAAA;ECFA;AACF","file":"XX-Large.css","sourcesContent":["\r\n\r\n\r\n@media (max-width: 1399px) {\r\n    :root {\r\n\t\t--fz: 18px;\r\n\t\r\n    }\r\n    \r\n    \r\n}\r\n","@media (max-width: 1399px) {\n  :root {\n    --fz: 18px;\n  }\n}"]}

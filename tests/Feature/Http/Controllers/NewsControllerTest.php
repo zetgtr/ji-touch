@@ -17,7 +17,7 @@ class NewsControllerTest extends TestCase
      */
     public function testIndexSuccessStatus(): void
     {
-        $response = $this->get(route('news',['id'=>1]));
+        $response = $this->get(route('home',['id'=>1]));
 
         $response->assertStatus(200)
             ->assertOk()
@@ -27,7 +27,7 @@ class NewsControllerTest extends TestCase
     }
     public function testShowSuccessStatus(): void
     {
-        $response = $this->get(route('news.show',['id'=>1]));
+        $response = $this->get(route('home.show',['id'=>1]));
 
         $response->assertStatus(200)
             ->assertOk()
@@ -45,7 +45,7 @@ class NewsControllerTest extends TestCase
             'email'=>\fake()->companyEmail(),
             'info'=>\fake()->text(100)
         ];
-        $response = $this->post(route('news.store',$data));
+        $response = $this->post(route('home.store',$data));
 
         $response->assertStatus(302)
             ->assertSessionMissing("1")

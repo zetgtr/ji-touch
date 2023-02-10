@@ -37,7 +37,7 @@ final class NewsBuilder extends QueryBuilder
     public function getCategoriesNews(int $id): Collection
     {
         return $this->model
-            ->join('categories_has_news','news_id','=', 'news.id')
+            ->join('categories_has_news','news_id','=', 'home.id')
             ->select('news.*')
             ->where('category_id','=', $id)
             ->get();

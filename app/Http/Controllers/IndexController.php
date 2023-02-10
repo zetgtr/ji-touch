@@ -13,9 +13,6 @@ class IndexController extends Controller
 {
     public function index(NewsBuilder $newsBuilder, CategoriesBuilder $categoriesBuilder): View
     {
-        return \view("news.index", [
-            'news'=>$newsBuilder->getAll(),
-            'sport'=>$newsBuilder->getCategoriesNews(3),
-            'category'=>$categoriesBuilder->getAll()]);
+        return \view("home.index" );
     }
 }

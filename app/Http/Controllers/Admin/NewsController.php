@@ -58,10 +58,10 @@ class NewsController extends Controller
         $news = News::create($request->validated());
         if ($news) {
             $news->categories()->attach($request->getCategoriesIds());
-            return \redirect()->route('admin.news.index')->with('success', __('messages.admin.news.store.success'));
+            return \redirect()->route('admin.home.index')->with('success', __('messages.admin.home.store.success'));
         }
 
-        return \back()->with('error', __('messages.admin.news.store.fail'));
+        return \back()->with('error', __('messages.admin.home.store.fail'));
     }
 
     /**
@@ -74,7 +74,7 @@ class NewsController extends Controller
     public function edit(News $news, CategoriesBuilder $categoriesBuilder): View
     {
         return \view('admin.news.edit', [
-            'news' => $news,
+            'home' => $news,
             'categories' => $categoriesBuilder->getAll(),
             'statuses' => NewsStatus::all(),
         ]);
@@ -92,10 +92,10 @@ class NewsController extends Controller
         $news = $news->fill($request->validated());
         if ($news->save()) {
             $news->categories()->sync($request->getCategoriesIds());
-            return \redirect()->route('admin.news.index')->with('success', __('messages.admin.news.update.success'));
+            return \redirect()->route('admin.home.index')->with('success', __('messages.admin.home.update.success'));
         }
 
-        return \back()->with('error', __('messages.admin.news.update.fail'));
+        return \back()->with('error', __('messages.admin.home.update.fail'));
     }
 
     /**
@@ -109,10 +109,10 @@ class NewsController extends Controller
     {
         try {
             $news->delete();
-            $response = ['status' => true,'message' => __('messages.admin.news.destroy.success')];
+            $response = ['status' => true,'message' => __('messages.admin.home.destroy.success')];
         } catch (Exception $exception)
         {
-            $response = ['status' => false,'message' => __('messages.admin.news.destroy.fail').$exception->getMessage()];
+            $response = ['status' => false,'message' => __('messages.admin.home.destroy.fail').$exception->getMessage()];
         }
 
         return $response;

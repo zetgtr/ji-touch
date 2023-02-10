@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if(request()->routeIs('admin.news.*')) active @endif" href="{{ route('admin.news.index') }}">
+                <a class="nav-link @if(request()->routeIs('admin.home.*')) active @endif" href="{{ route('admin.home.index') }}">
                     <span data-feather="align-justify" class="align-text-bottom"></span>
                     Новости
                 </a>

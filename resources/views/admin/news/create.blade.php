@@ -9,7 +9,7 @@
                 <x-alert type="danger" :message="$error"></x-alert>
             @endforeach
         @endif
-            <form method="post" action="{{ route('admin.news.store') }}">
+            <form method="post" action="{{ route('admin.home.store') }}">
                 @csrf
                 <div class="mb-3">
                     <label for="category_id">Категория</label>
