@@ -1,0 +1,52 @@
+[
+  {
+    "id": 15,
+    "migration": "2014_10_12_000000_create_users_table",
+    "batch": 1
+  },
+  {
+    "id": 16,
+    "migration": "2014_10_12_100000_create_password_resets_table",
+    "batch": 1
+  },
+  {
+    "id": 17,
+    "migration": "2019_08_19_000000_create_failed_jobs_table",
+    "batch": 1
+  },
+  {
+    "id": 18,
+    "migration": "2019_12_14_000001_create_personal_access_tokens_table",
+    "batch": 1
+  },
+  {
+    "id": 19,
+    "migration": "2023_01_25_201303_create_categories_table",
+    "batch": 1
+  },
+  {
+    "id": 20,
+    "migration": "2023_01_25_201413_create_news_table",
+    "batch": 1
+  },
+  {
+    "id": 23,
+    "migration": "2023_01_25_201541_categories_has_news_table",
+    "batch": 2
+  },
+  {
+    "id": 24,
+    "migration": "2023_01_28_160101_create_sources_table",
+    "batch": 3
+  },
+  {
+    "id": 25,
+    "migration": "2023_01_30_200232_create_feedback_table",
+    "batch": 4
+  },
+  {
+    "id": 26,
+    "migration": "2023_01_30_200909_create_unloadings_table",
+    "batch": 4
+  }
+]
