@@ -8,6 +8,7 @@
       freeMode: true,
       watchSlidesProgress: true
     });
+      console.log(swiper2);
     var swiper = new Swiper(".serviceSwiper", {
       pagination: {
         el: ".swiper-pagination",
