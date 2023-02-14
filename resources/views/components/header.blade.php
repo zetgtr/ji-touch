@@ -1,19 +1,26 @@
-<header>
-    <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
-            @yield('menu')
+<header id="header" class="header">
+    <div class="container header-container">
+        <div class="header__wrapper">
+            <div class="header__logo">
+                <a href="">
+                    <img src="{{ asset('assets/img/logotype.svg') }}" alt="Logo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav__list list-reset">
+                    @foreach($headers as $header)
+                        <li class="nav__item"><a class="{{ $header->url }}" href="/">{{ $header->name }}</a></li>
+                    @endforeach
+                </ul>
+            </nav>
+            <div class="header__right">
+                <a class="header__num" href="tel:+7 905 262 49 68">+7 905 262 49 68</a>
+
+            </div>
         </div>
-    </div>
-    </div>
-    <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container">
-            <a href="/" class="navbar-brand d-flex align-items-center">
-                <strong>Новостной портал</strong>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
+        <button class="burger btn-reset" id="burger-btn">
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
     </div>
 </header>
-

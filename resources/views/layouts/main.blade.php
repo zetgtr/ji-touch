@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="theme-color" content="#111111" />
+    <link rel="shortcut icon" href="{{ asset('storage/'.setting('site.logo'))  }}" type="image/png">
     <title>ji-touch</title>
     <script
         src="https://kit.fontawesome.com/183eaea10d.js"
@@ -28,8 +28,12 @@
 </head>
 <body id="body" >
 <div class="site-container">
+    <x-header :headers="$headers"></x-header>
     @yield('content')
-{{--    <x-footer></x-footer>--}}
+    @can('browse', $post)
+        <x-admin_menu></x-admin_menu>
+    @endcan
+    <x-footer></x-footer>
 </div>
 <script src="{{ asset('assets/js/home/vanilia.min.js') }}"></script>
 <script src="{{ asset('assets/js/home/vendor.js') }}"></script>

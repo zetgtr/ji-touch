@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Home\IndexController;
 use Illuminate\Support\Facades\Route;
-
+use TCG\Voyager\Events\RoutingAdmin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [IndexController::class, 'index'])->name('home');
 
+Route::group(['prefix' => 'admin'], function () {
+    event(new RoutingAdmin());
+    Route::get("/logout", [LoginController::class, 'logout'])->name('account.logout');
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
