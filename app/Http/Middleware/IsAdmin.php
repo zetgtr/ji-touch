@@ -23,7 +23,7 @@ class IsAdmin
     {
         if(!Auth::user()->is_admin)
         {
-            return redirect()->route('account');
+            return redirect()->route('home');
         }
         return $next($request);
     }

@@ -6,5 +6,10 @@
     "Confirm Password": "Подтвердите пароль",
     "Login": "Вход",
     "Forgot Your Password?": "Забыли пароль?",
-    "Remember Me": "Запомнить меня"
+    "Remember Me": "Запомнить меня",
+    "Admin" : {
+        "Sidebar" : {
+            "Settings" : "Настройки"
+        }
+    }
 }
