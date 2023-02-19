@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="ru" dir="ltr">
 
 <head>
 

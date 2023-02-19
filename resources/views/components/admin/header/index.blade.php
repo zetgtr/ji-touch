@@ -70,7 +70,7 @@
                                             <a href="cart.html" class="open-file"></a>
                                             <span
                                                 class="avatar avatar-xl br-5 me-3 align-self-center cover-image"
-                                                data-bs-image-src="../') }}/images/pngs/4.jpg"></span>
+                                                data-bs-image-src="{{ asset('assets/images/pngs/4.jpg')}}"></span>
                                             <div class="wd-50p">
                                                 <h5 class="mb-1">Flower Pot for Home Decor</h5>
                                                 <span>Status: <span class="text-success">In Stock</span></span>
@@ -89,7 +89,7 @@
                                             <a href="cart.html" class="open-file"></a>
                                             <span
                                                 class="avatar avatar-xl br-5 me-3 align-self-center cover-image"
-                                                data-bs-image-src="../') }}/images/pngs/6.jpg"></span>
+                                                data-bs-image-src="{{ asset('assets/images/pngs/6.jpg') }}"></span>
                                             <div class="wd-50p">
                                                 <h5 class="mb-1">Black Digital Camera</h5>
                                                 <span>Status: <span class="text-danger">Out Stock</span></span>
@@ -108,7 +108,7 @@
                                             <a href="cart.html" class="open-file"></a>
                                             <span
                                                 class="avatar avatar-xl br-5 me-3 align-self-center cover-image"
-                                                data-bs-image-src="../') }}/images/pngs/8.jpg"></span>
+                                                data-bs-image-src="{{ asset('assets/images/pngs/8.jpg') }}"></span>
                                             <div class="wd-50p">
                                                 <h5 class="mb-1">Stylish Rockerz 255 Ear Pods</h5>
                                                 <span>Status: <span class="text-success">In Stock</span></span>
@@ -127,7 +127,7 @@
                                             <a href="cart.html" class="open-file"></a>
                                             <span
                                                 class="avatar avatar-xl br-5 me-3 align-self-center cover-image"
-                                                data-bs-image-src="../') }}/images/pngs/1.jpg"></span>
+                                                data-bs-image-src="{{ asset('assets/images/pngs/1.jpg') }}"></span>
                                             <div class="wd-50p">
                                                 <h5 class="mb-1">Women Party Wear Dress</h5>
                                                 <span>Status: <span class="text-success">In Stock</span></span>
@@ -146,7 +146,7 @@
                                             <a href="cart.html" class="open-file"></a>
                                             <span
                                                 class="avatar avatar-xl br-5 me-3 align-self-center cover-image"
-                                                data-bs-image-src="../') }}/images/pngs/3.jpg"></span>
+                                                data-bs-image-src="{{ asset('assets/images/pngs/3.jpg') }}"></span>
                                             <div class="wd-50p">
                                                 <h5 class="mb-1">Running Shoes for men</h5>
                                                 <span>Status: <span class="text-success">In Stock</span></span>
@@ -253,7 +253,7 @@
                                         <a class="dropdown-item d-flex" href="chat.html">
                                                         <span
                                                             class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                            data-bs-image-src="../') }}/images/users/1.jpg"></span>
+                                                            data-bs-image-src="{{ asset('assets/images/users/1.jpg') }}"></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Peter Theil</h5>
@@ -267,7 +267,7 @@
                                         <a class="dropdown-item d-flex" href="chat.html">
                                                         <span
                                                             class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                            data-bs-image-src="../') }}/images/users/15.jpg"></span>
+                                                            data-bs-image-src="{{ asset('assets/images/users/15.jpg') }}"></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Abagael Luth</h5>
@@ -281,7 +281,7 @@
                                         <a class="dropdown-item d-flex" href="chat.html">
                                                         <span
                                                             class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                            data-bs-image-src="../') }}/images/users/12.jpg"></span>
+                                                            data-bs-image-src="{{ asset('assets/images/users/12.jpg') }}"></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Brizid Dawson</h5>
@@ -295,7 +295,7 @@
                                         <a class="dropdown-item d-flex" href="chat.html">
                                                         <span
                                                             class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                            data-bs-image-src="../') }}/images/users/4.jpg"></span>
+                                                            data-bs-image-src="{{ asset('assets/images/users/4.jpg') }}"></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Shannon Shaw</h5>
@@ -309,7 +309,7 @@
                                         <a class="dropdown-item d-flex" href="chat.html">
                                                         <span
                                                             class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                            data-bs-image-src="../') }}/images/users/3.jpg') }}"></span>
+                                                            data-bs-image-src="{{ asset('assets/images/users/3.jpg') }}"></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Cherry Blossom</h5>
@@ -337,7 +337,7 @@
                             <!-- SIDE-MENU -->
                             <div class="dropdown d-flex profile-1">
                                 <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
-                                    <img src="{{ asset('assets/images/users/21.jpg" alt="profile-user') }}"
+                                    <img src="{{ asset('assets/images/users/21.jpg') }}" alt="profile-user"
                                          class="avatar  profile-user brround cover-image">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -358,9 +358,13 @@
                                     <a class="dropdown-item" href="lockscreen.html">
                                         <i class="dropdown-icon fe fe-lock"></i> Lockscreen
                                     </a>
-                                    <a class="dropdown-item" href="login.html">
-                                        <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
-                                    </a>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button class="dropdown-item" type="submit">
+                                            <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
+                                        </button>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>

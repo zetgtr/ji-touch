@@ -6,10 +6,14 @@
     "Confirm Password": "Подтвердите пароль",
     "Login": "Вход",
     "Forgot Your Password?": "Забыли пароль?",
+    "Already have account?": "У вас есть аккаунт?",
     "Remember Me": "Запомнить меня",
     "Admin" : {
         "Sidebar" : {
             "Settings" : "Настройки"
         }
-    }
+    },
+    "Not a member?": "Не зарегестрированы?",
+    "Sign UP": "Зарегестрироватся",
+    "Sign In": "Войти"
 }

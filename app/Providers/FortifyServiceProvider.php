@@ -12,13 +12,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
+use PragmaRX\Google2FA\Exceptions\Contracts\Google2FA;
 
 class FortifyServiceProvider extends ServiceProvider
 {
+
     /**
      * Register any application services.
      */
-    public function register(): void
+    public function register()
     {
         //
     }
@@ -29,10 +31,10 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Fortify::loginView(function () {
-            return view('auth.login');
+            return view('auth.login.index');
         });
         Fortify::registerView(function (){
-            return view('auth.register');
+            return view('auth.register.index');
         });
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
@@ -44,7 +46,6 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(5)->by($email.$request->ip());
         });
-
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
