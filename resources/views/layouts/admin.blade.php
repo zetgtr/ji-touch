@@ -49,7 +49,7 @@
     <div class="page-main">
         <x-admin.header.index></x-admin.header.index>
         <x-admin.menu.index></x-admin.menu.index>
-        <x-admin.content.index></x-admin.content.index>
+        @yield('content')
     </div>
 
     <!-- Sidebar-right -->

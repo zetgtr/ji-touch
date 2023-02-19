@@ -337,8 +337,13 @@
                             <!-- SIDE-MENU -->
                             <div class="dropdown d-flex profile-1">
                                 <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
-                                    <img src="{{ asset('assets/images/users/21.jpg') }}" alt="profile-user"
+                                    @if(Auth::user()->avatar)
+                                        <img src="{{ Auth::user()->avatar }}" alt="profile-user"
+                                             class="avatar  profile-user brround cover-image">
+                                    @else
+                                        <img src="{{ asset('assets/images/users/21.jpg') }}" alt="profile-user"
                                          class="avatar  profile-user brround cover-image">
+                                    @endif
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                     <div class="drop-heading">
