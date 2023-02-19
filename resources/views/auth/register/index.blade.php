@@ -44,24 +44,24 @@
                         <div class="text-center pt-3">
                             <p class="text-dark mb-0">{{ __('Already have account?') }}<a href="{{route('login')}}" class="text-primary ms-1">{{ __('Sign In') }}</a></p>
                         </div>
-                        <label class="login-social-icon"><span>Register with Social</span></label>
-                        <div class="d-flex justify-content-center">
-                            <a href="javascript:void(0)">
-                                <div class="social-login me-4 text-center">
-                                    <i class="fa fa-google"></i>
-                                </div>
-                            </a>
-                            <a href="javascript:void(0)">
-                                <div class="social-login me-4 text-center">
-                                    <i class="fa fa-facebook"></i>
-                                </div>
-                            </a>
-                            <a href="javascript:void(0)">
-                                <div class="social-login text-center">
-                                    <i class="fa fa-twitter"></i>
-                                </div>
-                            </a>
-                        </div>
+{{--                        <label class="login-social-icon"><span>Register with Social</span></label>--}}
+{{--                        <div class="d-flex justify-content-center">--}}
+{{--                            <a href="javascript:void(0)">--}}
+{{--                                <div class="social-login me-4 text-center">--}}
+{{--                                    <i class="fa fa-google"></i>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                            <a href="javascript:void(0)">--}}
+{{--                                <div class="social-login me-4 text-center">--}}
+{{--                                    <i class="fa fa-facebook"></i>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                            <a href="javascript:void(0)">--}}
+{{--                                <div class="social-login text-center">--}}
+{{--                                    <i class="fa fa-twitter"></i>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
                     </form>
                 </div>
             </div>

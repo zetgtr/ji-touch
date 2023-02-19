@@ -25,7 +25,7 @@
                                    <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
                                        <i class="zmdi zmdi-email text-muted" aria-hidden="true"></i>
                                    </a>
-                                   <input class="input100 border-start-0 form-control ms-0  @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" placeholder="Email">
+                                   <input class="input100 border-start-0 form-control ms-0  @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" placeholder="{{__('Email Address')}}">
                                    <x-error error-value="email" />
                                </div>
                                <div class="wrap-input100 validate-input input-group" id="Password-toggle">
@@ -36,7 +36,7 @@
                                    <x-error error-value="password" />
                                </div>
                                <div class="text-end pt-4">
-                                   <p class="mb-0"><a href="forgot-password.html" class="text-primary ms-1">{{ __('Forgot Your Password?') }}</a></p>
+                                   <p class="mb-0"><a href="{{ route('password.email') }}" class="text-primary ms-1">{{ __('Forgot Your Password?') }}</a></p>
                                </div>
                                <div class="container-login100-form-btn">
                                    <button type="submit" class="login100-form-btn btn-primary">
@@ -46,23 +46,23 @@
                                <div class="text-center pt-3">
                                    <p class="text-dark mb-0">{{__('Not a member?')}}<a href="{{ route('register') }}" class="text-primary ms-1">{{__('Sign UP')}}</a></p>
                                </div>
-                               <label class="login-social-icon"><span>Login with Social</span></label>
+                               <label class="login-social-icon"><span>{{ __('Login with Social') }}</span></label>
                                <div class="d-flex justify-content-center">
-                                   <a href="javascript:void(0)">
+                                   <a href="{{ route('social.auth.redirect',['driver' => 'google']) }}">
                                        <div class="social-login me-4 text-center">
                                            <i class="fa fa-google"></i>
                                        </div>
                                    </a>
-                                   <a href="javascript:void(0)">
+                                   <a href="{{ route('social.auth.redirect',['driver' => 'vkontakte']) }}">
                                        <div class="social-login me-4 text-center">
-                                           <i class="fa fa-facebook"></i>
+                                           <i class="fa fa-vk" aria-hidden="true"></i>
                                        </div>
                                    </a>
-                                   <a href="javascript:void(0)">
-                                       <div class="social-login text-center">
-                                           <i class="fa fa-twitter"></i>
-                                       </div>
-                                   </a>
+{{--                                   <a href="{{ route('social.auth.redirect',['driver' => 'github']) }}">--}}
+{{--                                       <div class="social-login text-center">--}}
+{{--                                           <i class="fa fa-github-square"></i>--}}
+{{--                                       </div>--}}
+{{--                                   </a>--}}
                                </div>
                            </div>
                            <div class="tab-pane" id="tab6">

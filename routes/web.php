@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +29,14 @@ Route::middleware('auth')->group(function () {
         Route::get("/", AdminController::class)
             ->name('index');
     });
+});
+
+Route::group(['middleware' => 'guest'], function (){
+    Route::get('/auth/redirect/{driver}', [SocialController::class, 'redirect'])
+        ->where('driver','\w+')
+        ->name('social.auth.redirect');
+    Route::get('/auth/callback/{driver}', [SocialController::class, 'callback'])
+        ->where('driver','\w+');
+    Route::get('/auth/callback/{driver}', [SocialController::class, 'callback'])
+        ->where('driver','\w+');
 });
