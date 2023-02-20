@@ -2,12 +2,11 @@
     <div class="container">
         <div class="bur__wrapper">
             <ul class="bur__menu list-reset">
-                <li style="--clr:#00ade1"><a data-text="&nbsp;Главная&nbsp;" href="">&nbsp;Главная&nbsp;</a></li>
-                <li style="--clr:#ff6493"><a data-text="&nbsp;Портфолио&nbsp;" href="">&nbsp;Портфолио&nbsp;</a></li>
-                <li style="--clr:#ffdd1c"><a data-text="&nbsp;Услуги&nbsp;" href="">&nbsp;Услуги&nbsp;</a></li>
-                <li style="--clr:#00dc82"><a data-text="&nbsp;Отзывы&nbsp;" href="">&nbsp;Отзывы&nbsp;</a></li>
-                <li style="--clr:#dc00d4"><a data-text="&nbsp;О компании&nbsp;" href="">&nbsp;О компании&nbsp;</a></li>
-                <li style="--clr:#ef7f1a"><a data-text="&nbsp;Вакансии&nbsp;" href="">&nbsp;Вакансии&nbsp;</a></li>
+                @foreach($burgers as $burger)
+                    <li style="--clr:#00ade1">
+                        <a data-text="&nbsp;{{$burger['name']}}&nbsp;" href="{{$burger['url']}}">&nbsp;{{$burger['name']}}&nbsp;</a>
+                    </li>
+                @endforeach
             </ul>
             <div class="bur__footer">
                 <div class="address">

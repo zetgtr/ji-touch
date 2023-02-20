@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="theme-color" content="#111111" />
     <link rel="shortcut icon" href="{{ asset('storage/'.setting('site.logo'))  }}" type="image/png">
-    <title>ji-touch</title>
+    <title>{{ $page[0]->title }}</title>
     <script
         src="https://kit.fontawesome.com/183eaea10d.js"
         crossorigin="anonymous"
@@ -29,6 +29,7 @@
 <body id="body" >
 <div class="site-container">
     <x-header :headers="$headers"></x-header>
+    <x-home.buger :burgers="$burgers"></x-home.buger>
     @yield('content')
     @can('browse', $post)
         <x-admin_menu></x-admin_menu>
