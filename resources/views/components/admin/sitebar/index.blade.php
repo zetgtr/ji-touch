@@ -131,9 +131,9 @@
                                 </div>
                                 <div class="col-sm-10 ps-sm-0">
                                     <div class="d-flex align-items-end justify-content-between ms-2">
-                                        <h6 class="">General Settings</h6>
+                                        <h6 class="">{{__('admin/sidebar.settings menu')}}</h6>
                                         <div>
-                                            <a href="javascript:void(0)"><i class="fe fe-settings me-1"></i></a>
+                                            <a href="{{ route('admin.settings.menu.index') }}"><i class="fe fe-settings me-1"></i></a>
                                         </div>
                                     </div>
                                 </div>

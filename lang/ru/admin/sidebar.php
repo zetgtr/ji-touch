@@ -1,5 +1,6 @@
 <?php
 
 return [
-    "settings" => "Настройки"
+    "settings" => "Настройки",
+    'settings menu'=>'Настройки меню'
 ];
