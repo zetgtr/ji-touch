@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\QueryBuilder\QueryBuilder;
+use App\QueryBuilder\RolesBuilder;
+use App\QueryBuilder\UsersBuilder;
 use App\Services\Contacts\Social;
 use App\Services\SocialService;
 use Illuminate\Support\ServiceProvider;
@@ -14,6 +17,8 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(Social::class, SocialService::class);
+        $this->app->bind(QueryBuilder::class, UsersBuilder::class);
+        $this->app->bind(QueryBuilder::class, RolesBuilder::class);
     }
 
     /**

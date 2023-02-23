@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\RolesController as AdminRolesController;
 use App\Http\Controllers\Admin\SettingsMenuController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -26,9 +28,12 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix'=>"admin", 'as'=>'admin.', 'middleware' => 'is_admin'],static function(){
         Route::get("/", AdminController::class)
             ->name('index');
+//        Route::get('user', )
         Route::group(['prefix' => 'settings', 'as' => 'settings.'], static function(){
             Route::resource('menu', SettingsMenuController::class);
         });
+        Route::resource('user', AdminUserController::class);
+        Route::resource('roles', AdminRolesController::class);
     });
 });
 
