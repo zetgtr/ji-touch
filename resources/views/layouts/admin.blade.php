@@ -85,7 +85,7 @@
     <!--/Sidebar-right-->
 
     <!-- Country-selector modal-->
-    <x-admin.menu.index></x-admin.menu.index>
+    <x-admin.menu.menu></x-admin.menu.menu>
     <!-- Country-selector modal-->
 
     <!-- FOOTER -->

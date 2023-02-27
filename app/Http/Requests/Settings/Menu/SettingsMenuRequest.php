@@ -28,4 +28,11 @@ class SettingsMenuRequest extends FormRequest
             'position' => ['min:4','max:5','required']
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'название'
+        ];
+    }
 }

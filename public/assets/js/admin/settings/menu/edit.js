@@ -5,8 +5,14 @@ $(document).ready(()=>{
     let menuLogo = $('#menu_logo');
     let menuName = $('#menu_name');
     let menuUrl = $('#menu_url');
+    let formMenu = $('#menu_form');
+    let put = $('#route_put');
+    let putClone;
     $('.button-edit').on('click',(e)=>{
         e.preventDefault()
+        putClone = put.clone();
+        formMenu.attr('action',$(e.target).closest('.delete-element').find('.route_update').val());
+        formMenu.append(putClone)
         let url = $(e.target).attr('href')
         if(!url)
         {
@@ -35,6 +41,8 @@ $(document).ready(()=>{
     function exitEdit(e)
     {
         e.preventDefault()
+        putClone.remove();
+        formMenu.attr('action',$('#route_store').val());
         menuDanger.addClass('d-none');
         menuDanger.off('click',(e)=>exitEdit(e));
         menuSuccess.text('Добавить');

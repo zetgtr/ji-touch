@@ -80,9 +80,14 @@ class SettingsMenuController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): RedirectResponse
+    public function update(SettingsMenuRequest $request, Menu $menu): RedirectResponse
     {
-        //
+        $menu = $menu->fill($request->validated());
+        if ($menu->save()) {
+            return \back()->with('success', __('messages.admin.news.update.success'));
+        }
+
+        return \back()->with('error', __('messages.admin.news.update.fail'));
     }
 
     public function menuOrder(Request $request, MenuBuilder $menuBuilder)

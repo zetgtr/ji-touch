@@ -2,6 +2,7 @@
     <ol class="dd-list">
         @foreach($menus as $item)
             <li class="dd-item delete-element" data-id="{{$item->id}}" data-name="{{$item->name}}" data-position="{{ $menu }}">
+                <input type="hidden" class="route_update" value="{{  route('admin.settings.menu.update',['menu'=>$item]) }}">
                 <div class="dd-handle">
                     <span>{{$item->name}}</span>
                 </div>
