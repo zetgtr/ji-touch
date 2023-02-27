@@ -11,9 +11,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class UsersBuilder extends QueryBuilder
 {
-
-    public Builder $model;
-
     public function __construct()
     {
         $this->model = User::query();
@@ -29,7 +26,7 @@ class UsersBuilder extends QueryBuilder
         return $this->model->where('id', $id)->get();
     }
 
-    function getAll(): Collection
+    public function getAll(): Collection
     {
         return $this->model->get();
     }

@@ -19,9 +19,9 @@ class RolesSeeder extends Seeder
     public function getData()
     {
         return [
-            ['name'=>'Пользователь'],
+            ['name'=>'Супер администратор'],
             ['name'=>'Администратор'],
-            ['name'=>'Супер администратор']
+            ['name'=>'Пользователь']
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\QueryBuilder\MenuBuilder;
 use App\QueryBuilder\QueryBuilder;
 use App\QueryBuilder\RolesBuilder;
 use App\QueryBuilder\UsersBuilder;
@@ -19,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(Social::class, SocialService::class);
         $this->app->bind(QueryBuilder::class, UsersBuilder::class);
         $this->app->bind(QueryBuilder::class, RolesBuilder::class);
+        $this->app->bind(QueryBuilder::class, MenuBuilder::class);
     }
 
     /**

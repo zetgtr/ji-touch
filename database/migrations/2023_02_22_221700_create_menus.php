@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\MenuEnums;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,10 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menu', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->string('name',60);
             $table->string('logo', 40)->nullable();
+            $table->enum('position',[MenuEnums::all()]);
             $table->string('url', 40)->nullable();
             $table->integer('parent')->nullable();
             $table->integer('order')->default(0);
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menu');
+        Schema::dropIfExists('menus');
     }
 };

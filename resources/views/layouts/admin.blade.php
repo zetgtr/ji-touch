@@ -15,14 +15,18 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href=" {{asset('favicon.ico')}}" />
 
     <!-- TITLE -->
     <title>@yield('title')</title>
 
+
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link id="style" href="{{ asset('assets/css/admin/dnd.css') }}" rel="stylesheet" />
 
     <!-- STYLE CSS -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
@@ -33,7 +37,9 @@
     <!--- FONT-ICONS CSS -->
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" />
 
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.mini.js') }}"></script>
+    <script src="{{asset('assets/js/admin/jquery.nestable.js')}}" ></script>
+
 
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/colors/color1.css') }}" />
@@ -92,7 +98,7 @@
 <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
 <!-- JQUERY JS -->
-<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+{{--<script src="{{ asset('assets/js/jquery.min.js') }}"></script>--}}
 
 <!-- BOOTSTRAP JS -->
 <script src="{{ asset('assets/plugins/bootstrap/js/popper.min.js') }}"></script>

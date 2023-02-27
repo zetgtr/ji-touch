@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'dashboard' => 'Аналитика'
+    'dashboard' => 'Аналитика',
+    'menu_settings' => 'Насторйки меню'
 ];

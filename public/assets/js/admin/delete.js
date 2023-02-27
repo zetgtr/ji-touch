@@ -11,7 +11,17 @@ $(document).ready(function() {
             type: "DELETE",
             url: url,
             success: function(result) {
-                if (result.status) location.reload();
+                if (result.status) {
+                    $(e.target).closest('.delete-element').remove()
+                }
+            },
+            error: function(xhr, status, error) {
+                try {
+                    let errorMessage = JSON.parse(xhr.responseText).message;
+                    console.log(errorMessage);
+                } catch (e) {
+                    console.log('Error:', error);
+                }
             }
         });
     })
