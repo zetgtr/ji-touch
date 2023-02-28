@@ -79,7 +79,6 @@
                 </div>
             </div>
     </div>
-
     <!-- Sidebar-right -->
     <x-admin.sitebar.index></x-admin.sitebar.index>
     <!--/Sidebar-right-->
