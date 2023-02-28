@@ -2,6 +2,7 @@
 
 namespace App\View\Components\admin\menu;
 
+use App\Enums\MenuEnums;
 use App\QueryBuilder\MenuBuilder;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -17,7 +18,7 @@ class menu extends Component
      */
     public function __construct(MenuBuilder $menuBuilder)
     {
-        //
+        $this->menu = $menuBuilder->getMenu(MenuEnums::LEFT);
     }
 
     /**
@@ -25,6 +26,6 @@ class menu extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.menu.menu');
+        return view('components.admin.menu.menu', ['menuList'=>$this->menu]);
     }
 }

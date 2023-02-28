@@ -6,7 +6,8 @@ $(document).ready(function() {
     });
     $('.delete').on('click',(e)=>{
         e.preventDefault()
-        let url = $(e.target).attr('href')
+        let url = $('.delete').attr('href')
+        console.log(url)
         $.ajax({
             type: "DELETE",
             url: url,
