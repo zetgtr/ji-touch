@@ -26,19 +26,29 @@
                                     <input type="hidden" name="position" value="{{ $menu }}">
                                     <h3 class="menu_title">Добавить меню</h3>
                                     <div class="form-group">
-                                        <label for="menu_name" class="col-md-3 form-label">Название</label>
+                                        <label for="menu_name" class="form-label">Название</label>
                                         <input type="text" id="menu_name" name="name" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror">
                                         <x-error error-value="name" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="menu_logo" class="col-md-3 form-label" >Лого</label>
+                                        <label for="menu_logo" class="form-label" >Лого</label>
                                         <input type="text" id="menu_logo" name="logo" value="{{old('logo')}}" class="form-control @error('logo') is-invalid @enderror">
                                         <x-error error-value="logo" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="menu_url" class="col-md-3 form-label">url</label>
+                                        <label for="menu_url" class="form-label">url</label>
                                         <input type="text" id="menu_url" name="url" value="{{old('url')}}" class="form-control @error('url') is-invalid @enderror" >
                                         <x-error error-value="url" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="menu_controller" class="form-label">Контроллер</label>
+                                        <input type="text" id="menu_controller" name="controller" value="{{old('controller')}}" class="form-control @error('controller') is-invalid @enderror" >
+                                        <x-error error-value="controller" />
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <input type="checkbox" id="menu_controller_type" name="controller_type" value="invocable" class="form-label @error('controller_type') is-invalid @enderror" >
+                                        <label for="menu_controller_type" class="form-label">Контроллер одного действия</label>
+                                        <x-error error-value="controller_type" />
                                     </div>
                                     <button class="btn btn-success menu_success btn-lg mb-3 me-2">Добавить</button>
                                     <button class="btn btn-danger d-none menu_danger btn-lg mb-3 me-2" >Отменить</button>

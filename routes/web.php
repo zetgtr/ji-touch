@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SettingsMenuController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Admin\Menu;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -35,6 +36,25 @@ Route::middleware('auth')->group(function () {
         });
         Route::resource('user', AdminUserController::class);
         Route::resource('roles', AdminRolesController::class);
+        try {
+            foreach (Menu::query()->get() as $menu)
+            {
+                if($menu->controller)
+                {
+                    $controllerClass = '\App\Http\Controllers\\' . $menu->controller;
+                    if (class_exists($controllerClass)) {
+                        if ($menu->controller_type) {
+                            Route::get($menu->url, $controllerClass)->name(str_replace("/",".",$menu->url));
+                        } else {
+                            Route::resource($menu->url, $controllerClass);
+                        }
+                    }
+                }
+            }
+        } catch (Exception $exception)
+        {
+
+        }
     });
 });
 

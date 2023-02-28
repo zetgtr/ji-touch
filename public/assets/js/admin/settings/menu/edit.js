@@ -7,6 +7,8 @@ $(document).ready(()=>{
     let menuUrl = $('#menu_url');
     let formMenu = $('#menu_form');
     let put = $('#route_put');
+    let controller = $('#menu_controller');
+    let controllerType = $('#menu_controller_type');
     let putClone;
     $('.button-edit').on('click',(e)=>{
         e.preventDefault()
@@ -33,6 +35,11 @@ $(document).ready(()=>{
                     menuLogo.val(menu.logo)
                     menuName.val(menu.name)
                     menuUrl.val(menu.url)
+                    controller.val(menu.controller)
+                    if(menu.controller_type === "invocable")
+                    {
+                        controllerType.attr('checked', true)
+                    }
                 }
             }
         })
@@ -50,5 +57,7 @@ $(document).ready(()=>{
         menuLogo.val('')
         menuName.val('')
         menuUrl.val('')
+        controller.val('')
+        controllerType.attr('checked', false)
     }
 })

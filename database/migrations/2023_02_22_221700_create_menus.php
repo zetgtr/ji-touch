@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('name',60);
             $table->string('logo', 40)->nullable();
             $table->enum('position',[MenuEnums::all()]);
+            $table->string('controller', 100)->nullable();
+            $table->string('controller_type', 20)->nullable();
             $table->string('url', 40)->nullable();
             $table->integer('parent')->nullable();
             $table->integer('order')->default(0);
