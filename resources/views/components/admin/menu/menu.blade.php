@@ -24,7 +24,7 @@
                         <h3>{{ $item->name }}</h3>
                     </li>
                     @if($item->parent)
-                        <x-admin.menu.menu_item :item="$item->parent" />
+                        <x-admin.menu.menu_item :item="$item->parent" :parent="false" />
                     @endif
                 @endforeach
             </ul>

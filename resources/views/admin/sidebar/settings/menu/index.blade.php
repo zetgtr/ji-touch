@@ -16,7 +16,7 @@
                                     </div>
                                     <br>
                                 </div>
-                                <form action="{{ route('admin.settings.menu.store') }}" id="menu_form" method="post" class="col-lg-4">
+                                <form action="{{ route('admin.menu.store') }}" id="menu_form" method="post" class="col-lg-4">
                                     @csrf
                                     @if ($errors->any())
                                         @foreach($errors->all() as $error)
@@ -60,7 +60,7 @@
         </div>
     </div>
         <input type="hidden" id="route_dd" value="{{  route('admin.settings.menu.order') }}">
-        <input type="hidden" id="route_store" value="{{  route('admin.settings.menu.store') }}">
+        <input type="hidden" id="route_store" value="{{  route('admin.menu.store') }}">
         <input type="hidden" name="_method" id="route_put" value="put">
         <script src="{{asset('assets/js/admin/delete.js')}}" ></script>
         <script src="{{asset('assets/js/admin/dnd.js')}}" ></script>

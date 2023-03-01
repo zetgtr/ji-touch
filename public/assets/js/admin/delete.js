@@ -6,7 +6,11 @@ $(document).ready(function() {
     });
     $('.delete').on('click',(e)=>{
         e.preventDefault()
-        let url = $('.delete').attr('href')
+        let url = $(e.target).attr('href')
+        if(!url)
+        {
+            url = $(e.target).closest('.delete').attr('href')
+        }
         console.log(url)
         $.ajax({
             type: "DELETE",

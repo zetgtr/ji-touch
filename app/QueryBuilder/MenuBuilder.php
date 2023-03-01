@@ -15,8 +15,8 @@ class MenuBuilder extends QueryBuilder
 
     public function getLinks(string $key)
     {
-        $links = [MenuEnums::LEFT->value => ['url'=> route('admin.settings.menu.show', ['menu'=>MenuEnums::LEFT]), 'name' => 'Левое меню'],
-            MenuEnums::RIGHT->value => ['url'=> route('admin.settings.menu.show', ['menu'=>MenuEnums::RIGHT]),  'name' => 'Правое меню']];
+        $links = [MenuEnums::LEFT->value => ['url'=> route('admin.menu.show', ['menu'=>MenuEnums::LEFT]), 'name' => 'Левое меню'],
+            MenuEnums::RIGHT->value => ['url'=> route('admin.menu.show', ['menu'=>MenuEnums::RIGHT]),  'name' => 'Правое меню']];
         $links[$key]['active'] = true;
         return $links;
     }

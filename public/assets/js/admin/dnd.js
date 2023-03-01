@@ -1,6 +1,6 @@
 $(document).ready(()=>{
     $('#nestable').nestable({
-        maxDepth: 5
+        maxDepth: 3
     }).on('change', updateOutput);
     $.ajaxSetup({
         headers: {

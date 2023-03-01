@@ -44,7 +44,7 @@ class SettingsMenuController extends Controller
 //        dd($request->validated());
         if ($menu) {
             $position = $request->validated('position');
-            return \redirect()->route('admin.settings.menu.show',[
+            return \redirect()->route('admin.menu.show',[
                 'menu'=>$position,
                 'menus'=>$menuBuilder->getMenu($position),
                 'menuLinks' => $menuBuilder->getLinks($position)

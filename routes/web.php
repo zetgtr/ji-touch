@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
             ->name('index');
 //        Route::get('user', )
         Route::group(['prefix' => 'settings', 'as' => 'settings.'], static function(){
-            Route::resource('menu', SettingsMenuController::class);
+//            Route::resource('menu', SettingsMenuController::class);
             Route::post('menu/order', [SettingsMenuController::class,'menuOrder'])->name('menu.order');
         });
         Route::resource('user', AdminUserController::class);
