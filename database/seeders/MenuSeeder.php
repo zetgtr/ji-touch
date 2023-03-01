@@ -18,8 +18,8 @@ class MenuSeeder extends Seeder
     public function getData()
     {
         return [
-            ['name'=>'Инструменты','position'=>'left'],
-            ['name'=>'Файлы','position'=>'left','controller'=>'Admin\FileController','url'=>'file','parent'=>2]
+            ['name'=>'Инструменты','position'=>'left','controller'=>null,'url'=>null,'parent'=>null],
+            ['name'=>'Файлы','position'=>'left','controller'=>'Admin\FileController','url'=>'file','parent'=>1]
         ];
     }
 }
