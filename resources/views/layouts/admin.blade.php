@@ -39,6 +39,8 @@
 
     <script src="{{ asset('assets/js/jquery.mini.js') }}"></script>
     <script src="{{asset('assets/js/admin/jquery.nestable.js')}}" ></script>
+    <script src="{{ asset('assets/js/admin/tinymce/tinymce.js') }}" referrerpolicy="origin"></script>
+
 
 
     <!-- COLOR SKIN CSS -->
@@ -166,6 +168,9 @@
 
 <!-- CUSTOM JS -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+
+    <script src="{{ asset('assets/js/admin/tinymce/file-manager-config.js') }}"></script>
+
 
 
 </body>
