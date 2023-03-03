@@ -13,15 +13,17 @@
     <meta name="keywords"
           content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+{{--    <meta name="csrf-token" content="{{ csrf_token() }}">--}}
 
 
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/x-icon" href=" {{asset('favicon.ico')}}" />
+{{--    <link rel="shortcut icon" type="image/x-icon" href=" {{asset('favicon.ico')}}" />--}}
 
     <!-- TITLE -->
-    <title>@yield('title')</title>
+{{--    <title>@yield('title')</title>--}}
+
+
 
 
     <!-- BOOTSTRAP CSS -->
@@ -34,14 +36,18 @@
     <link href="{{ asset('assets/css/transparent-style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/skin-modes.css') }}" rel="stylesheet" />
 
+
     <!--- FONT-ICONS CSS -->
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" />
 
     <script src="{{ asset('assets/js/jquery.mini.js') }}"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js" integrity="sha512-s5u/JBtkPg+Ff2WEr49/cJsod95UgLHbC00N/GglqdQuLnYhALncz8ZHiW/LxDRGduijLKzeYb7Aal9h3codZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css" integrity="sha512-LT9fy1J8pE4Cy6ijbg96UkExgOjCqcxAC7xsnv+mLJxSvftGVmmc236jlPTZXPcBRQcVOWoK1IJhb1dAjtb4lQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="{{asset('assets/js/admin/jquery.nestable.js')}}" ></script>
     <script src="{{ asset('assets/js/admin/tinymce/tinymce.js') }}" referrerpolicy="origin"></script>
-    <script src="{{ asset('assets/js/admin/datepicker/datepicker.min.js') }}"></script>
-
+    <script src="{{ asset('assets/js/admin/datepicker/ru.js') }}"></script>
 
 
     <!-- COLOR SKIN CSS -->
@@ -103,6 +109,8 @@
     <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
     <!-- JQUERY JS -->
+        <script src="{{ asset('assets/js/admin/datepicker/init.js') }}"></script>
+
     {{--<script src="{{ asset('assets/js/jquery.min.js') }}"></script>--}}
 
     <!-- BOOTSTRAP JS -->
