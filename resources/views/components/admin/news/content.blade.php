@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-6">
             <label for="date_news">Дата публикации (необязательно):</label>
-            <input type="text" data-language="ru" name="created_at" id="addDate" class="form-control" value="">
+            <input type="text" data-language="ru" name="created_at" id="addDates" class="form-control" value="">
         </div>
         <hr>
         <div class="col-md-6">
@@ -37,7 +37,11 @@
 
 </div>
 
+@vite('resources/js/app.js')
 <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
 <script>
     $('#lfm').filemanager('image');
+
 </script>
+
+{{--<script src="{{ asset('assets/js/admin/air-datapicker/init.js') }}" type="module" ></script>--}}

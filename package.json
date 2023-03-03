@@ -15,6 +15,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "air-datepicker": "^3.3.5",
         "sass": "^1.58.3"
     }
 }
