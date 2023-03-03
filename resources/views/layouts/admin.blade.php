@@ -40,138 +40,140 @@
     <script src="{{ asset('assets/js/jquery.mini.js') }}"></script>
     <script src="{{asset('assets/js/admin/jquery.nestable.js')}}" ></script>
     <script src="{{ asset('assets/js/admin/tinymce/tinymce.js') }}" referrerpolicy="origin"></script>
+    <script src="{{ asset('assets/js/admin/datepicker/datepicker.min.js') }}"></script>
 
 
 
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/colors/color1.css') }}" />
+    <link rel="stylesheet" href="{{asset('assets/js/admin/datepicker/datepicker.min.css')}}">
+    <link href="{{ asset('assets/css/admin/style.css') }}" rel="stylesheet" />
+
 
 </head>
 
 <body class="app sidebar-mini ltr light-mode">
 
 <!-- GLOBAL-LOADER -->
-<div id="global-loader">
-    <img src="{{ asset('assets/images/loader.svg') }}" class="loader-img" alt="Loader">
-</div>
-<!-- /GLOBAL-LOADER -->
-
-<!-- PAGE -->
-<div class="page">
-    <div class="page-main">
-        <x-admin.header.index></x-admin.header.index>
-        <x-admin.menu.index></x-admin.menu.index>
-        <div class="main-content app-content mt-0">
-            <div class="side-app">
-
-                <!-- CONTAINER -->
-                <div class="main-container container-fluid">
-
-                    <!-- PAGE-HEADER -->
-                    <div class="page-header">
-                        <h1 class="page-title">@yield('title')</h1>
-                        <div>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Dashboard 01</li>
-                            </ol>
-                        </div>
-                    </div>
-                    @yield('content')
-                </div>
-            </div>
+    <div id="global-loader">
+        <img src="{{ asset('assets/images/loader.svg') }}" class="loader-img" alt="Loader">
     </div>
-    <!-- Sidebar-right -->
-    <x-admin.sitebar.index></x-admin.sitebar.index>
-    <!--/Sidebar-right-->
+    <!-- /GLOBAL-LOADER -->
 
-    <!-- Country-selector modal-->
-    <x-admin.menu.menu></x-admin.menu.menu>
-    <!-- Country-selector modal-->
+    <!-- PAGE -->
+    <div class="page">
+        <div class="page-main">
+            <x-admin.header.index></x-admin.header.index>
+            <x-admin.menu.index></x-admin.menu.index>
+            <div class="main-content app-content mt-0">
+                <div class="side-app">
 
-    <!-- FOOTER -->
-    <x-admin.footer.index></x-admin.footer.index>
-    <!-- FOOTER END -->
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
 
-</div>
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title">@yield('title')</h1>
+                            <div>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Dashboard 01</li>
+                                </ol>
+                            </div>
+                        </div>
+                        @yield('content')
+                    </div>
+                </div>
+        </div>
+        <!-- Sidebar-right -->
+        <x-admin.sitebar.index></x-admin.sitebar.index>
+        <!--/Sidebar-right-->
 
-<!-- BACK-TO-TOP -->
-<a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+        <!-- Country-selector modal-->
+        <x-admin.menu.menu></x-admin.menu.menu>
+        <!-- Country-selector modal-->
 
-<!-- JQUERY JS -->
-{{--<script src="{{ asset('assets/js/jquery.min.js') }}"></script>--}}
+        <!-- FOOTER -->
+        <x-admin.footer.index></x-admin.footer.index>
+        <!-- FOOTER END -->
 
-<!-- BOOTSTRAP JS -->
-<script src="{{ asset('assets/plugins/bootstrap/js/popper.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    </div>
 
-<!-- SPARKLINE JS-->
-<script src="{{ asset('assets/js/jquery.sparkline.min.js') }}"></script>
+    <!-- BACK-TO-TOP -->
+    <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-<!-- Sticky js -->
-<script src="{{ asset('assets/js/sticky.js') }}"></script>
+    <!-- JQUERY JS -->
+    {{--<script src="{{ asset('assets/js/jquery.min.js') }}"></script>--}}
 
-<!-- CHART-CIRCLE JS-->
-<script src="{{ asset('assets/js/circle-progress.min.js') }}"></script>
+    <!-- BOOTSTRAP JS -->
+    <script src="{{ asset('assets/plugins/bootstrap/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
-<!-- PIETY CHART JS-->
-<script src="{{ asset('assets/plugins/peitychart/jquery.peity.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/peitychart/peitychart.init.js') }}"></script>
+    <!-- SPARKLINE JS-->
+    <script src="{{ asset('assets/js/jquery.sparkline.min.js') }}"></script>
 
-<!-- SIDEBAR JS -->
-<script src="{{ asset('assets/plugins/sidebar/sidebar.js') }}"></script>
+    <!-- Sticky js -->
+    <script src="{{ asset('assets/js/sticky.js') }}"></script>
 
-<!-- Perfect SCROLLBAR JS-->
-<script src="{{ asset('assets/plugins/p-scroll/perfect-scrollbar.js') }}"></script>
-<script src="{{ asset('assets/plugins/p-scroll/pscroll.js') }}"></script>
-<script src="{{ asset('assets/plugins/p-scroll/pscroll-1.js') }}"></script>
+    <!-- CHART-CIRCLE JS-->
+    <script src="{{ asset('assets/js/circle-progress.min.js') }}"></script>
 
-<!-- INTERNAL CHARTJS CHART JS-->
-<script src="{{ asset('assets/plugins/chart/Chart.bundle.js') }}"></script>
-<script src="{{ asset('assets/plugins/chart/rounded-barchart.js') }}"></script>
-<script src="{{ asset('assets/plugins/chart/utils.js') }}"></script>
+    <!-- PIETY CHART JS-->
+    <script src="{{ asset('assets/plugins/peitychart/jquery.peity.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/peitychart/peitychart.init.js') }}"></script>
 
-<!-- INTERNAL SELECT2 JS -->
-<script src="{{ asset('assets/plugins/select2/select2.full.min.js') }}"></script>
+    <!-- SIDEBAR JS -->
+    <script src="{{ asset('assets/plugins/sidebar/sidebar.js') }}"></script>
 
-<!-- INTERNAL Data tables js-->
-<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+    <!-- Perfect SCROLLBAR JS-->
+    <script src="{{ asset('assets/plugins/p-scroll/perfect-scrollbar.js') }}"></script>
+    <script src="{{ asset('assets/plugins/p-scroll/pscroll.js') }}"></script>
+    <script src="{{ asset('assets/plugins/p-scroll/pscroll-1.js') }}"></script>
 
-<!-- INTERNAL APEXCHART JS -->
-<script src="{{ asset('assets/js/apexcharts.js') }}"></script>
-<script src="{{ asset('assets/plugins/apexchart/irregular-data-series.js') }}"></script>
+    <!-- INTERNAL CHARTJS CHART JS-->
+    <script src="{{ asset('assets/plugins/chart/Chart.bundle.js') }}"></script>
+    <script src="{{ asset('assets/plugins/chart/rounded-barchart.js') }}"></script>
+    <script src="{{ asset('assets/plugins/chart/utils.js') }}"></script>
 
-<!-- INTERNAL Flot JS -->
-<script src="{{ asset('assets/plugins/flot/jquery.flot.js') }}"></script>
-<script src="{{ asset('assets/plugins/flot/jquery.flot.fillbetween.js') }}"></script>
-<script src="{{ asset('assets/plugins/flot/chart.flot.sampledata.js') }}"></script>
-<script src="{{ asset('assets/plugins/flot/dashboard.sampledata.js') }}"></script>
+    <!-- INTERNAL SELECT2 JS -->
+    <script src="{{ asset('assets/plugins/select2/select2.full.min.js') }}"></script>
 
-<!-- INTERNAL Vector js -->
-<script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <!-- INTERNAL Data tables js-->
+    <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
 
-<!-- SIDE-MENU JS-->
-<script src="{{ asset('assets/plugins/sidemenu/sidemenu.js') }}"></script>
+    <!-- INTERNAL APEXCHART JS -->
+    <script src="{{ asset('assets/js/apexcharts.js') }}"></script>
+    <script src="{{ asset('assets/plugins/apexchart/irregular-data-series.js') }}"></script>
 
-<!-- TypeHead js -->
-<script src="{{ asset('assets/plugins/bootstrap5-typehead/autocomplete.js') }}"></script>
-<script src="{{ asset('assets/js/typehead.js') }}"></script>
+    <!-- INTERNAL Flot JS -->
+    <script src="{{ asset('assets/plugins/flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('assets/plugins/flot/jquery.flot.fillbetween.js') }}"></script>
+    <script src="{{ asset('assets/plugins/flot/chart.flot.sampledata.js') }}"></script>
+    <script src="{{ asset('assets/plugins/flot/dashboard.sampledata.js') }}"></script>
 
-<!-- INTERNAL INDEX JS -->
-<script src="{{ asset('assets/js/index1.js') }}"></script>
+    <!-- INTERNAL Vector js -->
+    <script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 
-<!-- Color Theme js -->
-<script src="{{ asset('assets/js/themeColors.js') }}"></script>
+    <!-- SIDE-MENU JS-->
+    <script src="{{ asset('assets/plugins/sidemenu/sidemenu.js') }}"></script>
 
-<!-- CUSTOM JS -->
-<script src="{{ asset('assets/js/custom.js') }}"></script>
+    <!-- TypeHead js -->
+    <script src="{{ asset('assets/plugins/bootstrap5-typehead/autocomplete.js') }}"></script>
+    <script src="{{ asset('assets/js/typehead.js') }}"></script>
+
+    <!-- INTERNAL INDEX JS -->
+    <script src="{{ asset('assets/js/index1.js') }}"></script>
+
+    <!-- Color Theme js -->
+    <script src="{{ asset('assets/js/themeColors.js') }}"></script>
+
+    <!-- CUSTOM JS -->
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
 
     <script src="{{ asset('assets/js/admin/tinymce/file-manager-config.js') }}"></script>
-
-
 
 </body>
 

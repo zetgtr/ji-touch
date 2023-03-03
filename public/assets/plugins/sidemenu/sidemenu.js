@@ -214,7 +214,7 @@ jQuery(function () {
 }());
 
 // for Icon-text Menu
-//icontext(); 
+//icontext();
 
 // default layout
 hovermenu();
@@ -241,7 +241,7 @@ function iconoverlay() {
         $('body').removeClass('sidenav-toggled-open');
     });
 
-    //Mobile menu 
+    //Mobile menu
     var alterClass = function () {
         var ww = document.body.clientWidth;
         if (ww < 992) {
@@ -275,7 +275,7 @@ function icontext() {
         $('body').removeClass('sidenav-toggled-open');
     });
 
-    //Mobile menu 
+    //Mobile menu
     var alterClass = function () {
         var ww = document.body.clientWidth;
         if (ww < 992) {
@@ -331,7 +331,7 @@ $(window).resize(
     () => {
         let menuWidth = document.querySelector('.horizontal-main');
         let menuItems = document.querySelector('.side-menu');
-        let mainSidemenuWidth = document.querySelector('.main-sidemenu')  ;  
+        let mainSidemenuWidth = document.querySelector('.main-sidemenu')  ;
         let menuContainerWidth = menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth;
         let marginLeftValue = Math.ceil(window.getComputedStyle(menuItems).marginLeft.split('px')[0]);
         let marginRightValue = Math.ceil(window.getComputedStyle(menuItems).marginRight.split('px')[0]);
@@ -429,8 +429,8 @@ function ActiveSubmenu(){
                         return false;
                     }
                 }
-            } 
-        }, 100); 
+            }
+        }, 100);
     });
 }
 
@@ -438,7 +438,7 @@ function checkHoriMenu() {
     setTimeout(()=>{
         let menuWidth = document.querySelector('.horizontal-main')
         let menuItems = document.querySelector('.side-menu')
-        let mainSidemenuWidth = document.querySelector('.main-sidemenu')    
+        let mainSidemenuWidth = document.querySelector('.main-sidemenu')
         let menuContainerWidth = menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth
         let marginLeftValue = Math.ceil(window.getComputedStyle(menuItems).marginLeft.split('px')[0]);
         let marginRightValue = Math.ceil(window.getComputedStyle(menuItems).marginRight.split('px')[0]);
@@ -473,7 +473,7 @@ checkHoriMenu();
 $(document).on("click", ".ltr #slide-left", function () {
     let menuWidth = document.querySelector('.horizontal-main')
     let menuItems = document.querySelector('.side-menu')
-    let mainSidemenuWidth = document.querySelector('.main-sidemenu')    
+    let mainSidemenuWidth = document.querySelector('.main-sidemenu')
     let menuContainerWidth = menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth
     let marginLeftValue = Math.ceil(window.getComputedStyle(menuItems).marginLeft.split('px')[0]) + 100;
 
@@ -499,7 +499,7 @@ $(document).on("click", ".ltr #slide-left", function () {
         }, {
             duration: 400
         })
-        
+
         if(menuWidth?.offsetWidth < menuItems.scrollWidth){
             // $("#slide-left").addClass("d-none");
         }
@@ -561,7 +561,7 @@ $(document).on("click", ".ltr #slide-right", function () {
 $(document).on("click", ".rtl #slide-left", function () {
     let menuWidth = document.querySelector('.horizontal-main')
     let menuItems = document.querySelector('.side-menu')
-    let mainSidemenuWidth = document.querySelector('.main-sidemenu')    
+    let mainSidemenuWidth = document.querySelector('.main-sidemenu')
     let menuContainerWidth = menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth
     let marginRightValue = Math.ceil(window.getComputedStyle(menuItems).marginRight.split('px')[0]) + 100;
 
@@ -645,7 +645,7 @@ $(document).on("click", ".rtl #slide-right", function () {
 });
 
 // FOOTER
-document.getElementById("year").innerHTML = new Date().getFullYear();
+// document.getElementById("year").innerHTML = new Date().getFullYear();
 
 document.querySelector('.main-content').addEventListener('click', ()=>{
     if (document.querySelector('body').classList.contains('horizontal')) {

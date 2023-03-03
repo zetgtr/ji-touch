@@ -1,0 +1,6 @@
+.nav .active{
+    opacity: 6;
+    cursor: default;
+    pointer-events: none;
+    color: #9ea7af!important;
+}
