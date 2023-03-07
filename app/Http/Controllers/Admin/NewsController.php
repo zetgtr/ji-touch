@@ -14,7 +14,10 @@ class NewsController extends Controller
      */
     public function index(NewsBuilder $newsBuilder)
     {
-        return view('admin.news.news',['links' => $newsBuilder->getLinks(NewsEnums::CONTENT->value)]);
+        return view('admin.news.news',[
+            'linksContent' => $newsBuilder->getLinksContent(NewsEnums::CONTENT->value),
+            'links' => $newsBuilder->getLinks(NewsEnums::NEWS->value)
+        ]);
     }
 
     /**

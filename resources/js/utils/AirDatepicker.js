@@ -17,7 +17,6 @@ class Datepicker
             timeFormat: 'HH:mm',
             firstDay: 1
         })
-        console.log(123123)
     }
 }
 

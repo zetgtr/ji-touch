@@ -2,6 +2,8 @@ var editor_config = {
     path_absolute : "/",
     selector: 'textarea.my-editor',
     language: 'ru',
+    paste_text_use_dialog: true,
+    height: 400,
     relative_urls: false,
     plugins: [
         "advlist autolink lists link image charmap print preview hr anchor pagebreak",
@@ -10,29 +12,23 @@ var editor_config = {
         "emoticons template paste textpattern"
     ],
     toolbar: 'styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link media insertfile image | code',
-    file_picker_callback : function(callback, value, meta) {
-        var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-        var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
+    file_picker_callback: function (callback, value, meta) {
+        let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+        let y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
+        let type = 'image' === meta.filetype ? 'Images' : 'Files',
+            url  = editor_config.path_absolute + 'laravel-filemanager?editor=tinymce5&type=' + type;
 
-        var cmsURL = editor_config.path_absolute + 'laravel-filemanager?editor=' + meta.fieldname;
-        if (meta.filetype == 'image') {
-            cmsURL = cmsURL + "&type=Images";
-        } else {
-            cmsURL = cmsURL + "&type=Files";
-        }
-
-        tinyMCE.activeEditor.windowManager.openUrl({
-            url : cmsURL,
+        tinymce.activeEditor.windowManager.openUrl({
+            url : url,
             title : 'Filemanager',
             width : x * 0.8,
             height : y * 0.8,
-            resizable : "yes",
-            close_previous : "no",
             onMessage: (api, message) => {
                 callback(message.content);
             }
         });
-    }
+    },
+    theme_advanced_resizing : true,
 };
 
 tinymce.init(editor_config);

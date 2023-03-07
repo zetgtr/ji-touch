@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\News\CategoryController as NewsCategoryController;
 use App\Http\Controllers\Admin\RolesController as AdminRolesController;
 use App\Http\Controllers\Admin\SettingsMenuController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Admin\Menu;
+use App\Utils\Lfm;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -36,6 +38,11 @@ Route::middleware('auth')->group(function () {
         });
         Route::resource('user', AdminUserController::class);
         Route::resource('roles', AdminRolesController::class);
+
+        Route::group(['prefix' => 'news', 'as' => 'news.'], static function(){
+            Route::resource('category', NewsCategoryController::class);
+        });
+
         try {
             foreach (Menu::query()->get() as $menu)
             {
@@ -56,6 +63,10 @@ Route::middleware('auth')->group(function () {
 
         }
     });
+});
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    Lfm::routes();
 });
 
 Route::group(['middleware' => 'guest'], function (){

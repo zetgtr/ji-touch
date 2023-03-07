@@ -17,7 +17,7 @@
         "socialiteproviders/github": "^4.1",
         "socialiteproviders/google": "^4.1",
         "socialiteproviders/vkontakte": "^5.0",
-        "unisharp/laravel-filemanager": "^1.9"
+        "unisharp/laravel-filemanager": "^2.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",

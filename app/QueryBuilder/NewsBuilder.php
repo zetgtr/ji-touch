@@ -13,11 +13,23 @@ class NewsBuilder extends QueryBuilder
         $this->model = News::query();
     }
 
-    public function getLinks($key)
+    public function getLinksContent($key)
     {
         $links = [NewsEnums::CONTENT->value => ['url'=> NewsEnums::CONTENT->value, 'name' => 'Контент'],
-            NewsEnums::PHOTO->value => ['url'=> NewsEnums::PHOTO->value,  'name' => 'Фото'],
             NewsEnums::SEO->value => ['url'=> NewsEnums::SEO->value,  'name' => 'SEO']
+        ];
+
+        $links[$key]['active'] = true;
+
+        return $links;
+    }
+    public function getLinks($key)
+    {
+        $links = [
+            NewsEnums::NEWS->value => ['url'=> NewsEnums::NEWS->value, 'name' => 'Новости'],
+            NewsEnums::POST->value => ['url'=> NewsEnums::POST->value,  'name' => 'Пост'],
+            NewsEnums::CATEGORY->value => ['url'=> NewsEnums::CATEGORY->value,  'name' => 'Категории'],
+            NewsEnums::SETTINGS->value => ['url'=> NewsEnums::SETTINGS->value,  'name' => 'Настройки']
         ];
 
         $links[$key]['active'] = true;

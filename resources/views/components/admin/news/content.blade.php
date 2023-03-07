@@ -1,47 +1,87 @@
 <div class="tab-pane active" id="content" role="tabpanel">
-    <div class="form-grop mb-3">
-        <label for="theme">Тема:</label>
-        <input id="theme" class="form-control @error('theme') is-invalid @enderror" name="theme" value="{{old('theme')}}" />
-        <x-error error-value="theme" />
-    </div>
-    <div class="form-group mb-3">
-        <label for="news" >Новость:</label>
-        <textarea name="news" id="my-editor" class="form-control @error('theme') is-invalid @enderror my-editor">{{ old('news') }}</textarea>
-        <x-error error-value="news" />
-    </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-7">
+            <div class="form-grop mb-3">
+                <label for="title">Заголовок</label>
+                <input id="title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{old('title')}}" />
+                <x-error error-value="title" />
+            </div>
+            <div class="form-group mb-3">
+                <label for="my-editor" >Описание</label>
+                <textarea name="description" id="my-editor" class="form-control @error('description') is-invalid @enderror my-editor">{{ old('description') }}</textarea>
+                <x-error error-value="description" />
+            </div>
+            <div class="form-group mb-3">
+                <label for="content" >Контент</label>
+                <textarea name="content" id="my-editor" class="form-control @error('content') is-invalid @enderror my-editor">{{ old('content') }}</textarea>
+                <x-error error-value="content" />
+            </div>
+        </div>
+        <div class="col-lg-5">
             <div class="form-group">
-                <label for="">Изображение новости:</label>
+                <label for="category">Категория</label>
+                <select name="category" id="category" class="form-select">
+                    <option value="3">Информация</option>
+                    <option value="1">Новости компании</option>
+                    <option value="2">Поздравления</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="access">Доступ</label>
+                <select name="access" id="access" class="form-select">
+                    <option  value="0" selected="">Общий</option>
+                    <option value="101">Пользователь</option>
+                    <option value="102">Администратор</option>
+                    <option value="103">Супер Администратор</option>
+                </select>
+            </div>
+            <div class="form-group" style="position:relative;">
+                <label for="date_news">Дата публикации (необязательно):</label>
+                <input type="text" data-language="ru" name="created_at" id="addDates" class="form-control" value="">
+            </div>
+            <div class="form-group ">
+                <label for="">Изображения</label>
                 <div class="input-group">
                     <span class="input-group-btn">
-                      <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                      <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-default">
                         <i class="fa fa-picture-o"></i> Загрузка
                       </a>
                     </span>
-                    <input id="thumbnail" class="form-control @error('file_news') is-invalid @enderror" type="text" name="file_news">
+                    <input id="thumbnail" class="form-control @error('file_news') is-invalid @enderror" type="text" name="thumbnail[]" value="{{ old('thumbnail') }}">
                     <x-error error-value="file_news" />
                 </div>
-                <img id="holder" style="margin-top:15px;max-height:100px;">
+                <div class="pb-0 mt-3">
+                    <ul id="lightgallery" class="list-unstyled row">
+                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-4 mb-5 border-bottom-0"
+                            data-responsive="../assets/images/media/files/01.jpg"
+                            data-src="../assets/images/media/files/01.jpg"
+                            <a href="javascript:void(0)">
+                                <img class="img-responsive br-5" src="../assets/images/media/files/01.jpg" alt="Thumb-1">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <label for="date_news">Дата публикации (необязательно):</label>
-            <input type="text" data-language="ru" name="created_at" id="addDates" class="form-control" value="">
-        </div>
-        <hr>
-        <div class="col-md-6">
-            <select></select>
-        </div>
     </div>
-
 </div>
 
-@vite('resources/js/app.js')
-<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
-<script>
-    $('#lfm').filemanager('image');
+<template id="template-gallery">
+    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-4 mb-5 border-bottom-0">
+        <a href="javascript:void(0)">
+            <img class="img-responsive br-5" alt="Thumb-1">
+        </a>
+    </li>
+</template>
 
+<script src="{{ asset('assets/plugins/gallery/lightgallery.js') }}"></script>
+<script src="{{ asset('assets/plugins/gallery/lightgallery-1.js') }}"></script>
+<script src="{{ asset('assets/js/admin/lfm.js') }}"></script>
+<script>
+    $('#lfm').filemanager('image', {
+        multiple: true,
+        prefix: '/laravel-filemanager'
+    });
 </script>
 
-{{--<script src="{{ asset('assets/js/admin/air-datapicker/init.js') }}" type="module" ></script>--}}
+@vite('resources/js/app.js')

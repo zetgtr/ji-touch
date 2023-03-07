@@ -196,6 +196,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        \App\Providers\Admin\FileManagerServiceProvider::class
     ],
 
     /*
