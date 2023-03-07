@@ -17,7 +17,7 @@ export default {
   components: {
     TheHeader,
     TheFirst,
-    TheAnimateBg
+    TheAnimateBg,
 
   }
 }

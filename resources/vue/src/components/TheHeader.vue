@@ -3,23 +3,12 @@
     <div class="container header-container">
       <div class="header__wrapper">
         <div class="header__logo">
-          <router-link to="/"><img src="@/assets/img/logotype.svg" alt="Logo" /></router-link>
+          <router-link to="/">
+          <img src="../assets/img/logotype.svg" alt="Logo">
+          </router-link>
         </div>
         <nav class="nav">
-          <ul class="nav__list list-reset">
-            <li class="nav__item">
-              <router-link to="/project">Проекты</router-link>
-            </li>
-            <li class="nav__item">
-              <router-link to="/about">About</router-link>
-            </li>
-            <li class="nav__item">
-              <a class="link" href="/price/">Агенство</a>
-            </li>
-            <li class="nav__item">
-              <a class="link" href="/education/">Контакты</a>
-            </li>
-          </ul>
+          <the-link-list v-bind:items="items"></the-link-list>
         </nav>
         <div class="header__right">
           <a class="header__num" href="tel:+7 905 262 49 68"
@@ -27,21 +16,81 @@
           >
         </div>
       </div>
-      <button class="burger btn-reset" id="burger-btn">
+      <button class="burger btn-reset" id="burger-btn" @click="toggleBurger">
         <span class="line"></span>
         <span class="line"></span>
       </button>
     </div>
   </header>
+  <the-burger
+    :class="{ show: isBurgerVisible, visibility: isBurgerVisible }"
+  ></the-burger>
 </template>
 
 <script>
+import TheBurger from "../components/TheBurger.vue";
+import TheLinkList from "../components/TheLinkList.vue";
 export default {
   name: "TheHeader",
+  components: {
+    TheBurger,
+    TheLinkList,
+  },
+  data() {
+    return {
+      items: [
+        {
+          id: 1,
+          title: "Проекты",
+          link: "/project/",
+        },
+        {
+          id: 2,
+          title: "О компании",
+          link: "/about/",
+        },
+        {
+          id: 3,
+          title: "Агенство",
+          link: "/price/",
+        },
+        {
+          id: 4,
+          title: "Контакты",
+          link: "/education/",
+        },
+      ],
+      classes : 'nav__list',
+      isBurgerVisible: false,
+    };
+  },
+  methods: {
+    toggleBurger() {
+      this.isBurgerVisible = !this.isBurgerVisible;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.nav {
+  // padding-top: 7px;
+}
+.nav__list {
+  display: flex;
+  gap: 40px;
+}
+.nav__item {
+  a {
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  &:hover {
+    & ~ .cursor {
+      transform: scale(4);
+    }
+  }
+}
 .header {
   padding: 40px 0;
   position: fixed;
@@ -97,24 +146,6 @@ export default {
     display: flex;
     gap: 2.5rem;
     align-items: center;
-  }
-  .nav {
-    // padding-top: 7px;
-  }
-  .nav__list {
-    display: flex;
-    gap: 40px;
-  }
-  .nav__item {
-    a {
-      font-size: 13px;
-      text-transform: uppercase;
-    }
-    &:hover {
-      & ~ .cursor {
-        transform: scale(4);
-      }
-    }
   }
 }
 .burger {
