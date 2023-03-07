@@ -6,7 +6,7 @@
 <script>
 // @ is an alias to /src
 import TheHeader from './components/TheHeader.vue'
-
+import './assets/index.scss'
 export default {
   components: {
     TheHeader,

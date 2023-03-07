@@ -58,7 +58,7 @@
 export default {};
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .first {
   height: 100vh;
   padding: 115px 0;
