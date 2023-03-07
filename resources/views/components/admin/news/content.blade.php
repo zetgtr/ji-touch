@@ -84,4 +84,4 @@
     });
 </script>
 
-@vite('resources/js/app.js')
+@vite('resources/js/utils/AirDatepicker.js')

@@ -1,9 +1,5 @@
 import './bootstrap';
 
-import Datepicker from "./utils/AirDatepicker";
-
-Datepicker.init();
-
 import { createApp } from 'vue'
 import App from '../vue/src/App.vue'
 import router from '../vue/src/router'

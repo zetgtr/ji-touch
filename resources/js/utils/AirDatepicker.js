@@ -20,4 +20,4 @@ class Datepicker
     }
 }
 
-export default Datepicker
+Datepicker.init();

@@ -23,9 +23,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::get('/{vue_capture?}', function() {
-    return view('welcome');
-})->where('vue_capture', '[\/\w\.-]*');
+
 
 Route::middleware('auth')->group(function () {
     Route::group(['prefix'=>"admin", 'as'=>'admin.', 'middleware' => 'is_admin'],static function(){
@@ -77,3 +75,8 @@ Route::group(['middleware' => 'guest'], function (){
     Route::get('/auth/callback/{driver}', [SocialController::class, 'callback'])
         ->where('driver','\w+');
 });
+
+Route::get('/{vue_capture?}', function() {
+    return view('welcome');
+})->where('vue_capture', '[\/\w\.-]*')
+    ->name('home');
