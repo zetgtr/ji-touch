@@ -1,9 +1,14 @@
 import './bootstrap';
+
 import Datepicker from "./utils/AirDatepicker";
-import Alpine from 'alpinejs';
 
 Datepicker.init();
 
-window.Alpine = Alpine;
+import { createApp } from 'vue'
+import App from '../vue/src/App.vue'
+import router from '../vue/src/router'
+import store from '../vue/src/store'
 
-Alpine.start();
+import '../vue/src/assets/index.scss'
+
+createApp(App).use(store).use(router).mount('#app')
