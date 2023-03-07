@@ -23,9 +23,9 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::get('/', function () {
+Route::get('/{vue_capture?}', function() {
     return view('welcome');
-})->name('home');
+})->where('vue_capture', '[\/\w\.-]*');
 
 Route::middleware('auth')->group(function () {
     Route::group(['prefix'=>"admin", 'as'=>'admin.', 'middleware' => 'is_admin'],static function(){
@@ -68,6 +68,7 @@ Route::middleware('auth')->group(function () {
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     Lfm::routes();
 });
+
 
 Route::group(['middleware' => 'guest'], function (){
     Route::get('/auth/redirect/{driver}', [SocialController::class, 'redirect'])
