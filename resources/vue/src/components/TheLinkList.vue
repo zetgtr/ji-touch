@@ -1,7 +1,7 @@
 <template>
-    <ul class="list-reset {{classes}}" >
+    <ul class="list-reset" :class='classes'>
       <li class="nav__item" v-for="item in items" :key="item.id">
-        <router-link to="{{item.link}}">{{item.title}}</router-link>
+        <router-link :to="item.link" :data-text="item.text">{{item.title}}</router-link>
       </li>
     </ul>
 </template>
@@ -14,7 +14,7 @@ export default {
       type: Array,
       required: true,
     },
-    clsses:{
+    classes:{
         type: String,
         required : false
     }

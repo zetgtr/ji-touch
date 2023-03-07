@@ -2,32 +2,7 @@
   <section class="bur" id="buger" >
     <div class="container">
       <div class="bur__wrapper">
-        <!-- <the-link-list v-bind:items="items"></the-link-list> -->
-        <ul class="bur__menu list-reset">
-          
-          <li style="--clr: #00ade1">
-            <a data-text="&nbsp;Главная&nbsp;" href="">&nbsp;Главная&nbsp;</a>
-          </li>
-          <li style="--clr: #ff6493">
-            <a data-text="&nbsp;Портфолио&nbsp;" href=""
-              >&nbsp;Портфолио&nbsp;</a
-            >
-          </li>
-          <li style="--clr: #ffdd1c">
-            <a data-text="&nbsp;Услуги&nbsp;" href="">&nbsp;Услуги&nbsp;</a>
-          </li>
-          <li style="--clr: #00dc82">
-            <a data-text="&nbsp;Отзывы&nbsp;" href="">&nbsp;Отзывы&nbsp;</a>
-          </li>
-          <li style="--clr: #dc00d4">
-            <a data-text="&nbsp;О компании&nbsp;" href=""
-              >&nbsp;О компании&nbsp;</a
-            >
-          </li>
-          <li style="--clr: #ef7f1a">
-            <a data-text="&nbsp;Вакансии&nbsp;" href="">&nbsp;Вакансии&nbsp;</a>
-          </li>
-        </ul>
+        <the-link-list v-bind:items="items" v-bind:classes="classes"></the-link-list>
         <div class="bur__footer">
           <div class="address">
             <h4 class="title">г. Санкт-Петербург</h4>
@@ -62,7 +37,45 @@ export default {
   },
   data() {
     return {
-
+      classes: 'bur__menu',
+      items: [
+        {
+          id: "1",
+          title: "Главная",
+          link: "/project/",
+          text: "Главная"
+        },
+        {
+          id: 2,
+          title: "Портфолио",
+          link: "/about/",
+          text: "Портфолио"
+        },
+        {
+          id: 3,
+          title: "Услуги",
+          link: "/price/",
+          text: "Услуги"
+        },
+        {
+          id: 4,
+          title: "Отзывы",
+          link: "/education/",
+          text: "Отзывы"
+        },
+        {
+          id: 5,
+          title: "О компании",
+          link: "/education/",
+          text: "О компании"
+        },
+        {
+          id: 6,
+          title: "Вакансии",
+          link: "/education/",
+          text: "Вакансии"
+        },
+      ],
     };
   },
   methods: {
@@ -75,7 +88,7 @@ export default {
 };
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
 .bur {
   position: fixed;
   z-index: 1000;
@@ -207,6 +220,13 @@ export default {
           color: #f59644;
         }
       }
+    }
+  }
+  &.show.visibility{
+    .bur__wrapper{
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0.3s;
     }
   }
 }

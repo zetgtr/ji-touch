@@ -4,6 +4,7 @@ import laravel from 'laravel-vite-plugin';
 
 
 const host = 'localhost'
+const path = require('path')
 export default defineConfig({
     plugins: [
         vue(), // write this
@@ -16,6 +17,11 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+          '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+        }
+      },
     server: {
         host,
         hmr: {host},
