@@ -1,18 +1,21 @@
 <template>
-  <header 
-  id="header" 
-  class="header"
-  :class="{ burger__open: isBurgerVisible }"
+  <header
+    id="header"
+    class="header"
+    :class="{ burger__open: isBurgerVisible, header_fix: isHeaderFixed }"
   >
     <div class="container header-container">
       <div class="header__wrapper" :class="{ hidden: isBurgerVisible }">
         <div class="header__logo">
           <router-link to="/">
-          <img src="../assets/img/logotype.svg" alt="Logo">
+            <img src="../assets/img/logotype.svg" alt="Logo" />
           </router-link>
         </div>
         <nav class="nav">
-          <the-link-list v-bind:items="items" v-bind:classes="classes"></the-link-list>
+          <the-link-list
+            v-bind:items="items"
+            v-bind:classes="classes"
+          ></the-link-list>
         </nav>
         <div class="header__right">
           <a class="header__num" href="tel:+7 905 262 49 68"
@@ -20,11 +23,11 @@
           >
         </div>
       </div>
-      <button 
-      class="burger btn-reset" 
-      id="burger-btn" 
-      @click="toggleBurger"
-      :class="{ active: isBurgerVisible }"
+      <button
+        class="burger btn-reset"
+        id="burger-btn"
+        @click="toggleBurger"
+        :class="{ active: isBurgerVisible }"
       >
         <span class="line"></span>
         <span class="line"></span>
@@ -69,19 +72,36 @@ export default {
           link: "/education/",
         },
       ],
-      classes : 'nav__list',
+      classes: "nav__list",
       isBurgerVisible: false,
+      isHeaderFixed: false,
     };
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     toggleBurger() {
       this.isBurgerVisible = !this.isBurgerVisible;
+      if (this.isBurgerVisible) {
+        document.body.classList.add("no-scroll");
+      } else {
+        document.body.classList.remove("no-scroll");
+      }
+    },
+    handleScroll() {
+      if (window.pageYOffset > 0) {
+        this.isHeaderFixed = true;
+      } else {
+        this.isHeaderFixed = false;
+      }
     },
   },
-  
 };
 </script>
 
 <style lang="scss" >
-
 </style>

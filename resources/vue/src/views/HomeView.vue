@@ -2,6 +2,9 @@
   <div class="home">
     <TheAnimateBg></TheAnimateBg>
     <the-first></the-first>
+    <the-services></the-services>
+    <the-portfolio></the-portfolio>
+    <the-about></the-about>
   </div>
 </template>
 
@@ -10,6 +13,9 @@
 import TheHeader from '../components/TheHeader.vue'
 import TheFirst from '../components/TheFirst.vue'
 import TheAnimateBg from '../components/TheAnimateBg.vue'
+import TheServices from '../components/Services/TheServices.vue'
+import ThePortfolio from '../components/Portfolio/ThePortfolio.vue'
+import TheAbout from '../components/About/TheAbout.vue'
 
 export default {
   name: 'HomeView',
@@ -17,6 +23,9 @@ export default {
     TheHeader,
     TheFirst,
     TheAnimateBg,
+    TheServices,
+    ThePortfolio,
+    TheAbout
 
   }
 }

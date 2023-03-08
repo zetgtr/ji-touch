@@ -42,7 +42,7 @@ export default {
 };
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
 .animate {
   z-index: -1;
   position: fixed;
