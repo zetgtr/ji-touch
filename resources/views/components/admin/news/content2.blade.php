@@ -21,9 +21,9 @@
             <div class="form-group">
                 <label for="category">Категория</label>
                 <select name="category" id="category" class="form-select">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
+{{--                    @foreach($categories as $category)--}}
+{{--                        <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
+{{--                    @endforeach--}}
                 </select>
             </div>
             <div class="form-group">
@@ -55,9 +55,9 @@
                         <li class="col-xs-6 col-sm-4 col-md-4 col-xl-4 mb-5 border-bottom-0"
                             data-responsive="../assets/images/media/files/01.jpg"
                             data-src="../assets/images/media/files/01.jpg"
-                        <a href="javascript:void(0)">
-                            <img class="img-responsive br-5" src="../assets/images/media/files/01.jpg" alt="Thumb-1">
-                        </a>
+                            <a href="javascript:void(0)">
+                                <img class="img-responsive br-5" src="../assets/images/media/files/01.jpg" alt="Thumb-1">
+                            </a>
                         </li>
                     </ul>
                 </div>
