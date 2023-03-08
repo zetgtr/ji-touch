@@ -3,7 +3,7 @@
 namespace App\QueryBuilder;
 
 use App\Enums\NewsEnums;
-use App\Models\Admin\News;
+use App\Models\Admin\News\News;
 use Illuminate\Database\Eloquent\Collection;
 
 class NewsBuilder extends QueryBuilder

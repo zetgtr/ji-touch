@@ -16,20 +16,17 @@ class FileManagerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $pathUrl = basename(url()->current());
         $request = Request::capture();
+        $pathUrl = $request->segment(2);
         $segment = $request->segment(1);
         $path = 'app/public';
-
         $url = env('APP_URL').'/storage';
-
-//        print_r($url);
+//        dd($pathUrl);
         if($segment == 'admin')
         {
             if ($pathUrl == 'file') {
                 Cache::put('file-admin', false, 600);
             } else {
-
                 Cache::put('file-admin', true, 600);
                 Cache::put('file-url', $pathUrl, 600);
             }

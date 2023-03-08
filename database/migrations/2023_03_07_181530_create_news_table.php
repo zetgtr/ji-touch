@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('title',60);
             $table->text('description');
             $table->text('content');
-            $table->string('images')->nullable();
+            $table->json('images')->nullable();
             $table->string('url');
-            $table->string('seoKeywords');
-            $table->text('seoDescription');
+            $table->string('seoKeywords')->nullable();
+            $table->text('seoDescription')->nullable();
             $table->timestamps();
         });
     }

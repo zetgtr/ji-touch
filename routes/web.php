@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\News\CategoryController as NewsCategoryController;
+use App\Http\Controllers\Admin\News\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\RolesController as AdminRolesController;
 use App\Http\Controllers\Admin\SettingsMenuController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
         });
         Route::resource('user', AdminUserController::class);
         Route::resource('roles', AdminRolesController::class);
+        Route::resource('news', AdminNewsController::class);
 
         Route::group(['prefix' => 'news', 'as' => 'news.'], static function(){
             Route::resource('category', NewsCategoryController::class);

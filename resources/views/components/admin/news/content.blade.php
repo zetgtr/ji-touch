@@ -20,7 +20,7 @@
         <div class="col-lg-5">
             <div class="form-group">
                 <label for="category">Категория</label>
-                <select name="category" id="category" class="form-select">
+                <select name="category_id" id="category" class="form-select">
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
@@ -47,8 +47,8 @@
                         <i class="fa fa-picture-o"></i> Загрузка
                       </a>
                     </span>
-                    <input id="thumbnail" class="form-control @error('file_news') is-invalid @enderror" type="text" name="thumbnail[]" value="{{ old('thumbnail') }}">
-                    <x-error error-value="file_news" />
+                    <input id="thumbnail" class="form-control" type="text" name="images[]" value="">
+                    <x-error error-value="images" />
                 </div>
                 <div class="pb-0 mt-3">
                     <ul id="lightgallery" class="list-unstyled row">
