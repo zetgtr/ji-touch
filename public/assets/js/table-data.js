@@ -4,7 +4,7 @@ $(function(e) {
     //______Basic Data Table
     $('#basic-datatable').DataTable({
         language: {
-            searchPlaceholder: 'Search...',
+            searchPlaceholder: 'Поиск...',
             sSearch: '',
         }
     });
@@ -13,7 +13,7 @@ $(function(e) {
     //______Basic Data Table
     $('#responsive-datatable').DataTable({
         language: {
-            searchPlaceholder: 'Search...',
+            searchPlaceholder: 'Поиск...',
             scrollX: "100%",
             sSearch: '',
         }
@@ -22,7 +22,7 @@ $(function(e) {
     //______Delete Data Table
     var table = $('#delete-datatable').DataTable({
         language: {
-            searchPlaceholder: 'Search...',
+            searchPlaceholder: 'Поиск...',
             sSearch: '',
         }
     });
@@ -56,9 +56,9 @@ $(function(e) {
     $('#example2').DataTable({
 		responsive: true,
 		language: {
-			searchPlaceholder: 'Search...',
+			searchPlaceholder: 'Поиск...',
 			sSearch: '',
-			lengthMenu: '_MENU_ items/page',
+			lengthMenu: '_MENU_ Элементы на странице',
 		}
 	});
 

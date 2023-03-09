@@ -30,7 +30,7 @@
                                 </a>
                                 <div class="dropdown-menu header-search dropdown-menu-start">
                                     <div class="input-group w-100 p-2">
-                                        <input type="text" class="form-control" placeholder="Search....">
+                                        <input type="text" class="form-control" placeholder="Поиск...">
                                         <div class="input-group-text btn btn-primary">
                                             <i class="fa fa-search" aria-hidden="true"></i>
                                         </div>
