@@ -34,17 +34,25 @@
           </svg>
         </div>
       </div>
-      <div class="section-caption">DIgital-Агентство</div>
+      <the-section-caption :sectionCaption="sectionCaption"></the-section-caption>
     </div>
   </section>
 </template>
 
 <script>
 import TheButton from "./UI/TheButton.vue";
+import TheSectionCaption from "./TheSectionCaption.vue";
+
 export default {
   components:{
-    TheButton
-  }
+    TheButton,
+    TheSectionCaption
+  },
+  data(){
+    return{
+      sectionCaption: "DIgital-Агентство"
+    }
+  },
 };
 </script>
 

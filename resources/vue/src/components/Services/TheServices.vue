@@ -181,11 +181,15 @@
           <div class="count">{{activeIndex}}</div>
         </swiper>
       </div>
+       <the-section-caption :sectionCaption="sectionCaption" class='color'></the-section-caption>
     </div>
   </section>
 </template>
 
 <script>
+import TheSectionCaption from "./../TheSectionCaption.vue";
+
+
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { EffectFade, Navigation, Pagination } from "swiper";
 import { ref } from "vue";
@@ -199,6 +203,7 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    TheSectionCaption
   },
   
   setup() {
@@ -223,6 +228,11 @@ export default {
       activeIndex,
       swiperRef,
     };
+  },
+  data(){
+    return{
+      sectionCaption: "Services"
+    }
   },
   computed: {
    

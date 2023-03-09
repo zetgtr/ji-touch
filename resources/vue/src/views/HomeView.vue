@@ -5,6 +5,7 @@
     <the-services></the-services>
     <the-portfolio></the-portfolio>
     <the-about></the-about>
+    <the-order></the-order>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import TheAnimateBg from '../components/TheAnimateBg.vue'
 import TheServices from '../components/Services/TheServices.vue'
 import ThePortfolio from '../components/Portfolio/ThePortfolio.vue'
 import TheAbout from '../components/About/TheAbout.vue'
+import TheOrder from '../components/Order/TheOrder.vue'
 
 export default {
   name: 'HomeView',
@@ -25,7 +27,8 @@ export default {
     TheAnimateBg,
     TheServices,
     ThePortfolio,
-    TheAbout
+    TheAbout,
+    TheOrder
 
   }
 }

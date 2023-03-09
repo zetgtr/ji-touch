@@ -27,7 +27,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "the-more-button"
+};
 </script>
 
 <style lang='scss'>

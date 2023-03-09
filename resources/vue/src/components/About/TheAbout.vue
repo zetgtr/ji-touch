@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <div class="section-caption color">{{ row.dop }}</div>
+      <the-section-caption :sectionCaption="sectionCaption" class="color"></the-section-caption>
     </div>
   </section>
 </template>
@@ -32,10 +32,12 @@
 <script>
 import TheMoreButton from "./../UI/TheMoreButton.vue";
 import TheButton from "./../UI/TheButton.vue";
+import TheSectionCaption from "./../TheSectionCaption.vue";
 export default {
   components: {
     TheMoreButton,
-    TheButton
+    TheButton,
+    TheSectionCaption
   },
   data() {
     return {
@@ -45,8 +47,8 @@ export default {
         subtitle: "Надёжный партнёр <br> вашего бизнеса",
         itemTitle: "Обладаем широкими знаниями в области",
         desc: "Мы погружаемся в бизнес заказчика, хорошо понимаем его цели и задачи, поэтому с большинством клиентов работаем годами.",
-        dop: "Company",
       },
+      sectionCaption: "Company"
     };
   },
 };

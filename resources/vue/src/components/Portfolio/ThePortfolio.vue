@@ -34,6 +34,7 @@
       <div class="porfolio__footer">
         <the-button class="button button--orange first__btn"><span>Показать ещё</span></the-button>
       </div>
+      <the-section-caption :sectionCaption="sectionCaption"></the-section-caption>
     </div>
   </section>
 </template>
@@ -41,10 +42,12 @@
 <script>
 import TheItemList from "./TheItemList.vue";
 import TheButton from "./../UI/TheButton.vue";
+import TheSectionCaption from "./../TheSectionCaption.vue";
 export default {
   components: {
     TheItemList,
     TheButton,
+    TheSectionCaption
   },
   data() {
     return {
@@ -70,6 +73,7 @@ export default {
           link: "sushipalki.ru",
         },
       ],
+      sectionCaption: "Portfolio"
     };
   },
 };
