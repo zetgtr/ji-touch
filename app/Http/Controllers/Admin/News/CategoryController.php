@@ -16,18 +16,17 @@ class CategoryController extends Controller
      */
     public function index(NewsBuilder $newsBuilder)
     {
-        return view('admin.news.news',[
-            'linksContent' => $newsBuilder->getLinksContent(NewsEnums::CONTENT->value),
-            'links' => $newsBuilder->getLinks(NewsEnums::CATEGORY->value)
-        ]);
+
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(NewsBuilder $newsBuilder)
     {
-        //
+        return view('admin.news.category',[
+            'links' => $newsBuilder->getLinks(NewsEnums::CATEGORY->value)
+        ]);
     }
 
     /**
@@ -35,11 +34,12 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request, NewsBuilder $newsBuilder)
     {
-        Category::create($request->validated());
-        return view('admin.news.news',[
-            'linksContent' => $newsBuilder->getLinksContent(NewsEnums::CONTENT->value),
-            'links' => $newsBuilder->getLinks(NewsEnums::CATEGORY->value)
-        ]);
+        $category = Category::create($request->validated());
+        if ($category) {
+            return \redirect()->route('admin.news.category.create')->with('success', __('messages.admin.category.store.success'));
+        }
+
+        return \back()->with('error', __('messages.admin.category.store.fail'));
     }
 
     /**

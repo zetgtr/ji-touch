@@ -11,5 +11,7 @@ enum NewsEnums: string
     case NEWS = "news";
     case POST = "post";
     case CATEGORY = "category_news";
+
+    case EDIT = "edit";
     case SETTINGS = "settings";
 }

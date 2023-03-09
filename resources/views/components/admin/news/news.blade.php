@@ -1,3 +1,8 @@
+<div class="card-header card-header-divider">
+    <div>
+        <h4>Список новостей</h4>
+    </div>
+</div>
 <div class="card-body">
     <div class="table-responsive">
         <table id="example2" class="table table-bordered text-nowrap border-bottom">
@@ -11,12 +16,27 @@
             </thead>
             <tbody>
             @forelse($newsList as $news)
-                <tr>
+                <tr class="delete-element">
                     <td>{{ $news->title }}</td>
                     <td class="text-center">{{ $news->created_at->format('d.m.Y H:i') }}</td>
-                    <td class="text-center">Edinburgh</td>
-                    <td class="text-center">
-                        <i class="fal fa-users"></i>
+                    <td class="text-center">{{ $news->show }}</td>
+                    <td class="text-center btn-list-table">
+                        <a href="{{ route('admin.news.edit', ['news'=>$news]) }}" class="btn btn-secondary">
+                            <i class="fal fa-pencil-alt"></i>
+                        </a>
+                        <a href="{{ route('admin.news.destroy', ['news'=>$news]) }}" class="btn btn-danger delete">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                        @if($news->publish)
+                            <a href="{{ route('admin.news.show', ['news'=>$news]) }}" class="btn btn-success show-publish">
+                                <i class="far fa-eye"></i>
+                            </a>
+                        @else
+                            <a href="{{ route('admin.news.show', ['news'=>$news]) }}" class="btn btn-default show-publish">
+                                <i class="far fa-eye-slash"></i>
+                            </a>
+                        @endif
+
                     </td>
                 </tr>
             @empty
@@ -40,3 +60,5 @@
 <script src="{{ asset('assets/plugins/datatable/dataTables.responsive.min.js')}}"></script>
 <script src="{{ asset('assets/plugins/datatable/responsive.bootstrap5.min.js')}}"></script>
 <script src="{{ asset('assets/js/table-data.js')}}"></script>
+<script src="{{ asset('assets/js/admin/delete.js') }}"></script>
+<script src="{{ asset('assets/js/admin/show.js') }}"></script>

@@ -26,13 +26,13 @@ class NewsBuilder extends QueryBuilder
     public function getLinks($key)
     {
         $links = [
-            NewsEnums::NEWS->value => ['url'=> NewsEnums::NEWS->value, 'name' => 'Новости'],
-            NewsEnums::POST->value => ['url'=> NewsEnums::POST->value,  'name' => 'Пост'],
-            NewsEnums::CATEGORY->value => ['url'=> NewsEnums::CATEGORY->value,  'name' => 'Категории'],
-            NewsEnums::SETTINGS->value => ['url'=> NewsEnums::SETTINGS->value,  'name' => 'Настройки']
+            NewsEnums::NEWS->value => ['url'=> route('admin.news.index'), 'name' => 'Новости'],
+            NewsEnums::POST->value => ['url'=> route('admin.news.create'),  'name' => 'Пост'],
+            NewsEnums::CATEGORY->value => ['url'=> route('admin.news.category.create'),  'name' => 'Категории'],
+            NewsEnums::SETTINGS->value => ['url'=> route('admin.news.settings.create'),  'name' => 'Настройки']
         ];
 
-        $links[$key]['active'] = true;
+        if($key) $links[$key]['active'] = true;
 
         return $links;
     }

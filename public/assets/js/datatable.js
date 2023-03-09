@@ -5,7 +5,7 @@ $(function(e) {
     $('#datatable1').DataTable({
         responsive: true,
         language: {
-            searchPlaceholder: 'Search...',
+            searchPlaceholder: 'Поиск...',
             sSearch: '',
             lengthMenu: '_MENU_ items/page',
         }
@@ -17,7 +17,7 @@ $(function(e) {
         searching: false,
         responsive: true
     });
-    
+
     // SELECT2
     $('.dataTables_length select').select2({
         minimumResultsForSearch: Infinity

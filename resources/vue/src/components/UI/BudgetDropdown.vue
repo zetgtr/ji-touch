@@ -34,6 +34,7 @@ export default {
       const selectedOption = e.target.closest("div").textContent.trim();
       const textBox = e.target.closest(".dropdown").querySelector(".textBox");
       textBox.value = selectedOption;
+      this.$emit('update:modelValue', selectedOption);
     },
   },
 };
