@@ -15,7 +15,9 @@
                     <td>{{ $news->title }}</td>
                     <td class="text-center">{{ $news->created_at->format('d.m.Y H:i') }}</td>
                     <td class="text-center">Edinburgh</td>
-                    <td class="text-center"></td>
+                    <td class="text-center">
+                        <i class="fal fa-users"></i>
+                    </td>
                 </tr>
             @empty
                 Записей нет
