@@ -1,22 +1,20 @@
 <div class="tab-pane active" id="content" role="tabpanel">
-    @if(!empty($news))
-        @dd($news)
-    @endif
+    <input type="hidden" name="id" value="{{ $news->id }}" />
     <div class="row">
         <div class="col-lg-7">
             <div class="form-grop mb-3">
                 <label for="title">Заголовок</label>
-                <input id="title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{old('title')}}@if(!empty($news)) {{ $news->title }} @endif" />
+                <input id="title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') ? old('title') : $news->title }}" />
                 <x-error error-value="title" />
             </div>
             <div class="form-group mb-3">
                 <label for="my-editor" >Описание</label>
-                <textarea name="description" id="my-editor" class="form-control @error('description') is-invalid @enderror my-editor">{{ old('description') }}@if(!empty($news)) {{ $news->description }} @endif</textarea>
+                <textarea name="description" id="my-editor" class="form-control @error('description') is-invalid @enderror my-editor">{{ old('description') ? old('description') : $news->description }}</textarea>
                 <x-error error-value="description" />
             </div>
             <div class="form-group mb-3">
                 <label for="content" >Контент</label>
-                <textarea name="content" id="my-editor" class="form-control @error('content') is-invalid @enderror my-editor">{{ old('content') }}</textarea>
+                <textarea name="content" id="my-editor" class="form-control @error('content') is-invalid @enderror my-editor">{{ old('content') ? old('content') : $news->content }}</textarea>
                 <x-error error-value="content" />
             </div>
         </div>
@@ -25,7 +23,7 @@
                 <label for="category">Категория</label>
                 <select name="category_id" id="category" class="form-select">
                     @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option @if($categoryNews === $category->id) selected @endif value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -40,7 +38,7 @@
             </div>
             <div class="form-group" style="position:relative;">
                 <label for="date_news">Дата публикации (необязательно):</label>
-                <input type="text" data-language="ru" name="created_at" id="addDates" class="form-control" value="{{old('created_at')}}">
+                <input type="text" data-language="ru" name="created_at" id="addDates" class="form-control" value="{{ old('created_at') ? old('created_at') : $news->created_at->format('d.m.Y H:i') }}">
             </div>
             <div class="form-group ">
                 <label for="">Изображения</label>
@@ -50,7 +48,7 @@
                         <i class="fa fa-picture-o"></i> Загрузка
                       </a>
                     </span>
-                    <input id="thumbnail" class="form-control" type="text" name="images[]" value="{{ implode(",", old("images", [])) }}">
+                    <input id="thumbnail" class="form-control" type="text" name="images[]" value="{{ old("images") ? implode(",", old("images", [])) : implode(",",$news->images) }}">
                     <x-error error-value="images" />
                 </div>
                 <div class="pb-0 mt-3">
@@ -64,6 +62,18 @@
                                         <img class="img-responsive br-5" src="{{$image}}" alt="Thumb-1">
                                     </a>
                                 </li>
+                            @endforeach
+                        @else
+                            @foreach(explode(",",  implode(",",$news->images)) as $image)
+                                @if($image !== "")
+                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-4 mb-5 border-bottom-0"
+                                        data-responsive="{{$image}}"
+                                        data-src="{{$image}}">
+                                        <a href="javascript:void(0)">
+                                            <img class="img-responsive br-5" src="{{$image}}" alt="Thumb-1">
+                                        </a>
+                                    </li>
+                                @endif
                             @endforeach
                         @endif
                     </ul>
@@ -87,7 +97,8 @@
 <script>
     $('#lfm').filemanager('image', {
         multiple: true,
-        prefix: '/laravel-filemanager'
+        prefix: '/laravel-filemanager',
+        defaultValue: '{{ implode(",", old("images", [])) }}'
     });
 </script>
 

@@ -5,6 +5,7 @@ import laravel from 'laravel-vite-plugin';
 
 const host = 'localhost'
 const path = require('path')
+
 export default defineConfig({
     plugins: [
         vue(), // write this

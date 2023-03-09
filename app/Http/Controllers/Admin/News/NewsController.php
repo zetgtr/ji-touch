@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\News;
 use App\Enums\NewsEnums;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\News\CreateRequest;
+use App\Http\Requests\Admin\News\UpdateRequest;
 use App\Models\Admin\News\News;
 use App\QueryBuilder\NewsBuilder;
 use Illuminate\Http\RedirectResponse;
@@ -17,8 +18,7 @@ class NewsController extends Controller
      */
     public function index(NewsBuilder $newsBuilder)
     {
-        return view('admin.news.news',[
-            'linksContent' => $newsBuilder->getLinksContent(NewsEnums::CONTENT->value),
+        return view('admin.news.index',[
             'links' => $newsBuilder->getLinks(NewsEnums::NEWS->value)
         ]);
     }
@@ -28,7 +28,7 @@ class NewsController extends Controller
      */
     public function create(NewsBuilder $newsBuilder)
     {
-        return view('admin.news.news',[
+        return view('admin.news.create',[
             'linksContent' => $newsBuilder->getLinksContent(NewsEnums::CONTENT->value),
             'links' => $newsBuilder->getLinks(NewsEnums::POST->value)
         ]);
@@ -54,32 +54,53 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(News $news)
     {
-        //
+        $news->publish = !$news->publish;
+        if ($news->save()) return ['status' => true, 'publish' => $news->publish];
+        else  return ['status' => false];
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(News $news, NewsBuilder $newsBuilder)
     {
-        //
+        $news->images = json_decode($news->images);
+        return view('admin.news.edit',[
+            'linksContent' => $newsBuilder->getLinksContent(NewsEnums::CONTENT->value),
+            'links' => $newsBuilder->getLinks(null),
+            'news' => $news
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, News $news)
     {
-        //
+        $news = $news->fill($request->validated());
+        if ($news->save()) {
+            $news->categories()->sync($request->getCategoriesIds());
+            return \redirect()->route('admin.news.edit',['news'=>$news])->with('success', __('messages.admin.news.update.success'));
+        }
+
+        return \back()->with('error', __('messages.admin.news.update.fail'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(News $news)
     {
-        //
+        try {
+            $news->delete();
+            $response = ['status' => true,'message' => __('messages.admin.news.destroy.success')];
+        } catch (Exception $exception)
+        {
+            $response = ['status' => false,'message' => __('messages.admin.news.destroy.fail').$exception->getMessage()];
+        }
+
+        return $response;
     }
 }

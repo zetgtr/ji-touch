@@ -4,10 +4,9 @@ namespace App\Http\Requests\Admin\News;
 
 use App\Models\Admin\News\News;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
-class CreateRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -40,16 +39,17 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' => ['required'],
             'category_id' => ['required', 'integer'],
             'category_id.*' => ['exists:categories_news,id'], // проверяет каждый элемент с таблицей categories_news c полем id
             'title' => ['required', 'min:2', 'max:200'],
             'content' => ['required', 'min:2'],
             'description' => ['required'],
-            'url' => ['required', Rule::unique(News::class)->ignore($this->id)],
+            'url' => ['required', Rule::unique(News::class)->ignore($this->id, 'id')],
             'created_at' => ['nullable'],
             'images' => ['sometimes'],
-            'seoTitle' => ['nullable','string'],
             'seoKeywords' => ['nullable', 'string'],
+            'seoTitle' => ['nullable','string'],
             'seoDescription' => ['nullable', 'string'],
         ];
     }

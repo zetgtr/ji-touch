@@ -67,6 +67,7 @@
             />
           </div>
         </div>
+          <input v-maska data-maska="+1 ### ###-##-##">
         <div class="file-display--container d-none">
           <div class="mb-2 small">Список файлов:</div>
           <div class="file-display small" id="file_display"></div>
@@ -89,15 +90,10 @@
 import TheButton from "./../UI/TheButton.vue";
 import BudgetDropdown from "./../UI/BudgetDropdown.vue";
 import InputBox from "./../UI/InputBox.vue";
-import Vue from 'vue';
-import InputMask from '';
-
-Vue.component('input-mask', InputMask)
+import { vMaska } from "maska"
 
 export default {
-  mounted: {
- 
-  },
+    directives: { maska: vMaska },
   components: {
     TheButton,
     BudgetDropdown,
@@ -105,6 +101,12 @@ export default {
   },
   data() {
     return {
+        maskedValue: "",
+        bindedObject: {
+            masked: "",
+            unmasked: "",
+            completed: false
+        },
       form: {
         name: "",
         tel: "",

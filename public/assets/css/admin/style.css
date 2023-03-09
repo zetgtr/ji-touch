@@ -3,3 +3,8 @@
     font-size: 13px;
     color: #707070;
 }
+
+.btn-list-table .btn{
+    padding: 0px;
+    min-width: 30px;
+}

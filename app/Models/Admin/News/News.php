@@ -17,6 +17,7 @@ class News extends Model
         'images',
         'content',
         'seoKeywords',
+        'seoTitle',
         'seoDescription'
     ];
 

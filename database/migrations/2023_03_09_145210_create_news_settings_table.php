@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('news_settings', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
-            $table->text('description');
-            $table->text('content');
-            $table->json('images')->nullable();
+            $table->text('title')->nullable();
             $table->string('url');
-            $table->boolean('publish')->default(true);
-            $table->integer('show')->default(0);
             $table->string('seoKeywords')->nullable();
             $table->string('seoTitle')->nullable();
             $table->text('seoDescription')->nullable();
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('news_settings');
     }
 };
