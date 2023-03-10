@@ -2,39 +2,90 @@
   <div class="form">
     <form action="">
       <div class="form__wrapper">
-        <!-- <InputBox v-model="email" v-bind:value="email" label="Email" icon-class="icon-envelope" required /> -->
-        <div class="inputbox">
+        <InputBox
+          :value="form.name"
+          v-on:dich="form.name = $event"
+          :class="{ 'has-value': form.name !== '' }"
+          label="Ваше имя"
+          mask="+1 ### ###-##-##"
+        />
+        <!-- <InputBox
+          :value="form.tel"
+          v-on:input="form.tel = $target.value"
+          :class="{ 'has-value': form.tel !== '' }"
+          label="Телефон"
+          
+        /> -->
+        <!-- <InputBox
+          v-model="form.tel"
+          :mask="'# ### ###-##-##'"
+          input="Телефон"
+          label="Телефон"
+          icon-class="icon-phone"
+          :class="{ 'has-value': form.tel !== '' }"
+          required
+        />
+        <InputBox
+          v-model="form.company"
+          input="Компания"
+          label="Компания"
+          icon-class="icon-envelope"
+          :class="{ 'has-value': form.company !== '' }"
+          required
+        />
+        <InputBox
+          v-model="form.email"
+          input="Email"
+          label="Email"
+          icon-class="icon-envelope"
+          :class="{ 'has-value': form.email !== '' }"
+          required
+        /> -->
+
+        <!-- <div class="inputbox">
           <input v-model="form.name" required="required" type="text" />
           <span>Ваше имя</span>
           <i></i>
-        </div>
-        <div class="inputbox">
-          <input v-model="form.tel" required="required" type="text" />
-          <span>Телефон</span>
+        </div> -->
+        
+          <!-- <span>Телефон</span>
           <i></i>
-        </div>
-        <div class="inputbox">
+        </div>  -->
+        <!-- <div class="inputbox">
           <input v-model="form.company" required="required" type="text" />
           <span>Компания</span>
           <i></i>
-        </div>
-        <div class="inputbox">
+        </div> -->
+        <!-- <div class="inputbox">
           <input v-model="form.email" required="required" type="text" />
           <span>Email</span>
           <i></i>
-        </div>
+        </div> -->
 
-        <BudgetDropdown
+        <!-- <BudgetDropdown
           :options="[1000, 5000, 10000]"
+          v-model="form.price"
           :placeholder="'Бюджет проекта'"
         />
         <BudgetDropdown
           :options="[1000, 5000, 10000]"
+          v-model="form.where"
           :placeholder="'Откуда узнали о нас'"
-        />
+        /> -->
+        <!-- <InputTextareaVue
+          v-model="form.desc"
+          input="Email"
+          label="Email"
+          icon-class="icon-envelope"
+          :class="{ 'has-value': form.desc !== '' }"
+          required
+        /> -->
 
         <div class="inputbox in2">
-          <textarea placeholder="Описание проекта"></textarea>
+          <textarea
+            v-model="form.desc"
+            placeholder="Описание проекта"
+          ></textarea>
           <i></i>
         </div>
         <div class="file">
@@ -90,7 +141,8 @@
 import TheButton from "./../UI/TheButton.vue";
 import BudgetDropdown from "./../UI/BudgetDropdown.vue";
 import InputBox from "./../UI/InputBox.vue";
-import { vMaska } from "maska"
+import InputTextareaVue from "../UI/InputTextarea.vue";
+
 
 export default {
     directives: { maska: vMaska },
@@ -98,6 +150,7 @@ export default {
     TheButton,
     BudgetDropdown,
     InputBox,
+    InputTextareaVue,
   },
   data() {
     return {
@@ -117,10 +170,14 @@ export default {
         desc: "",
         file: "",
       },
+      inputValue: "",
     };
   },
   methods: {
-    createPost(event) {},
+    handleInput(event) {
+        console.log(event);
+        // this.form.name = event.target.value
+    },
   },
 };
 </script>
@@ -247,7 +304,7 @@ export default {
       pointer-events: none;
     }
 
-    .inputbox input:valid ~ span,
+    .inputbox input.has-value ~ span,
     .inputbox input:focus ~ span {
       color: var(--c-secondary);
       transform: translateX(-10px) translateY(-34px);
@@ -269,13 +326,21 @@ export default {
       z-index: 9;
     }
 
-    .inputbox input:valid ~ i,
+    .inputbox input.has-value ~ i,
     .inputbox input:focus ~ i {
       height: 44px;
     }
   }
 }
-
+.inputbox.has-value i {
+  height: 44px;
+}
+.inputbox.has-value input ~ span {
+  color: var(--c-secondary);
+  transform: translateX(-10px) translateY(-34px);
+  font-size: 0.75em;
+  padding: 20px 10px 10px 0;
+}
 .sogl {
   font-size: 0.7rem;
   color: #ccc;
