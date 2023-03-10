@@ -23,7 +23,8 @@ class MenuSeeder extends Seeder
             ['id'=>3,'name'=>'Настройки','position'=>'right','logo'=>null,'controller'=>null,'url'=>null,'parent'=>null],
             ['id'=>4,'name'=>'Настройки меню','position'=>'right','logo'=>'fe fe-settings','controller'=>'Admin\SettingsMenuController','url'=>'menu','parent'=>3],
             ['id'=>5,'name'=>'Сайт','position'=>'left','logo'=>null,'controller'=>null,'url'=>null,'parent'=>null],
-            ['id'=>6,'name'=>'Новости','position'=>'left','logo'=>'fa fa-align-justify','controller'=>'Admin\NewsController','url'=>'news','parent'=>5],
+            ['id'=>6,'name'=>'Создание страниц','position'=>'left','logo'=>'far fa-tools','controller'=>'Admin\Page\PageController','url'=>'page-create','parent'=>5],
+            ['id'=>7,'name'=>'Новости','position'=>'left','logo'=>'fa fa-align-justify','controller'=>'Admin\NewsController','url'=>'news','parent'=>5],
         ];
     }
 }

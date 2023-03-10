@@ -141,15 +141,11 @@
 import TheButton from "./../UI/TheButton.vue";
 import BudgetDropdown from "./../UI/BudgetDropdown.vue";
 import InputBox from "./../UI/InputBox.vue";
-<<<<<<< HEAD
 import InputTextareaVue from "../UI/InputTextarea.vue";
-export default {
-=======
-import { vMaska } from "maska"
+
 
 export default {
     directives: { maska: vMaska },
->>>>>>> e8fe943dbed4005ae626b6855737a77e29e82703
   components: {
     TheButton,
     BudgetDropdown,
