@@ -69,16 +69,11 @@ class CategoryController extends Controller
     {
         $category = $category->fill($request->validated());
         if ($category->save()) {
-            return view('admin.news.news',[
-                'linksContent' => $newsBuilder->getLinksContent(NewsEnums::CONTENT->value),
-                'links' => $newsBuilder->getLinks(NewsEnums::CATEGORY->value)
-            ]);
+            return \redirect()->route('admin.news.category.create')->with('success', __('messages.admin.category.update.success'));
         }
 
-        return view('admin.news.news',[
-            'linksContent' => $newsBuilder->getLinksContent(NewsEnums::CONTENT->value),
-            'links' => $newsBuilder->getLinks(NewsEnums::CATEGORY->value)
-        ]);
+        return \back()->with('error', __('messages.admin.category.update.fail'));
+
     }
 
     /**

@@ -38,7 +38,7 @@
             </div>
             <div class="form-group" style="position:relative;">
                 <label for="date_news">Дата публикации (необязательно):</label>
-                <input type="text" data-language="ru" name="created_at" id="addDates" class="form-control" value="{{ old('created_at') ? old('created_at') : $news->created_at->format('d.m.Y H:i') }}">
+                <input type="text" data-language="ru" name="created_at" id="addDates" class="form-control @error('created_at') is-invalid @enderror" value="{{ old('created_at') ? old('created_at') : $news->created_at->format('d.m.Y H:i') }}">
             </div>
             <div class="form-group ">
                 <label for="">Изображения</label>

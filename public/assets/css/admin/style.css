@@ -8,3 +8,9 @@
     padding: 0px;
     min-width: 30px;
 }
+
+@media (max-width: 768px) {
+    .row-page-create{
+        flex-direction: column-reverse;
+    }
+}

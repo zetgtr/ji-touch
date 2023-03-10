@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\News\CategoryController as NewsCategoryController;
 use App\Http\Controllers\Admin\News\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\News\SettingsController as NewsSettingsController;
+use App\Http\Controllers\Admin\Page\PageController;
 use App\Http\Controllers\Admin\RolesController as AdminRolesController;
 use App\Http\Controllers\Admin\SettingsMenuController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -36,24 +37,27 @@ Route::middleware('auth')->group(function () {
 //            Route::resource('menu', SettingsMenuController::class);
             Route::post('menu/order', [SettingsMenuController::class,'menuOrder'])->name('menu.order');
         });
+        Route::post('page/order', [PageController::class,'order'])->name('page.order');
+
         Route::resource('user', AdminUserController::class);
         Route::resource('roles', AdminRolesController::class);
         Route::resource('news', AdminNewsController::class);
         Route::resource('news', AdminNewsController::class);
+
         Route::group(['prefix' => 'news', 'as' => 'news.'], static function(){
             Route::resource('category', NewsCategoryController::class);
         });
+
         Route::group(['prefix' => 'news', 'as' => 'news.'], static function(){
             Route::resource('settings', NewsSettingsController::class);
         });
+
         try {
             foreach (Menu::query()->get() as $menu)
             {
-//                if($menu->id == 7){
-
-//                }
                 if($menu->controller)
                 {
+
                     $controllerClass = '\App\Http\Controllers\\' . $menu->controller;
 
                     if (class_exists($controllerClass)) {

@@ -1,21 +1,21 @@
-<div>
-    <form action="{{ route('admin.roles.store') }}" method="post" class="row">
-        @csrf
-        <div class="col-lg-12">
-            <div class="form-group">
-                <label for="roles_name">{{__("Roles")}}</label>
-                <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">
-            </div>
-        </div>
-        <button class="btn btn-primary mt-3">{{__("Save")}}</button>
-    </form>
-</div>
+{{--<div>--}}
+{{--    <form action="{{ route('admin.roles.store') }}" method="post" class="row">--}}
+{{--        @csrf--}}
+{{--        <div class="col-lg-12">--}}
+{{--            <div class="form-group">--}}
+{{--                <label for="roles_name">{{__("Roles")}}</label>--}}
+{{--                <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <button class="btn btn-primary mt-3">{{__("Save")}}</button>--}}
+{{--    </form>--}}
+{{--</div>--}}
 
-<script src="{{ asset('assets/js/admin/modal.js') }}" ></script>
+{{--<script src="{{ asset('assets/js/admin/modal.js') }}" ></script>--}}
 
 <!-- MODAL EFFECTS -->
-<!-- <div class="modal fade" id="modaldemo8" tabindex="-1" aria-labelledby="modaldemo8Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered text-center">
+<div class="modal fade" id="modaldemo8">
+    <div class="modal-dialog modal-dialog-centered text-center" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
                 <h6 class="modal-title">Message Preview</h6><button aria-label="Close" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
@@ -30,4 +30,4 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
