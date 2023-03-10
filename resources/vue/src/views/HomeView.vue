@@ -1,26 +1,25 @@
 <template>
-  <div class="home">
-    <TheAnimateBg></TheAnimateBg>
-    <the-first></the-first>
-    <the-services></the-services>
-    <the-portfolio></the-portfolio>
-    <the-about></the-about>
-    <the-order></the-order>
-  </div>
+  <the-header></the-header>
+  <TheAnimateBg></TheAnimateBg>
+  <the-first></the-first>
+  <the-services></the-services>
+  <the-portfolio></the-portfolio>
+  <the-about></the-about>
+  <the-order></the-order>
 </template>
 
 <script>
 // @ is an alias to /src
-import TheHeader from '../components/TheHeader.vue'
-import TheFirst from '../components/TheFirst.vue'
-import TheAnimateBg from '../components/TheAnimateBg.vue'
-import TheServices from '../components/Services/TheServices.vue'
-import ThePortfolio from '../components/Portfolio/ThePortfolio.vue'
-import TheAbout from '../components/About/TheAbout.vue'
-import TheOrder from '../components/Order/TheOrder.vue'
+import TheHeader from "../components/TheHeader.vue";
+import TheFirst from "../components/TheFirst.vue";
+import TheAnimateBg from "../components/TheAnimateBg.vue";
+import TheServices from "../components/Services/TheServices.vue";
+import ThePortfolio from "../components/Portfolio/ThePortfolio.vue";
+import TheAbout from "../components/About/TheAbout.vue";
+import TheOrder from "../components/Order/TheOrder.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
     TheHeader,
     TheFirst,
@@ -28,10 +27,9 @@ export default {
     TheServices,
     ThePortfolio,
     TheAbout,
-    TheOrder
-
-  }
-}
+    TheOrder,
+  },
+};
 </script>
 <style  lang='scss'>
 .nav {

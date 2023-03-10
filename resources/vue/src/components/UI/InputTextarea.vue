@@ -1,55 +1,32 @@
 <template>
   <div class="inputbox in2">
     <textarea
-      :value="inputValue"
+      :value="value"
       @input="onInput"
-      :required="required"
-      type="text"
-      :data-maska="mask"
-      placeholder="Описание проекта"
+      :placeholder="placeholder"
     ></textarea>
     <i></i>
   </div>
 </template>
 
 <script>
-import { vMaska } from "maska";
 export default {
-  directives: { maska: vMaska },
   props: {
-    input: {
+    value:{
       type: String,
-      required: true,
-      default: null,
+      default: ''
     },
-    mask: {
+    placeholder: {
       type: String,
-      default: null,
+      default: "",
     },
-    inputValue:{
-        type: String,
-        default: ""
-    }
   },
   methods: {
     onInput(event) {
-      this.inputValue = event.target.value;
-      this.$emit("update:modelValue", this.inputValue);
+      this.$emit("textarea", event.target.value);
     },
-  },
-  data() {
-    return {
-      maskedValue: "",
-      bindedObject: {
-        masked: "",
-        unmasked: "",
-        completed: false,
-      },
-      inputValue: this.value,
-    };
   },
 };
 </script>
-
 <style>
 </style>

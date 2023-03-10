@@ -11,7 +11,9 @@
             Надежный партнёр вашего бизнеса!
           </p>
         </div>
-        <the-button class='button button-click button--orange first__btn'><span>Оставить заявку</span></the-button>
+        <the-button class="button button-click button--orange first__btn"
+          ><span>Оставить заявку</span></the-button
+        >
         <div class="bg__img">
           <svg
             version="1.1"
@@ -34,7 +36,9 @@
           </svg>
         </div>
       </div>
-      <the-section-caption :sectionCaption="sectionCaption"></the-section-caption>
+      <the-section-caption
+        :sectionCaption="sectionCaption"
+      ></the-section-caption>
     </div>
   </section>
 </template>
@@ -44,14 +48,14 @@ import TheButton from "./UI/TheButton.vue";
 import TheSectionCaption from "./TheSectionCaption.vue";
 
 export default {
-  components:{
+  components: {
     TheButton,
-    TheSectionCaption
+    TheSectionCaption,
   },
-  data(){
-    return{
-      sectionCaption: "DIgital-Агентство"
-    }
+  data() {
+    return {
+      sectionCaption: "DIgital-Агентство",
+    };
   },
 };
 </script>
@@ -60,7 +64,7 @@ export default {
 .first {
   height: 100vh;
   padding: 115px 0;
-  position: relative;
+  // position: relative;
   min-height: 950px;
   max-height: 950px;
   &-container {
@@ -120,6 +124,16 @@ export default {
   }
   100% {
     filter: blur(0px);
+  }
+}
+.first__btn {
+  span {
+    transition: 0.3s linear;
+  }
+  &:hover {
+    span {
+      color: var(--c-primary) !important;
+    }
   }
 }
 </style>

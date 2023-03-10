@@ -130,7 +130,7 @@
             </div>
           </swiper-slide>
           <div class="slider__btns-container">
-            <div ref="prev" class="swiper-button-prev">
+            <div ref="prev" @click="onPrevClick" class="swiper-button-prev">
               <svg
                 width="38"
                 height="12"
@@ -154,7 +154,7 @@
               </svg>
             </div>
             <div class="swiper-pagination"></div>
-            <div ref="next" class="swiper-button-next">
+            <div ref="next" @click="onNextClick" class="swiper-button-next">
               <svg
                 width="38"
                 height="12"
@@ -178,17 +178,29 @@
               </svg>
             </div>
           </div>
-          <div class="count">{{activeIndex}}</div>
+          <div class="count">{{ activeIndex }}</div>
         </swiper>
       </div>
-       <the-section-caption :sectionCaption="sectionCaption" class='color'></the-section-caption>
+      <div class="services__wrapper__text">
+        <div
+          class="thumb__item"
+          v-for="item in items"
+          :key="item.id"
+          :class="{ active: activeIndex === item.id }"
+        >
+          <span>{{ item.title }}</span>
+        </div>
+      </div>
+      <the-section-caption
+        :sectionCaption="sectionCaption"
+        class="color"
+      ></the-section-caption>
     </div>
   </section>
 </template>
 
 <script>
 import TheSectionCaption from "./../TheSectionCaption.vue";
-
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { EffectFade, Navigation, Pagination } from "swiper";
@@ -203,13 +215,13 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
-    TheSectionCaption
+    TheSectionCaption,
   },
-  
+
   setup() {
     const prev = ref(null);
     const next = ref(null);
-    const activeIndex = ref(0);
+    const activeIndex = ref(1);
     const onSwiper = (swiper) => {
       console.log(swiper);
     };
@@ -217,6 +229,14 @@ export default {
       console.log(activeIndex);
       activeIndex.value = swiperRef.value.realIndex; // привязываем индекс активного слайда к реактивной переменной activeIndex
       console.log("slide change");
+    };
+    const onPrevClick = () => {
+      console.log("prev");
+      activeIndex.value = activeIndex + 1
+    };
+    const onNextClick = () => {
+      console.log("next");
+      activeIndex.value = activeIndex - 1
     };
     const swiperRef = ref(null);
     return {
@@ -227,19 +247,21 @@ export default {
       modules: [EffectFade, Navigation, Pagination],
       activeIndex,
       swiperRef,
+      onPrevClick,
+      onNextClick,
     };
   },
-  data(){
-    return{
-      sectionCaption: "Services"
-    }
+  data() {
+    return {
+      sectionCaption: "Services",
+      items: [
+        { id: 1, title: "Разработка web-сайтов" },
+        { id: 2, title: "Разработка web-сайтов" },
+      ],
+    };
   },
-  computed: {
-   
-  },
-  methods:{
-    
-  },
+  computed: {},
+  methods: {},
 };
 </script>
 
@@ -415,6 +437,26 @@ export default {
         path {
           fill: var(--c-primary);
         }
+      }
+    }
+  }
+}
+.services__wrapper__text {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 20px 0;
+  padding-top: 40px;
+  padding-left: 90px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+}
+.thumb__item {
+  &.active {
+    span {
+      color: var(--c-primary);
+      &::before {
+        background: var(--c-primary);
       }
     }
   }

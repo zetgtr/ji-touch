@@ -1,7 +1,6 @@
 <template>
   <the-header></the-header>
   <div class="container">
-    123
   </div>
 </template>
 

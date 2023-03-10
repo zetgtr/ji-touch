@@ -1,68 +1,34 @@
 <template>
   <div class="form">
-    <form action="">
+    <form id="myForm">
       <div class="form__wrapper">
         <InputBox
           :value="form.name"
           v-on:dich="form.name = $event"
           :class="{ 'has-value': form.name !== '' }"
           label="Ваше имя"
+        />
+        <InputBox
+          :value="form.tel"
+          v-on:dich="form.tel = $event"
+          :class="{ 'has-value': form.tel !== '' }"
+          label="Телефон"
+          v-maska
           mask="+1 ### ###-##-##"
         />
-        <!-- <InputBox
-          :value="form.tel"
-          v-on:input="form.tel = $target.value"
-          :class="{ 'has-value': form.tel !== '' }"
-          label="Телефон"
-          
-        /> -->
-        <!-- <InputBox
-          v-model="form.tel"
-          :mask="'# ### ###-##-##'"
-          input="Телефон"
-          label="Телефон"
-          icon-class="icon-phone"
-          :class="{ 'has-value': form.tel !== '' }"
-          required
-        />
         <InputBox
-          v-model="form.company"
-          input="Компания"
-          label="Компания"
-          icon-class="icon-envelope"
+          :value="form.company"
+          v-on:dich="form.company = $event"
           :class="{ 'has-value': form.company !== '' }"
-          required
+          label="Компания"
         />
         <InputBox
-          v-model="form.email"
-          input="Email"
-          label="Email"
-          icon-class="icon-envelope"
+          :value="form.email"
+          v-on:dich="form.email = $event"
           :class="{ 'has-value': form.email !== '' }"
-          required
-        /> -->
-
-        <!-- <div class="inputbox">
-          <input v-model="form.name" required="required" type="text" />
-          <span>Ваше имя</span>
-          <i></i>
-        </div> -->
-        
-          <!-- <span>Телефон</span>
-          <i></i>
-        </div>  -->
-        <!-- <div class="inputbox">
-          <input v-model="form.company" required="required" type="text" />
-          <span>Компания</span>
-          <i></i>
-        </div> -->
-        <!-- <div class="inputbox">
-          <input v-model="form.email" required="required" type="text" />
-          <span>Email</span>
-          <i></i>
-        </div> -->
-
-        <!-- <BudgetDropdown
+          label="Email"
+        />
+        <BudgetDropdown
           :options="[1000, 5000, 10000]"
           v-model="form.price"
           :placeholder="'Бюджет проекта'"
@@ -71,29 +37,19 @@
           :options="[1000, 5000, 10000]"
           v-model="form.where"
           :placeholder="'Откуда узнали о нас'"
-        /> -->
-        <!-- <InputTextareaVue
-          v-model="form.desc"
-          input="Email"
-          label="Email"
-          icon-class="icon-envelope"
-          :class="{ 'has-value': form.desc !== '' }"
-          required
-        /> -->
-
-        <div class="inputbox in2">
-          <textarea
-            v-model="form.desc"
-            placeholder="Описание проекта"
-          ></textarea>
-          <i></i>
-        </div>
+        />
+        <InputTextareaVue
+          :value="form.desc"
+          v-on:textarea="form.desc = $event"
+          :placeholder="'Откуда узнали о нас'"
+        />
         <div class="file">
           <span
             >В чём заключается задача? Какие сроки реализации?<br />
             Несколько слов о компании.
           </span>
-          <div class="order__upload">
+          <file-uploader v-on:uploadFile="uploadFile"> </file-uploader>
+          <!-- <div class="order__upload">
             <label class="file-input__label" for="myfile">
               <svg
                 width="16"
@@ -116,15 +72,28 @@
               multiple=""
               id="myfile"
             />
+          </div> -->
+        </div>
+        <div class="file-display--container" v-show="filesToUploadShow == true">
+          <div class="mb-2 small">Список файлов:</div>
+          <div
+            class="file-display small"
+            id="file_display"
+            ref="fileDisplay"
+          ></div>
+          <div 
+            class="btn-del"
+            @click.prevent="delFiles"
+          >
+            <div class="line-1"></div>
+            <div class="line-2"></div>
           </div>
         </div>
-          <input v-maska data-maska="+1 ### ###-##-##">
-        <div class="file-display--container d-none">
-          <div class="mb-2 small">Список файлов:</div>
-          <div class="file-display small" id="file_display"></div>
-        </div>
         <div class="subm">
-          <the-button class="button button--orange first__btn" type="submit"
+          <the-button
+            @click.prevent="onSubmit"
+            class="button button--orange first__btn order__btn"
+            type="submit"
             ><span>Отправить</span></the-button
           >
           <p class="sogl">
@@ -142,24 +111,20 @@ import TheButton from "./../UI/TheButton.vue";
 import BudgetDropdown from "./../UI/BudgetDropdown.vue";
 import InputBox from "./../UI/InputBox.vue";
 import InputTextareaVue from "../UI/InputTextarea.vue";
-
+import FileUploader from "../UI/FileUploader.vue";
+import { vMaska } from "maska";
 
 export default {
-    directives: { maska: vMaska },
+  directives: { maska: vMaska },
   components: {
     TheButton,
     BudgetDropdown,
     InputBox,
     InputTextareaVue,
+    FileUploader,
   },
   data() {
     return {
-        maskedValue: "",
-        bindedObject: {
-            masked: "",
-            unmasked: "",
-            completed: false
-        },
       form: {
         name: "",
         tel: "",
@@ -168,16 +133,32 @@ export default {
         price: "",
         where: "",
         desc: "",
-        file: "",
+        file: null,
       },
-      inputValue: "",
+      filesToUploadShow: false,
     };
   },
   methods: {
-    handleInput(event) {
-        console.log(event);
-        // this.form.name = event.target.value
+    onSubmit(e) {
+      console.log(this.form);
+      // post the form to the server
     },
+    uploadFile(event) {
+      this.form.file = event;
+      let ds = this.$refs.fileDisplay;
+      ds.innerText = "";
+      for (let i = 0; i < event.length; i++) {
+        let file_name = document.createElement("div");
+        file_name.innerText = event[i].name + " : " + event[i].size + " kB";
+        ds.append(file_name);
+      }
+      this.filesToUploadShow = true;
+    },
+    delFiles(){
+      console.log(this.form.file);
+      this.form.file = null;
+      this.filesToUploadShow = false;
+    }
   },
 };
 </script>
@@ -196,6 +177,7 @@ export default {
       column-gap: 40px;
     }
     .file-display--container {
+      position: relative;
       grid-column: span 2;
       .file-display.small {
         width: 100%;
@@ -344,5 +326,54 @@ export default {
 .sogl {
   font-size: 0.7rem;
   color: #ccc;
+}
+.btn-del {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  width: 26px;
+  height: 26px;
+  gap: 7px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  .line-1 {
+    width: 20px;
+    transform: rotate(45deg) translateY(10px);
+    transform: rotate(45deg) translate(8px, 2px);
+    transform: rotate(45deg) translate(6px, 1px);
+    height: 3px;
+    transition: 0.3s linear;
+    background: #00779f;
+  }
+  .line-2 {
+    width: 20px;
+    transform: rotate(315deg) translate(2px, -13px);
+    transform: rotate(315deg) translate(10px, -5px);
+    transform: rotate(315deg) translate(6px, -2px);
+    height: 3px;
+    transition: 0.3s linear;
+    background: #00779f;
+  }
+  &:hover{
+    .line-1,
+    .line-2{
+      background-color: var(--c-primary);
+      
+    }
+  }
+  
+}
+.order__btn {
+    padding: 17px 72px;
+    outline: none;
+    color: var(--c-white);
+    font-weight: 700;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    align-self: baseline;
 }
 </style>
