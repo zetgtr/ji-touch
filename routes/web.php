@@ -49,9 +49,13 @@ Route::middleware('auth')->group(function () {
         try {
             foreach (Menu::query()->get() as $menu)
             {
+//                if($menu->id == 7){
+
+//                }
                 if($menu->controller)
                 {
                     $controllerClass = '\App\Http\Controllers\\' . $menu->controller;
+
                     if (class_exists($controllerClass)) {
                         if ($menu->controller_type) {
                             Route::get($menu->url, $controllerClass)->name(str_replace("/",".",$menu->url));
