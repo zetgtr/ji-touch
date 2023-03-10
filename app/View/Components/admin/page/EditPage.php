@@ -2,18 +2,20 @@
 
 namespace App\View\Components\admin\page;
 
+use App\Models\Admin\Page\PageCreate;
+use App\QueryBuilder\Admin\Page\PageBuilder;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Index extends Component
+class EditPage extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($page)
     {
-        //
+        $this->page = $page;
     }
 
     /**
@@ -21,6 +23,6 @@ class Index extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.page.index');
+        return view('components.admin.page.edit-page', ['page'=>$this->page]);
     }
 }

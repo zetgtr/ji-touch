@@ -1,19 +1,20 @@
 <?php
 
-namespace App\View\Components\admin\role;
+namespace App\View\Components\admin\page;
 
+use App\QueryBuilder\Admin\Page\PageBuilder;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Modal extends Component
+class PageList extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($pages)
     {
-        //
+        $this->pages = $pages;
     }
 
     /**
@@ -21,6 +22,6 @@ class Modal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.role.modal');
+        return view('components.admin.page.page-list',['pages'=>$this->pages]);
     }
 }

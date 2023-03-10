@@ -18,7 +18,8 @@ class News extends Model
         'content',
         'seoKeywords',
         'seoTitle',
-        'seoDescription'
+        'seoDescription',
+        'created_at'
     ];
 
     protected $casts = [

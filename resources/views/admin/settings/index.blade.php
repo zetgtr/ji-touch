@@ -1,0 +1,20 @@
+@extends('layouts.admin')
+@section('title',"Главные настройки")
+@section('content')
+    <div class="card">
+        <form action="{{ route('admin.settings.update', ['setting' => 1]) }}" method="POST" class="row card-body">
+            @csrf
+            @method('PUT')
+            <x-warning />
+            <div class="col-xl-4">
+              <x-admin.settings_global.name-site :settings="$settings" />
+            </div>
+            <div class="col-xl-8">
+                <x-admin.settings_global.info :settings="$settings" />
+            </div>
+            <div>
+                <button type="submit" name="save" class="btn btn-sm btn-success">Сохранить</button>
+            </div>
+        </form>
+    </div>
+@endsection

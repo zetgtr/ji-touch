@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\News;
 
 use App\Models\Admin\News\News;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -64,6 +65,11 @@ class UpdateRequest extends FormRequest
         if (!$this->input('url')) {
             $this->merge([
                 'url' => str_slug($this->input('title'))
+            ]);
+        }
+        if ($this->input('created_at')) {
+            $this->merge([
+                'created_at' => Carbon::createFromFormat('d.m.Y H:i', $this->input('created_at'), 'Europe/Moscow')
             ]);
         }
     }

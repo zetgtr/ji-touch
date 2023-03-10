@@ -6,8 +6,18 @@
 <div class="card-body">
     <form method="post" action="{{ route('admin.news.category.store') }}" class="row form-category">
         @csrf
+        @if ($errors->any())
+            @foreach($errors->all() as $error)
+                <x-alert type="danger" :message="$error"></x-alert>
+            @endforeach
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="col-lg-6">
-            <h5 class="news-category-title">Добавление новости</h5>
+            <h5 class="news-category-title">Добавление категории</h5>
             <br>
             <div class="form-group">
                 <label class="form-label" for="name">Название</label>

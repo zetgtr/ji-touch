@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin\Page;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Page\CreateRequest;
+use App\Http\Requests\Admin\Page\UpdateRequest;
+use App\Models\Admin\Page\PageCreate;
+use App\QueryBuilder\Admin\Page\PageBuilder;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -10,9 +14,13 @@ class PageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(PageBuilder $pageBuilder)
     {
-        return view('admin.page-create.index');
+        return view('admin.page-create.index',['pages'=>$pageBuilder->getPagesParent()]);
+    }
+
+    public function order(Request $request, PageBuilder $pageBuilder){
+        $pageBuilder->setOrder($request->all()['items']);
     }
 
     /**
@@ -20,15 +28,20 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.page-create.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        //
+        $page = PageCreate::create($request->validated());
+        if ($page) {
+            return \redirect()->route('admin.page-create.index')->with('success', __('messages.admin.page.create.success'));
+        }
+
+        return \redirect()->route('admin.page-create.create')->with('error', __('messages.admin.page.create.fail'));
     }
 
     /**
@@ -42,24 +55,37 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(PageCreate $pageCreate)
     {
-        //
+        return view('admin.page-create.edit',['page'=>$pageCreate]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, PageCreate $pageCreate)
     {
-        //
+        $pageCreate = $pageCreate->fill($request->validated());
+        if ($pageCreate->save()) {
+            return \redirect()->route('admin.page-create.index')->with('success', __('messages.admin.settings.update.success'));
+        }
+
+        return \back()->with('error', __('messages.admin.settings.update.fail'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(PageCreate $pageCreate)
     {
-        //
+        try {
+            $pageCreate->delete();
+            $response = ['status' => true,'message' => __('messages.admin.page.destroy.success')];
+        } catch (Exception $exception)
+        {
+            $response = ['status' => false,'message' => __('messages.admin.page.destroy.fail').$exception->getMessage()];
+        }
+
+        return $response;
     }
 }

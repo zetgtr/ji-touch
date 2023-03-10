@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             UsersSeeder::class,
             MenuSeeder::class,
-            NewsSettings::class
+            NewsSettings::class,
+            SettingSeeder::class
         ]);
     }
 }

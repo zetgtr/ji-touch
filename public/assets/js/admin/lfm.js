@@ -34,14 +34,14 @@
     }
 
     let galereyContainer = $('#lightgallery');
-    let galereyClone = galereyContainer.find('li').clone(true);
+    // let galereyClone = galereyContainer.find('li').clone(true);
 
     $('#thumbnail').on('change',(e)=>{
         let galerey = $('#template-gallery').clone(true)[0].content.children[0];
         let val = e.target.value;
         let imgArr = val.split(",");
         galereyContainer.html("");
-        galereyContainer.append(galereyClone);
+        // galereyContainer.append(galereyClone);
         imgArr.forEach(el=>{
             galereyNode = $(galerey).clone();
             galereyNode
