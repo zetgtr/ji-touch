@@ -14,7 +14,7 @@ class Edit extends Component
      */
     public function __construct(MenuBuilder $menuBuilder)
     {
-        $this->menus = $menuBuilder->getMenuRoles();
+        //
     }
 
     /**
@@ -22,6 +22,6 @@ class Edit extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.roles.edit',['menus'=>$this->menus]);
+        return view('components.admin.roles.edit');
     }
 }

@@ -14,7 +14,7 @@ class Modal extends Component
      */
     public function __construct(MenuBuilder $menuBuilder)
     {
-        $this->menus = $menuBuilder->getMenuRoles();
+        //
     }
 
     /**
@@ -22,6 +22,6 @@ class Modal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.roles.modal',['menus'=>$this->menus]);
+        return view('components.admin.roles.modal');
     }
 }

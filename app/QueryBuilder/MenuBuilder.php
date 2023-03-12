@@ -22,9 +22,15 @@ class MenuBuilder extends QueryBuilder
         return $links;
     }
 
-    public function getMenuRoles(): Collection|array
+    public function getMenuRoles(int $id): Collection|array
     {
-       return $this->model->where('url','!=',null)->get();
+       $menus = $this->model->where('url','!=',null)->get();
+       foreach ($menus as $key=>$menu){
+           if(!Auth::user()->hasMenu($menu->id)){
+               unset($menus[$key]);
+           }
+       }
+       return $menus;
     }
     public function setOrder(array $menus, int $parent = null)
     {

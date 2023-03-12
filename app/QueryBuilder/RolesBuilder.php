@@ -13,6 +13,8 @@ class RolesBuilder extends QueryBuilder
     {
         $this->model = Roles::query();
     }
+
+
     public function getAll(): Collection
     {
         return $this->model->get();

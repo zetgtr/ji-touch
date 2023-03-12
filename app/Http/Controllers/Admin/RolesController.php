@@ -8,6 +8,7 @@ use App\Models\Admin\Roles;
 use App\QueryBuilder\MenuBuilder;
 use App\QueryBuilder\RolesBuilder;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -20,7 +21,7 @@ class RolesController extends Controller
      */
     public function index(RolesBuilder $rolesBuilder, MenuBuilder $menuBuilder): View
     {
-        return view('admin.roles.index', ['roles' => $rolesBuilder->getAll(), 'menus' => $menuBuilder->getMenuRoles()]);
+        return view('admin.roles.index', ['roles' => $rolesBuilder->getAll()]);
     }
 
     /**
@@ -47,9 +48,9 @@ class RolesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Roles $roles): View
+    public function edit(int $role, MenuBuilder $menuBuilder): Collection|null
     {
-        return \view('admin.roles.edit',['roles'=>$roles]);
+        return $menuBuilder->getMenuRoles($role);
     }
 
     /**
