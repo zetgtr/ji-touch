@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('menu_id')
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->boolean('show');
+            $table->boolean('show')->default(false);
         });
     }
 

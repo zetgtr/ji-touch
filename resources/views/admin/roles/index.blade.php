@@ -5,6 +5,7 @@
         <div class="col-lg-12 col-xl-12">
 {{--            <x-admin.content.search />--}}
             <div class="card">
+                <input type="hidden" id="app_url" value="{{ env('APP_URL') }}">
                 <x-admin.roles.header :roles="$roles" />
                 <div class="e-table px-5 pb-5">
                     <div class="table-responsive table-lg">

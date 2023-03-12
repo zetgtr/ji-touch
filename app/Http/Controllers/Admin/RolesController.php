@@ -40,9 +40,10 @@ class RolesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id): Response
+    public function show(int $roleId, Request $request, RolesBuilder $rolesBuilder)
     {
-        //
+        $menuId = $request->query('menu');
+        return $rolesBuilder->setRolesMenu($menuId,$roleId);
     }
 
     /**
