@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', __('admin/user.title'))
+@section('title', 'Роли')
 @section('content')
     <div class="row row-cards">
         <div class="col-lg-12 col-xl-12">
@@ -26,5 +26,6 @@
     <x-admin.roles.add-role />
     <x-admin.roles.edit-role />
     <script src="{{ asset('assets/js/admin/roles/edit.js') }}"></script>
+    <script src="{{ asset('assets/js/admin/roles/add.js') }}"></script>
 {{--    <x-admin.roles.modal />--}}
 @endsection

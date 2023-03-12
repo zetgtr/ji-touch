@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Admin\Menu;
 use App\Models\Admin\Roles;
+use App\Models\Admin\Roles\RolesHasMenus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,25 +51,21 @@ class User extends Authenticatable
      */
     public function role(): HasOne
     {
-        return $this->hasOne(Roles::class, 'id', 'roles_id');
+        return $this->hasOne(Roles::class, 'id', 'role_id');
     }
 
-    private function menus()
-    {
-        return $this->belongsToMany(Menu::class, 'roles_has_menus', 'role_id', 'menu_id')->withPivot('show');
-    }
 
     public function hasMenu($menuId)
     {
-        $menus = $this->menus()->where('menu_id', $menuId)->get();
+        $menus = RolesHasMenus::query()->where('menu_id', $menuId)->where('role_id',$this->role_id)->get();
 
         foreach ($menus as $menu) {
-            if ($menu->pivot->show ) {
+            if (!empty($menu->show) &&  $menu->show) {
                 return true;
             }
         }
 
-        if ($this->roles_id == 1){
+        if ($this->role_id == 1){
             return true;
         }
 

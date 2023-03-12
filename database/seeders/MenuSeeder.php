@@ -25,7 +25,10 @@ class MenuSeeder extends Seeder
             ['id'=>5,'name'=>'Сайт','position'=>'left','logo'=>null,'controller'=>null,'url'=>null,'parent'=>null],
             ['id'=>6,'name'=>'Создание страниц','position'=>'left','logo'=>'far fa-tools','controller'=>'Admin\Page\PageController','url'=>'page-create','parent'=>5],
             ['id'=>7,'name'=>'Главные настройки','position'=>'right','logo'=>'fad fa-cogs','controller'=>'Admin\Settings\SettingsController','url'=>'settings','parent'=>3],
-            ['id'=>8,'name'=>'Новости','position'=>'left','logo'=>'fa fa-align-justify','controller'=>'Admin\NewsController','url'=>'news','parent'=>5],
+            ['id'=>8,'name'=>'Пользователи','position'=>'right','logo'=>null,'controller'=>null,'url'=>null,'parent'=>null],
+            ['id'=>9,'name'=>'Роли','position'=>'right','logo'=>'fad fa-user-tag','controller'=>'Admin\RolesController','url'=>'roles','parent'=>8],
+            ['id'=>10,'name'=>'Пользователи','position'=>'right','logo'=>'fad fa-user','controller'=>'Admin\UserController','url'=>'user','parent'=>8],
+            ['id'=>1000,'name'=>'Новости','position'=>'left','logo'=>'fa fa-align-justify','controller'=>'Admin\NewsController','url'=>'news','parent'=>5],
         ];
     }
 }

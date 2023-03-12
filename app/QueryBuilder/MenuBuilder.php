@@ -32,6 +32,7 @@ class MenuBuilder extends QueryBuilder
             })
             ->where('url', '!=', null)
             ->get();
+//        dd($menus);
        foreach ($menus as $key=>$menu){
            if(!Auth::user()->hasMenu($menu->id)){
                unset($menus[$key]);

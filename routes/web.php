@@ -39,8 +39,8 @@ Route::middleware('auth')->group(function () {
         });
         Route::post('page/order', [PageController::class,'order'])->name('page.order');
 
-        Route::resource('user', AdminUserController::class);
-        Route::resource('roles', AdminRolesController::class);
+//        Route::resource('user', AdminUserController::class);
+//        Route::resource('roles', AdminRolesController::class);
         Route::resource('news', AdminNewsController::class);
         Route::resource('news', AdminNewsController::class);
 

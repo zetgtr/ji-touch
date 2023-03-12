@@ -28,7 +28,8 @@ class RolesBuilder extends QueryBuilder
             $record->show = !$record->show;
         }
 
-        return RolesHasMenus::query()->where('menu_id' , $menuId)->where('role_id' , $roleId)->update(['show'=>$record->show]);
+        RolesHasMenus::query()->where('menu_id' , $menuId)->where('role_id' , $roleId)->update(['show'=>$record->show]);
+        return $record->show;
     }
 
     public function getAll(): Collection
