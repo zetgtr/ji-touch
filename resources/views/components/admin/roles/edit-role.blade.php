@@ -6,7 +6,15 @@
             <th>Чтение</th>
             </thead>
             <tbody>
-
+                <tr class="table-edit-role-tr">
+                    <td class="text-center text-menu">
+                    </td>
+                    <td class="text-center btn-list-table">
+                        <a href="" class="btn btn-success show-publish">
+                            <i class="far fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

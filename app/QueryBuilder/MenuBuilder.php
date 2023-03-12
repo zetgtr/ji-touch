@@ -22,9 +22,16 @@ class MenuBuilder extends QueryBuilder
         return $links;
     }
 
-    public function getMenuRoles(int $id): Collection|array
+    public function getMenuRoles(int $roleId): Collection|array
     {
-       $menus = $this->model->where('url','!=',null)->get();
+        $menus = $this->model
+            ->select('menus.*', 'roles_has_menus.show')
+            ->leftJoin('roles_has_menus', function ($join) use ($roleId) {
+                $join->on('menus.id', '=', 'roles_has_menus.menu_id')
+                    ->where('roles_has_menus.role_id', '=', $roleId);
+            })
+            ->where('url', '!=', null)
+            ->get();
        foreach ($menus as $key=>$menu){
            if(!Auth::user()->hasMenu($menu->id)){
                unset($menus[$key]);

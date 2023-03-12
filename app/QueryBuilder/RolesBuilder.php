@@ -17,6 +17,6 @@ class RolesBuilder extends QueryBuilder
 
     public function getAll(): Collection
     {
-        return $this->model->get();
+        return $this->model->where('id','!=',1)->get();
     }
 }
