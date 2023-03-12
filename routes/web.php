@@ -62,9 +62,12 @@ Route::middleware('auth')->group(function () {
 
                     if (class_exists($controllerClass)) {
                         if ($menu->controller_type) {
-                            Route::get($menu->url, $controllerClass)->name(str_replace("/",".",$menu->url));
+                            Route::get($menu->url, $controllerClass)
+                                ->name(str_replace("/",".",$menu->url))
+                                ->middleware('menu.check:'.$menu->id);
                         } else {
-                            Route::resource($menu->url, $controllerClass);
+                            Route::resource($menu->url, $controllerClass)
+                                ->middleware('menu.check:'.$menu->id);
                         }
                     }
                 }

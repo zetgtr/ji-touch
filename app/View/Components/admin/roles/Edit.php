@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Modal extends Component
+class Edit extends Component
 {
     /**
      * Create a new component instance.
@@ -22,6 +22,6 @@ class Modal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.roles.modal',['menus'=>$this->menus]);
+        return view('components.admin.roles.edit',['menus'=>$this->menus]);
     }
 }

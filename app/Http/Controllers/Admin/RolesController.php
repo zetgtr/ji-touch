@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RolesRequest;
 use App\Models\Admin\Roles;
+use App\QueryBuilder\MenuBuilder;
 use App\QueryBuilder\RolesBuilder;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -17,9 +18,9 @@ class RolesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(RolesBuilder $rolesBuilder): View
+    public function index(RolesBuilder $rolesBuilder, MenuBuilder $menuBuilder): View
     {
-        return view('admin.roles.index', ['roles' => $rolesBuilder->getAll()]);
+        return view('admin.roles.index', ['roles' => $rolesBuilder->getAll(), 'menus' => $menuBuilder->getMenuRoles()]);
     }
 
     /**
@@ -46,9 +47,9 @@ class RolesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id): Response
+    public function edit(Roles $roles): View
     {
-        //
+        return \view('admin.roles.edit',['roles'=>$roles]);
     }
 
     /**

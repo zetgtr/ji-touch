@@ -5,6 +5,7 @@ namespace App\QueryBuilder;
 use App\Enums\MenuEnums;
 use App\Models\Admin\Menu;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class MenuBuilder extends QueryBuilder
 {
@@ -21,12 +22,10 @@ class MenuBuilder extends QueryBuilder
         return $links;
     }
 
-    private function setMenuOrder(array $menu)
+    public function getMenuRoles(): Collection|array
     {
-
-
+       return $this->model->where('url','!=',null)->get();
     }
-
     public function setOrder(array $menus, int $parent = null)
     {
         foreach ($menus as $key=>$menu)
@@ -40,16 +39,29 @@ class MenuBuilder extends QueryBuilder
         }
     }
 
+    private function checkMenu(Collection $menus){
+        foreach ($menus as $key=>$menu){
+            if(!$menu->url && count($menu->parent) == 0){
+                unset($menus[$key]);
+            }
+        }
+        return $menus;
+    }
+
     private function setMenuParent(string|MenuEnums $menu,Collection $items)
     {
-        foreach ($items as $item)
+        foreach ($items as $key=>$item)
         {
-            $this->model = Menu::query();
-            $item->parent = $this->model->where('position','=',$menu)->where('parent','=',$item->id)->orderBy('order')->get();
-            $this->setMenuParent($menu,$item->parent);
+            if ($item->url && !Auth::user()->hasMenu($item->id)){
+                unset($items[$key]);
+            }else{
+                $this->model = Menu::query();
+                $item->parent = $this->model->where('position','=',$menu)->where('parent','=',$item->id)->orderBy('order')->get();
+                $this->setMenuParent($menu,$item->parent);
+            }
         }
 
-        return $items;
+        return $this->checkMenu($items);
     }
 
     public function getMenu(string|MenuEnums $menu): Collection

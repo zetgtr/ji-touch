@@ -11,23 +11,31 @@
 {{--    </form>--}}
 {{--</div>--}}
 
-{{--<script src="{{ asset('assets/js/admin/modal.js') }}" ></script>--}}
-
-<!-- MODAL EFFECTS -->
-<div class="modal fade" id="modaldemo8">
-    <div class="modal-dialog modal-dialog-centered text-center" role="document">
-        <div class="modal-content modal-content-demo">
-            <div class="modal-header">
-                <h6 class="modal-title">Message Preview</h6><button aria-label="Close" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <h6>Why We Use Electoral College, Not Popular Vote</h6>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like readable English.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary">Save changes</button> <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+<div class="table-responsive">
+    <table id="example2" class="table table-bordered text-nowrap border-bottom">
+        <thead>
+            <th>Название меню</th>
+            <th>Чтение</th>
+        </thead>
+        <tbody>
+        @foreach($menus as $menu)
+            <tr class="delete-element">
+                <td>{{ $menu->name }}</td>
+                <td class="btn-list-table">
+{{--                    @if($menu->publish)--}}
+                        <a href="" class="btn btn-success show-publish">
+                            <i class="far fa-eye"></i>
+                        </a>
+{{--                    @else--}}
+                        <a href="" class="btn btn-default show-publish">
+                            <i class="far fa-eye-slash"></i>
+                        </a>
+{{--                    @endif--}}
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 </div>
+
+<script src="{{ asset('assets/js/admin/modal.js') }}" ></script>

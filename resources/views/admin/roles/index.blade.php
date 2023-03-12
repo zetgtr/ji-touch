@@ -21,5 +21,7 @@
             </div>
         </div>
     </div>
+    <x-admin.modal title="{{ __('Add role') }}" id="fall_role" :body="view('components.admin.roles.modal',['menus'=>$menus])"/>
+
 {{--    <x-admin.roles.modal />--}}
 @endsection

@@ -1,20 +1,21 @@
 <?php
 
-namespace App\View\Components\admin\roles;
+namespace App\View\Components\admin\roles\table;
 
+use App\Models\Admin\Roles;
 use App\QueryBuilder\MenuBuilder;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Modal extends Component
+class Tr extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(MenuBuilder $menuBuilder)
+    public function __construct(Roles $role)
     {
-        $this->menus = $menuBuilder->getMenuRoles();
+        $this->role = $role;
     }
 
     /**
@@ -22,6 +23,6 @@ class Modal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.roles.modal',['menus'=>$this->menus]);
+        return view('components.admin.roles.table.tr',['role' => $this->role]);
     }
 }

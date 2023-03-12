@@ -20,7 +20,7 @@ class UsersSeeder extends Seeder
         return [
             'name' => 'admin',
             'email'=> 'admin@admin.ru',
-            'roles_id'=> 3,
+            'roles_id'=> 1,
             'is_admin' => true,
             'password' => '$2y$10$/hVI6y24X8xE5b3nxyRqqe79wwwrLGOKrYlkhDsxAA4saIysP24vm'
         ];
