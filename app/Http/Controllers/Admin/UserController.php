@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\PasswordUpdateRequest;
 use App\Models\User;
 use App\QueryBuilder\UsersBuilder;
 use Illuminate\Http\RedirectResponse;
@@ -17,7 +19,7 @@ class UserController extends Controller
      */
     public function index(UsersBuilder $usersBuilder): View
     {
-        return view('admin.users.index', ['users'=>$usersBuilder->getUsersWithPagination()]);
+        return view('admin.users.index', ['users'=>$usersBuilder->getAll()]);
     }
 
     /**
@@ -57,7 +59,12 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        //
+        dd($request);
+    }
+
+    public function passwordUpdate(PasswordUpdateRequest $passwordUpdateRequest){
+        $passwordUpdateRequest->handle();
+        return redirect()->back()->with('status', 'Пароль успешно обновлен!');
     }
 
     /**

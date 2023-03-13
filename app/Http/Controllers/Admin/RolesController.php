@@ -23,7 +23,7 @@ class RolesController extends Controller
     public function index(RolesBuilder $rolesBuilder, MenuBuilder $menuBuilder): View
     {
 //        Auth::user()->logMenu();
-        return view('admin.roles.index', ['roles' => $rolesBuilder->getAll()]);
+        return view('admin.roles.index', ['roles' => $rolesBuilder->get()]);
     }
 
     /**

@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function () {
             Route::resource('settings', NewsSettingsController::class);
         });
 
+        Route::put('user/password',[AdminUserController::class, 'passwordUpdate'])->name('password-update');
+
         try {
             foreach (Menu::query()->get() as $menu)
             {

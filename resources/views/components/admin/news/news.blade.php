@@ -15,7 +15,7 @@
             </tr>
             </thead>
             <tbody>
-            @forelse($newsList as $news)
+            @foreach($newsList as $news)
                 <tr class="delete-element">
                     <td>{{ $news->title }}</td>
                     <td class="text-center">{{ $news->created_at->format('d.m.Y H:i') }}</td>
@@ -39,9 +39,7 @@
 
                     </td>
                 </tr>
-            @empty
-                Записей нет
-            @endforelse
+            @endforeach
             </tbody>
         </table>
     </div>

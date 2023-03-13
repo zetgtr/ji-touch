@@ -32,8 +32,12 @@ class RolesBuilder extends QueryBuilder
         return $record->show;
     }
 
+    public function get(){
+        return $this->model->where('id','!=',1)->get();
+    }
+
     public function getAll(): Collection
     {
-        return $this->model->where('id','!=',1)->get();
+        return $this->model->get();
     }
 }
