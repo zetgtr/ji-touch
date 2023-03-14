@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\PasswordUpdateRequest;
+use App\Http\Requests\Admin\User\UpdateProfileRequest;
 use App\Models\User;
 use App\QueryBuilder\UsersBuilder;
 use Illuminate\Http\RedirectResponse;
@@ -57,9 +58,15 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): RedirectResponse
+    public function update(UpdateProfileRequest $updateProfileRequest, User $user): RedirectResponse
     {
-        dd($request);
+        $user = $user->fill($updateProfileRequest->validated());
+        if ($user->save()){
+            return redirect()->route('admin.user.edit',['user'=>$user])->with('success','Пользователь успешно обновлен');
+        }
+
+        return redirect()->route('admin.user.edit',['user'=>$user])->with('error','Не удалось обновить пользователя');
+
     }
 
     public function passwordUpdate(PasswordUpdateRequest $passwordUpdateRequest){
