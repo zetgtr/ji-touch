@@ -28,6 +28,7 @@ class MenuSeeder extends Seeder
             ['id'=>8,'name'=>'Пользователи','position'=>'right','logo'=>null,'controller'=>null,'url'=>null,'parent'=>null],
             ['id'=>9,'name'=>'Роли','position'=>'right','logo'=>'fad fa-user-tag','controller'=>'Admin\RolesController','url'=>'roles','parent'=>8],
             ['id'=>10,'name'=>'Пользователи','position'=>'right','logo'=>'fad fa-user','controller'=>'Admin\UserController','url'=>'user','parent'=>8],
+            ['id'=>11,'name'=>'Редактор панелей','position'=>'left','logo'=>'fal fa-solar-panel','controller'=>'Admin\Panel\PanelController','url'=>'panel','parent'=>1],
             ['id'=>1000,'name'=>'Новости','position'=>'left','logo'=>'fa fa-align-justify','controller'=>'Admin\NewsController','url'=>'news','parent'=>5],
         ];
     }

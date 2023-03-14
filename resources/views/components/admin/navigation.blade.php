@@ -1,9 +1,10 @@
-<div class="card">
-    <div class="card-body">
-        <ul class="nav1 br-7">
+<link id="style" href="{{asset('assets/css/admin/menu-style.css')}}" rel="stylesheet" />
+<div class=" tab-menu-heading">
+    <div class="tabs-menu1">
+        <ul class="nav panel-tabs">
             @foreach($links as $link)
-                <li class="nav-item1">
-                    <a class="nav-link {{!empty($link['active']) ? "disabled" : ""}}" href="{{$link['url']}}">{{$link['name']}}</a>
+                <li>
+                    <a href="{{$link['url']}}" class="{{!empty($link['active']) ? "active" : ""}} nav-link-size">{{$link['name']}}</a>
                 </li>
             @endforeach
         </ul>

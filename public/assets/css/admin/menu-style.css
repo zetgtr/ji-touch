@@ -1,6 +1,4 @@
-.nav .active{
-    opacity: 6;
-    cursor: default;
-    pointer-events: none;
-    color: #9ea7af!important;
+.nav-link-size{
+    font-size: 14px;
+    margin-top: 5px;
 }
