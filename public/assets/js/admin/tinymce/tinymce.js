@@ -26940,6 +26940,7 @@
       setup$g(editor);
       var setupRtcThunk = setup$i(editor);
       preInit(editor);
+
       setupRtcThunk.fold(function () {
         loadContentCss(editor).then(function () {
           return initEditorWithInitialContent(editor);
@@ -26963,6 +26964,7 @@
 
     var DOM$5 = DOMUtils.DOM;
     var relaxDomain = function (editor, ifr) {
+
       if (document.domain !== window.location.hostname && Env.browser.isIE()) {
         var bodyUuid = uuid('mce');
         editor[bodyUuid] = function () {
@@ -27141,6 +27143,7 @@
       editor.ui = __assign(__assign({}, editor.ui), uiApiFacade);
     };
     var init = function (editor) {
+
       editor.fire('ScriptsLoaded');
       initIcons(editor);
       initTheme(editor);
@@ -27264,6 +27267,7 @@
       });
     };
     var loadScripts = function (editor, suffix) {
+
       var scriptLoader = ScriptLoader.ScriptLoader;
       loadTheme(scriptLoader, editor, suffix, function () {
         loadLanguage(scriptLoader, editor);
@@ -27373,6 +27377,7 @@
         editor.editorManager.on('BeforeUnload', editor._beforeUnload);
       }
       editor.editorManager.add(editor);
+
       loadScripts(editor, editor.suffix);
     };
 

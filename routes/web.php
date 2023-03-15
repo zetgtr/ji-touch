@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\News\CategoryController as NewsCategoryController
 use App\Http\Controllers\Admin\News\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\News\SettingsController as NewsSettingsController;
 use App\Http\Controllers\Admin\Page\PageController;
+use App\Http\Controllers\Admin\Panel\PanelController;
 use App\Http\Controllers\Admin\RolesController as AdminRolesController;
 use App\Http\Controllers\Admin\SettingsMenuController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -38,6 +39,8 @@ Route::middleware('auth')->group(function () {
             Route::post('menu/order', [SettingsMenuController::class,'menuOrder'])->name('menu.order');
         });
         Route::post('page/order', [PageController::class,'order'])->name('page.order');
+
+        Route::post('panel/get_all', [PanelController::class,'getAllPanel'])->name('panel-all-get');
 
 //        Route::resource('user', AdminUserController::class);
 //        Route::resource('roles', AdminRolesController::class);

@@ -26,12 +26,14 @@ class CreateRequest extends FormRequest
             'url' => ['required'],
             'custom_title' => ['nullable'],
             'description' => ['nullable'],
-            'keywords' => ['nullable']
+            'keywords' => ['nullable'],
+            'datahub' => ['nullable']
         ];
     }
 
     public function prepareForValidation()
     {
+        dd(json_decode($this->input('datahub'), true));
         if (!$this->input('url')) {
             $this->merge([
                 'url' => str_slug($this->input('title'))

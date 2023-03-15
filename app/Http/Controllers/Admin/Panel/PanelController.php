@@ -19,6 +19,10 @@ class PanelController extends Controller
         return view('admin.panel.index',['links' => $panelBuilder->getLinks(PanelNavigationEnums::SITE->value)]);
     }
 
+    public function getAllPanel(PanelBuilder $panelBuilder)
+    {
+        return ['status'=>true,'content'=>$panelBuilder->getPanelAll()];
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -49,9 +53,9 @@ class PanelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(PanelBuilder $panelBuilder, Panel $panel)
     {
-        //
+        return view('admin.panel.edit',['panel' => $panel]);
     }
 
     /**

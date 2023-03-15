@@ -2,6 +2,7 @@
 
 namespace App\View\Components\admin\panel;
 
+use App\QueryBuilder\Admin\Panel\PanelBuilder;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -11,9 +12,9 @@ class PanelList extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(PanelBuilder $panelBuilder)
     {
-        //
+        $this->panels = $panelBuilder->getSitePanels();
     }
 
     /**
@@ -21,6 +22,6 @@ class PanelList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.panel.panel-list');
+        return view('components.admin.panel.panel-list', ['panels'=> $this->panels]);
     }
 }

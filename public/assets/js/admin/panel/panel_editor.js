@@ -134,7 +134,7 @@ function render() {
     //в поле алиас выводиться слово key и поле становиться зеленым
     $('.panel_table table tr:first-child>th:nth-child(' + (key + 2) + ') input').css({
       'opacity': '0'
-    }).prop("disabled", true);;
+    }).prop("disabled", true);
   }
   //проверка на кей
 

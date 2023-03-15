@@ -1,4 +1,4 @@
-<form action="{{ route('admin.page-create.store') }}" method="POST" class="row">
+<form id="page" action="{{ route('admin.page-create.store') }}" method="POST" class="row">
     @csrf
     <x-warning />
     <div class="col-6">
@@ -39,6 +39,10 @@
             <input type="text" name="keywords" value="{{ old('keywords') }}" class="form-control @error('keywords') is-invalid @enderror">
             <x-error error-value="keywords" />
         </div>
+    </div>
+    <div class="form-group">
+        <label>Содержание страницы:</label>
+        <x-admin.page.page-service />
     </div>
     <div class="col-lg-12">
         <button type="submit" name="save" class="btn btn-sm btn-success">Сохранить</button>

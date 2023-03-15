@@ -24,3 +24,7 @@
     content: '\f104';
     font-weight: bold;
 }
+
+.tox-silver-sink{
+    z-index: 9999999!important;
+}

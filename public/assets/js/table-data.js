@@ -62,6 +62,15 @@ $(function(e) {
 		}
 	});
 
+    $('#exampleTable2').DataTable({
+		responsive: true,
+		language: {
+			searchPlaceholder: 'Поиск...',
+			sSearch: '',
+			lengthMenu: '_MENU_ Элементы на странице',
+		}
+	});
+
 
     //______Select2
     $('.select2').select2({
