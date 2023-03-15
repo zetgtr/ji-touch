@@ -25,7 +25,6 @@ class CreateRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'alias' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
             'data' => 'nullable|json',
             'service' => 'required|boolean',
         ];

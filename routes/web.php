@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
 
 //        Route::resource('user', AdminUserController::class);
 //        Route::resource('roles', AdminRolesController::class);
-        Route::resource('news', AdminNewsController::class);
+//        Route::resource('news', AdminNewsController::class);
         Route::resource('news', AdminNewsController::class);
 
         Route::group(['prefix' => 'news', 'as' => 'news.'], static function(){

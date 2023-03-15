@@ -1610,11 +1610,25 @@ window.panelEditor = panel_editor_fucken();
       let res = {};
       let data = this.serialize();
       let remove = this.removelist;
-        console.log(data)
-      if (data.length) res.data = data;
-      if (Object.keys(remove).length) res.remove = remove;
-      if (Object.keys(res).length)
-        this.storage_input.value = JSON.stringify(res);
+        if (data.length) res.data = data;
+        if (Object.keys(remove).length) res.remove = remove;
+        if (Object.keys(res).length)
+            this.storage_input.value = JSON.stringify(res);
+
+      let form = $('#page');
+      let dataForm = form.serialize()
+        dataForm
+        console.log(dataForm)
+
+        $.ajax({
+            type: "post",
+            url: form.attr('action'),
+            data: dataForm,
+            success(data){
+                console.log(data)
+            }
+        })
+
     }
   }
 
@@ -1640,6 +1654,7 @@ window.panelEditor = panel_editor_fucken();
     console.log(dataHub)
 
   dataHub.form.addEventListener("submit", (e) => {
+      e.preventDefault()
     dataHub.goodBye();
   });
 
@@ -1650,3 +1665,4 @@ $(document).on('focusin', function (e) {
     e.stopImmediatePropagation();
   }
 });
+

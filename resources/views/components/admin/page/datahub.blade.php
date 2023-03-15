@@ -1,7 +1,7 @@
 <div class="pgcr">
 
-    <input type="hidden" name="datahub" id="datahub_storage" value="">
-    <input type="hidden" name="datahub" id="datahub_storage" value="">
+{{--    <input type="hidden" name="datahub" id="datahub_storage" value="">--}}
+{{--    <input type="hidden" name="datahub" id="datahub_storage" value="">--}}
     <div class="pgcr-workshop">
         <div id="datahub"></div>
     </div>

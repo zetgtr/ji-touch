@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('panels', function (Blueprint $table) {
+        Schema::create('panels_datahub', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
-            $table->text("description");
-            $table->string("alias");
-            $table->json("data");
-            $table->boolean("service");
+            $table->string('type');
+            $table->boolean('display');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('panels');
+        Schema::dropIfExists('panels_datahub');
     }
 };

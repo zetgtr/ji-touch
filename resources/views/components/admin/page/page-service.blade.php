@@ -131,6 +131,7 @@
 
 <x-admin.page.datahub />
 
+{{--@dd(\Illuminate\Support\Facades\Auth::user())--}}
 <input type="hidden" id="panel_all_url" value="{{ route('admin.panel-all-get') }}">
 <script src="{{ asset('assets/js/admin/page/custom_pages.js') }}"></script>
 <script src="{{ asset('assets/js/admin/page/sort-table.min.js') }}"></script>

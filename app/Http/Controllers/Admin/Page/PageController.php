@@ -36,6 +36,7 @@ class PageController extends Controller
      */
     public function store(CreateRequest $request)
     {
+        dd($request->validated());
         $page = PageCreate::create($request->validated());
         if ($page) {
             return \redirect()->route('admin.page-create.index')->with('success', __('messages.admin.page.create.success'));

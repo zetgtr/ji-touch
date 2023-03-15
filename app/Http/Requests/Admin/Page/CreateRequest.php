@@ -33,11 +33,22 @@ class CreateRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        dd(json_decode($this->input('datahub'), true));
+
         if (!$this->input('url')) {
             $this->merge([
                 'url' => str_slug($this->input('title'))
             ]);
         }
+        $data = json_decode($this->input('datahub', true));
+        if (is_object($data)) {
+            $data = get_object_vars($data);
+        }
+
+        $this->merge([
+            'datahub' => $data['data']
+        ]);
+
+        dd($this);
+
     }
 }
