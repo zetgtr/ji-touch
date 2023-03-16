@@ -1,17 +1,3 @@
-<div class="pgcr">
-
-{{--    <input type="hidden" name="datahub" id="datahub_storage" value="">--}}
-{{--    <input type="hidden" name="datahub" id="datahub_storage" value="">--}}
-    <div class="pgcr-workshop">
-        <div id="datahub"></div>
-    </div>
-    <div class="pgcr-buttons">
-
-        <button class="btn btn-sm btn-primary" type="button" id="datahub_add_panel">Добавить параметр<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span></button>
-
-    </div>
-</div>
-
 <template id="datahub_modal">
     <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">

@@ -37,6 +37,7 @@ window.panelEditor = panel_editor_fucken();
     let frame = {};
     let clear_array = '{"type":["text"],"header":[""],"data":[],"arrayType":"","table":"none","where":"","order":"","limit":"10","query":"","dbSet":"default","allCol":["none"],"col":["none"]}';
 
+      console.log(data);
     let col_count = data.type.length;
     let row_count = data.data.length;
 
@@ -804,11 +805,12 @@ window.panelEditor = panel_editor_fucken();
     }
 
     setOutData(data) {
+        console.log(data)
       this.title = data.title;
       this.display = data.display;
       this.anchor = data.anchor;
       this.parent = data.parent;
-      this.safe_id = data.id;
+      this.safe_id = data.id_boll;
       this.safe_id_panel = data.id_panel;
       this.safe_mod = data.safe;
       /****----- */
@@ -833,7 +835,6 @@ window.panelEditor = panel_editor_fucken();
           if (prop == "frame" || prop == "safe") return false;
           [val, , this.empty] = clearPanelData(JSON.parse(val));
           val = JSON.stringify(val);
-
           if (target.safe == val) this.safe_mod = true;
           else this.safe_mod = false;
           this.safeControl();
@@ -1487,6 +1488,7 @@ window.panelEditor = panel_editor_fucken();
         if (!Object.keys(this.hub).length) return 1;
 
         let node = this.hub[id];
+
         let node_data = {};
         switch (node.type) {
           case "section":
@@ -1506,6 +1508,7 @@ window.panelEditor = panel_editor_fucken();
             if (node_data.safe) node_data.content = null;
             else node_data.content = node.content.work;
 
+
             if (node.empty) return 1;
             break;
         }
@@ -1518,7 +1521,7 @@ window.panelEditor = panel_editor_fucken();
           },
           ...node_data,
         };
-
+          console.log(node_data)
         res.push(node_data);
       });
       return res;
@@ -1604,30 +1607,33 @@ window.panelEditor = panel_editor_fucken();
           modalWindow = null;
           this.buttonLockChange(this.add_panel);
         });
+
     }
 
     goodBye() {
       let res = {};
       let data = this.serialize();
+
       let remove = this.removelist;
         if (data.length) res.data = data;
         if (Object.keys(remove).length) res.remove = remove;
         if (Object.keys(res).length)
             this.storage_input.value = JSON.stringify(res);
-
-      let form = $('#page');
-      let dataForm = form.serialize()
-        dataForm
-        console.log(dataForm)
-
-        $.ajax({
-            type: "post",
-            url: form.attr('action'),
-            data: dataForm,
-            success(data){
-                console.log(data)
-            }
-        })
+        console.log(data)
+        console.log(this)
+      // let form = $('#page');
+      // let dataForm = form.serialize()
+      //   dataForm
+      //   console.log(dataForm)
+      //
+      //   $.ajax({
+      //       type: "post",
+      //       url: form.attr('action'),
+      //       data: dataForm,
+      //       success(data){
+      //           console.log(data)
+      //       }
+      //   })
 
     }
   }
@@ -1654,7 +1660,7 @@ window.panelEditor = panel_editor_fucken();
     console.log(dataHub)
 
   dataHub.form.addEventListener("submit", (e) => {
-      e.preventDefault()
+      // e.preventDefault()
     dataHub.goodBye();
   });
 

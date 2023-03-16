@@ -42,6 +42,8 @@ Route::middleware('auth')->group(function () {
 
         Route::post('panel/get_all', [PanelController::class,'getAllPanel'])->name('panel-all-get');
 
+        Route::post('panel/select', [PanelController::class,'getSelectTable'])->name('panel-select');
+
 //        Route::resource('user', AdminUserController::class);
 //        Route::resource('roles', AdminRolesController::class);
 //        Route::resource('news', AdminNewsController::class);

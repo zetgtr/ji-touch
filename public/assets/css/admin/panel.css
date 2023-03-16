@@ -20,7 +20,7 @@
     color: black;
 }
 .open_menu:before {
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 5 Pro";
     content: '\f104';
     font-weight: bold;
 }

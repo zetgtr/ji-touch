@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\QueryBuilder\Admin\News\CategoryBuilder as NewsCategoryBuilder;
 use App\QueryBuilder\Admin\Page\PageBuilder;
+use App\QueryBuilder\Admin\Page\PageDataPanelBuilder;
 use App\QueryBuilder\Admin\Panel\PanelBuilder;
 use App\QueryBuilder\Admin\Settings\SettingsBuilder;
 use App\QueryBuilder\MenuBuilder;
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(QueryBuilder::class, PageBuilder::class);
         $this->app->bind(QueryBuilder::class, SettingsBuilder::class);
         $this->app->bind(QueryBuilder::class, PanelBuilder::class);
+        $this->app->bind(QueryBuilder::class, PageDataPanelBuilder::class);
     }
 
     /**

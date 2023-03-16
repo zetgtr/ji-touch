@@ -515,7 +515,7 @@ function db_select_table() {
   var html = '';
   $.ajax({
     type: 'POST',
-    url: '/infusions/panel_editor/admin/ajax/ajax.selectTable.php',
+    url: $('#select_table').val(),
     data: {
       'operation': 'selectTable'
     },
@@ -556,7 +556,7 @@ function table_db() {
   if (table_array.allCol.length <= 1 && table_array.table != 'none' || table_array.dbSet == 'query') {
     $.ajax({
       type: 'POST',
-      url: '/infusions/panel_editor/admin/ajax/ajax.selectTable.php',
+      url: $('#select_table').val(),
       data: {
         'operation': 'selectCol',
         'table': table_array.table,
@@ -587,7 +587,7 @@ function table_db() {
   if (table_array.data.length < 1 && table_array.table != 'none' || table_array.dbSet == 'query') {
     $.ajax({
       type: 'POST',
-      url: '/infusions/panel_editor/admin/ajax/ajax.selectTable.php',
+      url: $('#select_table').val(),
       data: {
         'operation': 'selectRow',
         'type': table_array.dbSet,

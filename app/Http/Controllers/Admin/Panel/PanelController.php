@@ -23,6 +23,10 @@ class PanelController extends Controller
     {
         return ['status'=>true,'content'=>$panelBuilder->getPanelAll()];
     }
+    public function getSelectTable(PanelBuilder $panelBuilder,Request $request)
+    {
+        return $panelBuilder->getSelectTable($request);
+    }
     /**
      * Show the form for creating a new resource.
      */

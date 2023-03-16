@@ -38,6 +38,7 @@
 </div>
 
 <input type="hidden" id="form_url" value="{{ route('admin.panel.store') }}">
+<input type="hidden" id="select_table" value="{{ route('admin.panel-select') }}">
 <input type="hidden" name="_method" id="method" value="POST">
 @vite('resources/sass/admin/panel.scss')
 <script> $ar=`eyJoZWFkZXIiOlsiIl0sInR5cGUiOlsidGV4dCJdLCJkYXRhIjpbWyIiXV19`; id = 'none';</script>

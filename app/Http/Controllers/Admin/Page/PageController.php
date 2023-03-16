@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin\Page;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Page\CreateRequest;
+use App\Http\Requests\Admin\Page\DataPanelCreateRequest;
 use App\Http\Requests\Admin\Page\UpdateRequest;
 use App\Models\Admin\Page\PageCreate;
+use App\Models\Admin\Panel\DataPanel;
 use App\QueryBuilder\Admin\Page\PageBuilder;
+use App\QueryBuilder\Admin\Page\PageDataPanelBuilder;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -36,9 +39,23 @@ class PageController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        dd($request->validated());
         $page = PageCreate::create($request->validated());
+
         if ($page) {
+            $datahub = json_decode($request->input('datahub'));
+
+            foreach ($datahub->data as $key=>$data) {
+                $dataPanel = new DataPanel();
+                $dataPanel->id_panel = $data->id_panel;
+                $dataPanel->display = $data->display;
+                $dataPanel->type = $data->type;
+                $dataPanel->content = $data->content;
+                $dataPanel->id_boll = false;
+                $dataPanel->safe = $data->safe;
+                $dataPanel->id_page = $page->id;
+                $dataPanel->order = $key;
+                $dataPanel->save();
+            }
             return \redirect()->route('admin.page-create.index')->with('success', __('messages.admin.page.create.success'));
         }
 

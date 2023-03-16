@@ -41,6 +41,10 @@
             <x-error error-value="keywords" />
         </div>
     </div>
+    <div class="form-group">
+        <label>Содержание страницы:</label>
+        <x-admin.page.page-service :datahub="$datahub" />
+    </div>
     <div class="col-lg-12">
         <button type="submit" name="save" class="btn btn-sm btn-success">Сохранить</button>
     </div>

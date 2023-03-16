@@ -13,8 +13,19 @@ return new class extends Migration
     {
         Schema::create('panels_datahub', function (Blueprint $table) {
             $table->id();
+            $table
+                ->foreignId('id_panel')->nullable()
+                ->references('id')->on('panels');
+            $table
+                ->foreignId('id_page')
+                ->references('id')
+                ->on('page_create');
             $table->string('type');
             $table->boolean('display');
+            $table->boolean('id_boll');
+            $table->boolean('safe');
+            $table->integer('order');
+            $table->json('content')->nullable();
             $table->timestamps();
         });
     }

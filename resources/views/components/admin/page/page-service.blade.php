@@ -1,5 +1,5 @@
 <div class="pgcr">
-    <input type="hidden" name="datahub" id="datahub_storage" value="">
+    <input type="hidden" name="datahub" id="datahub_storage" value="@if(!empty($datahub)) {{ $datahub }} @endif">
     <div class="pgcr-workshop">
         <div id="datahub"></div>
     </div>
@@ -132,6 +132,8 @@
 <x-admin.page.datahub />
 
 {{--@dd(\Illuminate\Support\Facades\Auth::user())--}}
+@vite('resources/sass/admin/panel.scss')
+<input type="hidden" id="select_table" value="{{ route('admin.panel-select') }}">
 <input type="hidden" id="panel_all_url" value="{{ route('admin.panel-all-get') }}">
 <script src="{{ asset('assets/js/admin/page/custom_pages.js') }}"></script>
 <script src="{{ asset('assets/js/admin/page/sort-table.min.js') }}"></script>
