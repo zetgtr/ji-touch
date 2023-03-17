@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('custom_title')->nullable();
             $table->string('description')->nullable();
             $table->string('keywords')->nullable();
+            $table->integer("access");
             $table->string('publish')->default(1);
             $table->integer('parent')->nullable();
             $table->integer('order')->default(0);

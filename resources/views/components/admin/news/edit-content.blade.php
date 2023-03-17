@@ -29,12 +29,13 @@
             </div>
             <div class="form-group">
                 <label for="access">Доступ</label>
-                <select name="access" id="access" class="form-select">
-                    <option  value="0" selected="">Общий</option>
-                    <option value="101">Пользователь</option>
-                    <option value="102">Администратор</option>
-                    <option value="103">Супер Администратор</option>
+                <select name="access" class="form-control @error('access') is-invalid @enderror form-select">
+                    <option value="0" selected="selected">Общий</option>
+                    @foreach($roles as $role)
+                        <option @selected(old('access') === $role->id || $news->access === $role->id ) value="{{ $news->id }}">{{ $role->name }}</option>
+                    @endforeach
                 </select>
+                <x-error error-value="access" />
             </div>
             <div class="form-group" style="position:relative;">
                 <label for="date_news">Дата публикации (необязательно):</label>

@@ -51,6 +51,7 @@ class CreateRequest extends FormRequest
             'seoTitle' => ['nullable','string'],
             'seoKeywords' => ['nullable', 'string'],
             'seoDescription' => ['nullable', 'string'],
+            'access' => ['required'],
         ];
     }
 

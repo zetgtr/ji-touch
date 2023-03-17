@@ -109,7 +109,7 @@
         <tr class="list-panel-item-empty">
             <td colspan="2">Панели не созданы</td>
             <td colspan="3">
-                <a target="_blank" href="" class="btn btn-sm btn-success">Создать</a>
+                <a target="_blank" href="{{ route('admin.panel.create') }}" class="btn btn-sm btn-success">Создать</a>
             </td>
         </tr>
     </table>

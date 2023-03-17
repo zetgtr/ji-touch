@@ -11,8 +11,10 @@ use App\Http\Controllers\Admin\SettingsMenuController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Admin\HeaderAndFooter\HeaderAndFooter;
 use App\Models\Admin\Menu;
 use App\Utils\Lfm;
+use http\Client\Response;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -99,7 +101,19 @@ Route::group(['middleware' => 'guest'], function (){
         ->where('driver','\w+');
 });
 
+Route::get('robots.txt', function() {
+    $output = "User-agent: *\n";
+
+    // Запретить индексацию определенных страниц.
+    $output .= "Disallow: /admin\n";
+
+    // Разрешить индексацию всех остальных страниц.
+    $output .= "Allow: /\n";
+
+    return Response::make($output, 200, ['Content-Type' => 'text/plain']);
+});
+
 Route::get('/{vue_capture?}', function() {
-    return view('welcome');
+    return view('welcome', ['data'=> HeaderAndFooter::query()->find(1)]);
 })->where('vue_capture', '[\/\w\.-]*')
     ->name('home');

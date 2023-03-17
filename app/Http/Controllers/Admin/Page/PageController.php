@@ -46,12 +46,12 @@ class PageController extends Controller
 
             foreach ($datahub->data as $key=>$data) {
                 $dataPanel = new DataPanel();
-                $dataPanel->id_panel = $data->id_panel;
+                if(!empty($data->id_panel)) $dataPanel->id_panel = $data->id_panel;
                 $dataPanel->display = $data->display;
                 $dataPanel->type = $data->type;
                 $dataPanel->content = $data->content;
                 $dataPanel->id_boll = false;
-                $dataPanel->safe = $data->safe;
+                if(!empty($data->safe)) $dataPanel->safe = $data->safe;
                 $dataPanel->id_page = $page->id;
                 $dataPanel->order = $key;
                 $dataPanel->save();

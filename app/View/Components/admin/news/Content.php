@@ -3,6 +3,7 @@
 namespace App\View\Components\admin\news;
 
 use App\QueryBuilder\Admin\News\CategoryBuilder;
+use App\QueryBuilder\RolesBuilder;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
@@ -14,9 +15,10 @@ class Content extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(CategoryBuilder $categoryBuilder)
+    public function __construct(CategoryBuilder $categoryBuilder,RolesBuilder $rolesBuilder)
     {
         $this->categories = $categoryBuilder->getAll();
+        $this->roles = $rolesBuilder->getAll();
     }
 
 
@@ -25,6 +27,6 @@ class Content extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.news.content',['categories'=>$this->categories]);
+        return view('components.admin.news.content',['categories'=>$this->categories,'roles' => $this->roles]);
     }
 }

@@ -12,6 +12,6 @@ class PageCreate extends Model
     protected $table = 'page_create';
 
     protected $fillable = [
-        'title','url','custom_title','description','keywords'
+        'title','url','custom_title','description','keywords','access'
     ];
 }

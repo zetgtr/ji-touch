@@ -27,7 +27,8 @@ class UpdateRequest extends FormRequest
             'url' => ['required'],
             'custom_title' => ['nullable'],
             'description' => ['nullable'],
-            'keywords' => ['nullable']
+            'keywords' => ['nullable'],
+            'access' => ['required']
         ];
     }
 

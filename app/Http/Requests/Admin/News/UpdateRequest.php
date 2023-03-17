@@ -52,6 +52,7 @@ class UpdateRequest extends FormRequest
             'seoKeywords' => ['nullable', 'string'],
             'seoTitle' => ['nullable','string'],
             'seoDescription' => ['nullable', 'string'],
+            'access' => ['required'],
         ];
     }
 

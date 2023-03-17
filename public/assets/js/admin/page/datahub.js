@@ -714,6 +714,7 @@ window.panelEditor = panel_editor_fucken();
       this.line = node.querySelector(".line");
 
       this.line.id = this.node.dataset.id = this.id;
+        console.log(this)
       this.line.querySelector(".line__name").innerText = this.title;
 
       this.line.querySelector(".btn-show").onclick =
@@ -741,7 +742,10 @@ window.panelEditor = panel_editor_fucken();
     changeEmpty() {
       if (!this.empty) {
         this.line.removeAttribute("data-warn");
-        $(this.shield.warn).tooltip("dispose");
+        setTimeout(()=>{
+            $(this.shield.warn).tooltip("dispose");
+        },1000)
+
       } else {
         this.line.dataset.warn = "Пустая панель";
         $(this.shield.warn).tooltip({
@@ -805,7 +809,7 @@ window.panelEditor = panel_editor_fucken();
     }
 
     setOutData(data) {
-        console.log(data)
+      console.log(data)
       this.title = data.title;
       this.display = data.display;
       this.anchor = data.anchor;

@@ -3,6 +3,7 @@
 namespace App\View\Components\admin\news;
 
 use App\QueryBuilder\Admin\News\CategoryBuilder;
+use App\QueryBuilder\RolesBuilder;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
@@ -16,10 +17,11 @@ class EditContent extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(CategoryBuilder $categoryBuilder,News $news)
+    public function __construct(CategoryBuilder $categoryBuilder,News $news, RolesBuilder $rolesBuilder)
     {
         $this->categories = $categoryBuilder->getAll();
         $this->news = $news;
+        $this->roles = $rolesBuilder->getAll();
     }
 
 
@@ -31,6 +33,6 @@ class EditContent extends Component
         if(count($this->news->categories()->pluck('id')))
             $categoryNews = $this->news->categories()->pluck('id')[0];
         else $categoryNews = 1;
-        return view('components.admin.news.edit-content',['categories' => $this->categories,'news' => $this->news, 'categoryNews'=>$categoryNews]);
+        return view('components.admin.news.edit-content',['categories' => $this->categories,'news' => $this->news, 'categoryNews'=>$categoryNews, 'roles' => $this->roles]);
     }
 }

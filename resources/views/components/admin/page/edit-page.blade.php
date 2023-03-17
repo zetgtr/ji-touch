@@ -1,4 +1,4 @@
-<form action="{{ route('admin.page-create.update', ['page_create'=>$page]) }}" method="POST" class="row">
+<form id="page" action="{{ route('admin.page-create.update', ['page_create'=>$page]) }}" method="POST" class="row">
     @csrf
     @method('PUT')
     <x-warning />
@@ -17,9 +17,9 @@
             <label for="access">Доступ: </label>
             <select name="access" class="form-control @error('access') is-invalid @enderror form-select">
                 <option value="0" selected="selected">Общий</option>
-                <option value="101">Пользователь</option>
-                <option value="102">Администратор</option>
-                <option value="103">Супер Администратор</option>
+                @foreach($roles as $role)
+                    <option @selected(old('access') === $role->id || $page->access === $role->id ) value="{{ $role->id }}">{{ $role->name }}</option>
+                @endforeach
             </select>
             <x-error error-value="access" />
         </div>

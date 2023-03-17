@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title',"Создание страниц")
 @section('content')
-    <div class="row">
+    <div class="row pagecreator-container">
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-header card-header-divider">

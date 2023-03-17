@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('seoKeywords')->nullable();
             $table->string('seoTitle')->nullable();
             $table->text('seoDescription')->nullable();
+            $table->integer('access');
             $table->timestamps();
         });
     }

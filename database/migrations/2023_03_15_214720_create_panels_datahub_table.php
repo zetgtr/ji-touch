@@ -19,13 +19,14 @@ return new class extends Migration
             $table
                 ->foreignId('id_page')
                 ->references('id')
-                ->on('page_create');
+                ->on('page_create')
+                ->cascadeOnDelete();
             $table->string('type');
             $table->boolean('display');
             $table->boolean('id_boll');
-            $table->boolean('safe');
+            $table->boolean('safe')->nullable();
             $table->integer('order');
-            $table->json('content')->nullable();
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }
