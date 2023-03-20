@@ -21,11 +21,13 @@ class PageDataPanelBuilder extends QueryBuilder
         $data = $this->model->where('id_page',$id)->get();
         foreach ($data as $key=>$datum){
             $panel = Panel::query()->find($datum['id_panel']);
-            if(empty($datum['content'])){
-                $data[$key]['content'] = json_decode($panel->data);
-            }else
-                $data[$key]['content'] = json_decode($datum['content']);
-            $data[$key]['title'] = $panel->title;
+            if($datum->type !== 'text') {
+                if (empty($datum['content'])) {
+                    $data[$key]['content'] = json_decode($panel->data);
+                } else
+                    $data[$key]['content'] = json_decode($datum['content']);
+                $data[$key]['title'] = $panel->title;
+            }
         }
         return $data;
     }

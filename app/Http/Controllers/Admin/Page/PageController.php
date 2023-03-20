@@ -42,20 +42,8 @@ class PageController extends Controller
         $page = PageCreate::create($request->validated());
 
         if ($page) {
-            $datahub = json_decode($request->input('datahub'));
-
-            foreach ($datahub->data as $key=>$data) {
-                $dataPanel = new DataPanel();
-                if(!empty($data->id_panel)) $dataPanel->id_panel = $data->id_panel;
-                $dataPanel->display = $data->display;
-                $dataPanel->type = $data->type;
-                $dataPanel->content = $data->content;
-                $dataPanel->id_boll = false;
-                if(!empty($data->safe)) $dataPanel->safe = $data->safe;
-                $dataPanel->id_page = $page->id;
-                $dataPanel->order = $key;
-                $dataPanel->save();
-            }
+            $pageCreate = new PageCreate();
+            $pageCreate->setPanelData($request,$page);
             return \redirect()->route('admin.page-create.index')->with('success', __('messages.admin.page.create.success'));
         }
 
@@ -85,6 +73,7 @@ class PageController extends Controller
     {
         $pageCreate = $pageCreate->fill($request->validated());
         if ($pageCreate->save()) {
+            $pageCreate->setPanelData($request,$pageCreate);
             return \redirect()->route('admin.page-create.index')->with('success', __('messages.admin.settings.update.success'));
         }
 

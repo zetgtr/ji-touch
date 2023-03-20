@@ -1038,13 +1038,19 @@ window.panelEditor = panel_editor_fucken();
       if (clear_content) {
         if (this.line.dataset.warn == "Пустой заголовок") {
           this.line.removeAttribute("data-warn");
-          $(this.shield.warn).tooltip("dispose");
+            setTimeout(()=>{
+                $(this.shield.warn).tooltip("dispose");
+            },1000)
+          // $(this.shield.warn).tooltip("dispose");
         }
         return content;
       } else {
         if (!this.line.dataset.warn) {
           this.line.dataset.warn = "Пустой заголовок";
-          $(this.shield.warn).tooltip("dispose");
+            setTimeout(()=>{
+                $(this.shield.warn).tooltip("dispose");
+            },1000)
+          // $(this.shield.warn).tooltip("dispose");
           $(this.shield.warn).tooltip({
             title: "Пустой заголовок",
             container: ".pagecreator-container",
@@ -1086,11 +1092,17 @@ window.panelEditor = panel_editor_fucken();
       if (count_child) {
         this.empty = false;
         this.line.removeAttribute("data-warn");
-        $(this.shield.warn).tooltip("dispose");
+          setTimeout(()=>{
+              $(this.shield.warn).tooltip("dispose");
+          },1000)
+        // $(this.shield.warn).tooltip("dispose");
       } else {
         this.empty = true;
         this.line.dataset.warn = "Пустая секция";
-        $(this.shield.warn).tooltip("dispose");
+          setTimeout(()=>{
+              $(this.shield.warn).tooltip("dispose");
+          },1000)
+        // $(this.shield.warn).tooltip("dispose");
         $(this.shield.warn).tooltip({
           title: "Пустая секция не будет сохранена",
           container: ".pagecreator-container",
@@ -1207,7 +1219,10 @@ window.panelEditor = panel_editor_fucken();
         this.empty = false;
         this.line.removeAttribute("data-warn");
         this.line.querySelector(".line__name").innerText = content;
-        $(this.shield.warn).tooltip("dispose");
+          setTimeout(()=>{
+              $(this.shield.warn).tooltip("dispose");
+          },1000)
+        // $(this.shield.warn).tooltip("dispose");
       } else {
         this.empty = true;
         this.line.querySelector(".line__name").innerText = "Заполните блок";
