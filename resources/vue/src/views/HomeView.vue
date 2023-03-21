@@ -6,6 +6,7 @@
   <the-portfolio></the-portfolio>
   <the-about></the-about>
   <the-order></the-order>
+  <!-- <the-swiper></the-swiper> -->
 </template>
 
 <script>
@@ -17,6 +18,7 @@ import TheServices from "../components/Services/TheServices.vue";
 import ThePortfolio from "../components/Portfolio/ThePortfolio.vue";
 import TheAbout from "../components/About/TheAbout.vue";
 import TheOrder from "../components/Order/TheOrder.vue";
+import TheSwiper from "../components/Services/TheSwiper.vue";
 
 export default {
   name: "HomeView",
@@ -28,6 +30,7 @@ export default {
     ThePortfolio,
     TheAbout,
     TheOrder,
+    TheSwiper,
   },
 };
 </script>

@@ -8,7 +8,8 @@
         </p>
       </div>
       <div class="services__wrapper wow fadeIn" data-wow-delay="0.4s">
-        <swiper
+        <!-- <swiper
+          class='swiper-container'
           :slides-per-view="1"
           :space-between="50"
           @swiper="onSwiper"
@@ -179,12 +180,15 @@
             </div>
           </div>
           <div class="count">{{ activeIndex }}</div>
-        </swiper>
+        </swiper> -->
+        <the-swiper
+          v-on:slideChanged="onSlideChanged"
+        ></the-swiper>
       </div>
       <div class="services__wrapper__text">
         <div
           class="thumb__item"
-          v-for="item in items"
+          v-for="(item, index) in items"
           :key="item.id"
           :class="{ active: activeIndex === item.id }"
         >
@@ -201,10 +205,13 @@
 
 <script>
 import TheSectionCaption from "./../TheSectionCaption.vue";
+import TheSwiper from "./../Services/TheSwiper.vue";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { EffectFade, Navigation, Pagination } from "swiper";
-import { ref } from "vue";
+import { useSwiper } from "swiper/vue";
+import { ref, onMounted } from "vue";
+import { reactive } from "vue";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -216,52 +223,25 @@ export default {
     Swiper,
     SwiperSlide,
     TheSectionCaption,
+    useSwiper,
+    TheSwiper,
   },
 
-  setup() {
-    const prev = ref(null);
-    const next = ref(null);
-    const activeIndex = ref(1);
-    const onSwiper = (swiper) => {
-      console.log(swiper);
-    };
-    const onSlideChange = () => {
-      console.log(activeIndex);
-      activeIndex.value = swiperRef.value.realIndex; // привязываем индекс активного слайда к реактивной переменной activeIndex
-      console.log("slide change");
-    };
-    const onPrevClick = () => {
-      console.log("prev");
-      activeIndex.value = activeIndex + 1
-    };
-    const onNextClick = () => {
-      console.log("next");
-      activeIndex.value = activeIndex - 1
-    };
-    const swiperRef = ref(null);
-    return {
-      prev,
-      next,
-      onSwiper,
-      onSlideChange,
-      modules: [EffectFade, Navigation, Pagination],
-      activeIndex,
-      swiperRef,
-      onPrevClick,
-      onNextClick,
-    };
-  },
   data() {
     return {
-      sectionCaption: "Services",
       items: [
         { id: 1, title: "Разработка web-сайтов" },
         { id: 2, title: "Разработка web-сайтов" },
       ],
+      sectionCaption: "Services",
+      slideIndex: 1,
     };
   },
-  computed: {},
-  methods: {},
+  methods: {
+    onSlideChanged(index) {
+      this.slideIndex = index + 1;
+    }
+  }
 };
 </script>
 
