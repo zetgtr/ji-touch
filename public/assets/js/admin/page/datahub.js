@@ -128,7 +128,6 @@ window.panelEditor = panel_editor_fucken();
             break;
         }
       }
-
       if (local_empty_array === null) {
         if (inject_row) clear.data.push(row);
         if (inject_row_frame) frame.data.push(row_frame);
@@ -821,7 +820,6 @@ window.panelEditor = panel_editor_fucken();
       [this.content.safe, this.content.frame, this.empty] = clearPanelData(
         data.content
       );
-
       this.content.frame = JSON.stringify(this.content.frame);
       this.content.safe = JSON.stringify(this.content.safe);
 
@@ -830,9 +828,10 @@ window.panelEditor = panel_editor_fucken();
         this.content.safe = false;
       } else {
         if (!this.safe_mod) this.empty = true;
-        if (data.safe) this.content.work = this.content.safe;
+        if (this.content.safe) this.content.work = this.content.safe;
         else this.content.work = this.content.frame;
       }
+        console.log(this.content.work);
 
       this.content = new Proxy(this.content, {
         set: (target, prop, val, receiver) => {
@@ -851,6 +850,7 @@ window.panelEditor = panel_editor_fucken();
           return Reflect.set(target, prop, val, receiver);
         },
       });
+
     }
 
     init(param = { parent: this.dataHub.node_list }) {

@@ -220,7 +220,9 @@ function input_edit(col, val, row) {
     if (val == '') {
       val = '/infusions/panel_editor/images/noImg.jpg';
     }
-    return '<div class="d-flex justify-content-center"><div style="position: relative;cursor: pointer; height: 55px; width: 55px;" data-type="select" onclick="select_img(this)"><div class="select_img" style="background-position: center; background-image: url(' + val + '); background-size: contain; background-repeat: no-repeat;     height: 100%; width: 100%;"></div><div style="background-color: white; background-position: center;" class="addPhotoHover" ></div></div></div>';
+    return '<div class="d-flex justify-content-center">' +
+        '<div style="position: relative;cursor: pointer; height: 55px; width: 55px;" data-type="select" onclick="select_img(this)"><div class="select_img" style="background-position: center; background-image: url(' + val + '); background-size: contain; background-repeat: no-repeat;     height: 100%; width: 100%;"></div><div style="background-color: white; background-position: center;" class="addPhotoHover" ></div></div>' +
+        '</div>';
   } else if (table_array.type[col] == 'php') {
     return '<input class="form-control" oninput="php_change(this)" type="text" value="' + val + '"><div> </div>';
   };
