@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+
         $this->app->bind(Social::class, SocialService::class);
         $this->app->bind(QueryBuilder::class, UsersBuilder::class);
         $this->app->bind(QueryBuilder::class, RolesBuilder::class);
@@ -36,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(QueryBuilder::class, PanelBuilder::class);
         $this->app->bind(QueryBuilder::class, PageDataPanelBuilder::class);
         $this->app->bind(QueryBuilder::class, HeaderAndFooterBuilder::class);
+
     }
 
     /**

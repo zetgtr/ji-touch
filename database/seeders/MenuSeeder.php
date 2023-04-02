@@ -31,7 +31,7 @@ class MenuSeeder extends Seeder
             ['id'=>11,'name'=>'Редактор панелей','position'=>'left','logo'=>'fal fa-solar-panel','controller'=>'Admin\Panel\PanelController','url'=>'panel','parent'=>1],
             ['id'=>12,'name'=>'Шапка и подвал','position'=>'left','logo'=>'fal fa-analytics','controller'=>'Admin\HeaderAndFooter\HeaderAndFooterController','url'=>'header-and-footer','parent'=>5],
             ['id'=>13,'name'=>'Robot.txt','position'=>'right','logo'=>'fad fa-robot','controller'=>'Admin\Robot\RobotController','url'=>'robot','parent'=>3],
-            ['id'=>1000,'name'=>'Новости','position'=>'left','logo'=>'fa fa-align-justify','controller'=>'Admin\NewsController','url'=>'news','parent'=>5],
+            ['id'=>14,'name'=>'Пакеты','position'=>'right','logo'=>'fad fa-box-open','controller'=>'Admin\Packages\PackagesController','url'=>'packages','parent'=>3],
         ];
     }
 }

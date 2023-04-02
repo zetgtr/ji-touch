@@ -49,15 +49,16 @@ Route::middleware('auth')->group(function () {
 //        Route::resource('user', AdminUserController::class);
 //        Route::resource('roles', AdminRolesController::class);
 //        Route::resource('news', AdminNewsController::class);
-        Route::resource('news', AdminNewsController::class);
 
-        Route::group(['prefix' => 'news', 'as' => 'news.'], static function(){
-            Route::resource('category', NewsCategoryController::class);
-        });
-
-        Route::group(['prefix' => 'news', 'as' => 'news.'], static function(){
-            Route::resource('settings', NewsSettingsController::class);
-        });
+//        Route::resource('news', AdminNewsController::class);
+//
+//        Route::group(['prefix' => 'news', 'as' => 'news.'], static function(){
+//            Route::resource('category', NewsCategoryController::class);
+//        });
+//
+//        Route::group(['prefix' => 'news', 'as' => 'news.'], static function(){
+//            Route::resource('settings', NewsSettingsController::class);
+//        });
 
         Route::put('user/password',[AdminUserController::class, 'passwordUpdate'])->name('password-update');
 

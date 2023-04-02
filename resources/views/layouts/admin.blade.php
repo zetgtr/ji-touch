@@ -47,7 +47,7 @@
     <script src="{{ asset('assets/js/admin/tinymce/tinymce.js') }}" referrerpolicy="origin"></script>
     <script src="{{ asset('assets/js/admin/datepicker/ru.js') }}"></script>
 
-
+    <script type="module" src="{{ asset('assets/js/admin/firebase.js') }}"></script>
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/colors/color1.css') }}" />
     <link rel="stylesheet" href="{{asset('assets/js/admin/datepicker/datepicker.min.css')}}">
