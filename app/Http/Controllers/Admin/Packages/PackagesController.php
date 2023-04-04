@@ -3,7 +3,15 @@
 namespace App\Http\Controllers\Admin\Packages;
 
 use App\Http\Controllers\Controller;
+use Composer\Installers\Installer;
+use Gitlab\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Composer;
+use Illuminate\Support\Facades\File;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\ProcessUtils;
+use Symfony\Component\Process\PhpExecutableFinder;
+
 
 class PackagesController extends Controller
 {
@@ -40,9 +48,37 @@ class PackagesController extends Controller
     {
         $database = app('firebase.database');
         if($request->input("packages_install"))
+        {
             $package = "zetgtr/".$database->getReference('/packages/'.$request->input("packages_install")."/name")->getValue();
-        $output = exec("composer require $package",$outputArray, $returnValue);
-        dd("composer require $package");
+            $gitlabUrl = 'gitlab.com';
+//        $gitlabToken = 'glpat-mWhpFrtPiCdqxxencz93';
+//        $gitlabProjectId = '44872977';
+//        $gitlabUsername = "zetgtr";
+//        $packageName = "news";
+//
+//        $gitlab = new Client();
+//        $gitlab->authenticate($gitlabToken, Client::AUTH_HTTP_TOKEN);
+//        $gitlabUrl = 'gitlab.com';
+//        $gitlabToken = 'glpat-mWhpFrtPiCdqxxencz93';
+//        $gitlabProjectId = '44872977';
+//        $gitlabUsername = "zetgtr";
+//        $packageName = "news";
+//
+            $composerJson = json_decode(File::get(base_path('composer.json')), true);
+
+            $composerJson['repositories'][] = [
+                "type" => "vcs",
+                "url" => "https://{$gitlabUrl}/$package",
+            ];
+
+            File::put(base_path('composer.json'), json_encode($composerJson, JSON_PRETTY_PRINT));
+
+            chdir(base_path());
+            exec('C:\laragon\bin\php\php-8.1.10-Win32-vs16-x64\php.exe C:\laragon\bin\composer\composer.phar require '.$package.' 2>&1', $msg, $resultCode);
+        }
+
+
+
     }
 
     /**
