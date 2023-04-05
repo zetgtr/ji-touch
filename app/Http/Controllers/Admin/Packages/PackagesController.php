@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Packages;
 
+use App\Enums\PackagesEnums;
 use App\Http\Controllers\Controller;
+use App\QueryBuilder\Admin\Packages\PackagesBuilder;
 use Composer\Installers\Installer;
 use Gitlab\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Composer;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ProcessUtils;
@@ -19,10 +22,12 @@ class PackagesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(PackagesBuilder $packagesBuilder)
     {
-        $database = app('firebase.database');
-        return view('admin.packages.index', ['packages'=>$database->getReference('/packages')->getValue()]);
+        return view('admin.packages.index', [
+            'packages'=>$packagesBuilder->getPackages(),
+            'links'=>$packagesBuilder->getLink(PackagesEnums::EDIT->value)
+        ]);
     }
 
     /**
@@ -41,44 +46,26 @@ class PackagesController extends Controller
         }
     }
 
+    public function setData(Request $request, PackagesBuilder $packagesBuilder)
+    {
+        $packagesBuilder->setData($request->input('id'));
+        return \redirect()->route('admin.packages.index')->with('success', "Пакет успешно установлен");
+    }
+
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, PackagesBuilder $packagesBuilder)
     {
-        $database = app('firebase.database');
         if($request->input("packages_install"))
         {
-            $package = "zetgtr/".$database->getReference('/packages/'.$request->input("packages_install")."/name")->getValue();
-            $gitlabUrl = 'gitlab.com';
-//        $gitlabToken = 'glpat-mWhpFrtPiCdqxxencz93';
-//        $gitlabProjectId = '44872977';
-//        $gitlabUsername = "zetgtr";
-//        $packageName = "news";
-//
-//        $gitlab = new Client();
-//        $gitlab->authenticate($gitlabToken, Client::AUTH_HTTP_TOKEN);
-//        $gitlabUrl = 'gitlab.com';
-//        $gitlabToken = 'glpat-mWhpFrtPiCdqxxencz93';
-//        $gitlabProjectId = '44872977';
-//        $gitlabUsername = "zetgtr";
-//        $packageName = "news";
-//
-            $composerJson = json_decode(File::get(base_path('composer.json')), true);
-
-            $composerJson['repositories'][] = [
-                "type" => "vcs",
-                "url" => "https://{$gitlabUrl}/$package",
-            ];
-
-            File::put(base_path('composer.json'), json_encode($composerJson, JSON_PRETTY_PRINT));
-
-            chdir(base_path());
-            exec('C:\laragon\bin\php\php-8.1.10-Win32-vs16-x64\php.exe C:\laragon\bin\composer\composer.phar require '.$package.' 2>&1', $msg, $resultCode);
+            if($packagesBuilder->install($request))
+            {
+                return \redirect()->route('admin.packages.set-data',['id'=>$request->input("packages_install")]);
+            }
+            return \redirect()->route('admin.packages.index')->with('error', "Ошибка установки пакета");
         }
-
-
-
+        return \redirect()->route('admin.packages.index')->with('error', "Не выбран пакет для установки");
     }
 
     /**

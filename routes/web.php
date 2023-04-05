@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\News\CategoryController as NewsCategoryController;
 use App\Http\Controllers\Admin\News\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\News\SettingsController as NewsSettingsController;
+use App\Http\Controllers\Admin\Packages\PackagesController;
+use App\Http\Controllers\Admin\Packages\PackagesSettings;
 use App\Http\Controllers\Admin\Page\PageController;
 use App\Http\Controllers\Admin\Panel\PanelController;
 use App\Http\Controllers\Admin\RolesController as AdminRolesController;
@@ -42,7 +44,7 @@ Route::middleware('auth')->group(function () {
         });
         Route::post('page/order', [PageController::class,'order'])->name('page.order');
 
-        Route::post('panel/get_all', [PanelController::class,'getAllPanel'])->name('panel-all-get');
+        Route::post('panel/get_all', [PanelController::class,'getAllPanel'])->where('id')->name('panel-all-get');
 
         Route::post('panel/select', [PanelController::class,'getSelectTable'])->name('panel-select');
 
@@ -56,9 +58,12 @@ Route::middleware('auth')->group(function () {
 //            Route::resource('category', NewsCategoryController::class);
 //        });
 //
-//        Route::group(['prefix' => 'news', 'as' => 'news.'], static function(){
-//            Route::resource('settings', NewsSettingsController::class);
-//        });
+        Route::resource('packages_settings', PackagesSettings::class);
+
+        Route::group(['prefix' => 'packages', 'as' => 'packages.'], static function() {
+            Route::put('packages/set', [PackagesController::class, 'store'])->name('set');
+            Route::get('packages/set-data', [PackagesController::class, 'setData'])->name('set-data');
+        });
 
         Route::put('user/password',[AdminUserController::class, 'passwordUpdate'])->name('password-update');
 

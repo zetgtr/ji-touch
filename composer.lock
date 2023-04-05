@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7e07d8e914e3bbc69674d592e9e381f",
+    "content-hash": "16a1786f2cce7fca08abd5db9e84c6d1",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1062,16 +1062,16 @@
         },
         {
             "name": "google/auth",
-            "version": "v1.25.0",
+            "version": "v1.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-auth-library-php.git",
-                "reference": "0865c44ab50378f7b145827dfcbd1e7a238f7759"
+                "reference": "f1f0d0319e2e7750ebfaa523c78819792a9ed9f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/0865c44ab50378f7b145827dfcbd1e7a238f7759",
-                "reference": "0865c44ab50378f7b145827dfcbd1e7a238f7759",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/f1f0d0319e2e7750ebfaa523c78819792a9ed9f7",
+                "reference": "f1f0d0319e2e7750ebfaa523c78819792a9ed9f7",
                 "shasum": ""
             },
             "require": {
@@ -1084,8 +1084,8 @@
             },
             "require-dev": {
                 "guzzlehttp/promises": "0.1.1|^1.3",
-                "kelvinmo/simplejwt": "^0.2.5|^0.5.1",
-                "phpseclib/phpseclib": "^2.0.31",
+                "kelvinmo/simplejwt": "0.7.0",
+                "phpseclib/phpseclib": "^2.0.31||^3.0",
                 "phpspec/prophecy-phpunit": "^1.1||^2.0",
                 "phpunit/phpunit": "^7.5||^9.0.0",
                 "sebastian/comparator": ">=1.2.3",
@@ -1114,9 +1114,9 @@
             "support": {
                 "docs": "https://googleapis.github.io/google-auth-library-php/main/",
                 "issues": "https://github.com/googleapis/google-auth-library-php/issues",
-                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.25.0"
+                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.26.0"
             },
-            "time": "2023-01-26T22:04:14+00:00"
+            "time": "2023-04-05T15:11:57+00:00"
         },
         {
             "name": "google/cloud-core",
@@ -2378,16 +2378,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.6.0",
+            "version": "v10.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "a9c6b58ebafc839b61e75b19aa38ec8bef45bf67"
+                "reference": "1282e96202085f798528ee43371b2ffbb8dcfbd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/a9c6b58ebafc839b61e75b19aa38ec8bef45bf67",
-                "reference": "a9c6b58ebafc839b61e75b19aa38ec8bef45bf67",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/1282e96202085f798528ee43371b2ffbb8dcfbd8",
+                "reference": "1282e96202085f798528ee43371b2ffbb8dcfbd8",
                 "shasum": ""
             },
             "require": {
@@ -2574,7 +2574,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-04-04T14:08:32+00:00"
+            "time": "2023-04-04T20:58:15+00:00"
         },
         {
             "name": "laravel/helpers",
@@ -8816,6 +8816,67 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "zetgtr/news",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/zetgtr/news.git",
+                "reference": "c6b3dc44ecf98298f56ae025fd527c1ea9b65123"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/zetgtr%2Fnews/repository/archive.zip?sha=c6b3dc44ecf98298f56ae025fd527c1ea9b65123",
+                "reference": "c6b3dc44ecf98298f56ae025fd527c1ea9b65123",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "News\\Providers\\NewsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "News\\": "src/",
+                    "News\\Seeders\\": "database/seeders/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "News\\Test\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artem",
+                    "email": "artem.kudrin70@gmail.com"
+                }
+            ],
+            "description": "My package description",
+            "keywords": [
+                "laravel",
+                "package"
+            ],
+            "support": {
+                "source": "https://gitlab.com/zetgtr/news/-/tree/1.1.1",
+                "issues": "https://gitlab.com/zetgtr/news/-/issues"
+            },
+            "time": "2023-04-01T00:50:12+03:00"
         }
     ],
     "packages-dev": [

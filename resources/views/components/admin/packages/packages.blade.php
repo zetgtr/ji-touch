@@ -3,12 +3,17 @@
     <div class="col-lg-7">
         <label for="packages" class="form-label">Установленные пакеты</label>
         <select name="packages" multiple class="form-control" id="packages" >
-
+            @foreach($packages as $key=>$package)
+                @if($package['publish'])
+                    <option data-url="{{ route('admin.packages.show',['package'=>$key]) }}" data-edit="{{ route('admin.packages.edit',['package'=>$key]) }}" value="{{$key}}">{{$package['name']}}</option>
+                @endif
+            @endforeach
         </select>
     </div>
     <div class="col-lg-5">
-        <form action="{{ route('admin.packages.store') }}" method="post">
+        <form action="{{ route('admin.packages.set') }}" method="post">
             @csrf
+            @method('PUT')
             <div class="form-group">
                 <label for="packages_install" class="form-label">Установить пакет</label>
                 <select name="packages_install" id="packages_install" class="form-select">
