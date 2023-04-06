@@ -22,6 +22,12 @@ const routes = [
     component: () => import('./../views/AboutView.vue')
   },
   {
+    path: '/test',
+    name: 'test',
+    meta: {layout: "inner", breadcrumb: "test"},
+    component: () => import('./../views/TestView.vue')
+  },
+  {
     path: "/:catchAll(.*)",
     meta: {layout: "empty"},
     component: () => import('./../views/NotFound.vue')
