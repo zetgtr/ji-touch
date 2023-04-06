@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Panel\PanelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('panel_data/{name}', function ($name){
-    return $name;
-} );
+Route::get('panel_data/{name}', [PanelController::class, 'show']);

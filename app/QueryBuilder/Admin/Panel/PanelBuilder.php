@@ -156,5 +156,8 @@ class PanelBuilder extends QueryBuilder
         return $this->model->get();
     }
 
-
+    public function getAlias(string $alias)
+    {
+        return $this->model->where('alias',$alias)->get();
+    }
 }

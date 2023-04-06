@@ -40,7 +40,6 @@ class PanelController extends Controller
      */
     public function store(CreateRequest $createRequest)
     {
-        dd($createRequest);
         $panel = Panel::create($createRequest->validated());
         if ($panel) {
             return true;
@@ -50,9 +49,9 @@ class PanelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $alias, PanelBuilder $panelBuilder)
     {
-        //
+        return $panelBuilder->getAlias($alias);
     }
 
     /**

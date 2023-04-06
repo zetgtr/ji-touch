@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
         });
         Route::post('page/order', [PageController::class,'order'])->name('page.order');
 
-        Route::post('panel/get_all', [PanelController::class,'getAllPanel'])->where('id')->name('panel-all-get');
+        Route::post('panel/get_all', [PanelController::class,'getAllPanel'])->name('panel-all-get');
 
         Route::post('panel/select', [PanelController::class,'getSelectTable'])->name('panel-select');
 
