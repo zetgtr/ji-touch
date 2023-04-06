@@ -13,7 +13,7 @@ export const testModule = {
     actions: {
         async fetchInfo({state, commit}, argument) {
             try {
-                const response = await axios.get('panel_data/test', {
+                const response = await axios.get('/api/panel_data/test', {
                     data: argument,
                     params: {
                     }

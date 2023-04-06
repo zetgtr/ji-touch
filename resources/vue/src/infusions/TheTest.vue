@@ -13,7 +13,7 @@ export default {
     ...mapMutations({
     }),
     ...mapActions({
-      fetchInfo: 'post/fetchInfo'
+      fetchInfo: 'test/fetchInfo'
     }),
   },
   mounted() {
