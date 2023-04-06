@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Packages;
 
 use App\Enums\PackagesEnums;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Packages\EditRequest;
 use App\QueryBuilder\Admin\Packages\PackagesBuilder;
 use Composer\Installers\Installer;
 use Gitlab\Client;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ProcessUtils;
+use News\Remove\RemovePackage;
 use Symfony\Component\Process\PhpExecutableFinder;
 
 
@@ -24,8 +26,11 @@ class PackagesController extends Controller
      */
     public function index(PackagesBuilder $packagesBuilder)
     {
+//        $newsRemove = new RemovePackage();
+//        $newsRemove->run(true);
         return view('admin.packages.index', [
             'packages'=>$packagesBuilder->getPackages(),
+            'packagesInstall' => $packagesBuilder->getInstall(),
             'links'=>$packagesBuilder->getLink(PackagesEnums::EDIT->value)
         ]);
     }
@@ -71,30 +76,21 @@ class PackagesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id, PackagesBuilder $packagesBuilder)
     {
-        $database = app('firebase.database');
-        $data = $database->getReference('/packages/'.$id)->getValue();
-        if ($data)
-        {
-            $data['status'] = true;
-        }else{
-            $data['status'] = false;
-        }
-        return $data;
+        return $packagesBuilder->show($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id, Request $request)
+    public function edit(string $id, EditRequest $request, PackagesBuilder $packagesBuilder)
     {
-        $database = app('firebase.database');
-        if($database->getReference('/packages/'.$id)->update($request->all()))
+        if($packagesBuilder->edit($id, $request))
         {
             return \redirect()->route('admin.packages.index')->with('success', "Пакет успешно обновлен");
         }
-        return \redirect()->route('admin.packages.index')->with('error', "Ошибка обновления пакетаы");
+        return \redirect()->route('admin.packages.index')->with('error', "Ошибка обновления пакета");
     }
 
     /**
@@ -108,8 +104,12 @@ class PackagesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id,PackagesBuilder $packagesBuilder, Request $request)
     {
-        //
+        if($packagesBuilder->remove($request->input("package")))
+        {
+            return \redirect()->route('admin.packages.index')->with('success', "Пакет успешно удален");
+        }
+        return \redirect()->route('admin.packages.index')->with('success', "Ошибка удаления пакета");
     }
 }

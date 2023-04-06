@@ -1,15 +1,20 @@
 <div class="row">
     <x-warning />
-    <div class="col-lg-7">
+    <form action="{{ route('admin.packages.destroy', ['package' => 1]) }}" method="post" class="col-lg-7">
+        @csrf
+        @method('DELETE')
         <label for="packages" class="form-label">Установленные пакеты</label>
         <select name="packages" multiple class="form-control" id="packages" >
             @foreach($packages as $key=>$package)
-                @if($package['publish'])
-                    <option data-url="{{ route('admin.packages.show',['package'=>$key]) }}" data-edit="{{ route('admin.packages.edit',['package'=>$key]) }}" value="{{$key}}">{{$package['name']}}</option>
-                @endif
+                @foreach($packagesInstall as $install)
+                    @if($install->id_package == $key)
+                        <option data-url="{{ route('admin.packages.show',['package'=>$key]) }}" data-edit="{{ route('admin.packages.edit',['package'=>$key]) }}" value="{{$key}}">{{$package['name']}}</option>
+                    @endif
+                @endforeach
             @endforeach
         </select>
-    </div>
+        <input type="submit" class="btn btn-danger mt-3" value="Удалить">
+    </form>
     <div class="col-lg-5">
         <form action="{{ route('admin.packages.set') }}" method="post">
             @csrf

@@ -7,7 +7,7 @@
         </div>
         <x-admin.navigation :links="$links" />
         <div class="card-body">
-            <x-admin.packages.packages :packages="$packages"/>
+            <x-admin.packages.packages :packages="$packages" :packagesInstall="$packagesInstall"/>
         </div>
     </div>
 @endsection

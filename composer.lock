@@ -8819,16 +8819,16 @@
         },
         {
             "name": "zetgtr/news",
-            "version": "1.1.1",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/zetgtr/news.git",
-                "reference": "c6b3dc44ecf98298f56ae025fd527c1ea9b65123"
+                "reference": "6b74c9951c5bdaf10611c3ce65efc9cf5f39f0a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/zetgtr%2Fnews/repository/archive.zip?sha=c6b3dc44ecf98298f56ae025fd527c1ea9b65123",
-                "reference": "c6b3dc44ecf98298f56ae025fd527c1ea9b65123",
+                "url": "https://gitlab.com/api/v4/projects/zetgtr%2Fnews/repository/archive.zip?sha=6b74c9951c5bdaf10611c3ce65efc9cf5f39f0a1",
+                "reference": "6b74c9951c5bdaf10611c3ce65efc9cf5f39f0a1",
                 "shasum": ""
             },
             "require": {
@@ -8845,7 +8845,8 @@
             "autoload": {
                 "psr-4": {
                     "News\\": "src/",
-                    "News\\Seeders\\": "database/seeders/"
+                    "News\\Seeders\\": "database/seeders/",
+                    "News\\Remove\\": "remove"
                 }
             },
             "autoload-dev": {
@@ -8873,10 +8874,10 @@
                 "package"
             ],
             "support": {
-                "source": "https://gitlab.com/zetgtr/news/-/tree/1.1.1",
+                "source": "https://gitlab.com/zetgtr/news/-/tree/1.1.4",
                 "issues": "https://gitlab.com/zetgtr/news/-/issues"
             },
-            "time": "2023-04-01T00:50:12+03:00"
+            "time": "2023-04-06T11:56:26+00:00"
         }
     ],
     "packages-dev": [

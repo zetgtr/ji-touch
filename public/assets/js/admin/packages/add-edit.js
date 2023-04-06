@@ -44,9 +44,22 @@ $(document).ready(()=>{
                     container.append(addTemplateNode)
                     container.find('#form-add-edit').attr('action',editUrl)
                     container.find('#name').val(data.name)
+                    container.find('#delete').val(data.delete)
                     if(data.migration)
                     {
                         container.find('#migration').attr('checked',true)
+                    }
+                    if(data.script)
+                    {
+                        container.find('#script').attr('checked',true)
+                    }
+                    if(data.view)
+                    {
+                        container.find('#view').attr('checked',true)
+                    }
+                    if(data.vue)
+                    {
+                        container.find('#vue').attr('checked',true)
                     }
                     if(data.seeder)
                     {

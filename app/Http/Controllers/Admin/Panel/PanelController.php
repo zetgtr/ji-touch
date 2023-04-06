@@ -40,6 +40,7 @@ class PanelController extends Controller
      */
     public function store(CreateRequest $createRequest)
     {
+        dd($createRequest);
         $panel = Panel::create($createRequest->validated());
         if ($panel) {
             return true;

@@ -3,12 +3,15 @@
 namespace App\QueryBuilder\Admin\Packages;
 
 use App\Enums\PackagesEnums;
+use App\Http\Requests\Admin\Packages\EditRequest;
+use App\Models\Admin\Packages\Packages;
 use App\Models\Admin\Packages\Settings;
 use App\QueryBuilder\QueryBuilder;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
+use News\Remove\RemovePackage;
 
 class PackagesBuilder extends QueryBuilder
 {
@@ -53,7 +56,7 @@ class PackagesBuilder extends QueryBuilder
         $id = $request->input("packages_install");
         $settings = $this->getSettings();
         $package = $settings->user."/".$this->firebase->getReference('/packages/'.$id."/name")->getValue();
-        $packageData = $this->firebase->getReference('/packages/'.$id)->getValue();
+//        $packageData = $this->firebase->getReference('/packages/'.$id)->getValue();
 
         $composerJson = json_decode(File::get(base_path('composer.json')), true);
 
@@ -70,7 +73,8 @@ class PackagesBuilder extends QueryBuilder
         {
             $this->firebase->getReference('/packages/'.$id."/publish")->set(true);
         }
-        return $resultCode;
+        Packages::query()->create(['id_package'=>$id]);
+        return 0;
     }
 
     public function setData($id)
@@ -89,4 +93,35 @@ class PackagesBuilder extends QueryBuilder
             ]);
         }
     }
+
+    public function edit(string $id, EditRequest $request)
+    {
+        return $this->firebase->getReference('/packages/'.$id)->update($request->validated());
+    }
+
+    public function show(string $id)
+    {
+        $packageData = $this->firebase->getReference('/packages/'.$id)->getValue();
+        if ($packageData)
+        {
+            $packageData['status'] = true;
+        }else{
+            $packageData['status'] = false;
+        }
+        return $packageData;
+    }
+
+    public function getInstall()
+    {
+        return Packages::query()->get();
+    }
+
+    public function remove(string $id)
+    {
+        $packageData = $this->firebase->getReference('/packages/'.$id)->getValue();
+        $packageRemove = new $packageData['delete']();
+
+    }
+
+
 }
