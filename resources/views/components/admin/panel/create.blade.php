@@ -41,5 +41,5 @@
 <input type="hidden" id="select_table" value="{{ route('admin.panel-select') }}">
 <input type="hidden" name="_method" id="method" value="POST">
 @vite('resources/sass/admin/panel.scss')
-<script> $ar=`eyJoZWFkZXIiOlsiIl0sInR5cGUiOlsidGV4dCJdLCJkYXRhIjpbWyIiXV19`; id = 'none';</script>
+<script> $ar=`{"header":[""],"type":["text"],"data":[[""]]}`; id = 'none';</script>
 <script type='text/javascript' src='{{ asset('assets/js/admin/panel/panel_editor.js') }}'></script>

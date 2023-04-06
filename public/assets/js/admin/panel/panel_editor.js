@@ -1,5 +1,5 @@
 //$ar = '{"header":[],"type":[],"data":[]}';
-var table_type2 = ['text', 'textarea', 'img', 'array', 'php'];
+var table_type2 = ['text', 'textarea', 'img', 'array'];
 var type_open = 'render';
 
 //полный массив редактирования
@@ -1144,9 +1144,9 @@ function renamenewline($array, $flag = false) {
   });
   return $array;
 }
-var all_table_array = renamenewline(JSON.parse(atob($ar)), true);
-//текущий массив редактирования
 
+var all_table_array = renamenewline(JSON.parse($ar), true);
+//текущий массив редактирования
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Panel;
 use App\Enums\PanelNavigationEnums;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Panel\CreateRequest;
+use App\Http\Requests\Admin\Panel\UpdateRequest;
 use App\Models\Admin\Panel\Panel;
 use App\QueryBuilder\Admin\Panel\PanelBuilder;
 use Illuminate\Http\Request;
@@ -38,12 +39,16 @@ class PanelController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateRequest $createRequest)
+    public function store(CreateRequest $createRequest,PanelBuilder $panelBuilder)
     {
-        $panel = Panel::create($createRequest->validated());
+        $panel = $createRequest->validated();
+        $panelBuilder->createPanel($panel);
+
+        $panel = Panel::create($panel);
         if ($panel) {
-            return true;
+            return 'Панель успешно сохранена';
         }
+        return 'Ошибка сохранения панели';
     }
 
     /**
@@ -65,16 +70,29 @@ class PanelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, Panel $panel)
     {
-        dd($request->all());
+        $panel = $panel->fill($request->validated());
+        if ($panel->save()) {
+            return 'Панель успешно обновлена';
+        }
+
+        return 'Ошибка обновления панели';
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Panel $panel)
     {
-        //
+        try {
+            $panel->delete();
+            $response = ['status' => true,'message' => __('messages.admin.news.destroy.success')];
+        } catch (Exception $exception)
+        {
+            $response = ['status' => false,'message' => __('messages.admin.news.destroy.fail').$exception->getMessage()];
+        }
+
+        return $response;
     }
 }

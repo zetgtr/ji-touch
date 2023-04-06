@@ -156,8 +156,65 @@ class PanelBuilder extends QueryBuilder
         return $this->model->get();
     }
 
+    private function setItemData(array $array)
+    {
+
+        if (count($array['data']) == 0) {
+            return '';
+        }
+        $arrayresult = [];
+        $arrayKey = array_search('key', $array['type']);
+        foreach ($array['data'] as $key => $val) {
+            foreach ($val as $key2 => $val2) {
+                if ($array['type'][$key2] == 'key') {
+                    continue;
+                }
+                if ($array['header'][$key2] == '') {
+                    $array['header'][$key2] = $key2;
+                }
+                if ($array['type'][$key2] == 'array') {
+                    if ($arrayKey !== false && $array['data'][$key][$arrayKey] != '') {
+                        $arrayResult[$array['data'][$key][$arrayKey]][$array['header'][$key2]] = self::setItemData((array) $val2);
+                    } else {
+                        $panel = self::setItemData((array) $val2);
+                        $arrayResult[$key][$array['header'][$key2]] = $panel != "" ? $panel : [];
+                    }
+                } else {
+                    if ($arrayKey !== false && $array['data'][$key][$arrayKey] != '') {
+                        $arrayResult[$array['data'][$key][$arrayKey]][$array['header'][$key2]] = &$array['data'][$key][$key2];
+                    } else {
+                        $arrayResult[$key][$array['header'][$key2]] =  &$array['data'][$key][$key2];
+                    }
+                }
+            }
+        }
+
+
+        return $arrayResult;
+    }
+
     public function getAlias(string $alias)
     {
-        return $this->model->where('alias',$alias)->get();
+        $datas = $this->model->where('alias',$alias)->get();
+        foreach ($datas as $data)
+            $data->data = json_decode($data->data);
+
+        $panel = [];
+
+        foreach ($datas as $key => $item)
+        {
+            $panel = $this->setItemData((array)$item->data);
+        }
+        return $panel;
+    }
+
+    public function createPanel(mixed $panel)
+    {
+        $templateContent = file_get_contents(base_path('template')."/templateModule.js");
+        $panelValue = $panel['alias'];
+        $newContent = str_replace('setPanel', $panelValue, $templateContent);
+        $newFileName = $panel['title'].'Module.js';
+        $newFilePath = resource_path('vue/src/store').'/' . $newFileName;
+        file_put_contents($newFilePath, $newContent);
     }
 }
