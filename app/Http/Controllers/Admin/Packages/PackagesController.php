@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Packages;
 use App\Enums\PackagesEnums;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Packages\EditRequest;
+use App\Models\Admin\Packages\Packages;
 use App\QueryBuilder\Admin\Packages\PackagesBuilder;
 use Composer\Installers\Installer;
 use Gitlab\Client;
@@ -26,8 +27,6 @@ class PackagesController extends Controller
      */
     public function index(PackagesBuilder $packagesBuilder)
     {
-//        $newsRemove = new RemovePackage();
-//        $newsRemove->run(true);
         return view('admin.packages.index', [
             'packages'=>$packagesBuilder->getPackages(),
             'packagesInstall' => $packagesBuilder->getInstall(),
@@ -64,7 +63,9 @@ class PackagesController extends Controller
     {
         if($request->input("packages_install"))
         {
-            if($packagesBuilder->install($request))
+            if(Packages::query()->where('id_package',$request->input("packages_install"))->first())
+                return \redirect()->route('admin.packages.index')->with('error', "Пакет уже установлен");
+            if($packagesBuilder->install($request) == 0)
             {
                 return \redirect()->route('admin.packages.set-data',['id'=>$request->input("packages_install")]);
             }
@@ -106,7 +107,7 @@ class PackagesController extends Controller
      */
     public function destroy(string $id,PackagesBuilder $packagesBuilder, Request $request)
     {
-        if($packagesBuilder->remove($request->input("package")))
+        if($packagesBuilder->remove($request->input("packages")))
         {
             return \redirect()->route('admin.packages.index')->with('success', "Пакет успешно удален");
         }

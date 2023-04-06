@@ -1,9 +1,15 @@
 <template id="add-packages">
     <form action="{{ route('admin.packages.create') }}" method="get" id="form-add-edit" class="row">
-        <div class="col-12">
+        <div class="col-4">
             <div class="form-group">
                 <label for="name">Название</label>
                 <input type="text" name="name" id="name" class="form-control">
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="form-group">
+                <label for="provider">Провайдер</label>
+                <input type="text" name="provider" id="provider" class="form-control">
             </div>
         </div>
         <div class="col-12">

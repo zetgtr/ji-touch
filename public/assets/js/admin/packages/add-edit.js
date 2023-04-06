@@ -45,6 +45,7 @@ $(document).ready(()=>{
                     container.find('#form-add-edit').attr('action',editUrl)
                     container.find('#name').val(data.name)
                     container.find('#delete').val(data.delete)
+                    container.find('#provider').val(data.provider)
                     if(data.migration)
                     {
                         container.find('#migration').attr('checked',true)

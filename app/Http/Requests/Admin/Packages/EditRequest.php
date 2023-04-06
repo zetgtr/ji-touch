@@ -27,6 +27,7 @@ class EditRequest extends FormRequest
             'seeder' => ['required', 'boolean'],
             'name_seeder' => ['nullable'],
             'delete' => ['nullable'],
+            'provider' => ['nullable'],
             'script' => ['required','boolean'],
             'view' => ['required', 'boolean'],
             'vue' => ['required', 'boolean']

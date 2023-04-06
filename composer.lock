@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16a1786f2cce7fca08abd5db9e84c6d1",
+    "content-hash": "ac630d170257b911728c11e27ffd6fc5",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2378,16 +2378,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.6.1",
+            "version": "v10.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "1282e96202085f798528ee43371b2ffbb8dcfbd8"
+                "reference": "13dc93889617427352f72b6aa8b195b252af1197"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/1282e96202085f798528ee43371b2ffbb8dcfbd8",
-                "reference": "1282e96202085f798528ee43371b2ffbb8dcfbd8",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/13dc93889617427352f72b6aa8b195b252af1197",
+                "reference": "13dc93889617427352f72b6aa8b195b252af1197",
                 "shasum": ""
             },
             "require": {
@@ -2486,7 +2486,7 @@
                 "league/flysystem-read-only": "^3.3",
                 "league/flysystem-sftp-v3": "^3.0",
                 "mockery/mockery": "^1.5.1",
-                "orchestra/testbench-core": "^8.3",
+                "orchestra/testbench-core": "^8.4",
                 "pda/pheanstalk": "^4.0",
                 "phpstan/phpdoc-parser": "^1.15",
                 "phpstan/phpstan": "^1.4.7",
@@ -2574,7 +2574,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-04-04T20:58:15+00:00"
+            "time": "2023-04-05T15:28:17+00:00"
         },
         {
             "name": "laravel/helpers",
@@ -8816,68 +8816,6 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
-        },
-        {
-            "name": "zetgtr/news",
-            "version": "1.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.com/zetgtr/news.git",
-                "reference": "6b74c9951c5bdaf10611c3ce65efc9cf5f39f0a1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/zetgtr%2Fnews/repository/archive.zip?sha=6b74c9951c5bdaf10611c3ce65efc9cf5f39f0a1",
-                "reference": "6b74c9951c5bdaf10611c3ce65efc9cf5f39f0a1",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "News\\Providers\\NewsServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "News\\": "src/",
-                    "News\\Seeders\\": "database/seeders/",
-                    "News\\Remove\\": "remove"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "News\\Test\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpunit"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Artem",
-                    "email": "artem.kudrin70@gmail.com"
-                }
-            ],
-            "description": "My package description",
-            "keywords": [
-                "laravel",
-                "package"
-            ],
-            "support": {
-                "source": "https://gitlab.com/zetgtr/news/-/tree/1.1.4",
-                "issues": "https://gitlab.com/zetgtr/news/-/issues"
-            },
-            "time": "2023-04-06T11:56:26+00:00"
         }
     ],
     "packages-dev": [

@@ -69,27 +69,34 @@ class PackagesBuilder extends QueryBuilder
 
         chdir(base_path());
         exec($settings->php.'\php.exe '.$settings->composer.'\composer.phar require '.$package.' 2>&1', $msg, $resultCode);
-        if($resultCode == 0)
-        {
-            $this->firebase->getReference('/packages/'.$id."/publish")->set(true);
-        }
         Packages::query()->create(['id_package'=>$id]);
-        return 0;
+        return $resultCode;
     }
 
     public function setData($id)
     {
         $settings = $this->getSettings();
         $packageData = $this->firebase->getReference('/packages/'.$id)->getValue();
+        chdir(base_path());
         if($packageData['migration']) {
-            chdir(base_path());
-            exec($settings->php.'\php.exe artisan vendor:publish --tag=migrations 2>&1',$msg);
+//            exec($settings->php.'\php.exe artisan vendor:publish --tag=migrations 2>&1',$msg);
+            Artisan::call('vendor:publish', [
+                '--provider' => $packageData['provider'],
+                '--tag' => 'migrations',
+            ]);
             Artisan::call('migrate', ['--verbose' => true]);
         }
         if($packageData['seeder'])
         {
             Artisan::call('db:seed', [
                 '--class' => $packageData['name_seeder'],
+            ]);
+        }
+        if($packageData['script'])
+        {
+            Artisan::call('vendor:publish', [
+                '--provider' => $packageData['provider'],
+                '--tag' => 'script',
             ]);
         }
     }
@@ -120,7 +127,27 @@ class PackagesBuilder extends QueryBuilder
     {
         $packageData = $this->firebase->getReference('/packages/'.$id)->getValue();
         $packageRemove = new $packageData['delete']();
+        $settings = $this->getSettings();
+        $packageRemove->run($settings,true,true);
+        $composerJson = json_decode(File::get(base_path('composer.json')), true);
+        if(count($composerJson["repositories"])>1)
+        {
+            $key = array_search([
+                "type" => "vcs",
+                "url" => "https://".$packageData['url']."/".$packageData['user']."/".$packageData['name']
+            ], $composerJson["repositories"]);
+            if ($key !== false) {
+                array_splice($composerJson["repositories"], $key, 1);
+            }
+        }else{
+            unset($composerJson['repositories']);
+        }
+        unset($composerJson['require'][$settings->user.'/'.$packageData['name']]);
 
+        File::put(base_path('composer.json'), json_encode($composerJson, JSON_PRETTY_PRINT));
+        exec($settings->php.'\php.exe '.$settings->composer.'\composer.phar update');
+        Packages::query()->where('id_package',$id)->delete();
+        return true;
     }
 
 
