@@ -36,10 +36,11 @@
         </div>
     </div>
 </div>
-
+<input type="hidden" id="noImage" value="{{ asset("assets/images/panel/noImg.jpg") }}">
 <input type="hidden" id="form_url" value="{{ route('admin.panel.store') }}">
 <input type="hidden" id="select_table" value="{{ route('admin.panel-select') }}">
 <input type="hidden" name="_method" id="method" value="POST">
 @vite('resources/sass/admin/panel.scss')
 <script> $ar=`{"header":[""],"type":["text"],"data":[[""]]}`; id = 'none';</script>
+<script src="{{ asset('assets/js/admin/lfm.js') }}"></script>
 <script type='text/javascript' src='{{ asset('assets/js/admin/panel/panel_editor.js') }}'></script>

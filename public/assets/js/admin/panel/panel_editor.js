@@ -1,4 +1,5 @@
 //$ar = '{"header":[],"type":[],"data":[]}';
+
 var table_type2 = ['text', 'textarea', 'img', 'array'];
 var type_open = 'render';
 
@@ -111,7 +112,14 @@ function visited_table($array) {
 function render() {
   $(selectHtmlClass).html(visited_table());
   key = table_array['type'].indexOf('key');
-
+  let img = $(".select_img_add");
+    console.log(img)
+  if(img.length > 0) {
+      img.filemanager('image', {
+          multiple: true,
+          prefix: '/laravel-filemanager'
+      })
+  }
   // $('.panel_table table tr:first-child>th:nth-child(2) .key').css('background','black');
   if (key != -1) {
     //все ключи становяться серыми
@@ -218,9 +226,9 @@ function input_edit(col, val, row) {
     return html;
   } else if (table_array.type[col] == 'img') {
     if (val == '') {
-      val = '/infusions/panel_editor/images/noImg.jpg';
+      val = '/assets/images/panel/addImg.png';
     }
-    return '<div class="d-flex justify-content-center"><div style="position: relative;cursor: pointer; height: 55px; width: 55px;" data-type="select" onclick="select_img(this)"><div class="select_img" style="background-position: center; background-image: url(' + val + '); background-size: contain; background-repeat: no-repeat;     height: 100%; width: 100%;"></div><div style="background-color: white; background-position: center;" class="addPhotoHover" ></div></div></div>';
+    return '<div class="d-flex justify-content-center"><div style="position: relative;cursor: pointer; height: 55px; width: 55px;" data-type="select" data-input="panel_img" class="select_img_add" onclick="select_img(this)"><div class="select_img" style="background-position: center; background-image: url(' + val + '); background-size: contain; background-repeat: no-repeat;     height: 100%; width: 100%;"></div><div style="background-color: white; background-position: center;" class="addPhotoHover" ></div></div></div><input id="panel_img" class="form-control" type="hidden" name="images[]" value="'+val+'">';
   } else if (table_array.type[col] == 'php') {
     return '<input class="form-control" oninput="php_change(this)" type="text" value="' + val + '"><div> </div>';
   };
@@ -313,41 +321,40 @@ function save_texarea() {
 }
 //смена картинки
 function select_img(this2) {
-  if ($(this2).attr('data-type') == 'select') {
-    $(this2).after('<input type="file" style="display: none;" data-type="file" oninput="select_img(this)">')
-    $(this2).next('input').trigger('click');
-  } else if ($(this2).attr('data-type') == 'file') {
-    file = $(this2).prop('files');
-    file = file[0];
-    //подготовка
-    if (file['type'] == 'image/jpeg' || file['type'] == 'image/png' || file['type'] == 'image/svg+xml') {
-      var form_data = new FormData();
-      form_data.append('img', file);
-      colindex = $(this2).parents('th').index() - 1;
-      rowindex = ($(this2).parents('tr').index()) - 2;
-      $(this2).parent().children('input').remove();
-      $.ajax({
-        url: '/infusions/panel_editor/admin/ajax/ajax.img_uploader.php',
-        dataType: 'text',
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_data,
-        type: 'post',
-        success: function (data) {
+    let img = $('#panel_img');
+    // console.log(img)
+    colindex = $(this2).parents('th').index() - 1;
+    rowindex = ($(this2).parents('tr').index()) - 2;
+    img.on('change',()=>{
+        $(this2).parent().children('input').remove();
+        table_array.data[rowindex][colindex] = img.val()
+        render();
+    })
 
-          //если загружаемая картинка swg то
-          if (data != 'false') {
-            //заносим данные
-            table_array.data[rowindex][colindex] = data;
-            render();
-          } else {
-            message('Ошибка загрузки фотографии', 'false');
-          }
-        }
-      });
-    }
-  }
+
+//
+//       $.ajax({
+//         url: '/infusions/panel_editor/admin/ajax/ajax.img_uploader.php',
+//         dataType: 'text',
+//         cache: false,
+//         contentType: false,
+//         processData: false,
+//         data: form_data,
+//         type: 'post',
+//         success: function (data) {
+//
+//           //если загружаемая картинка swg то
+//           if (data != 'false') {
+//             //заносим данные
+//             table_array.data[rowindex][colindex] = data;
+//             render();
+//           } else {
+//             message('Ошибка загрузки фотографии', 'false');
+//           }
+//         }
+//       });
+//     }
+//   }
 }
 //изменение массива
 function change_array(this2) {

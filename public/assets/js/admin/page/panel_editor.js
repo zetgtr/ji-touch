@@ -111,6 +111,7 @@ export function panel_editor_fucken() {
 
     this.render = function () {
       $(selectHtmlClass).html(visited_table());
+
       var key = table_array['type'].indexOf('key');
 
       // $('.panel_table table tr:first-child>th:nth-child(2) .key').css('background','black');
@@ -220,7 +221,7 @@ export function panel_editor_fucken() {
         return html;
       } else if (table_array.type[col] == 'img') {
         if (val == '') {
-          val = '/infusions/panel_editor/images/noImg.jpg';
+          val = '/assets/images/panel/noImg.jpg';
         }
         return '<div class="d-flex justify-content-center"><div style="position: relative;cursor: pointer; height: 55px; width: 55px;" data-type="select" onclick="select_img(this)"><div class="select_img" style="background-position: center; background-image: url(' + val + '); background-size: contain; background-repeat: no-repeat;     height: 100%; width: 100%;"></div><div style="background-color: white; background-position: center;" class="addPhotoHover" ></div></div></div>';
       } else if (table_array.type[col] == 'php') {

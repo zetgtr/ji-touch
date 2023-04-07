@@ -34,7 +34,7 @@
     .logo{
         height: 80px;
         width: 80px;
-        background-image: url(/infusions/panel_editor/images/loading.png);
+        background-image: url("/assets/images/panel/loading.png");
         background-size: contain;
         background-repeat: no-repeat;
         animation: rotate  1s infinite linear;
@@ -42,7 +42,7 @@
 }
 .addPhotoHover {
     opacity: 0;
-    background-image: url(/infusions/panel_editor/images/addImg.png);
+    background-image: url("/assets/images/panel/addImg.png");
     background-size: contain;
     background-repeat: no-repeat;
     height: 100%;
@@ -83,7 +83,7 @@
             align-items: center;
             width: 250px;
             white-space: nowrap;
-            background-image: url('/infusions/panel_editor/images/simple-dashed.png');
+            background-image: url('/assets/images/panel/simple-dashed.png');
         }
     }
 
