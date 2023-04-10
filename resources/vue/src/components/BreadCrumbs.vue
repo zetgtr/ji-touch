@@ -1,7 +1,7 @@
 <template>
   <nav class="breadcrumbs">
     <ul>
-      <li v-for="(item, index) in breadcrumbs" :key="index" calss='breadcrumb'>
+      <li v-for="(item, index) in breadcrumbs" :key="index" class="breadcrumb">
         <router-link :to="item.path">{{ item.name }}</router-link>
       </li>
     </ul>
@@ -11,16 +11,14 @@
 <script>
 export default {
   name: "BreadCrumbs",
-  computed: {
-    breadcrumbs() {
-        console.log(this.$route.matched);
-      const routes = this.$route.matched;
-      const breadcrumbs = routes.map(route => ({
-        name: route.name,
-        path: route.path
-      }));
-      return [{ name: "Home", path: "/" }, ...breadcrumbs];
-    }
+  props: {
+    breadcrumbs: {
+      type: Array,
+      required: true,
+    },
+  },
+  methods:{
+    
   }
 };
 </script>

@@ -55,7 +55,7 @@ export default {
         {
           id: 1,
           title: "Poollavka",
-          link: "poollavka.ru",
+          link: "https://poollavka.ru/",
         },
         {
           id: 2,
