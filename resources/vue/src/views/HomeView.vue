@@ -1,11 +1,18 @@
 <template>
   <the-header></the-header>
   <TheAnimateBg></TheAnimateBg>
-  <the-first></the-first>
+  <the-first
+    v-on:modal="showModal"
+  ></the-first>
   <the-services></the-services>
   <the-portfolio></the-portfolio>
   <the-about></the-about>
   <the-order></the-order>
+  <my-dialog v-model:show="dialogVisible" @accepted="dialogVisible = true">
+      <post-form
+      @create="fetchForm"
+      />
+    </my-dialog>
   <!-- <the-swiper></the-swiper> -->
 </template>
 
@@ -19,6 +26,8 @@ import ThePortfolio from "../components/Portfolio/ThePortfolio.vue";
 import TheAbout from "../components/About/TheAbout.vue";
 import TheOrder from "../components/Order/TheOrder.vue";
 import TheSwiper from "../components/Services/TheSwiper.vue";
+import MyDialog from "../components/UI/MyDialog.vue";
+import PostForm from "../components/Modal/PostForm.vue";
 
 export default {
   name: "HomeView",
@@ -31,7 +40,42 @@ export default {
     TheAbout,
     TheOrder,
     TheSwiper,
+    MyDialog,
+    PostForm
   },
+  data(){
+    return{
+      dialogVisible: false,
+    }
+  },
+  methods:{
+    showModal() {
+      this.dialogVisible = true;
+    },
+    async fetchForm(data) {
+      console.log(data);
+      let form = data.data;
+      let formName = data.form;
+      const formData = new FormData();
+      formData.append("name", form.name);
+      formData.append("tel", form.tel);
+      formData.append("email", form.email);
+
+      try {
+        const response = await fetch("/api/form/"+formName+"/", {
+          method: "POST",
+          body: formData,
+        });
+
+        const responseData = await response.json();
+        console.log(responseData);
+        this.dialogVisible = false;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+  
 };
 </script>
 <style  lang='scss'>

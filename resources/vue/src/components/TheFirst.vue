@@ -11,7 +11,10 @@
             Надежный партнёр вашего бизнеса!
           </p>
         </div>
-        <the-button class="button button-click button--orange first__btn"
+        <the-button
+          class="button button-click button--orange first__btn"
+          @click.prevent
+          @click="showModal"
           ><span>Оставить заявку</span></the-button
         >
         <div class="bg__img">
@@ -57,6 +60,11 @@ export default {
       sectionCaption: "DIgital-Агентство",
     };
   },
+  methods:{
+    showModal(){
+      this.$emit("modal");
+    }
+  }
 };
 </script>
 

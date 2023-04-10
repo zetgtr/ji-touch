@@ -20,3 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('panel_data/{name}', [PanelController::class, 'show']);
+
+Route::post('form/{name}', function(Request $request){
+    dd($request->all());
+});

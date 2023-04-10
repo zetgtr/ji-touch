@@ -12,7 +12,7 @@ const routes = [
   {
     path: '/project',
     name: 'project',
-    meta: { layout: "inner", breadcrumb: "project" },
+    meta: { layout: "inner", breadcrumb: "project", name: 'Проекты' },
     component: () => import('./../views/TheProject.vue')
   },
   {
@@ -64,7 +64,7 @@ router.beforeEach((to, from, next) => {
   }));
 
   // Добавляем "Home" хлебную крошку в начало массива
-  breadcrumbs.unshift({ name: 'Home', path: '/' });
+  breadcrumbs.unshift({ name: 'Главная', path: '/' });
 
   // Особый случай: если мы находимся на маршруте с динамическим путём,
   // то нужно добавить дополнительную хлебную крошку с динамическим ID
