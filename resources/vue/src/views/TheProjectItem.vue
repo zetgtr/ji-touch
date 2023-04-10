@@ -27,6 +27,7 @@ export default {
     }
   },
   created() {
+
     this.breadcrumbs = this.$route.meta.breadcrumbs;
     console.log(this.breadcrumbs);
   },

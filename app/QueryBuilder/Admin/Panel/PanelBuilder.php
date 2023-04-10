@@ -210,11 +210,16 @@ class PanelBuilder extends QueryBuilder
 
     public function createPanel(mixed $panel)
     {
-        $templateContent = file_get_contents(base_path('template')."/templateModule.js");
         $panelValue = $panel['alias'];
+        $templateContent = file_get_contents(base_path('template')."/templateModule.js");
         $newContent = str_replace('setPanel', $panelValue, $templateContent);
-        $newFileName = $panel['title'].'Module.js';
-        $newFilePath = resource_path('vue/src/store').'/' . $newFileName;
+        $newFileName = $panel['alias'].'Module.js';
+        $newFilePath = resource_path('vue/src/store/infusions').'/' . $newFileName;
+        file_put_contents($newFilePath, $newContent);
+        $templateContent = file_get_contents(base_path('template')."/templateComponent.vue");
+        $newContent = str_replace('fetchInfo', $panelValue, $templateContent);
+        $newFileName = $panel['alias'].'Component.vue';
+        $newFilePath = resource_path('vue/infusions').'/' . $newFileName;
         file_put_contents($newFilePath, $newContent);
     }
 }

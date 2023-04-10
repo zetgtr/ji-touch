@@ -13,7 +13,7 @@ export default {
     ...mapMutations({
     }),
     ...mapActions({
-      fetchInfo: 'test/fetchInfo'
+      fetchInfo: 'fetchInfo'
     }),
   },
   mounted() {
@@ -25,7 +25,7 @@ export default {
     // })
   },
   watch: {
-   
+
   },
 };
 </script>

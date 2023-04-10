@@ -1,5 +1,7 @@
 <template>
-  <Swiper @slideChange="onSlideChange" ref="swiperRef" @swiper="onSwiper">
+    <Swiper :pagination="{
+      type: 'fraction',
+    }" :navigation="true" :modules="modules" @slideChange="onSlideChange" ref="swiperRef" @swiper="onSwiper">
     <SwiperSlide v-for="(item, index) in items" :key="index">
       <div class="services__item">
               <div class="row">
@@ -51,45 +53,60 @@
               </div>
             </div>
     </SwiperSlide>
-    <div class="count" ref='count'>{{ count.value }}</div>
   </Swiper>
+    <div class="swiper-pagination"></div>
+<!--    <div class="count" ref='count'>{{ count.value }}</div>-->
+
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from "swiper/vue";
+import {Swiper, SwiperSlide, useSwiperSlide} from "swiper/vue";
+import { Pagination, Navigation } from 'swiper';
 import "swiper/swiper-bundle.css";
 
 import { ref, onMounted, defineEmits } from "vue";
+
+
+
 export default {
   components: {
     Swiper,
     SwiperSlide,
   },
-
-  emits: ["slideChanged"],
   setup(props, ctx) {
-    const emit = defineEmits(["slideChanged"]);
-
+      // console.log(Pagination)
     const swiper = ref();
     const count = ref(1);
-
     const onSlideChange = () => {
       const realIndex = swiper.value.realIndex;
-      console.log(count);
+      console.log(swiper.value.realIndex);
       count.value = realIndex + 1;
       ctx.emit("slideChanged", realIndex);
     };
 
-    const items = ["Item 1", "Item 2", "Item 3"];
+    const onSwiper = (instance) =>
+    {
+        swiper.value = instance
+
+    }
+
+    const items = ["Item 1", "Item 2"];
     onMounted(() => {
       console.log(swiper.value);
     });
+
+    const goToSlide = (slideNumber) => {
+        swiper.value.slideTo(slideNumber);
+    };
+
     return {
       swiper,
-      onSwiper: (instance) => (swiper.value = instance),
+      onSwiper,
       onSlideChange,
       items,
-      count
+      count,
+      goToSlide,
+      modules: [Pagination, Navigation],
     };
   },
 };

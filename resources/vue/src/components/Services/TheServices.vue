@@ -182,7 +182,8 @@
           <div class="count">{{ activeIndex }}</div>
         </swiper> -->
         <the-swiper
-          v-on:slideChanged="onSlideChanged"
+            ref="mySwiper"
+            v-on:goToSlide="goToSlide"
         ></the-swiper>
       </div>
       <div class="services__wrapper__text">
@@ -192,13 +193,14 @@
           :key="item.id"
           :class="{ active: activeIndex === item.id }"
         >
-          <span>{{ item.title }}</span>
+          <span @click="goToSlide(item.id)">{{ item.title }}</span>
         </div>
       </div>
       <the-section-caption
         :sectionCaption="sectionCaption"
         class="color"
       ></the-section-caption>
+
     </div>
   </section>
 </template>
@@ -228,19 +230,20 @@ export default {
   },
 
   data() {
+
     return {
       items: [
+        { id: 0, title: "Разработка web-сайтов" },
         { id: 1, title: "Разработка web-сайтов" },
-        { id: 2, title: "Разработка web-сайтов" },
       ],
       sectionCaption: "Services",
       slideIndex: 1,
     };
   },
   methods: {
-    onSlideChanged(index) {
-      this.slideIndex = index + 1;
-    }
+     goToSlide(slideNumber) {
+         this.$refs.mySwiper.goToSlide(slideNumber);
+     }
   }
 };
 </script>
