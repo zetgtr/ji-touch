@@ -1,8 +1,10 @@
 <template>
   <the-header></the-header>
   <TheAnimateBg></TheAnimateBg>
-  <the-first v-on:modal="showModal"></the-first>
-  <the-services></the-services>
+  <first-component v-on:modal="showModal"></first-component>
+  <services-component></services-component>
+  <!-- <the-first v-on:modal="showModal"></the-first> -->
+  <!-- <the-services></the-services> -->
   <the-portfolio></the-portfolio>
   <the-about></the-about>
   <the-order></the-order>
@@ -16,9 +18,9 @@
 <script>
 // @ is an alias to /src
 import TheHeader from "../components/TheHeader.vue";
-import TheFirst from "../components/TheFirst.vue";
+// import TheFirst from "../components/TheFirst.vue";
 import TheAnimateBg from "../components/TheAnimateBg.vue";
-import TheServices from "../components/Services/TheServices.vue";
+// import TheServices from "../components/Services/TheServices.vue";
 import ThePortfolio from "../components/Portfolio/ThePortfolio.vue";
 import TheAbout from "../components/About/TheAbout.vue";
 import TheOrder from "../components/Order/TheOrder.vue";
@@ -27,19 +29,27 @@ import MyDialog from "../components/UI/MyDialog.vue";
 import PostForm from "../components/Modal/PostForm.vue";
 import { messageMixin } from "./../components/mixins/messageMixin";
 
+// panels
+
+import firstComponent from "./../infusions/firstComponent.vue";
+import servicesComponent from "./../infusions/servicesComponent.vue";
+
+
 export default {
   name: "HomeView",
   components: {
     TheHeader,
-    TheFirst,
+    // TheFirst,
     TheAnimateBg,
-    TheServices,
+    // TheServices,
     ThePortfolio,
     TheAbout,
     TheOrder,
     TheSwiper,
     MyDialog,
     PostForm,
+    firstComponent,
+    servicesComponent
   },
   data() {
     return {

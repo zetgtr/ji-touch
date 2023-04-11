@@ -1,13 +1,13 @@
 import {createStore} from "vuex";
-import {postModule} from "./postModule";
-import {testModule} from "./testModule";
+import {firstModule} from "./infusions/firstModule";
+import {servicesModule} from "./infusions/servicesModule";
 
 export default createStore({
     state: {
       isAuth: false,
     },
     modules: {
-        post: postModule,
-        test: testModule
+        first: firstModule,
+        services: servicesModule,
     }
 })
