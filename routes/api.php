@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Panel\PanelController;
+use App\Http\Controllers\Form\FormController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('panel_data/{name}', [PanelController::class, 'show']);
 
-Route::post('form/{name}', function(Request $request){
-    dd($request->all());
-});
+Route::post('form/{name}', FormController::class);
