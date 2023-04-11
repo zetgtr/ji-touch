@@ -156,6 +156,8 @@ export default {
     const items = ["Item 1", "Item 2"];
     onMounted(() => {
       countSwiper.value = 1;
+      const store = useStore()
+      const slider = store.state.services.slider;
     });
 
     const goToSlide = (slideNumber) => {
@@ -175,10 +177,8 @@ export default {
     };
   },
   mounted(){
-    const store = useStore()
-    const slider = store.state.services.slider;
-    console.log(slider);
     
+
   }
 };
 </script>
