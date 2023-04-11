@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent>
-    <h4>Создание поста</h4>
+    <h2>Создание поста</h2>
     <div class="wrapper">
       <InputBox
         :value="form.name"
@@ -37,8 +37,10 @@
 import InputBox from "./../UI/InputBox.vue";
 import TheButton from "./../UI/TheButton.vue";
 import { vMaska } from "maska";
+import { messageMixin } from "./../mixins/messageMixin";
 export default {
   directives: { maska: vMaska },
+  mixins: [messageMixin],
   components: {
     InputBox,
     TheButton,
@@ -50,12 +52,15 @@ export default {
         tel: "",
         email: "",
       },
-    formName: 'zakaz'
+      formName: "zakaz",
     };
   },
   methods: {
     fetchForm() {
-        this.$emit("create", {data: this.form, form:this.formName });
+      this.$emit("create", { data: this.form, form: this.formName });
+    },
+    showMessage() {
+      this.message({ title: "Отправлено", content: "Ваша форма успешно отправлена" }, "success", false, 3000);
     },
   },
 };
@@ -66,7 +71,7 @@ form {
   display: flex;
   flex-direction: column;
 }
-h4 {
+h2{
   margin-bottom: 2rem;
 }
 .wrapper {
@@ -80,4 +85,6 @@ h4 {
     color: var(--c-primary);
   }
 }
+
+
 </style>

@@ -1,19 +1,16 @@
 <template>
   <the-header></the-header>
   <TheAnimateBg></TheAnimateBg>
-  <the-first
-    v-on:modal="showModal"
-  ></the-first>
+  <the-first v-on:modal="showModal"></the-first>
   <the-services></the-services>
   <the-portfolio></the-portfolio>
   <the-about></the-about>
   <the-order></the-order>
   <my-dialog v-model:show="dialogVisible" @accepted="dialogVisible = true">
-      <post-form
-      @create="fetchForm"
-      />
-    </my-dialog>
+    <post-form @create="fetchForm" />
+  </my-dialog>
   <!-- <the-swiper></the-swiper> -->
+  <div id="messages"></div>
 </template>
 
 <script>
@@ -28,6 +25,7 @@ import TheOrder from "../components/Order/TheOrder.vue";
 import TheSwiper from "../components/Services/TheSwiper.vue";
 import MyDialog from "../components/UI/MyDialog.vue";
 import PostForm from "../components/Modal/PostForm.vue";
+import { messageMixin } from "./../components/mixins/messageMixin";
 
 export default {
   name: "HomeView",
@@ -41,16 +39,20 @@ export default {
     TheOrder,
     TheSwiper,
     MyDialog,
-    PostForm
+    PostForm,
   },
-  data(){
-    return{
+  data() {
+    return {
       dialogVisible: false,
-    }
+    };
   },
-  methods:{
+  mixins: [messageMixin],
+  methods: {
     showModal() {
       this.dialogVisible = true;
+    },
+    showMessage(mess,status,flag,duration) {
+      this.message(mess, status, flag, duration);
     },
     async fetchForm(data) {
       console.log(data);
@@ -62,20 +64,21 @@ export default {
       formData.append("email", form.email);
 
       try {
-        const response = await fetch("/api/form/"+formName+"/", {
+        const response = await fetch("/api/form/" + formName + "/", {
           method: "POST",
           body: formData,
         });
 
         const responseData = await response.json();
         console.log(responseData);
+        this.showMessage({ title: "Отправлено", content: "Ваша форма успешно отправлена" },"success", false, 3000);
         this.dialogVisible = false;
       } catch (error) {
         console.error(error);
+        this.showMessage({ title: "Ошибка", content: "Ваша форма не отправлена" },"error", true, 3000);
       }
     },
   },
-  
 };
 </script>
 <style  lang='scss'>
@@ -238,5 +241,140 @@ export default {
     width: 100%;
     height: 100%;
   }
+}
+
+#messages {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 370px;
+  padding: 90px 0 0;
+  display: none;
+  z-index: 999999999999999;
+
+  @media (max-width: 997px) {
+    bottom: 40px;
+    width: calc(100% - 10px);
+    left: 10px;
+  }
+}
+
+.message {
+  overflow: hidden;
+  width: 0px;
+  height: 0px;
+  opacity: 0;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 15px rgba(174, 174, 180, 0.4);
+  margin-right: -30px;
+
+  &__text {
+    display: flex;
+    align-items: center;
+    background: white;
+    justify-content: center;
+    width: 340px;
+    color: var(--c-dark);
+    padding: 10px 15px;
+    position: relative;
+
+    &-inner {
+      flex: 1 1 auto;
+      font-size: 15px;
+    }
+
+    &::before {
+      --h: 30px;
+      font-family: "Font Awesome 5 Free";
+      font-size: 10px;
+      flex: 0 0 var(--h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--h);
+      height: var(--h);
+      margin-right: 1.5rem;
+      border-radius: 100%;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    padding-right: 25px;
+  }
+
+  &__content {
+    font-size: inherit;
+    line-height: 1.1em;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    color: #eeeeee;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: var(--c-primary);
+    }
+
+    &:after {
+      content: "\f00d";
+      font-family: "Font Awesome 5 Free";
+      font-weight: bold;
+      font-size: 12px;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 15px;
+    color: var(--c-dprimary);
+    justify-content: center;
+  }
+
+  &.success {
+    .message__text {
+      &::before {
+        content: "\f00c";
+        font-weight: bold;
+        background: var(--c-primary);
+        color: white;
+      }
+    }
+    &__title {
+      color: var(--c-primary);
+    }
+  }
+
+  &.error {
+    text-align: left;
+    .message__text {
+      &::before {
+        content: "\f12a";
+        font-weight: bold;
+        background: #ca0f04;
+        color: white;
+      }
+    }
+    &__title {
+      color: #ca0f04;
+    }
+  }
+}
+.message__text-inner {
+  display: flex;
+  flex-direction: column-reverse;
 }
 </style>
