@@ -102,8 +102,17 @@ export default {
     Swiper,
     SwiperSlide,
   },
+  props: {
+      value: {
+          type: Number,
+          default: 0,
+      },
+      activeIndex: {
+          type: Number,
+          default: 0,
+      },
+  },
   setup(props, ctx) {
-      // console.log(Pagination)
     const swiper = ref();
     const countSwiper = ref(1);
     const isMoving = ref(false)
@@ -114,6 +123,7 @@ export default {
             isMoving.value = false;
         }, 400);
         countSwiper.value = realIndex + 1;
+        ctx.emit("activeIndexChanged", countSwiper.value)
       ctx.emit("slideChanged", realIndex);
     };
 

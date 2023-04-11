@@ -183,7 +183,9 @@
         </swiper> -->
         <the-swiper
             ref="mySwiper"
+            :activeIndex="activeIndex"
             v-on:goToSlide="goToSlide"
+            v-on:activeIndexChanged="activeIndexChanged"
         ></the-swiper>
       </div>
       <div class="services__wrapper__text">
@@ -230,7 +232,7 @@ export default {
   },
 
   data() {
-
+    const activeIndex = ref(0);
     return {
       items: [
         { id: 0, title: "Разработка web-сайтов" },
@@ -238,13 +240,18 @@ export default {
       ],
       sectionCaption: "Services",
       slideIndex: 1,
+      activeIndex
     };
   },
   methods: {
      goToSlide(slideNumber) {
          this.$refs.mySwiper.goToSlide(slideNumber);
-     }
-  }
+     },
+      activeIndexChanged(slideNumber){
+          this.activeIndex = slideNumber - 1
+      }
+  },
+
 };
 </script>
 
