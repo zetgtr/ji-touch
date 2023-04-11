@@ -7,8 +7,9 @@ export default {
     },
     methods: {
         hideDialog() {
-            this.$emit('update:show', false)
-        }
+            this.$emit('update:show', false);
+            document.body.classList.remove('overflow')
+          },
     },
     mounted() {
         console.log('mixin mounted')

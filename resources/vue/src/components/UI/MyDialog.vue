@@ -1,10 +1,16 @@
 <template>
-  <div class="dialog" v-if="show" @click.stop="hideDialog">
-    <div @click.stop class="dialog__content">
-      <span class="dialog__close" @click.stop="hideDialog"></span>
-      <slot></slot>
+  <transition name="dialog" appear>
+    <div class="dialog" v-if="show" @click.stop="hideDialog">
+      <div
+        @click.stop
+        class="dialog__content"
+        :class="{ show: show, hide: !show }"
+      >
+        <span class="dialog__close" @click.stop="hideDialog"></span>
+        <slot></slot>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -55,14 +61,25 @@ export default {
   top: 20px;
   right: 20px;
   transition: background-color 0.3s;
-  &:after{
-        content: "\f00d";
+  &:after {
+    content: "\f00d";
     font-family: "Font Awesome 5 Free";
     font-weight: bold;
     font-size: 12px;
   }
-  &:hover{
-        background-color: var(--c-primary);
+  &:hover {
+    background-color: var(--c-primary);
   }
+}
+.dialog__content {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.dialog__content.show {
+  opacity: 1;
+  transform: translateY(0%);
+  transition-delay: 0.1s;
 }
 </style>

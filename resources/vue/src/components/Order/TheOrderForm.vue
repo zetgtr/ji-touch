@@ -7,6 +7,9 @@
           v-on:dich="form.name = $event"
           :class="{ 'has-value': form.name !== '' }"
           label="Ваше имя"
+          id="name"
+          v-on:click="clearError($event, 'name')"
+           data-input="name"
         />
         <InputBox
           :value="form.tel"
@@ -15,6 +18,9 @@
           label="Телефон"
           v-maska
           mask="+1 ### ###-##-##"
+          id="tel"
+          v-on:click="clearError($event, 'tel')"
+           data-input="tel"
         />
         <InputBox
           :value="form.company"
@@ -27,6 +33,10 @@
           v-on:dich="form.email = $event"
           :class="{ 'has-value': form.email !== '' }"
           label="Email"
+          id="email"
+          v-on:click="clearError($event, 'email')"
+          data-input="email"
+          
         />
         <BudgetDropdown
           :options="[1000, 5000, 10000]"
@@ -49,30 +59,6 @@
             Несколько слов о компании.
           </span>
           <file-uploader v-on:uploadFile="uploadFile"> </file-uploader>
-          <!-- <div class="order__upload">
-            <label class="file-input__label" for="myfile">
-              <svg
-                width="16"
-                height="17"
-                viewBox="0 0 16 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11.8545 9.96878L10.6797 11.1438L7.38924 14.4342C6.10061 15.7225 4.00324 15.7225 2.71384 14.4337C1.42467 13.1449 1.42503 11.0477 2.71384 9.75877L4.5944 7.87803L10.198 2.27443C11.0792 1.39327 12.5139 1.39327 13.3953 2.27443C14.2765 3.15595 14.2765 4.59019 13.3953 5.47175L9.78949 9.07723L8.36797 10.4986L6.51495 12.3518C6.05288 12.8138 5.30105 12.8133 4.83935 12.3518C4.37728 11.8897 4.37728 11.1377 4.83935 10.6756L7.52566 7.98948L8.11352 7.40126L10.6249 4.89022L9.84196 4.10745L6.74307 7.20635L4.05639 9.8937C3.16319 10.7865 3.16301 12.2409 4.05639 13.1348C4.95012 14.0282 6.40431 14.0282 7.2975 13.1348L8.9874 11.4447L10.5722 9.85996L14.1775 6.2543C15.4907 4.94148 15.4907 2.80502 14.1775 1.49161C12.8646 0.178416 10.7278 0.178416 9.41477 1.49161L6.65956 4.24718L3.91141 6.99533L1.93138 8.97572C0.210902 10.696 0.210902 13.4958 1.93138 15.2162C3.65186 16.9369 6.45126 16.9369 8.17188 15.2162L12.637 10.7511L14.8207 8.56753L14.0383 7.78457L11.8545 9.96878Z"
-                  fill="#00779F"
-                />
-              </svg>
-              Прикрепить файл
-            </label>
-            <input
-              class="input file-input"
-              type="file"
-              name="attach[]"
-              multiple=""
-              id="myfile"
-            />
-          </div> -->
         </div>
         <div class="file-display--container" v-show="filesToUploadShow == true">
           <div class="mb-2 small">Список файлов:</div>
@@ -81,10 +67,7 @@
             id="file_display"
             ref="fileDisplay"
           ></div>
-          <div 
-            class="btn-del"
-            @click.prevent="delFiles"
-          >
+          <div class="btn-del" @click.prevent="delFiles">
             <div class="line-1"></div>
             <div class="line-2"></div>
           </div>
@@ -113,6 +96,7 @@ import InputBox from "./../UI/InputBox.vue";
 import InputTextareaVue from "../UI/InputTextarea.vue";
 import FileUploader from "../UI/FileUploader.vue";
 import { vMaska } from "maska";
+import { messageMixin } from "./../mixins/messageMixin";
 
 export default {
   directives: { maska: vMaska },
@@ -123,6 +107,7 @@ export default {
     InputTextareaVue,
     FileUploader,
   },
+  mixins: [messageMixin],
   data() {
     return {
       form: {
@@ -140,8 +125,32 @@ export default {
   },
   methods: {
     onSubmit(e) {
-      console.log(this.form);
+      if (!this.form.name || !this.form.email || !this.form.tel) {
+        console.log(this.name);
+        this.showMessage(
+          { title: "Не отправлено", content: "Заполните обязательные поля" },
+          "error",
+          false,
+          3000
+        );
+        const requiredInputs = document.querySelectorAll('[data-input]');
+        console.log(requiredInputs);
+        requiredInputs.forEach(el => {
+          if (!el.querySelector('input').value) {
+            el.classList.add("input--error");
+          }
+        })
+      } else {
+        console.log('zaza');
+      }
       // post the form to the server
+    },
+    showMessage(mess, status, flag, duration) {
+      this.message(mess, status, flag, duration);
+    },
+    clearError(event, id) {
+      console.log(123);
+      document.getElementById(id).classList.remove("input--error");
     },
     uploadFile(event) {
       this.form.file = event;
@@ -154,11 +163,11 @@ export default {
       }
       this.filesToUploadShow = true;
     },
-    delFiles(){
+    delFiles() {
       console.log(this.form.file);
       this.form.file = null;
       this.filesToUploadShow = false;
-    }
+    },
   },
 };
 </script>
@@ -357,23 +366,27 @@ export default {
     transition: 0.3s linear;
     background: #00779f;
   }
-  &:hover{
+  &:hover {
     .line-1,
-    .line-2{
+    .line-2 {
       background-color: var(--c-primary);
-      
     }
   }
-  
+}
+
+.inputbox.input--error {
+  i {
+    background: red;
+  }
 }
 .order__btn {
-    padding: 17px 72px;
-    outline: none;
-    color: var(--c-white);
-    font-weight: 700;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    align-self: baseline;
+  padding: 17px 72px;
+  outline: none;
+  color: var(--c-white);
+  font-weight: 700;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: baseline;
 }
 </style>

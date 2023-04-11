@@ -6,7 +6,7 @@
   <the-portfolio></the-portfolio>
   <the-about></the-about>
   <the-order></the-order>
-  <my-dialog v-model:show="dialogVisible" @accepted="dialogVisible = true">
+  <my-dialog v-model:show="dialogVisible" @accepted="showModal">
     <post-form @create="fetchForm" />
   </my-dialog>
   <!-- <the-swiper></the-swiper> -->
@@ -50,6 +50,7 @@ export default {
   methods: {
     showModal() {
       this.dialogVisible = true;
+      document.body.classList.add('overflow')
     },
     showMessage(mess,status,flag,duration) {
       this.message(mess, status, flag, duration);
@@ -64,7 +65,7 @@ export default {
       formData.append("email", form.email);
 
       try {
-        const response = await fetch("/api/form/" + formName + "/", {
+        const response = await fetch("/api/form/" + formName, {
           method: "POST",
           body: formData,
         });
@@ -376,5 +377,8 @@ export default {
 .message__text-inner {
   display: flex;
   flex-direction: column-reverse;
+}
+.overflow{
+  overflow-y: hidden;
 }
 </style>

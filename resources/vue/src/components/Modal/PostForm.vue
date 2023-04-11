@@ -37,10 +37,8 @@
 import InputBox from "./../UI/InputBox.vue";
 import TheButton from "./../UI/TheButton.vue";
 import { vMaska } from "maska";
-import { messageMixin } from "./../mixins/messageMixin";
 export default {
   directives: { maska: vMaska },
-  mixins: [messageMixin],
   components: {
     InputBox,
     TheButton,
@@ -58,9 +56,6 @@ export default {
   methods: {
     fetchForm() {
       this.$emit("create", { data: this.form, form: this.formName });
-    },
-    showMessage() {
-      this.message({ title: "Отправлено", content: "Ваша форма успешно отправлена" }, "success", false, 3000);
     },
   },
 };
