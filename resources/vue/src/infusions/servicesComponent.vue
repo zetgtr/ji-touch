@@ -12,6 +12,7 @@
           :activeIndex="activeIndex"
           v-on:goToSlide="goToSlide"
           v-on:activeIndexChanged="activeIndexChanged"
+          :dataSlider="slider"
         ></the-swiper>
       </div>
       <div class="services__wrapper__text">
@@ -85,6 +86,9 @@ export default {
       slider: (state) => state.services.slider,
       slider_thumb: (state) => state.services.slider_thumb,
     }),
+    ...mapGetters({
+      SliderThumbWithId: "services/SliderThumbWithId"
+    })
   },
   watch: {},
 };
@@ -116,7 +120,7 @@ export default {
     padding: 60px 90px;
     overflow: hidden;
     &-title {
-      font-size: 50px;
+      font-size: 34px;
       font-weight: 700;
       margin-bottom: 7rem;
     }

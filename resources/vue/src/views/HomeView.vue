@@ -5,7 +5,8 @@
   <services-component></services-component>
   <!-- <the-first v-on:modal="showModal"></the-first> -->
   <!-- <the-services></the-services> -->
-  <the-portfolio></the-portfolio>
+  <!-- <the-portfolio></the-portfolio> -->
+  <portfolio-component></portfolio-component>
   <the-about></the-about>
   <the-order></the-order>
   <my-dialog v-model:show="dialogVisible" @accepted="showModal">
@@ -21,7 +22,7 @@ import TheHeader from "../components/TheHeader.vue";
 // import TheFirst from "../components/TheFirst.vue";
 import TheAnimateBg from "../components/TheAnimateBg.vue";
 // import TheServices from "../components/Services/TheServices.vue";
-import ThePortfolio from "../components/Portfolio/ThePortfolio.vue";
+// import ThePortfolio from "../components/Portfolio/ThePortfolio.vue";
 import TheAbout from "../components/About/TheAbout.vue";
 import TheOrder from "../components/Order/TheOrder.vue";
 import TheSwiper from "../components/Services/TheSwiper.vue";
@@ -33,6 +34,7 @@ import { messageMixin } from "./../components/mixins/messageMixin";
 
 import firstComponent from "./../infusions/firstComponent.vue";
 import servicesComponent from "./../infusions/servicesComponent.vue";
+import portfolioComponent from "./../infusions/portfolioComponent.vue";
 
 
 export default {
@@ -42,14 +44,15 @@ export default {
     // TheFirst,
     TheAnimateBg,
     // TheServices,
-    ThePortfolio,
+    // ThePortfolio,
     TheAbout,
     TheOrder,
     TheSwiper,
     MyDialog,
     PostForm,
     firstComponent,
-    servicesComponent
+    servicesComponent,
+    portfolioComponent
   },
   data() {
     return {
@@ -73,6 +76,7 @@ export default {
       formData.append("name", form.name);
       formData.append("tel", form.tel);
       formData.append("email", form.email);
+      formData.append("pages", form.pages);
 
       try {
         const response = await fetch("/api/form/" + formName, {

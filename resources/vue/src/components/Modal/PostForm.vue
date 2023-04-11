@@ -49,12 +49,14 @@ export default {
         name: "",
         tel: "",
         email: "",
+        pages: '',
       },
       formName: "zakaz",
     };
   },
   methods: {
     fetchForm() {
+      this.form.pages = window.location.href;
       this.$emit("create", { data: this.form, form: this.formName });
     },
   },

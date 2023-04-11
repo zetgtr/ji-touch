@@ -6,13 +6,12 @@
     ref="swiperRef"
     @swiper="onSwiper"
   >
-    <SwiperSlide v-for="(item, index) in slider" :key="index">
+    <SwiperSlide v-for="(item, index) in dataSlider" :key="index">
       <div class="services__item">
         <div class="row">
           <div class="col-5">
             <div class="services__left">
-              <h2 class="services__item-title">
-                {{ item }}
+              <h2 class="services__item-title"  v-html="$replaceNewLines(item.title)">
               </h2>
             </div>
             <div class="slider__btns-container">
@@ -44,7 +43,7 @@
               >
                 <span class="swiper-pagination-current">{{ index + 1 }}</span>
                 /
-                <span class="swiper-pagination-total">{{ items.length }}</span>
+                <span class="swiper-pagination-total">{{ dataSlider.length }}</span>
               </div>
               <div class="swiper-button-next" @click="goToSlide(index + 1)">
                 <svg
@@ -112,7 +111,7 @@
       </div>
     </SwiperSlide>
   </Swiper>
-  <!--    <div class="swiper-pagination"></div>-->
+  <!--<div class="swiper-pagination"></div>-->
   <div class="count" ref="count" :class="{ move: isMoving }">
     {{ countSwiper }}
   </div>
@@ -131,6 +130,12 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+  },
+  props: {
+    dataSlider: {
+      type: Array,
+      required: true
+    }
   },
   setup(props, ctx) {
     const store = useStore()
@@ -153,11 +158,9 @@ export default {
       swiper.value = instance;
     };
 
-    const items = ["Item 1", "Item 2"];
     onMounted(() => {
       countSwiper.value = 1;
-      const store = useStore()
-      const slider = store.state.services.slider;
+    
     });
 
     const goToSlide = (slideNumber) => {
@@ -168,7 +171,6 @@ export default {
       swiper,
       onSwiper,
       onSlideChange,
-      items,
       countSwiper,
       goToSlide,
       isMoving,

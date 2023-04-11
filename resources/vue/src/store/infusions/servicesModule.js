@@ -7,7 +7,7 @@ export const servicesModule = {
         slider_thumb: []
     }),
     getters: {
-        setSliderThumbWithId(state){
+        SliderThumbWithId(state){
             return [...state.slider_thumb].forEach((item, index) => {item.id = index ;});
         }
     },
@@ -30,7 +30,6 @@ export const servicesModule = {
                     params: {
                     }
                 });
-                console.log(response.data[0].slider[0]);
                 commit('setDesc', response.data[0].desc)
                 commit('setSlider', response.data[0].slider[0].slider_item)
                 commit('setSliderThumb', response.data[0].slider[0].slider_thumb)
