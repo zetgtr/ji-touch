@@ -213,13 +213,28 @@ class PanelBuilder extends QueryBuilder
         $panelValue = $panel['alias'];
         $templateContent = file_get_contents(base_path('template')."/templateModule.js");
         $newContent = str_replace('setPanel', $panelValue, $templateContent);
-        $newFileName = $panel['alias'].'Module.js';
+        $newFileName = $panelValue.'Module.js';
         $newFilePath = resource_path('vue/src/store/infusions').'/' . $newFileName;
         file_put_contents($newFilePath, $newContent);
         $templateContent = file_get_contents(base_path('template')."/templateComponent.vue");
         $newContent = str_replace('fetchInfo', $panelValue, $templateContent);
-        $newFileName = $panel['alias'].'Component.vue';
-        $newFilePath = resource_path('vue/infusions').'/' . $newFileName;
+        $newFileName = $panelValue.'Component.vue';
+        $newFilePath = resource_path('vue/src/infusions').'/' . $newFileName;
         file_put_contents($newFilePath, $newContent);
+    }
+
+    public function removePanel(Panel $panel)
+    {
+        $panelValue = $panel->alias;
+        $storeFile = resource_path('vue/src/store/infusions').'/' . $panelValue.'Module.js';
+        $componentFile = resource_path('vue/src/infusions').'/' . $panelValue.'Component.vue';
+        if(file_exists($storeFile))
+        {
+            unlink($storeFile);
+        }
+        if(file_exists($componentFile))
+        {
+            unlink($componentFile);
+        }
     }
 }

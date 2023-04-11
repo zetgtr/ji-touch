@@ -6,6 +6,7 @@ use App\Enums\PanelNavigationEnums;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Panel\CreateRequest;
 use App\Http\Requests\Admin\Panel\UpdateRequest;
+use App\Models\Admin\Panel\DataPanel;
 use App\Models\Admin\Panel\Panel;
 use App\QueryBuilder\Admin\Panel\PanelBuilder;
 use Illuminate\Http\Request;
@@ -83,9 +84,15 @@ class PanelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Panel $panel)
+    public function destroy(Panel $panel, PanelBuilder $panelBuilder)
     {
         try {
+            $panelBuilder->removePanel($panel);
+            $dataPanel = DataPanel::query()->where('id_panel',$panel->id)->first();
+            if(!empty($dataPanel->id))
+            {
+                $dataPanel->delete();
+            }
             $panel->delete();
             $response = ['status' => true,'message' => __('messages.admin.news.destroy.success')];
         } catch (Exception $exception)

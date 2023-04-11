@@ -1064,6 +1064,8 @@ function send_all(type) {
     //возможные ошибки
     //такая панель уже существует SELECT product.name , product.img ,category.seourl as 'url1' , product.seourl FROM `touch5vn4q_catalog_productions` product LEFT JOIN `touch5vn4q_catalog_categories` category ON product.parent = category.id WHERE category.parent = 3  LIMIT 8
     console.log(data2);
+      message(data2, 'true');
+
     data2 = data2.split(':');
     if (data2.length >= 0 && Number(data2[1]) > 0) id = Number(data2[1]);
     if (data2[0] == 'true') {
@@ -1071,7 +1073,6 @@ function send_all(type) {
       if (type) {
         window.location.href = $('.redir').attr('href');
       } else {
-        message('Успешно сохранено', 'true');
       }
     } else if (data2 == 'false') {
       $('#alias').css('box-shadow', '0px 0px 2px 1px red');
@@ -1106,8 +1107,8 @@ function message(mes, bg = 'white') {
   } else if (bg == 'true') {
     bg = '#4285f466';
   }
-  $('#messages').prepend('<div class="message"><div style="background-color:' + bg + ';">' + mes + '!</div></div>');
-  var this2 = $('#messages>.message:nth-child(1)');
+  $('#message').prepend('<div class="message"><div style="background-color:' + bg + ';">' + mes + '!</div></div>');
+  var this2 = $('#message>.message:nth-child(1)');
   $(this2).animate({
     height: '50px'
   }, 100).animate({
