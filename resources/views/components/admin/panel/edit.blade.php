@@ -35,10 +35,11 @@
         </div>
     </div>
 </div>
-
+<input type="hidden" id="exit" value="{{ route("admin.panel.index") }}">
 <input type="hidden" id="form_url" value="{{ route('admin.panel.update', ['panel'=>$panel->id]) }}">
 <input type="hidden" id="select_table" value="{{ route('admin.panel-select') }}">
 <input type="hidden" name="_method" id="method" value="PUT">
 @vite('resources/sass/admin/panel.scss')
-<script> $ar=`{!! $panel->data !!}`; id = 'none';</script>
+<script> $ar=`{!! $panel->data !!}`; id = {{ $panel->id }};</script>
+<script src="{{ asset('assets/js/admin/lfm.js') }}"></script>
 <script type='text/javascript' src='{{ asset('assets/js/admin/panel/panel_editor.js') }}'></script>

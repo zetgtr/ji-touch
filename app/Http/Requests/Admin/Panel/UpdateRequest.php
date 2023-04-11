@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin\Panel;
 
+use App\Models\Admin\Panel\Panel;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
@@ -22,9 +24,10 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' => ['required'],
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'alias' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'alias' => ['required', Rule::unique(Panel::class)->ignore($this->id, 'id')],
             'data' => 'nullable|json',
             'service' => 'required|boolean',
         ];

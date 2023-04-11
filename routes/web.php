@@ -65,6 +65,10 @@ Route::middleware('auth')->group(function () {
             Route::get('packages/set-data', [PackagesController::class, 'setData'])->name('set-data');
         });
 
+        Route::group(['prefix' => 'panel', 'as' => 'panel.'], static function() {
+            Route::get('publish/{panel}',[PanelController::class,'publish'])->name('publish');
+        });
+
         Route::put('user/password',[AdminUserController::class, 'passwordUpdate'])->name('password-update');
 
         try {

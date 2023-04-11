@@ -85,7 +85,7 @@
 {{--                                </ol>--}}
 {{--                            </div>--}}
                         </div>
-                        <div class="message"></div>
+                        <div id="messages"></div>
                         @yield('content')
                     </div>
                 </div>

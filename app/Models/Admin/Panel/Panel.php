@@ -16,5 +16,6 @@ class Panel extends Model
         'type',
         'data',
         'service',
+        'publish'
     ];
 }

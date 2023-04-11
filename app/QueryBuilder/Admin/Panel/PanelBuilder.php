@@ -195,7 +195,7 @@ class PanelBuilder extends QueryBuilder
 
     public function getAlias(string $alias)
     {
-        $datas = $this->model->where('alias',$alias)->get();
+        $datas = $this->model->where('alias',$alias)->where('publish',true)->get();
         foreach ($datas as $data)
             $data->data = json_decode($data->data);
 

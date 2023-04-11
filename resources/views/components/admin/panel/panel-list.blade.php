@@ -22,6 +22,15 @@
                         <a href="{{ route('admin.panel.destroy', ['panel'=>$panel]) }}" class="btn btn-danger delete">
                             <i class="far fa-trash-alt"></i>
                         </a>
+                        @if($panel->publish)
+                            <a href="{{ route('admin.panel.publish', ['panel'=>$panel]) }}" class="btn btn-success show-publish">
+                                <i class="far fa-eye"></i>
+                            </a>
+                        @else
+                            <a href="{{ route('admin.panel.publish', ['panel'=>$panel]) }}" class="btn btn-default show-publish">
+                                <i class="far fa-eye-slash"></i>
+                            </a>
+                        @endif
                     </td>
                 </tr>
             @endforeach
@@ -30,6 +39,7 @@
     </div>
 </div>
 
+<script src="{{ asset('assets/js/admin/show.js') }}"></script>
 <script src="{{ asset('assets/js/admin/delete.js')}}"></script>
 <script src="{{ asset('assets/js/table-data.js')}}"></script>
 

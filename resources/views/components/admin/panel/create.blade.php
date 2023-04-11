@@ -36,7 +36,7 @@
         </div>
     </div>
 </div>
-<input type="hidden" id="noImage" value="{{ asset("assets/images/panel/noImg.jpg") }}">
+<input type="hidden" id="exit" value="{{ route("admin.panel.index") }}">
 <input type="hidden" id="form_url" value="{{ route('admin.panel.store') }}">
 <input type="hidden" id="select_table" value="{{ route('admin.panel-select') }}">
 <input type="hidden" name="_method" id="method" value="POST">

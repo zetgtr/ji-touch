@@ -1047,8 +1047,6 @@ function transfer_row(this2) {
 }
 
 function send_all(type) {
-
-
   data = {
     '_method' : $('#method').val(),
     'title': $('#title').val(),
@@ -1061,25 +1059,21 @@ function send_all(type) {
   }
 
   $.post($('#form_url').val(), data, function (data2) {
-    //возможные ошибки
-    //такая панель уже существует SELECT product.name , product.img ,category.seourl as 'url1' , product.seourl FROM `touch5vn4q_catalog_productions` product LEFT JOIN `touch5vn4q_catalog_categories` category ON product.parent = category.id WHERE category.parent = 3  LIMIT 8
-    console.log(data2);
-      message(data2, 'true');
-
-    data2 = data2.split(':');
-    if (data2.length >= 0 && Number(data2[1]) > 0) id = Number(data2[1]);
-    if (data2[0] == 'true') {
-      $('.detached').remove();
-      if (type) {
-        window.location.href = $('.redir').attr('href');
+      if(data2.status)
+      {
+          message(data2.message, 'true');
       } else {
+          message(data2.message, 'false');
       }
-    } else if (data2 == 'false') {
-      $('#alias').css('box-shadow', '0px 0px 2px 1px red');
-      message('Такая панель уже существует! Измените alias панели', 'false');
-    } else {
-
-    }
+      if(type){
+          window.location.href = $('#exit').val()
+      }else {
+          window.location.href = "/admin/panel/"+data2.id+"/edit";
+      }
+  }).catch((error)=>{
+      for(key in error.responseJSON.errors){
+          message(error.responseJSON.errors[key], 'false');
+      }
   })
 }
 
@@ -1102,17 +1096,18 @@ $('body').keydown(function (eventObject) {
 });
 
 function message(mes, bg = 'white') {
+    console.log(mes)
   if (bg == 'false') {
     bg = '#ea3f3061';
   } else if (bg == 'true') {
     bg = '#4285f466';
   }
-  $('#message').prepend('<div class="message"><div style="background-color:' + bg + ';">' + mes + '!</div></div>');
-  var this2 = $('#message>.message:nth-child(1)');
+  $('#messages').prepend('<div class="message"><div style="background-color:' + bg + ';">' + mes + '!</div></div>');
+  var this2 = $('#messages>.message:nth-child(1)');
   $(this2).animate({
     height: '50px'
   }, 100).animate({
-    width: '300px',
+    minWidth: '300px',
     opacity: '1'
   }, 500, function () {
     setTimeout(function () {

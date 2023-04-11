@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('panels', function (Blueprint $table) {
             $table->id();
             $table->string("title");
-            $table->text("description");
+            $table->text("description")->nullable();
             $table->string("alias");
             $table->json("data");
             $table->boolean("service");
+            $table->boolean("publish")->default(true);
             $table->timestamps();
         });
     }

@@ -47,9 +47,9 @@ class PanelController extends Controller
 
         $panel = Panel::create($panel);
         if ($panel) {
-            return 'Панель успешно сохранена';
+            return ['message'=>'Панель успешно сохранена','status'=>true,'id'=>$panel->id];
         }
-        return 'Ошибка сохранения панели';
+        return ['message'=>'Ошибка сохранения панели','status'=>false];
     }
 
     /**
@@ -58,6 +58,13 @@ class PanelController extends Controller
     public function show(string $alias, PanelBuilder $panelBuilder)
     {
         return $panelBuilder->getAlias($alias);
+    }
+
+    public function publish(Panel $panel)
+    {
+        $panel->publish = !$panel->publish;
+        if ($panel->save()) return ['status' => true, 'publish' => $panel->publish];
+        else  return ['status' => false];
     }
 
     /**
@@ -75,10 +82,10 @@ class PanelController extends Controller
     {
         $panel = $panel->fill($request->validated());
         if ($panel->save()) {
-            return 'Панель успешно обновлена';
+            return ['message'=>'Панель успешно обновлена','status'=>true,'id'=>$panel->id];
         }
 
-        return 'Ошибка обновления панели';
+        return ['message'=>'Ошибка обновления панели','status'=>false];
     }
 
     /**
