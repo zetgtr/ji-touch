@@ -15,7 +15,8 @@ class FormController extends Controller
      */
     public function __invoke(Request $request, string $name, FeedBackBuilder $feedBackBuilder)
     {
-        $feedBackBuilder->setForm($request->all());
+        // $feedBackBuilder->setForm($request->all());
+        print_r($_FILES);
         if($name == "zakaz")
         {
             Mail::to('recipient@example.com')->send(new ZakazMail($request->all()));

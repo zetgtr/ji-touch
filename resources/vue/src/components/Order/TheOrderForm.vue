@@ -129,16 +129,16 @@ export default {
       let pages = window.location.href;
       let formName = data.form;
       const formData = new FormData();
-      for (let item in data.data) {
-        if ((item = "file")) {
-          for (let i = 0; i < data.data[item].length; i++) {
-            console.group("ss");
-            console.log(data.data[item][i]);
-            console.groupEnd();
-            formData.append("file[]", data.data[item][i]);
-          }
-        }
-        formData.append(item, data.data[item]);
+      formData.append("name", data.data.name);
+      formData.append("tel", data.data.tel);
+      formData.append("company", data.data.company);
+      formData.append("email", data.data.email);
+      formData.append("price", data.data.price);
+      formData.append("where", data.data.where);
+      formData.append("desc", data.data.desc);
+      
+      for (let i = 0; i < data.data.file.length; i++) {
+        formData.append("file[]", data.data.file[i]);
       }
       formData.append("pages", pages);
       try {
