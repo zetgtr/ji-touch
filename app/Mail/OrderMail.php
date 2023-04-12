@@ -4,31 +4,27 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
+use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Mail\Mailables\Headers;
 use Illuminate\Queue\SerializesModels;
 
-class ZakazMail extends Mailable
+class OrderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * The order instance.
-     *
-     * @var array
-     */
-    public $data;
+    private array $data;
 
     /**
      * Create a new message instance.
      *
-     * @param  array  $data
+     * @param array $data
      * @return void
      */
-    public function __construct($data)
+    public function __construct(array $data)
     {
         $this->data = $data;
     }
@@ -43,7 +39,7 @@ class ZakazMail extends Mailable
             replyTo: [
                 new Address(env('MAIL_FROM_REPLY'), env('MAIL_FROM_NAME')),
             ],
-            subject: 'Обратная связь с сайта',
+            subject: 'Заявка с сайта',
         );
     }
 
@@ -53,7 +49,10 @@ class ZakazMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.test-mail'
+            view: 'emails.order-mail',
+            with: [
+                'data' => $this->data,
+            ],
         );
     }
 
@@ -64,6 +63,16 @@ class ZakazMail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        $attachment = [];
+        $files = $_FILES['file']['tmp_name'] ?? null;
+        if (!empty($files)) {
+            foreach ($_FILES['file']['tmp_name'] as $key=>$file) {
+                $uploadedFile = new UploadedFile($file, basename($file));
+                if ($uploadedFile->isValid()) {
+                    $attachment[] = Attachment::fromPath($file)->as($_FILES['file']['name'][$key]);
+                }
+            }
+        }
+        return $attachment;
     }
 }
