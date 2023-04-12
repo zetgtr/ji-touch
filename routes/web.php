@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\Navigation\NavigationController;
 use App\Http\Controllers\Admin\News\CategoryController as NewsCategoryController;
 use App\Http\Controllers\Admin\News\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\News\SettingsController as NewsSettingsController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Admin\HeaderAndFooter\HeaderAndFooter;
 use App\Models\Admin\Menu;
+use App\Models\Admin\Navigation\NavigationList;
 use App\Utils\Lfm;
 use http\Client\Response;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +61,7 @@ Route::middleware('auth')->group(function () {
 //        });
 //
         Route::resource('packages_settings', PackagesSettings::class);
+        Route::resource('navigation', NavigationController::class);
 
         Route::group(['prefix' => 'packages', 'as' => 'packages.'], static function() {
             Route::put('packages/set', [PackagesController::class, 'store'])->name('set');

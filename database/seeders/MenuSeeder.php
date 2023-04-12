@@ -23,7 +23,7 @@ class MenuSeeder extends Seeder
             ['id'=>3,'name'=>'Настройки','position'=>'right','logo'=>null,'controller'=>null,'url'=>null,'parent'=>null],
             ['id'=>4,'name'=>'Настройки меню','position'=>'right','logo'=>'fe fe-settings','controller'=>'Admin\SettingsMenuController','url'=>'menu','parent'=>3],
             ['id'=>5,'name'=>'Сайт','position'=>'left','logo'=>null,'controller'=>null,'url'=>null,'parent'=>null],
-            ['id'=>6,'name'=>'Создание страниц','position'=>'left','logo'=>'far fa-tools','controller'=>'Admin\Page\PageController','url'=>'page-create','parent'=>5],
+            ['id'=>6,'name'=>'Создание страниц','position'=>'left','logo'=>'fal fa-tools','controller'=>'Admin\Page\PageController','url'=>'page-create','parent'=>5],
             ['id'=>7,'name'=>'Главные настройки','position'=>'right','logo'=>'fad fa-cogs','controller'=>'Admin\Settings\SettingsController','url'=>'settings','parent'=>3],
             ['id'=>8,'name'=>'Пользователи','position'=>'right','logo'=>null,'controller'=>null,'url'=>null,'parent'=>null],
             ['id'=>9,'name'=>'Роли','position'=>'right','logo'=>'fad fa-user-tag','controller'=>'Admin\RolesController','url'=>'roles','parent'=>8],
@@ -33,6 +33,7 @@ class MenuSeeder extends Seeder
             ['id'=>13,'name'=>'Robot.txt','position'=>'right','logo'=>'fad fa-robot','controller'=>'Admin\Robot\RobotController','url'=>'robot','parent'=>3],
             ['id'=>14,'name'=>'Пакеты','position'=>'right','logo'=>'fad fa-box-open','controller'=>'Admin\Packages\PackagesController','url'=>'packages','parent'=>3],
             ['id'=>15,'name'=>'Обратная связь','position'=>'left','logo'=>'fal fa-comments','controller'=>'Admin\FeedBack\FeedBackController','url'=>'feedback','parent'=>5],
+            ['id'=>16,'name'=>'Навигация','position'=>'left','logo'=>'fal fa-map-marked-alt','controller'=>'Admin\Navigation\NavigationListController','url'=>'navigation_list','parent'=>5],
         ];
     }
 }
