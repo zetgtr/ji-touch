@@ -3,30 +3,30 @@
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
-  components: {
-  },
+  components: {},
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
-    ...mapMutations({
-    }),
+    ...mapMutations({}),
     ...mapActions({
-      fetchInfo: 'fetchInfo'
+      // fetchInfo: 'название модуля + / + fetchInfo'
+      fetchInfo: "fetchInfo",
     }),
   },
   mounted() {
     this.fetchInfo();
   },
   computed: {
-    // ...mapState({
-    //     row: state => state.test.row,
-    // })
+    // название aliasa: (state) => state.order.название aliasa,
+    ...mapState({
+      title: (state) => state.order.title,
+      desc: (state) => state.order.desc,
+      phone: (state) => state.contact.phone,
+      email: (state) => state.contact.email,
+    }),
   },
-  watch: {
-
-  },
+  watch: {},
 };
 </script>
 

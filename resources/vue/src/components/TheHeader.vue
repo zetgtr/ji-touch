@@ -69,7 +69,7 @@ export default {
         {
           id: 4,
           title: "Контакты",
-          link: "/education/",
+          link: "/contact/",
         },
       ],
       classes: "nav__list",

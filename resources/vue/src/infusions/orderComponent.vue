@@ -51,6 +51,7 @@ export default {
       desc: (state) => state.order.desc,
       phone: (state) => state.contact.phone,
       email: (state) => state.contact.email,
+      
     }),
     ...mapGetters({
       row: "order/row",
@@ -72,5 +73,6 @@ export default {
     position: relative;
     background: #fff;
   }
+  
 }
 </style>

@@ -12,6 +12,12 @@
           data-input="name"
         />
         <InputBox
+          :value="form.company"
+          v-on:dich="form.company = $event"
+          :class="{ 'has-value': form.company !== '' }"
+          label="Компания"
+        />
+        <InputBox
           :value="form.tel"
           v-on:dich="form.tel = $event"
           :class="{ 'has-value': form.tel !== '' }"
@@ -22,12 +28,7 @@
           v-on:click="clearError($event, 'tel')"
           data-input="tel"
         />
-        <InputBox
-          :value="form.company"
-          v-on:dich="form.company = $event"
-          :class="{ 'has-value': form.company !== '' }"
-          label="Компания"
-        />
+        
         <InputBox
           :value="form.email"
           v-on:dich="form.email = $event"
@@ -37,7 +38,9 @@
           v-on:click="clearError($event, 'email')"
           data-input="email"
         />
-        <BudgetDropdown
+        <slider-form :value="form.price"  @update:budget="updateBudget">
+        </slider-form>
+        <!-- <BudgetDropdown
           :options="[1000, 5000, 10000]"
           v-model="form.price"
           :placeholder="'Бюджет проекта'"
@@ -46,7 +49,7 @@
           :options="[1000, 5000, 10000]"
           v-model="form.where"
           :placeholder="'Откуда узнали о нас'"
-        />
+        /> -->
         <InputTextareaVue
           :value="form.desc"
           v-on:textarea="form.desc = $event"
@@ -94,6 +97,7 @@ import TheButton from "./../UI/TheButton.vue";
 import BudgetDropdown from "./../UI/BudgetDropdown.vue";
 import InputBox from "./../UI/InputBox.vue";
 import InputTextareaVue from "../UI/InputTextarea.vue";
+import SliderForm from "../UI/SliderForm.vue";
 import FileUploader from "../UI/FileUploader.vue";
 import { vMaska } from "maska";
 import { messageMixin } from "./../mixins/messageMixin";
@@ -106,6 +110,7 @@ export default {
     InputBox,
     InputTextareaVue,
     FileUploader,
+    SliderForm,
   },
   mixins: [messageMixin],
   data() {
@@ -115,7 +120,8 @@ export default {
         tel: "",
         company: "",
         email: "",
-        price: "",
+        price: [50000, 200000],
+        budget: '',
         where: "",
         desc: "",
         file: null,
@@ -125,6 +131,10 @@ export default {
     };
   },
   methods: {
+    updateBudget(value) {
+      console.log(value);
+      this.form.price = value;
+    },
     async fetchForm(data) {
       let pages = window.location.href;
       let formName = data.form;
