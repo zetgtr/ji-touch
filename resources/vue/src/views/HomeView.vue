@@ -5,7 +5,7 @@
   <services-component></services-component>
   <portfolio-component></portfolio-component>
   <company-component></company-component>
-  <the-order></the-order>
+  <order-component></order-component>
   <my-dialog v-model:show="dialogVisible" @accepted="showModal">
     <post-form @create="fetchForm" />
   </my-dialog>
@@ -17,7 +17,6 @@
 // @ is an alias to /src
 import TheHeader from "../components/TheHeader.vue";
 import TheAnimateBg from "../components/TheAnimateBg.vue";
-import TheOrder from "../components/Order/TheOrder.vue";
 import TheSwiper from "../components/Services/TheSwiper.vue";
 import MyDialog from "../components/UI/MyDialog.vue";
 import PostForm from "../components/Modal/PostForm.vue";
@@ -29,25 +28,22 @@ import firstComponent from "./../infusions/firstComponent.vue";
 import servicesComponent from "./../infusions/servicesComponent.vue";
 import portfolioComponent from "./../infusions/portfolioComponent.vue";
 import companyComponent from "./../infusions/companyComponent.vue";
+import orderComponent from "./../infusions/orderComponent.vue";
 
 
 export default {
   name: "HomeView",
   components: {
     TheHeader,
-    // TheFirst,
     TheAnimateBg,
-    // TheServices,
-    // ThePortfolio,
-    // TheAbout,
-    TheOrder,
     TheSwiper,
     MyDialog,
     PostForm,
     firstComponent,
     servicesComponent,
     portfolioComponent,
-    companyComponent
+    companyComponent,
+    orderComponent
   },
   data() {
     return {

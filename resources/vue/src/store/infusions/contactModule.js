@@ -6,7 +6,12 @@ export const contactModule = {
         email: "",
     }),
     getters: {
-
+        row: state => {
+            return Object.keys(state).reduce((obj, key) => {
+                obj[key] = state[key];
+                return obj;
+            }, {});
+        },
     },
     mutations: {
         setPhone(state, phone){

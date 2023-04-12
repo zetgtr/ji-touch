@@ -5,9 +5,9 @@
       {{ row.desc }}
     </p>
     <div class="order-contacts">
-      <a class="order-contacts-tel" href="{{row.tel}}">{{ row.tel }}</a>
-      <a class="order-contacts-mail" href="mailto:{{row.mail}}">{{
-        row.mail
+      <a class="order-contacts-tel" href="{{contact.phone}}">{{ contact.phone }}</a>
+      <a class="order-contacts-mail" href="mailto:{{contact.email}}">{{
+        contact.email
       }}</a>
     </div>
   </div>
@@ -20,6 +20,10 @@ export default {
       type: Object,
       required: true,
     },
+    contact:{
+      type: Object,
+      required: true,
+    }
   },
 };
 </script>

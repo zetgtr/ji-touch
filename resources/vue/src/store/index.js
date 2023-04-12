@@ -4,6 +4,7 @@ import {servicesModule} from "./infusions/servicesModule";
 import {portfolioModule} from "./infusions/portfolioModule";
 import {companyModule} from "./infusions/companyModule";
 import {contactModule} from "./infusions/contactModule";
+import {orderModule} from "./infusions/orderModule";
 
 export default createStore({
     state: {
@@ -15,5 +16,6 @@ export default createStore({
         portfolio: portfolioModule,
         company: companyModule,
         contact: contactModule,
+        order: orderModule,
     }
 })
