@@ -72,14 +72,9 @@
           </div>
           <div class="col-7">
             <div class="services__item-content">
-              <h4 class="services__item-subtitle">
-                Делаем присутствие компаний<br />
-                в интернете эффектным
+              <h4 class="services__item-subtitle" v-html="$replaceNewLines(item.subtitle)">
               </h4>
-              <p>
-                Разработка проектов любой сложности<br />
-                от простых сайтов-визиток и промо-страниц<br />
-                до сложного портала.
+              <p v-html="$replaceNewLines(item.desc)">
               </p>
               <a class="more" href=""
                 ><span>Узнать больше</span>

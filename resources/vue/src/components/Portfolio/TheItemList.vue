@@ -14,7 +14,7 @@
       <img :src="item.img" alt="" />
       <div class="contentBx">
         <div>
-          <img src="../../assets/img/tesat.png" alt="" />
+          <img :src="item.bg_img" alt="" />
         </div>
       </div>
     </a>
@@ -35,7 +35,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import VanillaTilt from "vanilla-tilt";
-import { watch } from "vue";
+import { onMounted, nextTick, ref } from "vue";
+
 export default {
   props: {
     items: {
@@ -43,45 +44,45 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      isMounted: false,
-    };
-  },
-  mounted() {
-    this.isMounted = true;
-  },
+  setup(props) {
+    const tiltableItem = ref(null);
+    const mobile = ref(null);
 
-  watch: {
-    isMounted(val) {
-      if (val) {
-        console.log(123);
-        // Ваш код, который должен быть выполнен после монтирования компонента
-        gsap.registerPlugin(ScrollTrigger);
-        const array = this.$refs.mobile;
-        gsap.utils.toArray(array).forEach((el) => {
-          let tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: el,
-              start: "top 60%",
-              end: "top 20%",
-              scrub: 1,
-            },
-          });
-          tl.to(el, { y: 40, duration: 2 });
-        });
+    onMounted(async () => {
+      await new Promise((resolve) => {
+        const interval = setInterval(() => {
+          if (tiltableItem.value && mobile.value) {
+            clearInterval(interval);
+            resolve();
+          }
+        }, 100);
+      });
 
-        const elements = this.$refs.tiltableItem;
-        console.log(elements);
-        Array.prototype.forEach.call(elements, function (el) {
-          VanillaTilt.init(el, {
-            max: 10,
-            speed: 400,
-            // Добавьте другие параметры настройки здесь, если нужно
-          });
+      gsap.registerPlugin(ScrollTrigger);
+      const array = mobile.value;
+      gsap.utils.toArray(array).forEach((el) => {
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: el,
+            start: "top 60%",
+            end: "top 20%",
+            scrub: 1,
+          },
         });
-      }
-    },
+        tl.to(el, { y: 40, duration: 2 });
+      });
+
+      const elements = tiltableItem.value;
+      Array.prototype.forEach.call(elements, function (el) {
+        VanillaTilt.init(el, {
+          max: 10,
+          speed: 400,
+          // Добавьте другие параметры настройки здесь, если нужно
+        });
+      });
+    });
+
+    return { tiltableItem, mobile };
   },
 };
 </script>

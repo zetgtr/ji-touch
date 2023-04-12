@@ -18,7 +18,7 @@
       <div class="services__wrapper__text">
         <div
           class="thumb__item"
-          v-for="(item, index) in slider_thumb"
+          v-for="(item, index) in SliderThumbWithId"
           :key="item.id"
           :class="{ active: activeIndex === item.id }"
         >

@@ -9,7 +9,7 @@
           label="Ваше имя"
           id="name"
           v-on:click="clearError($event, 'name')"
-           data-input="name"
+          data-input="name"
         />
         <InputBox
           :value="form.tel"
@@ -20,7 +20,7 @@
           mask="+1 ### ###-##-##"
           id="tel"
           v-on:click="clearError($event, 'tel')"
-           data-input="tel"
+          data-input="tel"
         />
         <InputBox
           :value="form.company"
@@ -36,7 +36,6 @@
           id="email"
           v-on:click="clearError($event, 'email')"
           data-input="email"
-          
         />
         <BudgetDropdown
           :options="[1000, 5000, 10000]"
@@ -90,6 +89,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import TheButton from "./../UI/TheButton.vue";
 import BudgetDropdown from "./../UI/BudgetDropdown.vue";
 import InputBox from "./../UI/InputBox.vue";
@@ -120,10 +120,53 @@ export default {
         desc: "",
         file: null,
       },
+      formName: "orderForm",
       filesToUploadShow: false,
     };
   },
   methods: {
+    async fetchForm(data) {
+      let pages = window.location.href;
+      let formName = data.form;
+      const formData = new FormData();
+      for (let item in data.data) {
+        if ((item = "file")) {
+          for (let i = 0; i < data.data[item].length; i++) {
+            console.group("ss");
+            console.log(data.data[item][i]);
+            console.groupEnd();
+            formData.append("file[]", data.data[item][i]);
+          }
+        }
+        formData.append(item, data.data[item]);
+      }
+      formData.append("pages", pages);
+      try {
+        const response = await axios.post("/api/form/" + formName, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        const responseData = await response.json();
+        console.log(responseData);
+        this.showMessage(
+          { title: "Отправлено", content: "Ваша форма успешно отправлена" },
+          "success",
+          false,
+          3000
+        );
+        this.dialogVisible = false;
+      } catch (error) {
+        console.error(error);
+        this.showMessage(
+          { title: "Ошибка", content: "Ваша форма не отправлена" },
+          "error",
+          true,
+          3000
+        );
+      }
+    },
     onSubmit(e) {
       if (!this.form.name || !this.form.email || !this.form.tel) {
         console.log(this.name);
@@ -133,15 +176,15 @@ export default {
           false,
           3000
         );
-        const requiredInputs = document.querySelectorAll('[data-input]');
+        const requiredInputs = document.querySelectorAll("[data-input]");
         console.log(requiredInputs);
-        requiredInputs.forEach(el => {
-          if (!el.querySelector('input').value) {
+        requiredInputs.forEach((el) => {
+          if (!el.querySelector("input").value) {
             el.classList.add("input--error");
           }
-        })
+        });
       } else {
-        console.log('zaza');
+        this.fetchForm({ data: this.form, form: this.formName });
       }
       // post the form to the server
     },

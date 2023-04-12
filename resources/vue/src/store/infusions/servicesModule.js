@@ -7,9 +7,11 @@ export const servicesModule = {
         slider_thumb: []
     }),
     getters: {
-        SliderThumbWithId(state){
-            return [...state.slider_thumb].forEach((item, index) => {item.id = index ;});
-        }
+        SliderThumbWithId(state) {
+            return state.slider_thumb.map((item, index) => {
+              return { ...item, id: index };
+            });
+          }
     },
     mutations: {
         setDesc(state, desc){

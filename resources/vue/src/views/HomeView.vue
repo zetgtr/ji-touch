@@ -3,11 +3,8 @@
   <TheAnimateBg></TheAnimateBg>
   <first-component v-on:modal="showModal"></first-component>
   <services-component></services-component>
-  <!-- <the-first v-on:modal="showModal"></the-first> -->
-  <!-- <the-services></the-services> -->
-  <!-- <the-portfolio></the-portfolio> -->
   <portfolio-component></portfolio-component>
-  <the-about></the-about>
+  <company-component></company-component>
   <the-order></the-order>
   <my-dialog v-model:show="dialogVisible" @accepted="showModal">
     <post-form @create="fetchForm" />
@@ -19,11 +16,7 @@
 <script>
 // @ is an alias to /src
 import TheHeader from "../components/TheHeader.vue";
-// import TheFirst from "../components/TheFirst.vue";
 import TheAnimateBg from "../components/TheAnimateBg.vue";
-// import TheServices from "../components/Services/TheServices.vue";
-// import ThePortfolio from "../components/Portfolio/ThePortfolio.vue";
-import TheAbout from "../components/About/TheAbout.vue";
 import TheOrder from "../components/Order/TheOrder.vue";
 import TheSwiper from "../components/Services/TheSwiper.vue";
 import MyDialog from "../components/UI/MyDialog.vue";
@@ -35,6 +28,7 @@ import { messageMixin } from "./../components/mixins/messageMixin";
 import firstComponent from "./../infusions/firstComponent.vue";
 import servicesComponent from "./../infusions/servicesComponent.vue";
 import portfolioComponent from "./../infusions/portfolioComponent.vue";
+import companyComponent from "./../infusions/companyComponent.vue";
 
 
 export default {
@@ -45,14 +39,15 @@ export default {
     TheAnimateBg,
     // TheServices,
     // ThePortfolio,
-    TheAbout,
+    // TheAbout,
     TheOrder,
     TheSwiper,
     MyDialog,
     PostForm,
     firstComponent,
     servicesComponent,
-    portfolioComponent
+    portfolioComponent,
+    companyComponent
   },
   data() {
     return {

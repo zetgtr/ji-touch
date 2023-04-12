@@ -80,7 +80,9 @@ export default {
       setBtn: (state) => state.portfolio.setBtn,
     }),
   },
-  watch: {},
+  watch: {
+    
+  },
 };
 </script>
 

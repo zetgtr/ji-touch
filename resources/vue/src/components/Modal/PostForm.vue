@@ -51,7 +51,7 @@ export default {
         email: "",
         pages: '',
       },
-      formName: "zakaz",
+      formName: "feedback",
     };
   },
   methods: {

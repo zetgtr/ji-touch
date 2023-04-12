@@ -1,42 +1,46 @@
  import axios from "axios";
 
-export const portfolioModule = {
+export const companyModule = {
     state: () => ({
-        title: '',
-        more: '',
-        items: [],
-        btn: '',
+        subtitle: '',
+        title: "",
+        text: "",
+        desc: "",
+        more: ""
     }),
     getters: {
-       
+
     },
     mutations: {
+        setSubtitle(state, subtitle){
+            state.subtitle = subtitle
+        },
         setTitle(state, title){
             state.title = title
         },
+        setText(state, text){
+            state.text = text
+        },
+        setDesc(state, desc){
+            state.desc = desc
+        },
         setMore(state, more){
             state.more = more
-        },
-        setItems(state, items){
-            state.items = items
-        },
-        setBtn(state, btn){
-            state.btn = btn
         },
     },
     actions: {
         async fetchInfo({state, commit}, argument) {
             try {
-                const response = await axios.get('/api/panel_data/portfolio', {
+                const response = await axios.get('/api/panel_data/company', {
                     data: argument,
                     params: {
                     }
                 });
-                console.log(response.data);
+                commit('setSubtitle', response.data[0].subtitle)
                 commit('setTitle', response.data[0].title)
+                commit('setText', response.data[0].text)
+                commit('setDesc', response.data[0].desc)
                 commit('setMore', response.data[0].more)
-                commit('setItems', response.data[0].items)
-                commit('setBtn', response.data[0].btn)
             } catch (e) {
                 console.log(e)
             } finally {
