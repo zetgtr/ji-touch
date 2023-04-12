@@ -145,19 +145,26 @@ export default {
 
       formData.append("pages", pages);
       try {
-        const response = await axios.post("/api/form/" + formName, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-
-        const responseData = await response.json();
-        this.showMessage(
-          { title: "Отправлено", content: "Ваша форма успешно отправлена" },
-          "success",
-          false,
-          3000
-        );
+        const response = await axios
+          .post("/api/form/" + formName, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          .then((res) => {
+            console.log(res);
+            if (res.data.status) {
+              this.showMessage(
+                {
+                  title: "Отправлено",
+                  content: "Ваша форма успешно отправлена",
+                },
+                "success",
+                false,
+                3000
+              );
+            }
+          });
       } catch (error) {
         console.error(error);
         this.showMessage(
