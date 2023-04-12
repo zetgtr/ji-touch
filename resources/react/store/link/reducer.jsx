@@ -9,7 +9,7 @@ export const linkReducer = (state = initialState, action) => {
         case SET_LINK:
             return {
                 ...state,
-                link: ,
+                link: action.payload,
             };
         default:
             return state;

@@ -1,4 +1,4 @@
-export const api = (url, fun) => {
+export const apiGet = (url, fun) => {
     axios
         .get(url)
         .then((res) => fun(res))
