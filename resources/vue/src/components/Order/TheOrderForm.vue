@@ -136,10 +136,13 @@ export default {
       formData.append("price", data.data.price);
       formData.append("where", data.data.where);
       formData.append("desc", data.data.desc);
-      
-      for (let i = 0; i < data.data.file.length; i++) {
-        formData.append("file[]", data.data.file[i]);
+
+      if (data.data.file?.length) {
+        for (let i = 0; i < data.data.file.length; i++) {
+          formData.append("file[]", data.data.file[i]);
+        }
       }
+
       formData.append("pages", pages);
       try {
         const response = await axios.post("/api/form/" + formName, formData, {
@@ -149,14 +152,12 @@ export default {
         });
 
         const responseData = await response.json();
-        console.log(responseData);
         this.showMessage(
           { title: "Отправлено", content: "Ваша форма успешно отправлена" },
           "success",
           false,
           3000
         );
-        this.dialogVisible = false;
       } catch (error) {
         console.error(error);
         this.showMessage(
