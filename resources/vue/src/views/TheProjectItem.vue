@@ -38,8 +38,6 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-  .content{
-    margin-top: 155px;
-  }
+
 </style>
 

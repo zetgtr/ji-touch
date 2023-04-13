@@ -3,7 +3,7 @@
   <TheAnimateBg></TheAnimateBg>
   <first-component v-on:modal="showModal"></first-component>
   <services-component></services-component>
-  <portfolio-component></portfolio-component>
+  <portfolio-component :page='"home"'></portfolio-component>
   <company-component></company-component>
   <order-component></order-component>
   <my-dialog v-model:show="dialogVisible" @accepted="showModal">
@@ -11,6 +11,7 @@
   </my-dialog>
   <!-- <the-swiper></the-swiper> -->
   <div id="messages"></div>
+  <the-footer-vue></the-footer-vue>
 </template>
 
 <script>
@@ -29,7 +30,7 @@ import servicesComponent from "./../infusions/servicesComponent.vue";
 import portfolioComponent from "./../infusions/portfolioComponent.vue";
 import companyComponent from "./../infusions/companyComponent.vue";
 import orderComponent from "./../infusions/orderComponent.vue";
-
+import TheFooterVue from '../components/TheFooter.vue';
 
 export default {
   name: "HomeView",
@@ -43,7 +44,8 @@ export default {
     servicesComponent,
     portfolioComponent,
     companyComponent,
-    orderComponent
+    orderComponent,
+    TheFooterVue
   },
   data() {
     return {

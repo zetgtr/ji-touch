@@ -2,9 +2,9 @@
   <section id="porfolio" class="porfolio">
     <div class="container porfolio-container">
       <div class="porfolio__header wow fadeIn" data-wow-delay="0.2s">
-        <h2 v-html="$replaceNewLines(title)"></h2>
+        <h2 v-html="$replaceNewLines(title)" v-if="page === 'home'"></h2>
         <router-link to="/project/">
-          <div class="more">
+          <div class="more" v-if="page === 'home'">
             <span>{{ more }}</span>
             <svg
               width="38"
@@ -30,12 +30,15 @@
           </div>
         </router-link>
       </div>
-      <div class="porfolio__wrapper wow fadeIn" data-wow-delay="0.2s">
-        <the-item-list :items="items">
+      <div class="porfolio__wrapper wow fadeIn" data-wow-delay="0.2s" >
+        <the-item-list :items="lastItems" v-if="page === 'home'">
+        </the-item-list>
+        <the-item-list :items="items" v-else>
         </the-item-list>
       </div>
+      
       <div class="porfolio__footer">
-        <the-button class="button button--orange first__btn"
+        <the-button class="button button--orange first__btn" v-if="page === 'home'"
           ><span>Показать ещё</span></the-button
         >
       </div>
@@ -52,6 +55,12 @@ import TheButton from "./../components/UI/TheButton.vue";
 import TheSectionCaption from "./../components/TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
+  props:{
+    page:{
+      type: String,
+      default: "home",
+    }
+  },
   components: {
     TheItemList,
     TheButton,
@@ -79,6 +88,9 @@ export default {
       items: (state) => state.portfolio.items,
       setBtn: (state) => state.portfolio.setBtn,
     }),
+    ...mapGetters({
+      lastItems: 'portfolio/lastItems',
+    })
   },
   watch: {
     

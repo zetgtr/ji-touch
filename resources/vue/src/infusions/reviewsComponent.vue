@@ -1,11 +1,12 @@
 <template>
-  <div class="reviews">
+  <div class="reviews" >
     <div class="container">
       <div class="rewievs__wrapper wow fadeIn" data-wow-delay="0.2s">
-        <review-item :items="items"></review-item>
+        <review-item :items="items" ></review-item>
       </div>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -27,7 +28,7 @@ export default {
     }),
   },
   mounted() {
-    this.reviews();
+    this.reviews()
   },
   computed: {
     // название aliasa: (state) => state.order.название aliasa,
@@ -43,6 +44,6 @@ export default {
 .rewievs__wrapper{
   display: grid;
   gap: 1.5rem;
-  
+
 }
 </style>

@@ -2,7 +2,7 @@
   <section class="bur" id="buger" >
     <div class="container">
       <div class="bur__wrapper">
-        <the-link-list v-bind:items="items" v-bind:classes="classes"></the-link-list>
+        <the-link-list v-bind:items="items" v-bind:classes="classes" v-on:burger="removeOverflowBody"></the-link-list>
         <div class="bur__footer">
           <div class="address">
             <h4 class="title">г. Санкт-Петербург</h4>
@@ -42,13 +42,13 @@ export default {
         {
           id: "1",
           title: "Главная",
-          link: "/project/",
+          link: "/",
           text: "Главная"
         },
         {
           id: 2,
           title: "Портфолио",
-          link: "/about/",
+          link: "/projects/",
           text: "Портфолио"
         },
         {
@@ -60,7 +60,7 @@ export default {
         {
           id: 4,
           title: "Отзывы",
-          link: "/education/",
+          link: "/reviews/",
           text: "Отзывы"
         },
         {
@@ -72,7 +72,7 @@ export default {
         {
           id: 6,
           title: "Вакансии",
-          link: "/education/",
+          link: "/jobs/",
           text: "Вакансии"
         },
       ],
@@ -83,6 +83,9 @@ export default {
       const burger = document.querySelector('the-burger')
       burger.classList.toggle('show')
       setTimeout(() => burger.classList.toggle('visible'), 300)
+    },
+    removeOverflowBody(){
+      document.body.classList.remove("no-scroll");
     }
   }
 };

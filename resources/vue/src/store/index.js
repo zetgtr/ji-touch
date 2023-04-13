@@ -6,6 +6,7 @@ import {companyModule} from "./infusions/companyModule";
 import {contactModule} from "./infusions/contactModule";
 import {orderModule} from "./infusions/orderModule";
 import {reviewsModule} from "./infusions/reviewsModule";
+import {jobsModule} from "./infusions/jobsModule";
 
 export default createStore({
     state: {
@@ -19,5 +20,6 @@ export default createStore({
         contact: contactModule,
         order: orderModule,
         reviews: reviewsModule,
+        jobs: jobsModule,
     }
 })

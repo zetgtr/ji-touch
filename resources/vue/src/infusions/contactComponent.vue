@@ -161,9 +161,10 @@ export default {
 .contact-info__item {
   padding: 30px;
   border: 5px solid var(--c-bg);
+  background: var(--c-white);
   transition: 0.3s linear;
   &:hover{
-    background: var(--c-bg);
+    border: 5px solid var(--c-primary);
   }
   &-info {
     grid-column: -1/-2;

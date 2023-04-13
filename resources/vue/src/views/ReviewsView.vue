@@ -7,9 +7,11 @@
     </div>
     <reviews-component></reviews-component>
   </div>
+  <the-footer-vue></the-footer-vue>
 </template>
 
 <script>
+import TheFooterVue from '../components/TheFooter.vue';
 // import BreadCrumbs from "../components/BreadCrumbs.vue";
 import { BreadCrumbs } from "../router";
 import TheHeader from "./../components/TheHeader.vue";
@@ -19,7 +21,8 @@ export default {
   components: {
     TheHeader,
     BreadCrumbs,
-    reviewsComponent
+    reviewsComponent,
+    TheFooterVue
   },
   data(){
     return{

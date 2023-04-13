@@ -8,6 +8,7 @@
     <contact-component></contact-component>
     <order-component></order-component>
   </div>
+  <the-footer-vue></the-footer-vue>
 </template>
 
 <script>
@@ -16,13 +17,15 @@ import { BreadCrumbs } from "../router";
 import TheHeader from "./../components/TheHeader.vue";
 import orderComponent from "./../infusions/orderComponent.vue";
 import contactComponent from "./../infusions/contactComponent.vue";
+import TheFooterVue from '../components/TheFooter.vue';
 
 export default {
   components: {
     TheHeader,
     BreadCrumbs,
     orderComponent,
-    contactComponent
+    contactComponent,
+    TheFooterVue
   },
   data(){
     return{
@@ -37,8 +40,5 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-  .content{
-    margin-top: 155px;
-  }
 </style>
 

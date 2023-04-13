@@ -5,7 +5,7 @@
       <h1>{{captionTitle}}</h1>
       <BreadCrumbs :breadcrumbs="breadcrumbs"></BreadCrumbs>
     </div>
-    <portfolio-component></portfolio-component>
+    <portfolio-component :page='"inner"'></portfolio-component>
   </div>
 </template>
 
@@ -34,8 +34,6 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-  .content{
-    margin-top: 155px;
-  }
+
 </style>
 

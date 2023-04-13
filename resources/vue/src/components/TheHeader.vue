@@ -12,10 +12,10 @@
           </router-link>
         </div>
         <nav class="nav">
-          <the-link-list
+          <TheLinkList
             v-bind:items="items"
             v-bind:classes="classes"
-          ></the-link-list>
+          ></TheLinkList>
         </nav>
         <div class="header__right">
           <a class="header__num" href="tel:+7 905 262 49 68"
@@ -99,6 +99,7 @@ export default {
         this.isHeaderFixed = false;
       }
     },
+    
   },
 };
 </script>

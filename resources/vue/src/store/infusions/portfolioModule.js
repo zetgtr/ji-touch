@@ -8,7 +8,9 @@ export const portfolioModule = {
         btn: '',
     }),
     getters: {
-       
+       lastItems(state){
+        return state.items.slice(-4);
+       }
     },
     mutations: {
         setTitle(state, title){
