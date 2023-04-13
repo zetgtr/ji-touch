@@ -2,18 +2,20 @@
 
 namespace App\View\Components\admin\navigation;
 
+use App\QueryBuilder\Admin\Navigation\NavigationBuilder;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class CreateList extends Component
 {
+    private $link;
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(NavigationBuilder $navigationBuilder)
     {
-        //
+        $this->link = $navigationBuilder->getAll();
     }
 
     /**
@@ -21,6 +23,6 @@ class CreateList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.navigation.create-list');
+        return view('components.admin.navigation.create-list', ['link'=>$this->link]);
     }
 }

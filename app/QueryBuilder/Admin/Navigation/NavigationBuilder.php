@@ -42,5 +42,10 @@ class NavigationBuilder extends QueryBuilder
         return $this->navigationList->get();
     }
 
+    public function setLink(array $request, int $id)
+    {
+        return $request;
+    }
+
 
 }

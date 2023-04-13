@@ -49,6 +49,11 @@ class NavigationListController extends Controller
         //
     }
 
+    public function setLink(Request $request,int $id, NavigationBuilder $navigationBuilder)
+    {
+        return $navigationBuilder->setLink($request->all(),$id);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

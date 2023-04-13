@@ -46,7 +46,8 @@
 
 <script>
 import { onMounted, nextTick, ref } from "vue";
-import Fancybox from "@fancyapps/fancybox";
+
+import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/fancybox/dist/jquery.fancybox.css";
 
 export default {
@@ -58,7 +59,7 @@ export default {
   },
   setup(props) {
     onMounted(() => {
-      Fancybox.bind("[data-fancybox]");
+        Fancybox.bind("[data-fancybox]");
     });
   },
 };

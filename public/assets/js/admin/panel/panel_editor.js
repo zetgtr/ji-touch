@@ -295,18 +295,19 @@ function text_change(this2) {
 //смена большого текста
 function textarea_change(this2) {
   //проверка на перенос строки
-  $val = $(this2).val();
+  $val = $(this2).val().replace(/(["])/g, "'");
   colindex = ($(this2).parents('th').index() - 1);
   rowindex = ($(this2).parents('tr').index()) - 2;
-  table_array.data[rowindex][colindex] = $(this2).val();
+  table_array.data[rowindex][colindex] = $(this2).val().replace(/(["])/g, "'");
 }
 //открытие меню для тины
 function change_textarea(this2) {
   colindex = ($(this2).parents('th').index() - 1);
   rowindex = ($(this2).parents('tr').index()) - 2;
+    console.log($(this2).prev().val())
   $(selectHtmlClass).css('display', 'none');
   $('.tina').css('display', 'block');
-  $('iframe#myid_ifr').contents().find('body').html($(this2).prev().val());
+  $('iframe#my-editor_ifr').contents().find('body').html($(this2).prev().val().replace(/(["])/g, "'"));
   $('.tina').attr('data-col', colindex);
   $('.tina').attr('data-row', rowindex);
 }
@@ -314,7 +315,7 @@ function change_textarea(this2) {
 function save_texarea() {
   colindex = $('.tina').attr('data-col');
   rowindex = $('.tina').attr('data-row');
-  table_array.data[rowindex][colindex] = $('iframe#my-editor_ifr').contents().find('body').html();
+  table_array.data[rowindex][colindex] = $('iframe#my-editor_ifr').contents().find('body').html().replace(/(["])/g, "'");
     console.log($('iframe#my-editor'));
   $('.tina').css('display', 'none');
   $(selectHtmlClass).css('display', 'block');
@@ -386,6 +387,7 @@ function change_array(this2) {
     render();
     $('.infoArray').html(name);
   }
+    render();
 }
 //изменение php
 
@@ -762,6 +764,7 @@ function change_arrayDB_col(this2) {
   table_array.col[colindex] = $(this2).val();
   table_array.data = [];
   $('.table_db').html(table_db());
+
 
 }
 
