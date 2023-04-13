@@ -211,7 +211,8 @@ class PanelBuilder extends QueryBuilder
     public function createPanel(mixed $panel)
     {
         $panelValue = $panel['alias'];
-        $templateContent = file_get_contents(base_path('template')."/templateModule.js");
+        dd(view("template.templateModule"));
+        $templateContent = file_get_contents(base_path('template')."\\templateModule.js");
         $newContent = str_replace('setPanel', $panelValue, $templateContent);
         $newFileName = $panelValue.'Module.js';
         $newFilePath = resource_path('vue/src/store/infusions').'/' . $newFileName;

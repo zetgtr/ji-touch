@@ -1,14 +1,14 @@
 import axios from "axios";
 // ниже название панели + Module
-export const servicesModule = { 
+export const servicesModule = {
     state: () => ({
         // тут алиас столбцов : тип данных
-        desc: '',
-        slider: [],
-        slider_thumb: []
+    @foreach($states as $state)
+        {{ $state->neme }} : @if($state->type == "array") [] @else "" @endif,
+    @endforeach
     }),
     getters: {
-        
+
     },
     mutations: {
         // для каждого алиаса свой set
@@ -30,7 +30,7 @@ export const servicesModule = {
                     params: {
                     }
                 });
-                // коммит название мутации 
+                // коммит название мутации
                 commit('setDesc', response.data[0].desc)
                 commit('setSlider', response.data[0].slider[0].slider_item)
                 commit('setSliderThumb', response.data[0].slider[0].slider_thumb)
