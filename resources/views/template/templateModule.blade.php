@@ -1,10 +1,10 @@
 import axios from "axios";
 // ниже название панели + Module
-export const servicesModule = {
+export const {{ $title }}Module = {
     state: () => ({
         // тут алиас столбцов : тип данных
-    @foreach($states as $state)
-        {{ $state->neme }} : @if($state->type == "array") [] @else "" @endif,
+    @foreach($data[0] as $key=>$item)
+      {{ $key }} : @if(is_array($item))[]@else"" @endif,
     @endforeach
     }),
     getters: {
@@ -12,28 +12,24 @@ export const servicesModule = {
     },
     mutations: {
         // для каждого алиаса свой set
-        setDesc(state, desc){
-            state.desc = desc
+    @foreach($data[0] as $key=>$item)
+    set{{ ucfirst($key) }}(state, {{ $key }}){
+            state.{{ $key }} = {{ $key }}
         },
-        setSlider(state, slider){
-            state.slider = slider
-        },
-        setSliderThumb(state, slider_thumb){
-            state.slider_thumb = slider_thumb
-        },
+    @endforeach
     },
     actions: {
         async fetchInfo({state, commit}, argument) {
             try {
-                const response = await axios.get('/api/panel_data/services', {
+                const response = await axios.get('/api/panel_data/{{ $alias }}', {
                     data: argument,
                     params: {
                     }
                 });
                 // коммит название мутации
-                commit('setDesc', response.data[0].desc)
-                commit('setSlider', response.data[0].slider[0].slider_item)
-                commit('setSliderThumb', response.data[0].slider[0].slider_thumb)
+            @foreach($data[0] as $key=>$item)
+        commit('set{{ ucfirst($key) }}', response.data[0].{{ $key }})
+            @endforeach
             } catch (e) {
                 console.log(e)
             } finally {
