@@ -19,10 +19,31 @@ class NavigationBuilder extends QueryBuilder
         $this->navigation = Navigation::query();
         $this->navigationList = NavigationList::query();
     }
+    public function setList(Collection $lists, $id)
+    {
+        $navigationList = NavigationList::query()->find($id);
 
+        foreach ($lists as $key => $list)
+        {
+            $parent = $navigationList->links()->where('parent', '=', $list->id)->orderBy('order')->get();
+            if (count($parent) > 0) {
+                $list->parent = $parent;
+                $list->children = $this->setList($parent, $id);
+            }
+        }
+
+        return $lists;
+    }
     public function getAll(): Collection
     {
         return $this->navigation->get();
+    }
+
+    public function getNavigationLinks($navigationListId)
+    {
+        return $this->navigation->whereDoesntHave('list', function ($query) use ($navigationListId) {
+            $query->where('navigation_list_id', $navigationListId);
+        })->get();
     }
 
     public function getLink(?string $key)
@@ -42,9 +63,34 @@ class NavigationBuilder extends QueryBuilder
         return $this->navigationList->get();
     }
 
+    private function setOrder(array $pages, int $parent = null,$id)
+    {
+        foreach ($pages as $key=>$page) {
+            $navigation = Navigation::query()->find($page['id']);
+            $navigation->list()->detach($id);
+            $navigation->list()->detach($id);
+            $navigation->list()->attach($id, [
+                'order' => $key,
+                'parent' => $parent,
+            ]);
+            if(!empty($page['children']))
+            {
+                $this->setOrder($page['children'], $page['id'], $id);
+            }
+        }
+        return ['status'=>true,'message'=>$pages];
+    }
+
     public function setLink(array $request, int $id)
     {
-        return $request;
+        $navigationList = NavigationList::find($id);
+        $navigationList->links()->detach();
+        if ($request)
+        {
+            return $this->setOrder($request['items'], null, $id);
+        } else {
+            return ['status'=>false,'message'=>'Ошибка сохранения'];
+        }
     }
 
 

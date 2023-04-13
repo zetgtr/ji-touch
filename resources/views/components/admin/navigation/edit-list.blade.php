@@ -19,7 +19,9 @@
             <input type="submit" value="Сохранить" class="btn btn-success mt-2">
         </div>
         <div class="col-lg-6">
-
+            <div class="dd nestable" id="target">
+                <x-admin.navigation.link :link="$linksEdit" />
+            </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
@@ -27,7 +29,12 @@
                 <input name="search" class="form-control @error("search") is-invalid @enderror" value="{{ old('search') }}">
                 <x-error errorValue="search" />
             </div>
-
+            <div class="dd nestable" id="source">
+                <x-admin.navigation.link :link="$link" />
+            </div>
         </div>
     </div>
+    <input type="hidden" name="id" value="2">
 </form>
+
+<script src="{{asset('assets/js/admin/panel/dnd.js')}}" ></script>

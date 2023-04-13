@@ -59,7 +59,10 @@ class NavigationListController extends Controller
      */
     public function edit(NavigationList $navigationList,NavigationBuilder $navigationBuilder)
     {
-        return view('admin.navigation-list.edit',['navigation'=>$navigationList,'links' => $navigationBuilder->getLink(null)]);
+        return view('admin.navigation-list.edit',[
+            'navigation'=>$navigationList,
+            'links' => $navigationBuilder->getLink(null)
+        ]);
     }
 
     /**

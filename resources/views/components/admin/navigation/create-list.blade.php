@@ -18,7 +18,7 @@
         </div>
         <div class="col-lg-6">
             <div class="dd nestable" id="target">
-                <x-admin.navigation.link :link="$link" />
+                
             </div>
         </div>
         <div class="col-lg-6">
@@ -32,6 +32,6 @@
             </div>
         </div>
     </div>
-    <input type="hidden" name="id" value="2">
 </form>
+
 <script src="{{asset('assets/js/admin/panel/dnd.js')}}" ></script>

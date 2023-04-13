@@ -10,11 +10,6 @@ $(document).ready(function () {
     });
     var id = $(document).find('input[type=hidden][name=id]').val();
     $('#source').on('change', function () {
-        if (runed) {
-            $('#searchmachineform').find('input').val('');
-            gosearch();
-            serialize($('#target').nestable('serialize'), id);
-        }
         serialize($('#target').nestable('serialize'), id);
     });
 
@@ -54,40 +49,40 @@ $(document).ready(function () {
 
 
 
-function gosearch() {
-    var value = $('#searchmachineform').find('input').val();
-    var exclude = $('#target').nestable('serialize');
-    $('#source').searchmachine().options.requestData.exclude = exclude;
-    $('#source').searchmachine().run(value).then(
-        function (data) {
-            if (data.count > 0) {
-                if ($('#source').find('.dd-empty')) {
-                    $('#source').append(tmpl('ddtheme', {}));
-                }
-                var target = $('#source').find('.dd-list');
-                data = data.response;
-                var tmplt = null;
-                if (typeof data !== typeof undefined && (tmplt = $('#tmpltItem').length, tmpl)) {
-                    var itemTemplate = tmpl('tmpltItem');
-                    $.each(data, function () {
-                        target.append(itemTemplate(this));
-                    });
-                }
-            } else {
-                $('#source').append(tmpl('emptyItem', {}));
-            }
-        },
-        function (error) {
-            console.log(error);
-        }
-    );
-    $('#source').searchmachine().options.requestData.exclude = [];
-    if (value == '') {
-        runed = false;
-    } else {
-        runed = true;
-    }
-}
+// function gosearch() {
+//     var value = $('#searchmachineform').find('input').val();
+//     var exclude = $('#target').nestable('serialize');
+//     $('#source').searchmachine().options.requestData.exclude = exclude;
+//     $('#source').searchmachine().run(value).then(
+//         function (data) {
+//             if (data.count > 0) {
+//                 if ($('#source').find('.dd-empty')) {
+//                     $('#source').append(tmpl('ddtheme', {}));
+//                 }
+//                 var target = $('#source').find('.dd-list');
+//                 data = data.response;
+//                 var tmplt = null;
+//                 if (typeof data !== typeof undefined && (tmplt = $('#tmpltItem').length, tmpl)) {
+//                     var itemTemplate = tmpl('tmpltItem');
+//                     $.each(data, function () {
+//                         target.append(itemTemplate(this));
+//                     });
+//                 }
+//             } else {
+//                 $('#source').append(tmpl('emptyItem', {}));
+//             }
+//         },
+//         function (error) {
+//             console.log(error);
+//         }
+//     );
+//     $('#source').searchmachine().options.requestData.exclude = [];
+//     if (value == '') {
+//         runed = false;
+//     } else {
+//         runed = true;
+//     }
+// }
 
 function serialize(data, id) {
     let empty = $(".dd-empty").first().clone()

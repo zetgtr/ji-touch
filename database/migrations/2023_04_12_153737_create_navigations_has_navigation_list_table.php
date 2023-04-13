@@ -20,7 +20,7 @@ return new class extends Migration
                 ->references('id')->on('navigations_list')
                 ->cascadeOnDelete();
             $table->integer('order')->default(0);
-            $table->integer('parent')->default(0);
+            $table->integer('parent')->default(0)->nullable();
             $table->timestamps();
         });
     }
