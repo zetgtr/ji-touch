@@ -1,5 +1,15 @@
 <template>
-<div class="innerLayout">
+  <div class="innerLayout">
     <router-view />
-</div>
+  </div>
 </template>
+<style lang="scss">
+.innerLayout {
+  background: var(--c-bg);
+  .content {
+    padding-top: 155px;
+    background: var(--c-bg);
+    padding-bottom: 100px;
+  }
+}
+</style>

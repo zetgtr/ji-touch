@@ -22,6 +22,12 @@ const routes = [
     component: () => import('./../views/ServicesView.vue')
   },
   {
+    path: '/reviews',
+    name: 'reviews',
+    meta: { layout: "inner", breadcrumb: "reviews", name: 'Отзывы' },
+    component: () => import('./../views/ReviewsView.vue')
+  },
+  {
     path: '/project',
     name: 'project',
     meta: { layout: "inner", breadcrumb: "project", name: 'Проекты' },

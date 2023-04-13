@@ -122,7 +122,6 @@ export default {
         email: "",
         price: [50000, 200000],
         budget: '',
-        where: "",
         desc: "",
         file: null,
       },
@@ -144,7 +143,6 @@ export default {
       formData.append("company", data.data.company);
       formData.append("email", data.data.email);
       formData.append("price", data.data.price);
-      formData.append("where", data.data.where);
       formData.append("desc", data.data.desc);
 
       if (data.data.file?.length) {
