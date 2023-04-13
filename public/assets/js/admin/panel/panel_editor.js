@@ -113,7 +113,7 @@ function render() {
   $(selectHtmlClass).html(visited_table());
   key = table_array['type'].indexOf('key');
   let img = $(".select_img_add");
-    console.log(img)
+    console.log(key)
   if(img.length > 0) {
       img.filemanager('image', {
           multiple: true,
@@ -289,7 +289,8 @@ function name_col_change(this2) {
 function text_change(this2) {
   colindex = ($(this2).parent().index() - 1);
   rowindex = ($(this2).parents('tr').index()) - 2;
-  table_array.data[rowindex][colindex] = $(this2).val();
+  table_array.data[rowindex][colindex] = $(this2).val().replace(/(["])/g, "'");
+    console.log($(this2).val().replace(/(["])/g, "'"))
 }
 //смена большого текста
 function textarea_change(this2) {
@@ -1155,5 +1156,7 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+
 var table_array = all_table_array;
 render();
