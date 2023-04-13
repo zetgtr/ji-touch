@@ -1,39 +1,42 @@
 <template>
   <the-header></the-header>
   <div class="content">
-    <div class="container">
-      <h1>{{captionTitle}}</h1>
+    <div class="container" style="z-index:4; position:relative;" >
+      <h1>{{ captionTitle }}</h1>
       <BreadCrumbs :breadcrumbs="breadcrumbs"></BreadCrumbs>
-      <jobs-component-vue></jobs-component-vue>
     </div>
+    <about-component-vue></about-component-vue>
   </div>
-  <the-footer-vue></the-footer-vue>
 </template>
 
 <script>
-import TheHeader from './../components/TheHeader.vue'
-import TheFooterVue from '../components/TheFooter.vue';
-import jobsComponentVue from '../infusions/jobsComponent.vue';
+import TheHeader from "./../components/TheHeader.vue";
+import TheFooterVue from "../components/TheFooter.vue";
 import { BreadCrumbs } from "../router";
-export default{
-  components:{
+import reviewsComponentVue from "../infusions/reviewsComponent.vue";
+import jobsComponentVue from "../infusions/jobsComponent.vue";
+import aboutComponentVue from "../infusions/aboutComponent.vue";
+import firstComponentVue from '../infusions/firstComponent.vue';
+export default {
+  components: {
     TheHeader,
     TheFooterVue,
-    jobsComponentVue,
     BreadCrumbs,
+    reviewsComponentVue,
+    jobsComponentVue,
+    aboutComponentVue,
+    firstComponentVue
   },
-  data(){
-    return{
-      captionTitle: 'О компании',
-    }
+  data() {
+    return {
+      captionTitle: "О компании",
+    };
   },
   created() {
     this.breadcrumbs = this.$route.meta.breadcrumbs;
     console.log(this.breadcrumbs);
   },
-}
-
+};
 </script>
 <style scoped lang='scss'>
-
 </style>

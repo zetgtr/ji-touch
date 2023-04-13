@@ -1,10 +1,10 @@
 <template>
-  <div class="innerLayout">
+  <div class="aboutLayout">
     <router-view />
   </div>
 </template>
 <style lang="scss">
-.innerLayout {
+.aboutLayout {
   background: var(--c-bg);
   .content {
     padding-top: 115px;

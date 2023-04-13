@@ -1,5 +1,5 @@
 <template>
-  <section id="first" class="first">
+  <section id="first" class="first" :class="classes">
     <div class="container first-container">
       <div class="first__wrapper">
         <div class="caption">

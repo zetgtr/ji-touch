@@ -16,6 +16,12 @@ const routes = [
     component: () => import('./../views/ContactView.vue')
   },
   {
+    path: '/jobs',
+    name: 'jobs',
+    meta: { layout: "inner", breadcrumb: "jobs", name: 'Контакты' },
+    component: () => import('./../views/JobsView.vue')
+  },
+  {
     path: '/services',
     name: 'services',
     meta: { layout: "inner", breadcrumb: "services", name: 'Услуги' },
@@ -42,7 +48,7 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    meta: { layout: "inner", breadcrumb: "about" },
+    meta: { layout: "about", breadcrumb: "about" },
     component: () => import('./../views/AboutView.vue')
   },
   {

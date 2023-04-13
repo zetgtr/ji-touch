@@ -7,6 +7,7 @@
 <script>
 import InnerLayout from "./layouts/InnerLayout.vue";
 import MainLayout from "./layouts/MainLayout.vue";
+import AboutLayout from "./layouts/AboutLayout.vue";
 
 import "./assets/index.scss";
 import { computed } from "vue";
@@ -14,7 +15,8 @@ import { computed } from "vue";
 export default {
   components: {
     MainLayout,
-    InnerLayout
+    InnerLayout,
+    AboutLayout
   },
   computed: {
     layout() {

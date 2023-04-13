@@ -1,7 +1,11 @@
 <template>
-  <jobs-list-vue
+  <div class="jobs">
+    <div class="container">
+      <jobs-list-vue
     :items="items"
   />
+    </div>
+  </div>
 </template>
 
 <script>

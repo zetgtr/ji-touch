@@ -64,7 +64,7 @@ export default {
         {
           id: 3,
           title: "Агенство",
-          link: "/price/",
+          link: "/agency/",
         },
         {
           id: 4,
@@ -108,6 +108,10 @@ export default {
 .innerLayout{
   .header{
     background: var(--c-bg);
+    background: transparent;
+    &.header_fix{
+      background: var(--c-bg);
+    }
   }
 }
 </style>
