@@ -48,6 +48,7 @@ class NavigationBuilder extends QueryBuilder
 
     public function getLink(?string $key)
     {
+
         $links = [NavigationEnums::LIST->value => ['url'=> route('admin.navigation_list.index'), 'name' => 'Списки'],
             NavigationEnums::LINK->value => ['url'=> route('admin.navigation.index'),  'name' => 'Ссылки']
         ];
@@ -90,6 +91,12 @@ class NavigationBuilder extends QueryBuilder
         } else {
             return ['status'=>false,'message'=>'Ошибка сохранения'];
         }
+    }
+
+    public function getAlias(string $alias)
+    {
+        $data = $this->navigationList->where('alias',$alias)->first();
+        return $this->setList($data->links()->where('parent',null)->orderBy('order')->get(),$data->id);
     }
 
 

@@ -54,6 +54,11 @@ class NavigationListController extends Controller
         return $navigationBuilder->setLink($request->all(),$id);
     }
 
+    public function getAlias(string $alias, NavigationBuilder $navigationBuilder)
+    {
+        return $navigationBuilder->getAlias($alias);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

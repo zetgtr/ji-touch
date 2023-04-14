@@ -29,6 +29,7 @@ export const portfolioModule = {
     actions: {
         async fetchInfo({state, commit}, argument) {
             try {
+
                 const response = await axios.get('/api/panel_data/portfolio', {
                     data: argument,
                     params: {

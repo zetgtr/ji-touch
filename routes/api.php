@@ -30,6 +30,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function() {
 
 Route::post('navigation/set/{id}', [NavigationListController::class,'setLink']);
 
+Route::get('navigation/get/{alias}', [NavigationListController::class,'getAlias']);
+
 Route::get('panel_data/{name}', [PanelController::class, 'show']);
 
 Route::post('form/{name}', FormController::class);
