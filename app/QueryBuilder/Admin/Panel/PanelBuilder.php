@@ -218,11 +218,17 @@ class PanelBuilder extends QueryBuilder
         $newFileName = $panelValue.'Module.js';
         $newFilePath = resource_path('vue/src/store/infusions').'/' . $newFileName;
         file_put_contents($newFilePath, $newContent);
-        $templateContent = file_get_contents(base_path('template')."/templateComponent.vue");
-        $newContent = str_replace('fetchInfo', $panelValue, $templateContent);
+        $newContent = view("template.templateComponent",[
+            'data'=>$this->setItemData(json_decode($panel['data'], true)),
+            'title' => $panel['title'],
+            'alias' => $panel['alias']
+        ])->render();
         $newFileName = $panelValue.'Component.vue';
         $newFilePath = resource_path('vue/src/infusions').'/' . $newFileName;
         file_put_contents($newFilePath, $newContent);
+        $file = explode('modules: {',file_get_contents(resource_path('vue/src/store/index.js')));
+        $fileContent = $file[0].'modules: {'.PHP_EOL."        ".$panel['alias'].": ".$panel['alias']."Module,".$file[1];
+        file_put_contents(resource_path('vue/src/store/index.js'), $fileContent);
     }
 
     public function removePanel(Panel $panel)

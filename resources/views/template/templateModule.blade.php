@@ -1,6 +1,6 @@
 import axios from "axios";
 // ниже название панели + Module
-export const {{ $title }}Module = {
+export const {{ $alias }}Module = {
     state: () => ({
         // тут алиас столбцов : тип данных
     @foreach($data[0] as $key=>$item)
@@ -28,9 +28,9 @@ export const {{ $title }}Module = {
                 });
                 // коммит название мутации
             @foreach($data[0] as $key=>$item)
-        commit('set{{ ucfirst($key) }}', response.data[0].{{ $key }})
+      commit('set{{ ucfirst($key) }}', response.data[0].{{ $key }})
             @endforeach
-            } catch (e) {
+    } catch (e) {
                 console.log(e)
             } finally {
 
