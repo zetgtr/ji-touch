@@ -18,7 +18,7 @@ const routes = [
   {
     path: '/jobs',
     name: 'jobs',
-    meta: { layout: "inner", breadcrumb: "jobs", name: 'Контакты' },
+    meta: { layout: "inner", breadcrumb: "jobs", name: 'Вакансии' },
     component: () => import('./../views/JobsView.vue')
   },
   {
@@ -48,7 +48,7 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    meta: { layout: "about", breadcrumb: "about" },
+    meta: { layout: "about", breadcrumb: "О компании" },
     component: () => import('./../views/AboutView.vue')
   },
   {
@@ -57,16 +57,6 @@ const routes = [
     meta: { layout: "inner", breadcrumb: "test" },
     component: () => import('./../views/TestView.vue')
   },
-  // { 
-  //   path: '/category/:id',
-  //   component: Category,
-  //   children: [
-  //     {
-  //       path: 'product/:id',
-  //       component: Product
-  //     }
-  //   ]
-  // },
   {
     path: "/:catchAll(.*)",
     meta: { layout: "empty" },
@@ -78,6 +68,38 @@ const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+
+
+// axios.get('/api/links/').then(response => {
+//   const links = response.data;
+
+//   // Функция, которая создает роуты рекурсивно
+//   const createRoutes = (parentRoute, links) => {
+//     links.forEach(link => {
+//       const route = {
+//         path: link.path,
+//         component: () => import(`../views/${link.component}.vue`)
+//       };
+
+//       if (link.children && link.children.length > 0) {
+//         route.children = [];
+//         createRoutes(route, link.children);
+//       }
+
+//       if (parentRoute) {
+//         parentRoute.children.push(route);
+//       } else {
+//         routes.push(route);
+//       }
+//     });
+//   };
+
+//   createRoutes(null, links);
+// });
+
+
+
 
 router.beforeEach((to, from, next) => {
   const matched = to.matched;

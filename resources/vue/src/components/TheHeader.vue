@@ -78,6 +78,7 @@ export default {
     };
   },
   mounted() {
+    this.handleScroll();
     window.addEventListener("scroll", this.handleScroll);
   },
   destroyed() {

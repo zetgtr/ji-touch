@@ -4,6 +4,7 @@ export const aboutModule = {
     state: () => ({
         // тут алиас столбцов : тип данных
         tabs: [],
+        slider: [],
     }),
     getters: {
         
@@ -12,6 +13,9 @@ export const aboutModule = {
         // для каждого алиаса свой set
         setTabs(state, tabs){
             state.tabs = tabs
+        },
+        setSlider(state, slider){
+            state.slider = slider
         },
     },
     actions: {
@@ -24,6 +28,7 @@ export const aboutModule = {
                 });
                 // коммит название мутации 
                 commit('setTabs', response.data[0].tabs)
+                commit('setSlider', response.data[0].slider)
             } catch (e) {
                 console.log(e)
             } finally {
