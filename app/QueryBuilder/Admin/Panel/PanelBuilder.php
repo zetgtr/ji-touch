@@ -244,5 +244,9 @@ class PanelBuilder extends QueryBuilder
         {
             unlink($componentFile);
         }
+        $file = file_get_contents(resource_path('vue/src/store/index.js'));
+        $newContent = str_replace($panel->alias.": ".$panel->alias."Module,
+        ","",$file);
+        file_put_contents(resource_path('vue/src/store/index.js'), $newContent);
     }
 }
