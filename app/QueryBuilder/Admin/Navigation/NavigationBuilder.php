@@ -68,7 +68,6 @@ class NavigationBuilder extends QueryBuilder
         foreach ($pages as $key=>$page) {
             $navigation = Navigation::query()->find($page['id']);
             $navigation->list()->detach($id);
-            $navigation->list()->detach($id);
             $navigation->list()->attach($id, [
                 'order' => $key,
                 'parent' => $parent,
