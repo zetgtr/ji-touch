@@ -14,7 +14,6 @@ export default createStore({
       isAuth: false,
     },
     modules: {
-        test: testModule,
         first: firstModule,
         services: servicesModule,
         portfolio: portfolioModule,
