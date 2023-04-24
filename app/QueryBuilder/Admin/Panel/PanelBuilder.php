@@ -6,6 +6,7 @@ use App\Enums\PanelNavigationEnums;
 use App\Models\Admin\Panel\Panel;
 use App\QueryBuilder\QueryBuilder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -211,16 +212,33 @@ class PanelBuilder extends QueryBuilder
     public function createPanel(mixed $panel)
     {
         $panelValue = $panel['alias'];
-        $templateContent = file_get_contents(base_path('template')."/templateModule.js");
-        $newContent = str_replace('setPanel', $panelValue, $templateContent);
-        $newFileName = $panelValue.'Module.js';
-        $newFilePath = resource_path('vue/src/store/infusions').'/' . $newFileName;
-        file_put_contents($newFilePath, $newContent);
-        $templateContent = file_get_contents(base_path('template')."/templateComponent.vue");
-        $newContent = str_replace('fetchInfo', $panelValue, $templateContent);
-        $newFileName = $panelValue.'Component.vue';
-        $newFilePath = resource_path('vue/src/infusions').'/' . $newFileName;
-        file_put_contents($newFilePath, $newContent);
+        $pathStore = resource_path('react/store').'/'.$panelValue;
+        if (!is_dir($pathStore)) {
+            mkdir($pathStore);
+        }
+        $constantsContent = view("template.store.constants",[
+            'data'=>$this->setItemData(json_decode($panel['data'], true)),
+            'title' => $panel['title'],
+            'alias' => $panel['alias']
+        ])->render();
+        file_put_contents($pathStore."/constants.jsx", $constantsContent);
+        $actionContent = view("template.store.actions",[
+            'data'=>$this->setItemData(json_decode($panel['data'], true)),
+            'title' => $panel['title'],
+            'alias' => $panel['alias']
+        ])->render();
+        file_put_contents($pathStore."/actions.jsx", $actionContent);
+        dd($panelValue);
+//        $templateContent = file_get_contents(base_path('template')."/templateModule.js");
+//        $newContent = str_replace('setPanel', $panelValue, $templateContent);
+//        $newFileName = $panelValue.'Module.js';
+//        $newFilePath = resource_path('vue/src/store/infusions').'/' . $newFileName;
+//        file_put_contents($newFilePath, $newContent);
+//        $templateContent = file_get_contents(base_path('template')."/templateComponent.vue");
+//        $newContent = str_replace('fetchInfo', $panelValue, $templateContent);
+//        $newFileName = $panelValue.'Component.vue';
+//        $newFilePath = resource_path('vue/src/infusions').'/' . $newFileName;
+//        file_put_contents($newFilePath, $newContent);
     }
 
     public function removePanel(Panel $panel)
