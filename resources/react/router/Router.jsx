@@ -12,7 +12,6 @@ export const Router = () => {
 
   return (
     <BrowserRouter>
-        <LinkRoute />
         <Routes>
             <Route exact path={ROUTER.HOME} element={<Home />} />
         </Routes>

@@ -213,22 +213,57 @@ class PanelBuilder extends QueryBuilder
     {
         $panelValue = $panel['alias'];
         $pathStore = resource_path('react/store').'/'.$panelValue;
+        $pathComponents = resource_path('react/components').'/'.$panelValue;
+        if (!is_dir($pathComponents)) {
+            mkdir($pathComponents);
+        }
         if (!is_dir($pathStore)) {
             mkdir($pathStore);
         }
+
         $constantsContent = view("template.store.constants",[
             'data'=>$this->setItemData(json_decode($panel['data'], true)),
             'title' => $panel['title'],
             'alias' => $panel['alias']
         ])->render();
         file_put_contents($pathStore."/constants.jsx", $constantsContent);
+
         $actionContent = view("template.store.actions",[
-            'data'=>$this->setItemData(json_decode($panel['data'], true)),
-            'title' => $panel['title'],
             'alias' => $panel['alias']
         ])->render();
         file_put_contents($pathStore."/actions.jsx", $actionContent);
-        dd($panelValue);
+
+        $reducerContent = view("template.store.reducer",[
+            'alias' => $panel['alias']
+        ])->render();
+        file_put_contents($pathStore."/reducer.jsx", $reducerContent);
+
+        $selectorContent = view("template.store.selector",[
+            'alias' => $panel['alias']
+        ])->render();
+        file_put_contents($pathStore."/selector.jsx", $selectorContent);
+
+        $storeIndexData = file_get_contents(resource_path('react/store/index.jsx'));
+
+        if(!strpos($storeIndexData, $panel['alias'].': '.$panel['alias'].'Reducer'))
+        {
+            $file = explode('combineReducers({',$storeIndexData);
+            $fileContent = 'import {'.$panel['alias'].'Reducer} from "./'.$panel['alias'].'/reducer";'.
+                PHP_EOL.$file[0].'combineReducers({'.PHP_EOL."        ".$panel['alias'].": ".$panel['alias']."Reducer,".$file[1];
+            file_put_contents(resource_path('react/store/index.jsx'), $fileContent);
+        }
+
+        $indexComponentContent = view("template.component.index",[
+            'alias' => $panel['alias']
+        ])->render();
+        file_put_contents($pathComponents."/index.jsx", $indexComponentContent);
+
+        $componentContent = view("template.component.component",[
+            'alias' => $panel['alias']
+        ])->render();
+        file_put_contents($pathComponents."/".$panelValue."Component.jsx", $componentContent);
+
+
 //        $templateContent = file_get_contents(base_path('template')."/templateModule.js");
 //        $newContent = str_replace('setPanel', $panelValue, $templateContent);
 //        $newFileName = $panelValue.'Module.js';
