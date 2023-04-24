@@ -212,8 +212,8 @@ class PanelBuilder extends QueryBuilder
     public function createPanel(mixed $panel)
     {
         $panelValue = $panel['alias'];
-        $pathStore = resource_path('react/store').'/'.$panelValue;
-        $pathComponents = resource_path('react/components').'/'.$panelValue;
+        $pathStore = resource_path('react/store/panels').'/'.$panelValue;
+        $pathComponents = resource_path('react/components/panels').'/'.$panelValue;
         if (!is_dir($pathComponents)) {
             mkdir($pathComponents);
         }
@@ -248,7 +248,7 @@ class PanelBuilder extends QueryBuilder
         if(!strpos($storeIndexData, $panel['alias'].': '.$panel['alias'].'Reducer'))
         {
             $file = explode('combineReducers({',$storeIndexData);
-            $fileContent = 'import {'.$panel['alias'].'Reducer} from "./'.$panel['alias'].'/reducer";'.
+            $fileContent = 'import {'.$panel['alias'].'Reducer} from "./panels/'.$panel['alias'].'/reducer";'.
                 PHP_EOL.$file[0].'combineReducers({'.PHP_EOL."        ".$panel['alias'].": ".$panel['alias']."Reducer,".$file[1];
             file_put_contents(resource_path('react/store/index.jsx'), $fileContent);
         }
