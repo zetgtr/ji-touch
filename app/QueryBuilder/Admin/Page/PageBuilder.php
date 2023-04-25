@@ -68,7 +68,7 @@ class PageBuilder extends QueryBuilder
             'panelList' => $panelList,
             'name' => $page->title."Page"
         ])->render();
-        file_put_contents(resource_path('react/pages/panel')."/".$page->title."Page.jsx", $pageContent);
+        file_put_contents(resource_path('react/pages/panels')."/".$page->title."Page.jsx", $pageContent);
     }
 
     public function getAll(): Collection

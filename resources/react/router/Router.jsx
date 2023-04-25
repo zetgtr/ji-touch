@@ -17,7 +17,7 @@ export const Router = () => {
         return routers.map((el) => {
             const url = `${parentUrl}/${el.url}`;
             const PageComponent = lazy(() =>
-                import(`../pages/panel/${el.page.title}Page`)
+                import(`../pages/panels/${el.page.title}Page`)
             );
             let childRoutes = null;
             if (el.children) {
