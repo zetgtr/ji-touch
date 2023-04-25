@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import BreadCrumbs from "../components/BreadCrumbs.vue";
+import axios from "axios";
 
 const routes = [
   {
@@ -68,35 +69,33 @@ const router = createRouter({
   history: createWebHistory(),
   routes
 })
+axios.get('/api/navigation/get/test').then(response => {
+    console.log(response.data)
+  const links = response.data;
 
+  // Функция, которая создает роуты рекурсивно
+  const createRoutes = (parentRoute, links) => {
+    links.forEach(link => {
+      const route = {
+        path: link.path,
+        component: () => import(`../views/${link.component}.vue`)
+      };
 
+      if (link.children && link.children.length > 0) {
+        route.children = [];
+        createRoutes(route, link.children);
+      }
 
-// axios.get('/api/links/').then(response => {
-//   const links = response.data;
+      if (parentRoute) {
+        parentRoute.children.push(route);
+      } else {
+        routes.push(route);
+      }
+    });
+  };
 
-//   // Функция, которая создает роуты рекурсивно
-//   const createRoutes = (parentRoute, links) => {
-//     links.forEach(link => {
-//       const route = {
-//         path: link.path,
-//         component: () => import(`../views/${link.component}.vue`)
-//       };
-
-//       if (link.children && link.children.length > 0) {
-//         route.children = [];
-//         createRoutes(route, link.children);
-//       }
-
-//       if (parentRoute) {
-//         parentRoute.children.push(route);
-//       } else {
-//         routes.push(route);
-//       }
-//     });
-//   };
-
-//   createRoutes(null, links);
-// });
+  createRoutes(null, links);
+});
 
 
 
@@ -108,6 +107,8 @@ router.beforeEach((to, from, next) => {
     name: route.meta.breadcrumb || route.name,
     path: route.path.includes('/:id') ? `/${route.path.split('/').filter(i => i).slice(0, -1).join('/')}` : `/${route.path.split('/').filter(i => i).join('/')}`
   }));
+
+
 
   // Добавляем "Home" хлебную крошку в начало массива
   breadcrumbs.unshift({ name: 'Главная', path: '/' });

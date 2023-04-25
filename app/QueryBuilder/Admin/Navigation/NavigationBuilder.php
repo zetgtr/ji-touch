@@ -22,7 +22,6 @@ class NavigationBuilder extends QueryBuilder
     public function setList(Collection $lists, $id)
     {
         $navigationList = NavigationList::query()->find($id);
-
         foreach ($lists as $key => $list)
         {
             $parent = $navigationList->links()->where('parent', '=', $list->id)->orderBy('order')->get();

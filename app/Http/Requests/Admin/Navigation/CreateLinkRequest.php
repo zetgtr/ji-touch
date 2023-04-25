@@ -24,7 +24,8 @@ class CreateLinkRequest extends FormRequest
         return [
             'title' => ['required'],
             'url' => ['required'],
-            'comment' => ['nullable']
+            'comment' => ['nullable'],
+            'page'=>['nullable']
         ];
     }
 }

@@ -29,21 +29,25 @@ class PageController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(PageBuilder $pageBuilder)
     {
+
         return view('admin.page-create.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateRequest $request)
+    public function store(CreateRequest $request, PageBuilder $pageBuilder)
     {
+
         $page = PageCreate::create($request->validated());
 
         if ($page) {
             $pageCreate = new PageCreate();
             $pageCreate->setPanelData($request,$page);
+            $pageBuilder->createPage($page);
+            $pageBuilder->createPage($page);
             return \redirect()->route('admin.page-create.index')->with('success', __('messages.admin.page.create.success'));
         }
 
@@ -69,11 +73,12 @@ class PageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequest $request, PageCreate $pageCreate)
+    public function update(UpdateRequest $request, PageCreate $pageCreate, PageBuilder $pageBuilder)
     {
         $pageCreate = $pageCreate->fill($request->validated());
         if ($pageCreate->save()) {
             $pageCreate->setPanelData($request,$pageCreate);
+            $pageBuilder->createPage($pageCreate);
             return \redirect()->route('admin.page-create.index')->with('success', __('messages.admin.settings.update.success'));
         }
 

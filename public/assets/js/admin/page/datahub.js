@@ -528,6 +528,7 @@ window.panelEditor = panel_editor_fucken();
 
     openEditorByModal(modalWindow, content) {
       let data = JSON.parse(content);
+        console.log(content)
       tinymce_param.target = modalWindow.modal_node.querySelector("#tina_panel");
       tinymce_param.init_instance_callback = (editor) => (this.Editor = editor);
       return new Promise((resolve, reject) => {
@@ -800,8 +801,15 @@ window.panelEditor = panel_editor_fucken();
         title: "Редактирование панели: " + this.title,
         body: dataPanel.getNodeForModalByEdit(),
       });
+      let contentData = []
+        if(JSON.parse(dataPanel.content.work).data.length > 0)
+        {
+            contentData = dataPanel.content.work
+        }else {
+            contentData = dataPanel.content.safe
+        }
       dataPanel
-        .openEditorByModal(modalWindow, dataPanel.content.work)
+        .openEditorByModal(modalWindow, contentData)
         .finally(() => {
           delete modalWindow.$modal;
           modalWindow = null;

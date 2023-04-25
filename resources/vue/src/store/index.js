@@ -8,12 +8,16 @@ import {orderModule} from "./infusions/orderModule";
 import {reviewsModule} from "./infusions/reviewsModule";
 import {jobsModule} from "./infusions/jobsModule";
 import {aboutModule} from "./infusions/aboutModule";
+import {test2Module} from "./infusions/test2Module";
+import {testModule} from "./testModule";
 
 export default createStore({
     state: {
       isAuth: false,
     },
     modules: {
+        test2: test2Module,
+        test: testModule,
         first: firstModule,
         services: servicesModule,
         portfolio: portfolioModule,

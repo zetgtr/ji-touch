@@ -1,6 +1,7 @@
 export function panel_editor_fucken() {
   //$ar = '{"header":[],"type":[],"data":[]}';
   return function ($ar, id) {
+      console.log($ar)
     var table_type2 = ['text', 'textarea', 'img', 'array', 'php'];
     var type_open = 'render';
     //полный массив редактирования
@@ -1146,6 +1147,7 @@ export function panel_editor_fucken() {
     }
 
     var all_table_array = renamenewline($ar, true);
+      console.log($ar)
     var table_array = all_table_array;
 
     render();

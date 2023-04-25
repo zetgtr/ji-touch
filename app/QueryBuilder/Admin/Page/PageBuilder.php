@@ -3,6 +3,8 @@
 namespace App\QueryBuilder\Admin\Page;
 
 use App\Models\Admin\Page\PageCreate;
+use App\Models\Admin\Panel\DataPanel;
+use App\Models\Admin\Panel\Panel;
 use App\QueryBuilder\QueryBuilder;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -48,6 +50,28 @@ class PageBuilder extends QueryBuilder
     {
         $pages = $this->model->where('parent','=',null)->orderBy('order')->get();
         return $this->setPagesParent($pages);
+    }
+
+    public function createPage($page)
+    {
+        $data = DataPanel::query()->where('id_page',$page->id)->get();
+        foreach ($data as $item)
+        {
+            $panel = Panel::query()->find($item->id_panel);
+            $panels[] = ['component'=> $panel->alias."-component /",
+                'import'=>"import ".$panel->alias.'Component from ',
+                'from' => "../../infusions/".$panel->alias."Component.vue",
+                'export'=>$panel->alias."Component",
+            ];
+        }
+
+        $newContent = view("template.templatePage",[
+            'componentsList'=> $panels,
+            'title' => $page->title,
+        ])->render();
+        $newFileName = 'test'.'View.vue';
+        $newFilePath = resource_path('vue/src/views/infusions').'/' . $newFileName;
+        file_put_contents($newFilePath, $newContent);
     }
 
     public function getAll(): Collection

@@ -18,10 +18,11 @@
         <div class="col-lg-6">
             <div class="form-group">
                 <label>Страница</label>
+
                 <select name="page" id="page" class="form-select @error("comment") is-invalid @enderror">
                     <option value="0">--Выберите--</option>
                     @foreach($pages as $page)
-                        <option value="{{ $page->id }}">{{ $page->title }}</option>
+                        <option @selected($page->id == $navigation->page || old('page') == $page->id) value="{{ $page->id }}">{{ $page->title }}</option>
                     @endforeach
                 </select>
                 <x-error errorValue="comment" />

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Navigation extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','url','comment'];
+    protected $fillable = ['title','url','comment','page'];
     public function list(): BelongsToMany
     {
         return $this->belongsToMany(NavigationList::class, 'navigations_has_navigation_list',
