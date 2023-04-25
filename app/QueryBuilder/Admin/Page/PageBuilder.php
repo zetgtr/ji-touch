@@ -3,6 +3,8 @@
 namespace App\QueryBuilder\Admin\Page;
 
 use App\Models\Admin\Page\PageCreate;
+use App\Models\Admin\Panel\DataPanel;
+use App\Models\Admin\Panel\Panel;
 use App\QueryBuilder\QueryBuilder;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -29,8 +31,6 @@ class PageBuilder extends QueryBuilder
 
     private function setPagesParent(Collection $items)
     {
-
-
         foreach ($items as $item)
         {
             $this->model = PageCreate::query();
@@ -48,6 +48,27 @@ class PageBuilder extends QueryBuilder
     {
         $pages = $this->model->where('parent','=',null)->orderBy('order')->get();
         return $this->setPagesParent($pages);
+    }
+
+    public function setDataPage($page)
+    {
+        $data = DataPanel::query()->where('id_page',$page->id)->get();
+        $panelList = [];
+        foreach ($data as $item)
+        {
+            $panel = Panel::query()->find($item->id_panel);
+            $panelList[] = [
+                'component' => ucfirst($panel->alias)."Component",
+                'import' => 'import { '.ucfirst($panel->alias).'Component } from ',
+                'from' => '../../components/panels/'.$panel->alias
+            ];
+        }
+//        dd($panelList);
+        $pageContent = view("template.page.page",[
+            'panelList' => $panelList,
+            'name' => $page->title."Page"
+        ])->render();
+        file_put_contents(resource_path('react/pages/panel')."/".$page->title."Page.jsx", $pageContent);
     }
 
     public function getAll(): Collection

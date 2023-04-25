@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 export const Home = () => {
     return (
         <div className="App">
-            123
         </div>
     );
 };

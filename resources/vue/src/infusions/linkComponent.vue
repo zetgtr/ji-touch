@@ -1,4 +1,6 @@
-<template></template>
+<template>
+
+</template>
 
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
