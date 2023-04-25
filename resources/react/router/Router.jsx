@@ -2,23 +2,31 @@ import React, {lazy, Suspense, useEffect, useState} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Home} from "../pages/home/Home";
 import {ROUTER} from "./constants";
-import {LinkRoute} from "../components/link";
-import {setRouterData} from "../api/links";
-import {setRouterAction} from "../store/router/actions";
+import {setPagesAction, setRouterAction} from "../store/router/actions";
 import {routerSelector} from "../store/router/selector";
 import {useDispatch, useSelector} from "react-redux";
+import {setPageData} from "../api/router";
 
 
 export const Router = () => {
     const dispatch = useDispatch();
     const { routers } = useSelector(routerSelector);
+    const { pages } = useSelector(routerSelector);
 
     const setRouterPage = (routers, parentUrl = "") => {
-        return routers.map((el) => {
+        return routers.map(el => {
             const url = `${parentUrl}/${el.url}`;
+
+            let importString = ""
+            if(el.page)
+                importString = `../pages/panels/${el.page.title}Page`
+            else
+                importString = `../pages/panels/${el.alias}Page`
+
             const PageComponent = lazy(() =>
-                import(`../pages/panels/${el.page.title}Page`)
+                import(importString)
             );
+
             let childRoutes = null;
             if (el.children) {
                 childRoutes = setRouterPage(el.children, url);
@@ -33,16 +41,17 @@ export const Router = () => {
     };
 
     useEffect(() => {
-        setRouterData('test',dispatch,setRouterAction)
+        setPageData(dispatch,setPagesAction)
     }, []);
-    if(routers.length === 0) return false
+    // if(routers.length === 0) return false
     return (
       <BrowserRouter>
-          <LinkRoute />
+          {/*<LinkRoute />*/}
           <Suspense fallback={<div>Loading...</div>}>
               <Routes>
                   {setRouterPage(routers)}
-                  <Route exact path={ROUTER.HOME} element={<Home />} />
+                  {setRouterPage(pages)}
+                  <Route path={ROUTER.HOME} element={<Home />} />
               </Routes>
           </Suspense>
       </BrowserRouter>

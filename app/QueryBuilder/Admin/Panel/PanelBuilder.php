@@ -262,32 +262,38 @@ class PanelBuilder extends QueryBuilder
             'alias' => $panel['alias']
         ])->render();
         file_put_contents($pathComponents."/".$panelValue."Component.jsx", $componentContent);
+    }
 
+    private function deleteDirectory($dir) {
+        if (!file_exists($dir)) {
+            return;
+        }
 
-//        $templateContent = file_get_contents(base_path('template')."/templateModule.js");
-//        $newContent = str_replace('setPanel', $panelValue, $templateContent);
-//        $newFileName = $panelValue.'Module.js';
-//        $newFilePath = resource_path('vue/src/store/infusions').'/' . $newFileName;
-//        file_put_contents($newFilePath, $newContent);
-//        $templateContent = file_get_contents(base_path('template')."/templateComponent.vue");
-//        $newContent = str_replace('fetchInfo', $panelValue, $templateContent);
-//        $newFileName = $panelValue.'Component.vue';
-//        $newFilePath = resource_path('vue/src/infusions').'/' . $newFileName;
-//        file_put_contents($newFilePath, $newContent);
+        foreach (glob($dir.'/*') as $file) {
+            if (is_dir($file)) {
+                $this->deleteDirectory($file);
+            } else {
+                unlink($file);
+            }
+        }
+
+        rmdir($dir);
     }
 
     public function removePanel(Panel $panel)
     {
-        $panelValue = $panel->alias;
-        $storeFile = resource_path('vue/src/store/infusions').'/' . $panelValue.'Module.js';
-        $componentFile = resource_path('vue/src/infusions').'/' . $panelValue.'Component.vue';
-        if(file_exists($storeFile))
-        {
-            unlink($storeFile);
-        }
-        if(file_exists($componentFile))
-        {
-            unlink($componentFile);
-        }
+        $alias = $panel->alias;
+        $storePath = resource_path('react/store/panels/'.$alias);
+        $componentPath = resource_path('react/components/panels/'.$alias);
+
+        $this->deleteDirectory($storePath);
+        $this->deleteDirectory($componentPath);
+
+        $file = file_get_contents(resource_path('react/store/index.jsx'));
+        $newContent = str_replace($alias.": ".$alias."Reducer,
+        ","",$file);
+        $newContent = str_replace('import {'.$alias.'Reducer} from "./panels/'.$alias.'/reducer";
+        ','',$newContent);
+        file_put_contents(resource_path('react/store/index.jsx'), $newContent);
     }
 }

@@ -10,6 +10,7 @@ use App\Models\Admin\Page\PageCreate;
 use App\Models\Admin\Panel\DataPanel;
 use App\QueryBuilder\Admin\Page\PageBuilder;
 use App\QueryBuilder\Admin\Page\PageDataPanelBuilder;
+use App\QueryBuilder\Admin\Panel\PanelBuilder;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -20,6 +21,11 @@ class PageController extends Controller
     public function index(PageBuilder $pageBuilder)
     {
         return view('admin.page-create.index',['pages'=>$pageBuilder->getPagesParent()]);
+    }
+
+    public function getPageRouter(PageBuilder $pageBuilder)
+    {
+        return $pageBuilder->getPagesParent();
     }
 
     public function order(Request $request, PageBuilder $pageBuilder){
@@ -85,9 +91,10 @@ class PageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PageCreate $pageCreate)
+    public function destroy(PageCreate $pageCreate, PageBuilder $pageBuilder)
     {
         try {
+            $pageBuilder->delete($pageCreate);
             $pageCreate->delete();
             $response = ['status' => true,'message' => __('messages.admin.page.destroy.success')];
         } catch (Exception $exception)

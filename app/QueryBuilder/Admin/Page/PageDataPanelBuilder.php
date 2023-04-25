@@ -26,6 +26,7 @@ class PageDataPanelBuilder extends QueryBuilder
                     $data[$key]['content'] = json_decode($panel->data);
                 } else
                     $data[$key]['content'] = json_decode($datum['content']);
+                $data[$key]['alias'] = $panel->alias;
                 $data[$key]['title'] = $panel->title;
             }
         }

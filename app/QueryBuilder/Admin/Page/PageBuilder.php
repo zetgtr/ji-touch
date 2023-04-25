@@ -7,6 +7,7 @@ use App\Models\Admin\Panel\DataPanel;
 use App\Models\Admin\Panel\Panel;
 use App\QueryBuilder\QueryBuilder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
 class PageBuilder extends QueryBuilder
 {
@@ -35,8 +36,10 @@ class PageBuilder extends QueryBuilder
         {
             $this->model = PageCreate::query();
             $parent = $this->model->where('parent','=',$item->id)->orderBy('order')->get();
+            $item->alias = Str::camel(str_slug($item->title));
             if (count($parent) > 0) {
                 $item->parent = $parent;
+                $item->children = $parent;
                 $this->setPagesParent($item->parent);
             }
         }
@@ -64,15 +67,26 @@ class PageBuilder extends QueryBuilder
             ];
         }
 //        dd($panelList);
+        $alias = Str::camel(str_slug($page->title));
         $pageContent = view("template.page.page",[
             'panelList' => $panelList,
-            'name' => $page->title."Page"
+            'name' => $alias."Page"
         ])->render();
-        file_put_contents(resource_path('react/pages/panels')."/".$page->title."Page.jsx", $pageContent);
+        file_put_contents(resource_path('react/pages/panels')."/".$alias."Page.jsx", $pageContent);
     }
 
     public function getAll(): Collection
     {
         return $this->model->get();
+    }
+
+    public function delete($pageCreate)
+    {
+        $panelValue = Str::camel(str_slug($pageCreate->title));
+        $pageFile = resource_path('react/pages/panels').'/' . $panelValue.'Page.jsx';
+        if(file_exists($pageFile))
+        {
+            unlink($pageFile);
+        }
     }
 }

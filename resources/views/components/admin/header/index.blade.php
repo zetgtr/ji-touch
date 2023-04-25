@@ -3,11 +3,11 @@
         <div class="d-flex">
             <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
             <!-- sidebar-toggle-->
-            <a class="logo-horizontal " href="index.html">
-                <img src="{{ asset('assets/images/brand/logo.png') }}" class="header-brand-img desktop-logo" alt="logo">
-                <img src="{{ asset('assets/images/brand/logo-3.png') }}" class="header-brand-img light-logo1"
-                     alt="logo">
-            </a>
+{{--            <a class="logo-horizontal " href="index.html">--}}
+{{--                <img src="{{ asset('assets/images/brand/logo.png') }}" class="header-brand-img desktop-logo" alt="logo">--}}
+{{--                <img src="{{ asset('assets/images/brand/logo-3.png') }}" class="header-brand-img light-logo1"--}}
+{{--                     alt="logo">--}}
+{{--            </a>--}}
             <div class="d-flex order-lg-2 ms-auto header-right-icons">
                 <!-- SEARCH -->
                 <button class="navbar-toggler navresponsive-toggler d-lg-none ms-auto" type="button"

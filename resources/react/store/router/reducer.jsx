@@ -1,7 +1,8 @@
-import {SET_ROUTER} from "./constants";
+import {SET_PAGE, SET_ROUTER} from "./constants";
 
 const initialState = {
     routers: [],
+    pages: [],
 };
 
 export const routerReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ export const routerReducer = (state = initialState, action) => {
             return {
                 ...state,
                 routers: action.payload,
+            };
+        case SET_PAGE:
+            return {
+                ...state,
+                pages: action.payload,
             };
         default:
             return state;

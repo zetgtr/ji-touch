@@ -33,5 +33,6 @@ Route::post('navigation/set/{id}', [NavigationListController::class,'setLink']);
 Route::get('navigation/get/{alias}', [NavigationListController::class,'getAlias']);
 
 Route::get('panel_data/{name}', [PanelController::class, 'show']);
+Route::get('page_route', [PageController::class, 'getPageRouter']);
 
 Route::post('form/{name}', FormController::class);

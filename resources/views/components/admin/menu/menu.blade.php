@@ -2,14 +2,14 @@
     <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
     <div class="app-sidebar">
         <div class="side-header">
-            <a class="header-brand1" href="index.html">
-                <img src="{{ asset('assets/images/brand/logo.png') }}" class="header-brand-img desktop-logo" alt="logo">
-                <img src="{{ asset('assets/images/brand/logo-1.png') }}" class="header-brand-img toggle-logo"
-                     alt="logo">
-                <img src="{{ asset('assets/images/brand/logo-2.png') }}" class="header-brand-img light-logo" alt="logo">
-                <img src="{{ asset('assets/images/brand/logo-3.png') }}" class="header-brand-img light-logo1"
-                     alt="logo">
-            </a>
+{{--            <a class="header-brand1" href="index.html">--}}
+{{--                <img src="{{ asset('assets/images/brand/logo.png') }}" class="header-brand-img desktop-logo" alt="logo">--}}
+{{--                <img src="{{ asset('assets/images/brand/logo-1.png') }}" class="header-brand-img toggle-logo"--}}
+{{--                     alt="logo">--}}
+{{--                <img src="{{ asset('assets/images/brand/logo-2.png') }}" class="header-brand-img light-logo" alt="logo">--}}
+{{--                <img src="{{ asset('assets/images/brand/logo-3.png') }}" class="header-brand-img light-logo1"--}}
+{{--                     alt="logo">--}}
+{{--            </a>--}}
             <!-- LOGO -->
         </div>
         <div class="main-sidemenu">
