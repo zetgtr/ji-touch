@@ -1,4 +1,3 @@
-
 import { combineReducers, createStore } from "redux";
 import {linkReducer} from "./link/reducer";
 import {routerReducer} from "./router/reducer";
