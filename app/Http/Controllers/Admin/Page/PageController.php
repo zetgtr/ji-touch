@@ -22,6 +22,11 @@ class PageController extends Controller
         return view('admin.page-create.index',['pages'=>$pageBuilder->getPagesParent()]);
     }
 
+    public function getPageRouter(PageBuilder $pageBuilder)
+    {
+        return $pageBuilder->getPagesParent();
+    }
+
     public function order(Request $request, PageBuilder $pageBuilder){
         $pageBuilder->setOrder($request->all()['items']);
     }

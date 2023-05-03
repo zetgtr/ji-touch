@@ -11,7 +11,7 @@ export default {
     ...mapMutations({}),
     ...mapActions({
       // fetchInfo: 'название модуля + / + fetchInfo'
-      fetchInfo: "test/fetchInfo",
+      fetchInfo: "article/fetchInfo",
     }),
   },
   mounted() {
@@ -20,7 +20,7 @@ export default {
   computed: {
     // название aliasa: (state) => state.order.название aliasa,
     ...mapState({
-        test: (state) => state.order.test,
+        article: (state) => state.order.article,
       }),
   },
   watch: {},

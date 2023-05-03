@@ -64,12 +64,12 @@ class PageBuilder extends QueryBuilder
                 'export'=>$panel->alias."Component",
             ];
         }
-
+//        dd($page->id);
         $newContent = view("template.templatePage",[
             'componentsList'=> $panels,
             'title' => $page->title,
         ])->render();
-        $newFileName = 'test'.'View.vue';
+        $newFileName = $page->title.'View.vue';
         $newFilePath = resource_path('vue/src/views/infusions').'/' . $newFileName;
         file_put_contents($newFilePath, $newContent);
     }

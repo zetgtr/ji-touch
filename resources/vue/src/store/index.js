@@ -10,14 +10,15 @@ import {jobsModule} from "./infusions/jobsModule";
 import {aboutModule} from "./infusions/aboutModule";
 import {test2Module} from "./infusions/test2Module";
 import {testModule} from "./testModule";
+import {articleModule} from "./infusions/articleModule";
 
 export default createStore({
     state: {
       isAuth: false,
     },
     modules: {
+        article: articleModule,
         test2: test2Module,
-        test: testModule,
         first: firstModule,
         services: servicesModule,
         portfolio: portfolioModule,

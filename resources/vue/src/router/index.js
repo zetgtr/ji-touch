@@ -52,53 +52,25 @@ const routes = [
     meta: { layout: "about", breadcrumb: "О компании" },
     component: () => import('./../views/AboutView.vue')
   },
-  {
-    path: '/test',
-    name: 'test',
-    meta: { layout: "inner", breadcrumb: "test" },
-    component: () => import('./../views/TestView.vue')
-  },
-  {
-    path: "/:catchAll(.*)",
-    meta: { layout: "empty" },
-    component: () => import('./../views/NotFound.vue')
-  },
+  // {
+  //   path: '/test',
+  //   name: 'test',
+  //   meta: { layout: "inner", breadcrumb: "test" },
+  //   component: () => import('./../views/TestView.vue')
+  // },
+  // {
+  //   path: "/:catchAll(.*)",
+  //   meta: { layout: "empty" },
+  //   component: () => import('./../views/NotFound.vue')
+  // },
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes
+    history: createWebHistory(),
+    routes
 })
-axios.get('/api/navigation/get/test').then(response => {
-    console.log(response.data)
-  const links = response.data;
 
-  // Функция, которая создает роуты рекурсивно
-  const createRoutes = (parentRoute, links) => {
-    links.forEach(link => {
-      const route = {
-        path: link.path,
-        component: () => import(`../views/${link.component}.vue`)
-      };
-
-      if (link.children && link.children.length > 0) {
-        route.children = [];
-        createRoutes(route, link.children);
-      }
-
-      if (parentRoute) {
-        parentRoute.children.push(route);
-      } else {
-        routes.push(route);
-      }
-    });
-  };
-
-  createRoutes(null, links);
-});
-
-
-
+console.log(routes)
 
 router.beforeEach((to, from, next) => {
   const matched = to.matched;
@@ -107,8 +79,6 @@ router.beforeEach((to, from, next) => {
     name: route.meta.breadcrumb || route.name,
     path: route.path.includes('/:id') ? `/${route.path.split('/').filter(i => i).slice(0, -1).join('/')}` : `/${route.path.split('/').filter(i => i).join('/')}`
   }));
-
-
 
   // Добавляем "Home" хлебную крошку в начало массива
   breadcrumbs.unshift({ name: 'Главная', path: '/' });
@@ -129,5 +99,82 @@ router.beforeEach((to, from, next) => {
   to.meta.breadcrumbs = breadcrumbs;
   next();
 });
+
+let dynamicRoutes = [];
+
+axios.get('/api/page_route').then(response => {
+    const links = response.data;
+
+    const createRoutes = (parentRoute, links, url = "") => {
+        links.forEach(link => {
+            url = url + "/" + link.url;
+            let path = "../infusions/views/" + link.title + "View.vue";
+            console.log(url);
+            const route = {
+                path: url,
+                name: "test",
+                component: () => import("./../views/infusions/testView.vue")
+            };
+
+            if (link.parent && link.parent.length > 0) {
+                route.children = [];
+                createRoutes(route, link.parent, url);
+            }
+
+            if (parentRoute) {
+                parentRoute.children.push(route);
+            } else {
+                dynamicRoutes.push(route);
+            }
+        });
+    };
+
+    createRoutes(null, links);
+});
+
+router.beforeResolve(async (to, from, next) => {
+    // Загружаем динамические маршруты и сохраняем их в переменной
+    if (dynamicRoutes.length === 0) {
+        dynamicRoutes = await getDynamicRoutes();
+    }
+    // Добавляем динамические маршруты в роутер
+    console.log(dynamicRoutes)
+    router.addRoute(dynamicRoutes);
+    next();
+});
+
+async function getDynamicRoutes() {
+    const response = await axios.get("/api/page_route");
+    const links = response.data;
+
+    const routes = [];
+
+    const createRoutes = (parentRoute, links, url = "") => {
+        links.forEach(link => {
+            url = url + "/" + link.url;
+            let path = "../infusions/views/" + link.title + "View.vue";
+            console.log(url);
+            const route = {
+                path: url,
+                name: "test",
+                component: () => import("./../views/infusions/testView.vue")
+            };
+
+            if (link.parent && link.parent.length > 0) {
+                route.children = [];
+                createRoutes(route, link.parent, url);
+            }
+
+            if (parentRoute) {
+                parentRoute.children.push(route);
+            } else {
+                routes.push(route);
+            }
+        });
+    };
+
+    createRoutes(null, links);
+    return routes;
+}
 
 export { router, BreadCrumbs };

@@ -1,6 +1,5 @@
 <template>
     <article-component />
-    123
 </template>
 
 <script>

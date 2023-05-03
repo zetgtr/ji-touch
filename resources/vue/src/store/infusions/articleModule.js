@@ -1,29 +1,29 @@
 import axios from "axios";
 // ниже название панели + Module
-export const testModule = {
+export const articleModule = {
     state: () => ({
         // тут алиас столбцов : тип данных
-          test : "" ,
+          article : "" ,
         }),
     getters: {
 
     },
     mutations: {
         // для каждого алиаса свой set
-        setTest(state, test){
-            state.test = test
+        setArticle(state, article){
+            state.article = article
         },
         },
     actions: {
         async fetchInfo({state, commit}, argument) {
             try {
-                const response = await axios.get('/api/panel_data/test', {
+                const response = await axios.get('/api/panel_data/article', {
                     data: argument,
                     params: {
                     }
                 });
                 // коммит название мутации
-                  commit('setTest', response.data[0].test)
+                  commit('setArticle', response.data[0].article)
                 } catch (e) {
                 console.log(e)
             } finally {

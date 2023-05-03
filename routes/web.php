@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\Catalog\CatalogCategoryController;
+use App\Http\Controllers\Admin\Catalog\CatalogProductController;
+use App\Http\Controllers\Admin\Catalog\CatalogSettingsController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\Navigation\NavigationController;
 use App\Http\Controllers\Admin\News\CategoryController as NewsCategoryController;
@@ -49,6 +52,13 @@ Route::middleware('auth')->group(function () {
         Route::post('panel/get_all', [PanelController::class,'getAllPanel'])->name('panel-all-get');
 
         Route::post('panel/select', [PanelController::class,'getSelectTable'])->name('panel-select');
+
+        Route::group(['prefix' => 'catalog', 'as' => 'catalog.'], static function() {
+            Route::resource('product', CatalogProductController::class);
+            Route::resource('category', CatalogCategoryController::class);
+            Route::resource('settings', CatalogSettingsController::class);
+            Route::post('order', [CatalogCategoryController::class,'order'])->name('page.order');
+        });
 
 //        Route::resource('user', AdminUserController::class);
 //        Route::resource('roles', AdminRolesController::class);
