@@ -24,7 +24,7 @@ export const Router = () => {
                 importString = `../pages/panels/${el.alias}Page`
 
             const PageComponent = lazy(() =>
-                import(importString)
+                import(/* @vite-ignore */ importString)
             );
 
             let childRoutes = null;
