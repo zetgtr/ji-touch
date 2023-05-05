@@ -1,6 +1,6 @@
 @foreach($categories as $category)
     <a href="{{ route('admin.catalog.product.show', ['product'=>$category->id]) }}">
-        <div class="border-0 p-0 mb-4 pt-4">
+        <div class="border-0 p-0 mb-2">
             <div class="media mt-0 border">
                 <div class="ps-0 me-3">
                     <i class="fas fa-external-link-alt shared-files text-muted"></i>

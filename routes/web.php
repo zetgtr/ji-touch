@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
             Route::resource('product', CatalogProductController::class);
             Route::resource('category', CatalogCategoryController::class);
             Route::resource('settings', CatalogSettingsController::class);
-            Route::post('order', [CatalogCategoryController::class,'order'])->name('page.order');
+            Route::post('order', [CatalogCategoryController::class,'order'])->name('category.order');
         });
 
 //        Route::resource('user', AdminUserController::class);

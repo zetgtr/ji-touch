@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin\Catalog\Category;
 
+use App\Models\Admin\Catalog\Category;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
@@ -37,7 +39,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => ['required'],
             'description' => ['nullable'],
-            'url' => ['required'],
+            'url' => ['required', Rule::unique(Category::class)->ignore($this->id)],
             'seo_title' => ['nullable'],
             'seo_description' => ['nullable'],
             'seo_keywords' => ['nullable'],

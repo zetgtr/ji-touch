@@ -11,7 +11,7 @@
             <div class="row row-page-create">
                 <div class="col-md-8 order-md-first">
                     <div class="dd nestable" id="nestable">
-                        <x-admin.catalog.category />
+                        <x-admin.catalog.category :categories="$categories"/>
                     </div>
                 </div>
                 <div class="col-md-4 order-md-first d-flex align-items-start justify-content-end">
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <input type="hidden" id="route_dd" value="{{  route('admin.page.order') }}">
+    <input type="hidden" id="route_dd" value="{{  route('admin.catalog.category.order') }}">
     <script src="{{asset('assets/js/admin/dnd.js')}}" ></script>
     <script src="{{asset('assets/js/admin/delete.js')}}" ></script>
 @endsection

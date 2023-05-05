@@ -3,7 +3,7 @@
 [Master Stylesheet]
 
 Project        :   sash – Bootstrap 5  Admin & Dashboard Template
-Copyright      :   Spruko Technologies Private Limited 
+Copyright      :   Spruko Technologies Private Limited
 Author         :   Spruko
 Author URL     :   https://themeforest.net/user/spruko
 Support	       :   support@spruko.com
@@ -28612,6 +28612,10 @@ body.rtl {
 
 .rtl .breadcrumb-item+.breadcrumb-item {
     padding-left: 0.5rem;
+}
+
+.breadcrumb-item+.breadcrumb-item {
+    padding-left: 0!important;
 }
 
 .rtl .breadcrumb-item+.breadcrumb-item::before {

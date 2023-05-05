@@ -22,4 +22,9 @@ class Category extends Model
         'publish',
         'access'
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'catalog_category_has_product');
+    }
 }

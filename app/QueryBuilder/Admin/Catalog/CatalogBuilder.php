@@ -9,6 +9,7 @@ use App\Models\Admin\Catalog\Product;
 use App\Models\Admin\Catalog\Settings;
 use App\QueryBuilder\QueryBuilder;
 use Illuminate\Database\Eloquent\Collection;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class CatalogBuilder extends QueryBuilder
 {
@@ -33,6 +34,16 @@ class CatalogBuilder extends QueryBuilder
         return $links;
     }
 
+    public function search(string $text)
+    {
+        $products = $this->product->where('title', 'like', '%'.$text.'%')->get();
+        foreach ($products as $key=>$product)
+        {
+            $products[$key]->url = route("admin.catalog.product.edit",$product->id);
+        }
+        return $products;
+    }
+
     public function getNavigationPageLink($key)
     {
         $links = [CatalogEnums::CONTENT->value => ['url' => CatalogEnums::CONTENT->value, 'name' => 'Контент'],
@@ -52,9 +63,54 @@ class CatalogBuilder extends QueryBuilder
     {
         return $this->product->get();
     }
+
+    private function setCategoryParent(Collection $items)
+    {
+
+
+        foreach ($items as $item)
+        {
+            $this->model = Category::query();
+            $parent = $this->model->where('parent','=',$item->id)->orderBy('order')->get();
+            if (count($parent) > 0) {
+                $item->parent = $parent;
+                $this->setCategoryParent($item->parent);
+            }
+        }
+
+        return $items;
+    }
+
+    public function getCategoryParent(): Collection
+    {
+        $category = $this->category->where('parent','=',null)->orderBy('order')->get();
+        return $this->setCategoryParent($category);
+    }
+    private function setProductParent(Collection $items)
+    {
+
+
+        foreach ($items as $item)
+        {
+            $this->model = Product::query();
+            $parent = $this->model->where('parent','=',$item->id)->orderBy('order')->get();
+            if (count($parent) > 0) {
+                $item->parent = $parent;
+                $this->setProductParent($item->parent);
+            }
+        }
+
+        return $items;
+    }
+
+    public function getProductParent(): Collection
+    {
+        $product = $this->category->where('parent','=',null)->orderBy('order')->get();
+        return $this->setProductParent($product);
+    }
     public function getCategory()
     {
-        return $this->category->get();
+        return $this->getCategoryParent();
     }
 
     public function getAll(): Collection
@@ -73,5 +129,39 @@ class CatalogBuilder extends QueryBuilder
                 $this->setOrder($item['children'], $item['id']);
             }
         }
+    }
+
+    public function getProductCategory(string $categoryId)
+    {
+        $category = Category::find($categoryId);
+        return [
+            'products'=>$category->products()->get(),
+            'category'=>$this->category->where('parent',$category->id)->get()
+        ];
+    }
+
+    public function getCategoryAll()
+    {
+        return $this->category->get();
+    }
+
+    public function getProductBreadcrumb(string $categoryId)
+    {
+        $category = Category::find($categoryId);
+        $breadcrumbs = [];
+
+        // Добавляем текущую категорию в хлебные крошки
+        $breadcrumbs[] = [
+            'title' => $category->title,
+            'url' => route('admin.catalog.product.show', $category->id)
+        ];
+
+        // Если у текущей категории есть родительская категория, добавляем ее в хлебные крошки
+        if ($category->parent) {
+            $parentBreadcrumbs = $this->getProductBreadcrumb($category->parent);
+            $breadcrumbs = array_merge($parentBreadcrumbs, $breadcrumbs);
+        }
+
+        return $breadcrumbs;
     }
 }

@@ -30,19 +30,20 @@
                 Родительская категория
             </div>
 
-            @forelse($categories as $category)
-                <div class="outlined-radio mt-2">
-                    <input id="category{{$category->id}}" @checked(old('parent', $category->parent)) type="checkbox" class="d-none" value="{{$category->id}}" name="parent">
-                    <label class="d-block text-left" for="category{{$category->id}}">{{$category->title}}</label>
-                </div>
+            <div class="outlined-radio mt-2">
+                <input type="radio" name="parent" id="category0" class="d-none" @checked(!old('parent', $category->parent))>
+                <label class="d-block text-left" for="category0">Корневая директория</label>
+            </div>
+            @forelse($categories as $item)
+                @if($category->id !== $item->id)
+                    <div class="outlined-radio mt-2">
+                        <input id="category{{$item->id}}" @checked(old('parent', $category->parent) === $item->id) type="radio" class="d-none" value="{{$item->id}}" name="parent">
+                        <label class="d-block text-left" for="category{{$item->id}}">{{$item->title}}</label>
+                    </div>
+                @endif
             @empty
                 <div class="d-flex w-100 mt-3 justify-content-center">Не созданы</div>
             @endforelse
-
-            <div class="tree-subchildren">
-
-            </div>
-
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Form\FormController;
 use App\Models\Admin\Navigation\NavigationList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\Admin\Catalog\CatalogProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function() {
     Route::get('get_page/{page}',[PageController::class,'show']);
+    Route::get('catalog_search/{text}',[CatalogProductController::class,'search']);
 });
 
 Route::post('navigation/set/{id}', [NavigationListController::class,'setLink']);

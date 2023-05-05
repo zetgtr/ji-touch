@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Catalog;
 use App\Enums\CatalogEnums;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Catalog\Product\CreateRequest;
+use App\Http\Requests\Admin\Catalog\Product\UpdateRequest;
 use App\Models\Admin\Catalog\Product;
 use App\QueryBuilder\Admin\Catalog\CatalogBuilder;
 use Illuminate\Http\Request;
@@ -17,6 +18,11 @@ class CatalogProductController extends Controller
     public function index(CatalogBuilder $catalogBuilder)
     {
         return view('admin.catalog.product.index',['links' => $catalogBuilder->getNavigationLinks(CatalogEnums::PRODUCT->value)]);
+    }
+
+    public function search(string $text, CatalogBuilder $catalogBuilder)
+    {
+        return $catalogBuilder->search($text);
     }
 
     /**
@@ -48,23 +54,40 @@ class CatalogProductController extends Controller
      */
     public function show(string $id,CatalogBuilder $catalogBuilder)
     {
-         return view('admin.catalog.product.show',['links' => $catalogBuilder->getNavigationLinks(CatalogEnums::PRODUCT->value)]);
+        $data = $catalogBuilder->getProductCategory($id);
+//        dd($catalogBuilder->getProductBreadcrumb($id));
+        return view('admin.catalog.product.show',[
+            'links' => $catalogBuilder->getNavigationLinks(CatalogEnums::PRODUCT->value),
+            'categories'=>$data['category'],
+            'products' => $data['products'],
+            'breadcrumb' => $catalogBuilder->getProductBreadcrumb($id)
+            ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product,CatalogBuilder $catalogBuilder)
     {
-        //
+        return view('admin.catalog.product.edit',[
+            'links' => $catalogBuilder->getNavigationLinks(CatalogEnums::PRODUCT->value),
+            'product'=>$product,
+            'navigation' => $catalogBuilder->getNavigationPageLink(CatalogEnums::CONTENT->value)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, Product $product)
     {
-        //
+        $product = $product->fill($request->validated());
+        if ($product->save()) {
+            $product->categories()->sync($request->getCategoriesIds());
+            return \redirect()->route('admin.catalog.product.edit',['product'=>$product])->with('success', __('messages.admin.catalog.product.update.success'));
+        }
+
+        return \back()->with('error', __('messages.admin.catalog.product.update.fail'));
     }
 
     /**

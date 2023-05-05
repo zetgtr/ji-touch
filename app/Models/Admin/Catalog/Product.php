@@ -29,4 +29,5 @@ class Product extends Model
         return $this->belongsToMany(Category::class, 'catalog_category_has_product',
             'product_id', 'category_id', 'id', 'id');
     }
+
 }

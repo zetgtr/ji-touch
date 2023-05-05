@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('product_id')
                 ->references('id')->on('catalog_products')
                 ->cascadeOnDelete();
+            $table->integer('order')->default(0);
         });
     }
 

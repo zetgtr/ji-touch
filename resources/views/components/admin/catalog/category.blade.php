@@ -16,7 +16,7 @@
                     </a>
                 </div>
                 @if($item->parent instanceof \Illuminate\Database\Eloquent\Collection)
-                    <x-admin.page.page-list :pages="$item->parent" />
+                    <x-admin.catalog.category :categories="$item->parent" />
                 @endif
             </li>
         @endforeach

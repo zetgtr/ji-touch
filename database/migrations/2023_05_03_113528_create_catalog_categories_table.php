@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('seo_description')->nullable();
             $table->text('seo_keywords')->nullable();
             $table->json('images')->nullable();
-            $table->integer('parent')->default(0);
+            $table->integer('parent')->nullable();
             $table->integer('order')->default(0);
             $table->integer('publish')->default(1);
             $table->enum('access',[AccessEnums::all()]);

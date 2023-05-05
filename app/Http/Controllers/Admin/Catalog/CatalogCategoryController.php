@@ -17,7 +17,10 @@ class CatalogCategoryController extends Controller
      */
     public function index(CatalogBuilder $catalogBuilder)
     {
-        return view('admin.catalog.category.index',['links' => $catalogBuilder->getNavigationLinks(CatalogEnums::CATEGORY->value)]);
+        return view('admin.catalog.category.index',[
+            'links' => $catalogBuilder->getNavigationLinks(CatalogEnums::CATEGORY->value),
+            'categories' => $catalogBuilder->getCategory()
+        ]);
     }
 
     public function order(Request $request, CatalogBuilder $catalogBuilder){
@@ -30,7 +33,7 @@ class CatalogCategoryController extends Controller
     public function create(CatalogBuilder $catalogBuilder)
     {
         return view('admin.catalog.category.create',[
-            'links' => $catalogBuilder->getNavigationLinks(),
+            'links' => $catalogBuilder->getNavigationLinks(CatalogEnums::CATEGORY->value),
             'navigation' => $catalogBuilder->getNavigationPageLink(CatalogEnums::CONTENT->value)
         ]);
     }
@@ -62,7 +65,7 @@ class CatalogCategoryController extends Controller
     public function edit(Category $category,CatalogBuilder $catalogBuilder)
     {
         return view('admin.catalog.category.edit',[
-            'links' => $catalogBuilder->getNavigationLinks(),
+            'links' => $catalogBuilder->getNavigationLinks(CatalogEnums::CATEGORY->value),
             'navigation' => $catalogBuilder->getNavigationPageLink(CatalogEnums::CONTENT->value),
             'category' => $category
         ]);

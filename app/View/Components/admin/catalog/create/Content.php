@@ -10,7 +10,7 @@ class Content extends Component
 {
     public function __construct(CatalogBuilder $catalogBuilder)
     {
-        $this->categories = $catalogBuilder->getCategory();
+        $this->categories = $catalogBuilder->getCategoryAll();
     }
 
     public function render(): View

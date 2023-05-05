@@ -7,13 +7,13 @@
                         <i class="fa fa-picture-o"></i> Загрузка
                       </a>
                     </span>
-            <input id="thumbnail" class="form-control" type="text" name="images[]" value="{{ implode(",", old("images", json_decode($category->images))) }}">
+            <input id="thumbnail" class="form-control" type="text" name="images[]" value="{{ implode(",", old("images", json_decode($product->images))) }}">
             <x-error error-value="images" />
         </div>
         <div class="pb-0 mt-3">
             <ul id="lightgallery" class="list-unstyled row">
-                @if(old("images", json_decode($category->images)[0]))
-                    @foreach(explode(",",  implode(",", old("images", json_decode($category->images)))) as $image)
+                @if(old("images", json_decode($product->images))[0])
+                    @foreach(explode(",",  implode(",", old("images", json_decode($product->images)))) as $image)
                         <li class="col-xs-6 col-sm-4 col-md-4 col-xl-4 mb-5 border-bottom-0"
                             data-responsive="{{$image}}"
                             data-src="{{$image}}">
