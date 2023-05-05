@@ -52,6 +52,12 @@ class UpdateRequest extends FormRequest
 
     public function prepareForValidation()
     {
+        if($this->input('parent') == "on")
+        {
+            $this->merge([
+                'parent' => null
+            ]);
+        }
         if (!$this->input('url')) {
             $this->merge([
                 'url' => str_slug($this->input('title'))
