@@ -20,6 +20,7 @@ return new class extends Migration
                 ->references('id')->on('catalog_products')
                 ->cascadeOnDelete();
             $table->integer('order')->default(0);
+            $table->boolean('publish')->default(true);
         });
     }
 

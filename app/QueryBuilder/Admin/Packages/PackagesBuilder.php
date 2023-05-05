@@ -68,8 +68,8 @@ class PackagesBuilder extends QueryBuilder
         File::put(base_path('composer.json'), json_encode($composerJson, JSON_PRETTY_PRINT));
 
         chdir(base_path());
-        exec($settings->php.'\php.exe '.$settings->composer.'\composer.phar require '.$package.' 2>&1', $msg, $resultCode);
-        Packages::query()->create(['id_package'=>$id]);
+        exec($settings->php.'\php.exe '.$settings->composer.'\composer.phar require '.$package.' --ignore-platform-req=ext-sodium 2>&1', $msg, $resultCode);
+//dd($msg);
         return $resultCode;
     }
 

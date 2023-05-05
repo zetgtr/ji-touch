@@ -67,6 +67,8 @@ class PackagesController extends Controller
                 return \redirect()->route('admin.packages.index')->with('error', "Пакет уже установлен");
             if($packagesBuilder->install($request) == 0)
             {
+                $id = $request->input("packages_install");
+                Packages::query()->create(['id_package'=>$id]);
                 return \redirect()->route('admin.packages.set-data',['id'=>$request->input("packages_install")]);
             }
             return \redirect()->route('admin.packages.index')->with('error', "Ошибка установки пакета");

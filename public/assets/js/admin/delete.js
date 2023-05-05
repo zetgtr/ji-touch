@@ -11,7 +11,7 @@ $(document).ready(function() {
         {
             url = $(e.target).closest('.delete').attr('href')
         }
-        console.log(url)
+        if(confirm("Вы точно хотите удалить?"))
         $.ajax({
             type: "DELETE",
             url: url,

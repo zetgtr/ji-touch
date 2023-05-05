@@ -326,3 +326,15 @@
 #json-output {
     margin-top: 20px;
 }
+
+.show-dnd .button-delete{
+    right: 23px!important
+}
+.show-dnd .button-edit{
+    right: 2px!important;
+}
+.show-dnd .show-publish{
+    position: absolute;
+    top: 4px;
+    right: -52px;
+}

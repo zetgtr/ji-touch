@@ -9,6 +9,11 @@ class Search
     }
     render()
     {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         this.modalBody.html('')
         this.modalBody.append(this.searchTemplate)
         this.input.on('input',({target})=>{
@@ -27,14 +32,43 @@ class Search
             if(data.length > 0)
                 data.forEach(el=>{
                     const productTemplateNode = this.productTemplate.clone()
-                    productTemplateNode.attr("href",el.url)
-                    productTemplateNode.find('.text-sarch').text(el.title)
+                    productTemplateNode.find("#product-item").attr("href",el.url)
+                    productTemplateNode.find('.text-sarch').html(el.title)
+                    this.setButton(el,productTemplateNode)
                     this.searchContainer.append(productTemplateNode)
                 })
             else
                 this.searchContainer.text("Нечего не найдено")
             console.log(data)
         });;
+    }
+    setButton(data,productTemplateNode){
+        console.log(data)
+        const deleteBtn = productTemplateNode.find('.delete')
+        deleteBtn.on('click',e=>{
+            e.preventDefault()
+            if(confirm("Вы точно хотите удалить?"))
+            $.ajax({
+                type: "DELETE",
+                url: data.deleteUrl,
+                success: function(result) {
+                    if (result.status) {
+                        $(e.target).closest('.delete-element').remove()
+                    }
+                },
+                error: function(xhr, status, error) {
+                    try {
+                        let errorMessage = JSON.parse(xhr.responseText).message;
+                        console.log(errorMessage);
+                    } catch (e) {
+                        console.log('Error:', error);
+                    }
+                }
+            })
+        })
+
+        const showBtn = productTemplateNode.find('.delete')
+
     }
 }
 

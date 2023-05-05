@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             MenuSeeder::class,
             SettingSeeder::class,
             HeaderAndFooterSeeder::class,
-            PackagesSettingsSeed::class
+            PackagesSettingsSeed::class,
+            SettingCatalogSeeder::class
         ]);
     }
 }

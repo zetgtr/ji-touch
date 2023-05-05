@@ -24,6 +24,7 @@ class EditRequest extends FormRequest
         return [
             "name" => ['required'],
             "migration" => ['required', 'boolean'],
+            "url" => ['required'],
             'seeder' => ['required', 'boolean'],
             'name_seeder' => ['nullable'],
             'delete' => ['nullable'],

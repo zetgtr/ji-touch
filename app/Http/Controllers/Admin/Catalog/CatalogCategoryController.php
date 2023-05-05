@@ -24,7 +24,7 @@ class CatalogCategoryController extends Controller
     }
 
     public function order(Request $request, CatalogBuilder $catalogBuilder){
-        $catalogBuilder->setOrder($request->all()['items']);
+        $catalogBuilder->setOrderCategory($request->all()['items']);
     }
 
     /**
@@ -84,11 +84,26 @@ class CatalogCategoryController extends Controller
         return \back()->with('error', __('messages.admin.catalog.category.update.fail'));
     }
 
+    public function publish(Category $category)
+    {
+        $category->publish = !$category->publish;
+        if ($category->save()) return ['status' => true, 'publish' => $category->publish];
+        else  return ['status' => false];
+    }
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        try {
+            $category->delete();
+            $response = ['status' => true,'message' => __('messages.admin.catalog.category.destroy.success')];
+        } catch (\Exception $exception)
+        {
+            $response = ['status' => false,'message' => __('messages.admin.catalog.category.destroy.fail').$exception->getMessage()];
+        }
+
+        return $response;
     }
 }

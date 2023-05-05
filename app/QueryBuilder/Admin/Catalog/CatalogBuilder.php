@@ -40,6 +40,7 @@ class CatalogBuilder extends QueryBuilder
         foreach ($products as $key=>$product)
         {
             $products[$key]->url = route("admin.catalog.product.edit",$product->id);
+            $products[$key]->deleteUrl = route("admin.catalog.product.destroy",$product->id);
         }
         return $products;
     }
@@ -118,7 +119,7 @@ class CatalogBuilder extends QueryBuilder
         // TODO: Implement getAll() method.
     }
 
-    public function setOrder(array $items, int $parent = null)
+    public function setOrderCategory(array $items, int $parent = null)
     {
         foreach ($items as $key=>$item)
         {
@@ -126,9 +127,21 @@ class CatalogBuilder extends QueryBuilder
             $this->category = Category::query();
             if(!empty($item['children']))
             {
-                $this->setOrder($item['children'], $item['id']);
+                $this->setOrderCategory($item['children'], $item['id']);
             }
         }
+    }
+
+    public function setOrderProduct(array $items, int $category)
+    {
+        $category = Category::find($category);
+        foreach ($items as $key=>$item)
+        {
+            $product = Product::find($item['id']);
+            $category->products()->updateExistingPivot($product->id, ['order' => $key]);
+            $category->save();
+        }
+
     }
 
     public function getProductCategory(string $categoryId)

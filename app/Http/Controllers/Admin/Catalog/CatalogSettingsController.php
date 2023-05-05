@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\Admin\Catalog;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Catalog\Settings\UpdateRequest;
+use App\Models\Admin\Catalog\Settings;
+use App\QueryBuilder\Admin\Catalog\CatalogBuilder;
 use Illuminate\Http\Request;
-
+use App\Enums\CatalogEnums;
 class CatalogSettingsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(CatalogBuilder $catalogBuilder)
     {
-        //
+        return view("admin.catalog.settings.index",['links'=>$catalogBuilder->getNavigationLinks(CatalogEnums::SETTINGS->value)]);
     }
 
     /**
@@ -50,9 +53,15 @@ class CatalogSettingsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, int $id)
     {
-        //
+        $settings = Settings::query()->find(1);
+        $product = $settings->fill($request->validated());
+        if ($product->save()) {
+            return \redirect()->route('admin.catalog.settings.index')->with('success', __('messages.admin.catalog.product.update.success'));
+        }
+
+        return \back()->with('error', __('messages.admin.catalog.product.update.fail'));
     }
 
     /**

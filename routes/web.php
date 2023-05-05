@@ -57,7 +57,10 @@ Route::middleware('auth')->group(function () {
             Route::resource('product', CatalogProductController::class);
             Route::resource('category', CatalogCategoryController::class);
             Route::resource('settings', CatalogSettingsController::class);
-            Route::post('order', [CatalogCategoryController::class,'order'])->name('category.order');
+            Route::post('category/order', [CatalogCategoryController::class,'order'])->name('category.order');
+            Route::post('product/order', [CatalogProductController::class,'order'])->name('product.order');
+            Route::get('category/publish/{category}', [CatalogCategoryController::class,'publish'])->name('category.publish');
+            Route::get('product/publish/{product}', [CatalogProductController::class,'publish'])->name('product.publish');
         });
 
 //        Route::resource('user', AdminUserController::class);

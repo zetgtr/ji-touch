@@ -5,11 +5,15 @@
     </div>
 </template>
 <template id="product">
-    <a id="product-item" href="">
-        <div class="border-0 p-0 mb-2">
-            <div class="media mt-0 border text-sarch">
-                111
-            </div>
+    <div class="product-container-search delete-element">
+        <div class="border-0 p-0 mb-2 row">
+            <a id="product-item" class="media mt-0 col-11 border text-sarch">
+            </a>
+            <a href="" class="btn col-1 d-flex justify-content-center delete align-items-center btn-danger btn-xs"
+               data-owner-id="1">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
         </div>
-    </a>
+    </div>
+
 </template>

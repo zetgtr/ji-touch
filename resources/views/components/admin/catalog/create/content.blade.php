@@ -29,7 +29,10 @@
                 <i class="fas fa-link"></i>
                 Родительская категория
             </div>
-
+            <div class="outlined-radio mt-2">
+                <input type="radio" name="parent" id="category0" class="d-none" @checked(!old('parent'))>
+                <label class="d-block text-left" for="category0">Корневая директория</label>
+            </div>
             @forelse($categories as $category)
                 <div class="outlined-radio mt-2">
                     <input id="category{{$category->id}}" @checked(old('parent')) type="radio" class="d-none" value="{{$category->id}}" name="parent">

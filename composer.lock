@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3190777227e7e2090900a297c6b33923",
+    "content-hash": "90a6150568242f2f2cfd11783d26a04a",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -9050,6 +9050,67 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "zetgtr/news",
+            "version": "1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/zetgtr/news.git",
+                "reference": "88e235220cfd55f3389f9e6bf3f68b27f6f85b7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/zetgtr%2Fnews/repository/archive.zip?sha=88e235220cfd55f3389f9e6bf3f68b27f6f85b7c",
+                "reference": "88e235220cfd55f3389f9e6bf3f68b27f6f85b7c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "News\\Providers\\NewsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "News\\": "src/",
+                    "News\\Seeders\\": "database/seeders/",
+                    "News\\Remove\\": "remove"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "News\\Test\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artem",
+                    "email": "artem.kudrin70@gmail.com"
+                }
+            ],
+            "description": "My package description",
+            "keywords": [
+                "laravel",
+                "package"
+            ],
+            "support": {
+                "source": "https://gitlab.com/zetgtr/news/-/tree/1.1.6"
+            },
+            "time": "2023-04-06T22:33:54+00:00"
         }
     ],
     "packages-dev": [

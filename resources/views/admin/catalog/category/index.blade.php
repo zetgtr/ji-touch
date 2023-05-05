@@ -23,4 +23,5 @@
     <input type="hidden" id="route_dd" value="{{  route('admin.catalog.category.order') }}">
     <script src="{{asset('assets/js/admin/dnd.js')}}" ></script>
     <script src="{{asset('assets/js/admin/delete.js')}}" ></script>
+    <script src="{{ asset('assets/js/admin/show.js') }}"></script>
 @endsection

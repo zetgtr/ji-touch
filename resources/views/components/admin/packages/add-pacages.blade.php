@@ -12,7 +12,13 @@
                 <input type="text" name="provider" id="provider" class="form-control">
             </div>
         </div>
-        <div class="col-12">
+        <div class="col-4">
+            <div class="form-group">
+                <label for="url">Url</label>
+                <input type="text" name="url" id="url" class="form-control">
+            </div>
+        </div>
+        <div class="col-8">
             <div class="form-group">
                 <label for="delete">Класс удаления пакета</label>
                 <input type="text" name="delete" id="delete" class="form-control">
