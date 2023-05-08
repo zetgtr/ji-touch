@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Catalog\CatalogCategoryController;
 use App\Http\Controllers\Admin\Navigation\NavigationController;
 use App\Http\Controllers\Admin\Navigation\NavigationListController;
 use App\Http\Controllers\Admin\Page\PageController;
@@ -36,5 +37,6 @@ Route::get('navigation/get/{alias}', [NavigationListController::class,'getAlias'
 
 Route::get('panel_data/{name}', [PanelController::class, 'show']);
 Route::get('page_route', [PageController::class, 'getPageRouter']);
+Route::get('catalog_route', [CatalogCategoryController::class, 'getCatalogRouter']);
 
 Route::post('form/{name}', FormController::class);

@@ -177,4 +177,39 @@ class CatalogBuilder extends QueryBuilder
 
         return $breadcrumbs;
     }
+
+
+    private function setCatalogRouter(Collection $items){
+        foreach ($items as $key=>$item)
+        {
+
+            $this->model = Category::query();
+            $parent = $this->model->where('parent', '=', $item->id)->orderBy('order')->get();
+            if (count($parent) > 0) {
+                $item->parent = $parent;
+                $this->setCatalogRouter($item->parent);
+            }
+            $item->title = "Catalog";
+
+            $products = $item->products()->get();
+            if(count($products)>0) {
+                foreach ($products as $product)
+                    $product->title = "Product";
+                $item->parent = $products;
+            }
+
+        }
+        return $items;
+    }
+
+    public function getCatalogRouter()
+    {
+        $settings = $this->settings->find(1);
+
+        return [[
+            'url'=>$settings->url,
+            'title'=>"Catalog",
+            'parent'=>$this->setCatalogRouter($this->category->where('parent',null)->get())
+        ]];
+    }
 }

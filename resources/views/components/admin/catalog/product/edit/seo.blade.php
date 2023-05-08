@@ -13,7 +13,7 @@
             </div>
             <div class="form-group">
                 <label for="seoDescription">Seo Description</label>
-                <textarea name="seo_description" id="my-editor" class="form-control @error('seo_description') is-invalid @enderror my-editor">{{ old('seo_description',$product->seo_description) }}</textarea>
+                <textarea name="seo_description" id="seoDescription" class="form-control @error('seo_description') is-invalid @enderror">{{ old('seo_description',$product->seo_description) }}</textarea>
                 <x-error errorValue="seo_description" />
             </div>
             <div class="form-group">

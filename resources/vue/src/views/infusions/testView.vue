@@ -1,6 +1,6 @@
 <template>
     <article-component />
-    123
+    12321123
 </template>
 
 <script>

@@ -27,6 +27,10 @@ class CatalogCategoryController extends Controller
         $catalogBuilder->setOrderCategory($request->all()['items']);
     }
 
+    public function getCatalogRouter(CatalogBuilder $catalogBuilder){
+        return $catalogBuilder->getCatalogRouter();
+    }
+
     /**
      * Show the form for creating a new resource.
      */

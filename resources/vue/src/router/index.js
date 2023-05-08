@@ -52,27 +52,16 @@ const routes = [
     meta: { layout: "about", breadcrumb: "О компании" },
     component: () => import('./../views/AboutView.vue')
   },
-  // {
-  //   path: '/test',
-  //   name: 'test',
-  //   meta: { layout: "inner", breadcrumb: "test" },
-  //   component: () => import('./../views/TestView.vue')
-  // },
-  // {
-  //   path: "/:catchAll(.*)",
-  //   meta: { layout: "empty" },
-  //   component: () => import('./../views/NotFound.vue')
-  // },
 ]
+
+routes.push(...await getDynamicRoutes("/api/page_route","./../views/infusions/"))
+routes.push(...await getDynamicRoutes("/api/catalog_route","./../views/catalog/"))
 
 const router = createRouter({
     history: createWebHistory(),
     routes
 })
-
-console.log(routes)
-
-router.beforeEach((to, from, next) => {
+router.beforeEach(async(to, from, next) => {
   const matched = to.matched;
 
   const breadcrumbs = matched.map(route => ({
@@ -100,64 +89,21 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
-let dynamicRoutes = [];
 
-axios.get('/api/page_route').then(response => {
+async function getDynamicRoutes(api,path) {
+    const response = await axios.get(api);
     const links = response.data;
-
-    const createRoutes = (parentRoute, links, url = "") => {
-        links.forEach(link => {
-            url = url + "/" + link.url;
-            let path = "../infusions/views/" + link.title + "View.vue";
-            console.log(url);
-            const route = {
-                path: url,
-                name: "test",
-                component: () => import("./../views/infusions/testView.vue")
-            };
-
-            if (link.parent && link.parent.length > 0) {
-                route.children = [];
-                createRoutes(route, link.parent, url);
-            }
-
-            if (parentRoute) {
-                parentRoute.children.push(route);
-            } else {
-                dynamicRoutes.push(route);
-            }
-        });
-    };
-
-    createRoutes(null, links);
-});
-
-router.beforeResolve(async (to, from, next) => {
-    // Загружаем динамические маршруты и сохраняем их в переменной
-    if (dynamicRoutes.length === 0) {
-        dynamicRoutes = await getDynamicRoutes();
-    }
-    // Добавляем динамические маршруты в роутер
-    console.log(dynamicRoutes)
-    router.addRoute(dynamicRoutes);
-    next();
-});
-
-async function getDynamicRoutes() {
-    const response = await axios.get("/api/page_route");
-    const links = response.data;
-
     const routes = [];
-
+    console.log(links)
     const createRoutes = (parentRoute, links, url = "") => {
         links.forEach(link => {
             url = url + "/" + link.url;
-            let path = "../infusions/views/" + link.title + "View.vue";
-            console.log(url);
+            console.log(url,link.title)
+            let pathImport = path + link.title + "View.vue";
             const route = {
                 path: url,
-                name: "test",
-                component: () => import("./../views/infusions/testView.vue")
+                // name: link.title,
+                component: () => import(pathImport)
             };
 
             if (link.parent && link.parent.length > 0) {
@@ -176,5 +122,7 @@ async function getDynamicRoutes() {
     createRoutes(null, links);
     return routes;
 }
+
+
 
 export { router, BreadCrumbs };

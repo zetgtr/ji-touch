@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             <label for="seo_description">SEO Description</label>
-            <textarea name="seo_description" id="my-editor" class="form-control @error('seo_description') is-invalid @enderror my-editor">{{ old('seo_description',$settings->seo_description) }}</textarea>
+            <textarea name="seo_description" style="height: 400px;" id="seo_description" class="form-control @error('seo_description') is-invalid @enderror">{{ old('seo_description',$settings->seo_description) }}</textarea>
             <x-error errorValue="seo_keywords" />
         </div>
     </div>
