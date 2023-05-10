@@ -1,5 +1,5 @@
 <template>
-2222
+product
 </template>
 
 <script>

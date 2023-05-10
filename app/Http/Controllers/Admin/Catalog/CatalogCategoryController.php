@@ -63,6 +63,10 @@ class CatalogCategoryController extends Controller
         //
     }
 
+    public function getCatalog(string $params,CatalogBuilder $catalogBuilder){
+        return $catalogBuilder->getCatalog($params);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

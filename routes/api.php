@@ -38,5 +38,6 @@ Route::get('navigation/get/{alias}', [NavigationListController::class,'getAlias'
 Route::get('panel_data/{name}', [PanelController::class, 'show']);
 Route::get('page_route', [PageController::class, 'getPageRouter']);
 Route::get('catalog_route', [CatalogCategoryController::class, 'getCatalogRouter']);
+Route::get('get_catalog/{url}', [CatalogCategoryController::class, 'getCatalog']);
 
 Route::post('form/{name}', FormController::class);

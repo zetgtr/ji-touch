@@ -212,4 +212,20 @@ class CatalogBuilder extends QueryBuilder
             'parent'=>$this->setCatalogRouter($this->category->where('parent',null)->get())
         ]];
     }
+
+    private function getCategoryUrl(string $url){
+        if($url !== "catalog") {
+            $category = $this->category->where("url", $url)->first();
+            return ["categories"=>Category::query()->where('parent',$category->id)->get(),"products"=>$category->products()->get()];
+        }else{
+            return ["categories"=>$this->category->where('parent',null)->get(),"products"=>null];
+        }
+    }
+
+    public function getCatalog(string $params)
+    {
+        [$url,$param] = explode("|",$params);
+        if(explode("|",$params)[1] === "Catalog")
+            return $this->getCategoryUrl($url);
+    }
 }

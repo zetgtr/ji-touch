@@ -11,12 +11,14 @@ import {aboutModule} from "./infusions/aboutModule";
 import {test2Module} from "./infusions/test2Module";
 import {testModule} from "./testModule";
 import {articleModule} from "./infusions/articleModule";
+import {catalogModule} from "./catalog/catalogModule";
 
 export default createStore({
     state: {
       isAuth: false,
     },
     modules: {
+        catalog: catalogModule,
         test: testModule,
         article: articleModule,
         test2: test2Module,

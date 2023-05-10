@@ -94,24 +94,24 @@ async function getDynamicRoutes(api,path) {
     const response = await axios.get(api);
     const links = response.data;
     const routes = [];
-    console.log(links)
-    const createRoutes = (parentRoute, links, url = "") => {
+    const createRoutes = (parentRoute, links, url = "",title) => {
         links.forEach(link => {
-            url = url + "/" + link.url;
-            console.log(url,link.title)
+            console.log(link.title)
+            let titleSecond = link.title
+            const nestedUrl = url + "/" + link.url; // создаем новую переменную для каждого уровня
             let pathImport = path + link.title + "View.vue";
             const route = {
-                path: url,
-                // name: link.title,
+                path: nestedUrl,
+                name: link.title+"|"+link.id,
                 component: () => import(pathImport)
             };
 
             if (link.parent && link.parent.length > 0) {
                 route.children = [];
-                createRoutes(route, link.parent, url);
+                createRoutes(route, link.parent, nestedUrl,link.title);
             }
 
-            if (parentRoute) {
+            if (parentRoute && title === titleSecond) {
                 parentRoute.children.push(route);
             } else {
                 routes.push(route);
@@ -123,6 +123,6 @@ async function getDynamicRoutes(api,path) {
     return routes;
 }
 
-
+console.log(routes)
 
 export { router, BreadCrumbs };
