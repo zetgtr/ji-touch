@@ -9,7 +9,7 @@
             </div>
             </div>
             <div class="form-group">
-                <label for="description">Описание категории</label>
+                <label for="description">Описание товара</label>
                 <textarea name="content" id="my-editor" class="form-control @error('content') is-invalid @enderror my-editor">{{ old('content',$product->content) }}</textarea>
                 <x-error errorValue="content" />
                 </div>
@@ -39,6 +39,10 @@
                             <option  @selected(old('access',$product->access) == $key)  value="{{$key}}">{{$access}}</option>
                         @endforeach
                     </select>
+                </div>
+                <div class="col-lg-6 mt-5">
+                    <label for="price">Цена</label>
+                    <input type="text" name="price" id="price" class="form-control" value="{{old('price',$product->price)}}">
                 </div>
                 <div class="col-lg-12 mt-3">
                     <div class="form-check">

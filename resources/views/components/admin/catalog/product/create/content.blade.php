@@ -41,6 +41,10 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="col-lg-6 mt-5">
+                    <label for="price">Цена</label>
+                    <input type="text" name="price" id="price" class="form-control" value="{{old('price')}}">
+                </div>
                 <div class="col-lg-12 mt-3">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="1" name="new" id="new">

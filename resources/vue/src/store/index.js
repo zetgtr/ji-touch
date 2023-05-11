@@ -12,8 +12,13 @@ import {test2Module} from "./infusions/test2Module";
 import {testModule} from "./testModule";
 import {articleModule} from "./infusions/articleModule";
 import {catalogModule} from "./catalog/catalogModule";
+import modulesImport from "../modules";
+import createPersistedState from 'vuex-persistedstate';
 
 export default createStore({
+    plugins: [createPersistedState({
+        paths: ['cartModule']
+    })],
     state: {
       isAuth: false,
     },
@@ -31,5 +36,6 @@ export default createStore({
         reviews: reviewsModule,
         jobs: jobsModule,
         about: aboutModule,
+        ...modulesImport
     }
 })

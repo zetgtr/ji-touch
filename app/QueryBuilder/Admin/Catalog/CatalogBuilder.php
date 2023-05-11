@@ -208,24 +208,43 @@ class CatalogBuilder extends QueryBuilder
 
         return [[
             'url'=>$settings->url,
-            'title'=>"Catalog",
-            'parent'=>$this->setCatalogRouter($this->category->where('parent',null)->get())
+            'title'=>$settings->title,
         ]];
+    }
+
+    private function decodeImage($items)
+    {
+        foreach ($items as $key=>$item)
+        {
+            $items[$key]->images = json_decode($item->images);
+        }
+        return $items;
     }
 
     private function getCategoryUrl(string $url){
         if($url !== "catalog") {
             $category = $this->category->where("url", $url)->first();
-            return ["categories"=>Category::query()->where('parent',$category->id)->get(),"products"=>$category->products()->get()];
+            return [
+                "categories"=>$this->decodeImage(Category::query()->where('parent',$category->id)->get()),
+                "products"=>$this->decodeImage($category->products()->get())];
         }else{
-            return ["categories"=>$this->category->where('parent',null)->get(),"products"=>null];
+            return ["categories"=>$this->decodeImage(Category::query()->where('parent',null)->get()),"products"=>null];
         }
     }
 
     public function getCatalog(string $params)
     {
         [$url,$param] = explode("|",$params);
-        if(explode("|",$params)[1] === "Catalog")
+        if(explode("|",$params)[1] === "Category")
             return $this->getCategoryUrl($url);
+        if(explode("|",$params)[1] === "Product")
+            return $this->getProductUrl($url);
+    }
+
+    private function getProductUrl(string $url)
+    {
+        $product = $this->product->where('url',$url)->first();
+        $product->images = json_decode($product->images);
+        return ['product'=>$product];
     }
 }

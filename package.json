@@ -25,6 +25,7 @@
         "animejs": "^3.2.1",
         "bootstrap": "^5.2.3",
         "gsap": "^3.11.4",
+        "lodash": "^4.17.21",
         "maska": "^2.1.7",
         "sass": "^1.58.3",
         "scrollmagic": "^2.0.8",
@@ -41,6 +42,7 @@
         "vue-the-mask": "^0.11.1",
         "vue-wow": "^1.2.0",
         "vuex": "^4.0.2",
+        "vuex-persistedstate": "^4.1.0",
         "wowjs": "^1.1.3"
     }
 }

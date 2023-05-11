@@ -2,13 +2,37 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import BreadCrumbs from "../components/BreadCrumbs.vue";
 import axios from "axios";
+import camelCase from "lodash/camelCase";
+
+// const requireModule = require.context("../modules", true, /\.js$/);
+// const importedRoutes = [];
+//
+// requireModule.keys().forEach(fileName => {
+//     let str = fileName.split("/");
+//     str = str[1];
+//     if (fileName === `./${str}/router/index.js`) {
+//         const moduleName = camelCase(fileName.replace(/(\.\/|\.js)/g, ""));
+//         importedRoutes.push(...requireModule(fileName).default);
+//     }
+// });
+
+const modules = [];
+const moduleFiles = import.meta.globEager('../modules/**/*.js');
+
+for (const path in moduleFiles) {
+    if (path.includes('router')) {
+        const moduleName = path.replace(/^.+\/([^/]+)\.js$/, '$1');
+        modules.push(moduleFiles[path].default || moduleFiles[path]);
+    }
+}
+console.log(modules)
 
 const routes = [
   {
     path: '/',
     name: 'home',
     meta: { layout: "main", breadcrumb: "Home", name: 'home' },
-    component: HomeView
+    component: HomeView,
   },
   {
     path: '/contact',
@@ -53,9 +77,12 @@ const routes = [
     component: () => import('./../views/AboutView.vue')
   },
 ]
+modules.forEach(el=>{
+    routes.push(...el)
+})
 
 routes.push(...await getDynamicRoutes("/api/page_route","./../views/infusions/"))
-routes.push(...await getDynamicRoutes("/api/catalog_route","./../views/catalog/"))
+// routes.push(...await getDynamicRoutes("/api/catalog_route","./../views/catalog/"))
 
 const router = createRouter({
     history: createWebHistory(),

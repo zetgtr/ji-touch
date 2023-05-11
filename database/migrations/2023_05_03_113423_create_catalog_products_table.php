@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->text('content');
                 $table->text('characteristics')->nullable();
                 $table->string('url');
+                $table->integer('price')->default(0);
                 $table->string('seo_title')->nullable();
                 $table->text('seo_description')->nullable();
                 $table->text('seo_keywords')->nullable();

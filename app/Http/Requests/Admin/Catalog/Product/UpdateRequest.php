@@ -45,6 +45,7 @@ class UpdateRequest extends FormRequest
             'characteristics'=>['nullable'],
             'url' => ['required', Rule::unique(Product::class)->ignore($this->id)],
             'seo_title'=>['nullable'],
+            'price'=>['nullable'],
             'seo_description'=>['nullable'],
             'seo_keywords'=>['nullable'],
             'images'=>['nullable'],

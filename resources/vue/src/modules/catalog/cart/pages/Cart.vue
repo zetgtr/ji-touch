@@ -1,0 +1,124 @@
+<template>
+    Product
+    <div class="container">
+        <div class="cart_items" v-for="(item, index) in cart" :key="index">
+            <div v-if="item" class="cart_product">
+                <p>{{item.title}}</p>
+                <button @click="deleteCart(item)" >-</button>
+                <button @click="addCart(item)" >+</button>
+                <button @click="deleteProductCart(item)" >x</button>
+                <p>{{item.count}}</p>
+            </div>
+        </div>
+        <button @click="removeCart()" >Очистить корзину</button>
+    </div>
+</template>
+
+<script>
+import {mapActions, mapMutations, mapState} from "vuex";
+import {useRouter} from "vue-router";
+
+export default {
+    data() {
+        // this.fetchInfo()
+        return {
+        };
+    },
+    methods: {
+        ...mapMutations({}),
+        ...mapActions({
+            addCart: "cartModule/addCart",
+            deleteCart: "cartModule/deleteCart",
+            removeCart: "cartModule/removeCart",
+            deleteProductCart: "cartModule/deleteProductCart",
+        })
+    },
+    computed: {
+        ...mapState({
+            cart: (state) => state.cartModule.cart,
+            count: (state) => state.cartModule.count,
+        }),
+    },
+    watch: {},
+};
+</script>
+
+<style lang='scss'>
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.add-to-cart-btn {
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #004499;
+}
+
+.cart_count{
+    position: absolute;
+    top: 15px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #00a1e0;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+    margin-left: 5px;
+}
+
+.cart_count::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #00a1e0;
+}
+
+.cart{
+    position: relative;
+}
+</style>

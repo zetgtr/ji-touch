@@ -15,6 +15,7 @@ class Product extends Model
         'content',
         'characteristics',
         'url',
+        'price',
         'seo_title',
         'seo_description',
         'seo_keywords',

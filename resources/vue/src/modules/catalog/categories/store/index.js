@@ -6,7 +6,7 @@ export const catalogModule = {
         categories : [],
         products : [],
         url: "",
-        }),
+    }),
     getters: {
 
     },
@@ -24,12 +24,13 @@ export const catalogModule = {
     actions: {
         async getCategoryBySlug({state, commit}, url) {
             try {
-                const response = await axios.get('/api/get_catalog/'+url);
+                console.log(111)
+                const response = await axios.get('/api/get_catalog/'+url+"|Category");
                 console.log(response.data)
-                  commit('setCategory', response.data.categories)
-                  commit('setProduct', response.data.products)
-                  commit('setUrl', url)
-                } catch (e) {
+                commit('setCategory', response.data.categories)
+                commit('setProduct', response.data.products)
+                commit('setUrl', url)
+            } catch (e) {
                 console.log(e)
             } finally {
 
@@ -37,12 +38,13 @@ export const catalogModule = {
         },
         async getCategoryByHome({state, commit}) {
             try {
-                const response = await axios.get('/api/get_catalog/'+"catalog");
+                console.log(222)
+                const response = await axios.get('/api/get_catalog/'+"catalog|Category");
                 console.log(response.data)
-                  commit('setCategory', response.data.categories)
-                  commit('setProduct', response.data.products)
-                  commit('setUrl', undefined)
-                } catch (e) {
+                commit('setCategory', response.data.categories)
+                commit('setProduct', response.data.products)
+                commit('setUrl', undefined)
+            } catch (e) {
                 console.log(e)
             } finally {
 
