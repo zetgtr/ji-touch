@@ -11,7 +11,6 @@ import {aboutModule} from "./infusions/aboutModule";
 import {test2Module} from "./infusions/test2Module";
 import {testModule} from "./testModule";
 import {articleModule} from "./infusions/articleModule";
-import {catalogModule} from "./catalog/catalogModule";
 import modulesImport from "../modules";
 import createPersistedState from 'vuex-persistedstate';
 
@@ -23,7 +22,6 @@ export default createStore({
       isAuth: false,
     },
     modules: {
-        catalog: catalogModule,
         test: testModule,
         article: articleModule,
         test2: test2Module,

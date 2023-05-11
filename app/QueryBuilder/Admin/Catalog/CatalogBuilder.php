@@ -178,7 +178,25 @@ class CatalogBuilder extends QueryBuilder
         return $breadcrumbs;
     }
 
+    public function getSiteBreadcrumb(string $categoryId)
+    {
+        $category = Category::find($categoryId);
+        $breadcrumbs = [];
 
+        // Добавляем текущую категорию в хлебные крошки
+        $breadcrumbs[] = [
+            'title' => $category->title,
+            'url' => $category->url
+        ];
+
+        // Если у текущей категории есть родительская категория, добавляем ее в хлебные крошки
+        if ($category->parent) {
+            $parentBreadcrumbs = $this->getSiteBreadcrumb($category->parent);
+            $breadcrumbs = array_merge($parentBreadcrumbs, $breadcrumbs);
+        }
+
+        return $breadcrumbs;
+    }
     private function setCatalogRouter(Collection $items){
         foreach ($items as $key=>$item)
         {
@@ -226,7 +244,9 @@ class CatalogBuilder extends QueryBuilder
             $category = $this->category->where("url", $url)->first();
             return [
                 "categories"=>$this->decodeImage(Category::query()->where('parent',$category->id)->get()),
-                "products"=>$this->decodeImage($category->products()->get())];
+                "products"=>$this->decodeImage($category->products()->get()),
+                "secondCategory" => $category
+                ];
         }else{
             return ["categories"=>$this->decodeImage(Category::query()->where('parent',null)->get()),"products"=>null];
         }

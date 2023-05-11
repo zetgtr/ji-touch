@@ -11,6 +11,7 @@ async function categoryRoute(){
             component: () => import(/* webpackChunkName: "Chunks/Site/Router/Category-slug"*/ '../pages/ProductByCategory.vue'),
             title: settings.seo_title,
             meta: {
+                title: settings.seo_title,
                 guest : true,
                 allowedUserType: ['User']
             }
@@ -21,6 +22,7 @@ async function categoryRoute(){
             component: () => import(/* webpackChunkName: "Chunks/Site/Router/Category-slug"*/ '../pages/ProductByCategory.vue'),
             title: settings.seo_title,
             meta: {
+                title: settings.seo_title,
                 guest : true,
                 allowedUserType: ['User']
             }

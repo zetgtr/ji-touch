@@ -6,6 +6,8 @@ export const catalogModule = {
         categories : [],
         products : [],
         url: "",
+        secondCategory: {},
+        breadcrumbs: [],
     }),
     getters: {
 
@@ -20,6 +22,12 @@ export const catalogModule = {
         setUrl(state, url){
             state.url = url
         },
+        setSecondCategory(state, secondCategory){
+            state.secondCategory = secondCategory
+        },
+        setBreadcrumbs(state, breadcrumbs){
+            state.breadcrumbs = breadcrumbs
+        },
     },
     actions: {
         async getCategoryBySlug({state, commit}, url) {
@@ -29,6 +37,7 @@ export const catalogModule = {
                 console.log(response.data)
                 commit('setCategory', response.data.categories)
                 commit('setProduct', response.data.products)
+                commit('setSecondCategory', response.data.secondCategory)
                 commit('setUrl', url)
             } catch (e) {
                 console.log(e)
@@ -43,13 +52,17 @@ export const catalogModule = {
                 console.log(response.data)
                 commit('setCategory', response.data.categories)
                 commit('setProduct', response.data.products)
+                commit('setSecondCategory', {title:"Каталог"})
                 commit('setUrl', undefined)
             } catch (e) {
                 console.log(e)
             } finally {
-
             }
         },
+        async getBreadcrumb({state, commit}, url){
+            const response = await axios.get('/api/get_catalog_breadcrumb/'+url);
+            commit('setBreadcrumbs', response.data)
+        }
     },
     namespaced: true
 }

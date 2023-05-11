@@ -39,5 +39,6 @@ Route::get('panel_data/{name}', [PanelController::class, 'show']);
 Route::get('page_route', [PageController::class, 'getPageRouter']);
 Route::get('catalog_route', [CatalogCategoryController::class, 'getCatalogRouter']);
 Route::get('get_catalog/{url}', [CatalogCategoryController::class, 'getCatalog']);
+Route::get('get_catalog_breadcrumb/{url}', [CatalogCategoryController::class, 'getBreadcrumb']);
 
 Route::post('form/{name}', FormController::class);

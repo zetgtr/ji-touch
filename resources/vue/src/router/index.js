@@ -130,7 +130,7 @@ async function getDynamicRoutes(api,path) {
             const route = {
                 path: nestedUrl,
                 name: link.title+"|"+link.id,
-                component: () => import(pathImport)
+                component: () => import( /* @vite-ignore */ pathImport)
             };
 
             if (link.parent && link.parent.length > 0) {

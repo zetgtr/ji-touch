@@ -11,11 +11,14 @@
             </div>
         </div>
         <button @click="removeCart()" >Очистить корзину</button>
+        <div>
+            <p>Общая стоимость: {{ totalPrice }} руб.</p>
+        </div>
     </div>
 </template>
 
 <script>
-import {mapActions, mapMutations, mapState} from "vuex";
+import {mapActions, mapGetters, mapMutations, mapState} from "vuex";
 import {useRouter} from "vue-router";
 
 export default {
@@ -34,10 +37,16 @@ export default {
         })
     },
     computed: {
+        ...mapGetters({
+            totalPrice: 'cartModule/totalPrice'
+        }),
         ...mapState({
             cart: (state) => state.cartModule.cart,
             count: (state) => state.cartModule.count,
         }),
+    },
+    mounted() {
+        document.title = "Корзина"
     },
     watch: {},
 };

@@ -1,33 +1,41 @@
-import axios from "axios";
-import {useRouter} from "vue-router";
-// ниже название панели + Module
 export const cartModule = {
     state: () => ({
         cart : [],
         count : 0,
+        price: 0
     }),
     getters: {
-
+        totalPrice(state) {
+            return state.cart.reduce((total, product) => {
+                if(product)
+                    return total + product.price * product.count;
+                console.log(state.cart)
+            }, 0);
+        }
     },
     mutations: {
         addCart(state, product){
-            if(state.cart[product.id])
-                state.cart[product.id]= { ...product, count:state.cart[product.id].count+1}
-            else
-                state.cart[product.id] = {...product,count:1}
+            const index = state.cart.findIndex(item => item && item.id === product.id)
+            if (index === -1) {
+                state.cart.push({ ...product, count: 1 })
+            } else {
+                state.cart[index].count++
+            }
             state.count++
-            console.log(state.cart)
         },
         deleteCart(state, product){
-            if(state.cart[product.id].count > 1)
-                state.cart[product.id]= { ...product, count:state.cart[product.id].count-1}
-            else
-                delete state.cart[product.id]
+            const index = state.cart.findIndex(item => item && item.id === product.id)
+            if (state.cart[index].count > 1) {
+                state.cart[index].count--
+            } else {
+                state.cart.splice(index, 1)
+            }
             state.count--
         },
         deleteProductCart(state, product){
-            state.count = state.count - state.cart[product.id].count
-            delete state.cart[product.id]
+            const index = state.cart.findIndex(item => item && item.id === product.id)
+            state.count = state.count - state.cart[index].count
+            state.cart.splice(index, 1)
         },
         removeCart(state){
             state.count = 0

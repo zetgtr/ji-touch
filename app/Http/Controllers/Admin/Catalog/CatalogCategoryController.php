@@ -23,6 +23,11 @@ class CatalogCategoryController extends Controller
         ]);
     }
 
+    public function getBreadcrumb(string $url,CatalogBuilder $catalogBuilder){
+        $category = Category::query()->where('url',$url)->first();
+        return $category ? $catalogBuilder->getSiteBreadcrumb($category->id) : null;
+    }
+
     public function order(Request $request, CatalogBuilder $catalogBuilder){
         $catalogBuilder->setOrderCategory($request->all()['items']);
     }

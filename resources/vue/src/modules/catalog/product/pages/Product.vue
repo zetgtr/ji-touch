@@ -14,11 +14,11 @@
 
 <script>
 import {mapActions, mapMutations, mapState} from "vuex";
-import {useRouter} from "vue-router";
+
 import CatalogCart from "../../cart/components/CatalogCart.vue";
 
 export default {
-    components: {CatalogCart},
+    components: { CatalogCart},
     data() {
         // this.fetchInfo()
         return {
@@ -37,6 +37,7 @@ export default {
     updated() {
         if(this.url !== this.$route.params.slug)
             this.getProductBySlug(this.$route.params.slug);
+        document.title = this.product.seo_title || this.product.title
     },
     computed: {
         ...mapState({
@@ -44,7 +45,9 @@ export default {
             url: (state) => state.productModule.url,
         }),
     },
-    watch: {},
+    watch: {
+
+    },
 };
 </script>
 
