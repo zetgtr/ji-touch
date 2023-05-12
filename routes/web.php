@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\SettingsMenuController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Vue\RouterController;
 use App\Models\Admin\HeaderAndFooter\HeaderAndFooter;
 use App\Models\Admin\Menu;
 use App\Models\Admin\Navigation\NavigationList;
@@ -139,7 +140,10 @@ Route::get('robots.txt', function() {
     return Response::make($output, 200, ['Content-Type' => 'text/plain']);
 });
 
-Route::get('/{vue_capture?}', function() {
-    return view('welcome', ['data'=> HeaderAndFooter::query()->find(1)]);
-})->where('vue_capture', '[\/\w\.-]*')
-    ->name('home');
+//Route::get('/{vue_capture?}', function() {
+//    return view('welcome', ['data'=> HeaderAndFooter::query()->find(1)]);
+//})->where('vue_capture', '[\/\w\.-]*')
+//    ->name('home');
+
+Route::get('/',[RouterController::class,'index'])->name('home');
+Route::get('/',[RouterController::class,'project'])->name('project');

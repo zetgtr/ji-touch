@@ -15,6 +15,7 @@ export default defineConfig({
                 'resources/sass/admin/style.scss',
                 'resources/js/app.js'
             ],
+            ssr: 'resources/js/ssr.js',
             refresh: true,
         }),
     ],
