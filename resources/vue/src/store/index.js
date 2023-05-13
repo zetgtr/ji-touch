@@ -11,7 +11,6 @@ import {aboutModule} from "./infusions/aboutModule";
 import {test2Module} from "./infusions/test2Module";
 import {testModule} from "./testModule";
 import {articleModule} from "./infusions/articleModule";
-import modulesImport from "../modules";
 import createPersistedState from 'vuex-persistedstate';
 
 export default createStore({
@@ -34,6 +33,5 @@ export default createStore({
         reviews: reviewsModule,
         jobs: jobsModule,
         about: aboutModule,
-        ...modulesImport
     }
 })

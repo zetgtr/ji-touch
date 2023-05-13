@@ -1,4 +1,7 @@
 <template>
+    <Head>
+        <title>{{title}}</title>
+    </Head>
     <the-header></the-header>
     <TheAnimateBg></TheAnimateBg>
     <first-component v-on:modal="showModal"></first-component>
@@ -21,7 +24,7 @@ import TheAnimateBg from "../Components/TheAnimateBg.vue";
 import TheSwiper from "../Components/Services/TheSwiper.vue";
 import MyDialog from "../Components/UI/MyDialog.vue";
 import PostForm from "../Components/Modal/PostForm.vue";
-import { messageMixin } from "./../Components/mixins/messageMixin";
+import { messageMixin } from "../Components/mixins/messageMixin";
 
 // panels
 
@@ -32,9 +35,14 @@ import companyComponent from "./../infusions/companyComponent.vue";
 import orderComponent from "./../infusions/orderComponent.vue";
 import TheFooterVue from '../components/TheFooter.vue';
 
+import {Head} from "@inertiajs/vue3";
+
 export default {
-    name: "Home",
+    props: {
+        title: String
+    },
     components: {
+        Head,
         TheHeader,
         TheAnimateBg,
         TheSwiper,
@@ -388,4 +396,5 @@ export default {
 .overflow{
     overflow-y: hidden;
 }
+
 </style>

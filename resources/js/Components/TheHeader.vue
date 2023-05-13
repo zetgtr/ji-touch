@@ -8,7 +8,7 @@
       <div class="header__wrapper" :class="{ hidden: isBurgerVisible }">
         <div class="header__logo">
           <Link :href="route('home')">
-            <img src="../assets/img/logotype.svg" alt="Logo" />
+            <img src="../../assets/img/logotype.svg" alt="Logo" />
           </Link>
         </div>
         <nav class="nav">
@@ -34,9 +34,9 @@
       </button>
     </div>
   </header>
-  <the-burger
-    :class="{ show: isBurgerVisible, visibility: isBurgerVisible }"
-  ></the-burger>
+<!--  <the-burger-->
+<!--    :class="{ show: isBurgerVisible, visibility: isBurgerVisible }"-->
+<!--  ></the-burger>-->
 </template>
 
 <script>
@@ -47,7 +47,7 @@ import {Link} from "@inertiajs/vue3";
 export default {
   name: "TheHeader",
   components: {
-      Link,
+    Link,
     TheBurger,
     TheLinkList,
   },
@@ -57,23 +57,23 @@ export default {
         {
           id: 1,
           title: "Проекты",
-          link: route('project'),
+          link: "project",
         },
-        {
-          id: 2,
-          title: "О компании",
-          link: "/about/",
-        },
-        {
-          id: 3,
-          title: "Агенство",
-          link: "/agency/",
-        },
-        {
-          id: 4,
-          title: "Контакты",
-          link: "/contact/",
-        },
+        // {
+        //   id: 2,
+        //   title: "О компании",
+        //   link: "/about/",
+        // },
+        // {
+        //   id: 3,
+        //   title: "Агенство",
+        //   link: "/agency/",
+        // },
+        // {
+        //   id: 4,
+        //   title: "Контакты",
+        //   link: "/contact/",
+        // },
       ],
       classes: "nav__list",
       isBurgerVisible: false,

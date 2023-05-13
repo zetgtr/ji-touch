@@ -13,6 +13,7 @@ export default defineConfig({
             input: [
                 'resources/sass/app.sass',
                 'resources/sass/admin/style.scss',
+                'resources/js/assets/scss/index.scss',
                 'resources/js/app.js'
             ],
             ssr: 'resources/js/ssr.js',

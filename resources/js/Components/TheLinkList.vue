@@ -1,7 +1,7 @@
 <template>
   <ul class="list-reset" :class="classes">
     <li class="nav__item" v-for="item in items" :key="item.id">
-      <Link :href="item.link" :data-text="item.text" @click="handleClick">{{
+      <Link :href="route(item.link)" :data-text="item.text" @click="handleClick">{{
         item.title
       }}</Link>
     </li>
@@ -10,6 +10,7 @@
 
 <script>
 import {Link} from "@inertiajs/vue3";
+
 export default {
     components: {
         Link

@@ -42,39 +42,39 @@ export default {
         {
           id: "1",
           title: "Главная",
-          link: "/",
+          link: "home",
           text: "Главная"
         },
-        {
-          id: 2,
-          title: "Портфолио",
-          link: "/projects/",
-          text: "Портфолио"
-        },
-        {
-          id: 3,
-          title: "Услуги",
-          link: "/price/",
-          text: "Услуги"
-        },
-        {
-          id: 4,
-          title: "Отзывы",
-          link: "/reviews/",
-          text: "Отзывы"
-        },
-        {
-          id: 5,
-          title: "О компании",
-          link: "/education/",
-          text: "О компании"
-        },
-        {
-          id: 6,
-          title: "Вакансии",
-          link: "/jobs/",
-          text: "Вакансии"
-        },
+        // {
+        //   id: 2,
+        //   title: "Портфолио",
+        //   link: "/projects/",
+        //   text: "Портфолио"
+        // },
+        // {
+        //   id: 3,
+        //   title: "Услуги",
+        //   link: "/price/",
+        //   text: "Услуги"
+        // },
+        // {
+        //   id: 4,
+        //   title: "Отзывы",
+        //   link: "/reviews/",
+        //   text: "Отзывы"
+        // },
+        // {
+        //   id: 5,
+        //   title: "О компании",
+        //   link: "/education/",
+        //   text: "О компании"
+        // },
+        // {
+        //   id: 6,
+        //   title: "Вакансии",
+        //   link: "/jobs/",
+        //   text: "Вакансии"
+        // },
       ],
     };
   },

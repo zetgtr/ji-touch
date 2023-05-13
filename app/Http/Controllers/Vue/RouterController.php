@@ -10,12 +10,12 @@ class RouterController extends Controller
 {
     public function index(){
         return \inertia('Home',[
-            'title'=>'Home'
+            'title'=>'Главная'
         ]);
     }
     public function project(){
         return \inertia('Project',[
-            'title'=>'Project'
+            'title'=>'Наши работы'
         ]);
     }
 }
