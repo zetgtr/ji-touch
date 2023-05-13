@@ -22,7 +22,6 @@
         @vite('resources/css/app.css')
         <link rel="stylesheet" href="{{ asset('assets/iconfonts/font-awesome/css/font-awesome.min.css') }}">
         @vite('resources/js/app.js')
-        @vite('resources/js/assets/scss/index.scss')
         @inertiaHead
     </head>
     <body>
