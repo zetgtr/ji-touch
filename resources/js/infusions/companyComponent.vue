@@ -24,15 +24,15 @@
           </div>
         </div>
       </div>
-      <the-section-caption :sectionCaption="sectionCaption" class="color"></the-section-caption>
+<!--      <the-section-caption :sectionCaption="sectionCaption" class="color"></the-section-caption>-->
     </div>
   </section>
 </template>
 
 <script>
-import TheMoreButton from "./../components/UI/TheMoreButton.vue";
-import TheButton from "./../components/UI/TheButton.vue";
-import TheSectionCaption from "./../components/TheSectionCaption.vue";
+import TheMoreButton from "./../Components/UI/TheMoreButton.vue";
+import TheButton from "./../Components/UI/TheButton.vue";
+import TheSectionCaption from "./../Components/TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
   components: {

@@ -150,3 +150,7 @@ Route::get('/project',[RouterController::class,'project'])->name('project');
 Route::get('/about',[RouterController::class,'about'])->name('about');
 Route::get('/agency',[RouterController::class,'agency'])->name('agency');
 Route::get('/contact',[RouterController::class,'contact'])->name('contact');
+Route::get('/price',[RouterController::class,'price'])->name('price');
+Route::get('/reviews',[RouterController::class,'reviews'])->name('reviews');
+Route::get('/education',[RouterController::class,'education'])->name('education');
+Route::get('/jobs',[RouterController::class,'jobs'])->name('jobs');

@@ -14,7 +14,7 @@
 export default {};
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
 .footer {
   height: 85px;
   background-color: #212121;

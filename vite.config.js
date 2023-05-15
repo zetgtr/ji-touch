@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from "@vitejs/plugin-vue"; //add this line
 import laravel from 'laravel-vite-plugin';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
 
 const host = 'localhost'
@@ -24,6 +25,14 @@ export default defineConfig({
           '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
         }
       },
+    flags: {
+        // Установите флаг experimental-modules
+        // при запуске Vite
+        // для использования модулей ECMAScript
+        // https://vitejs.dev/guide/features.html#experimental-flag-notice
+        mode: 'development',
+        'experimental-modules': true
+    },
     server: {
         host,
         hmr: {host},

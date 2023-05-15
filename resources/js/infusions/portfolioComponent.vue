@@ -3,7 +3,7 @@
     <div class="container porfolio-container">
       <div class="porfolio__header wow fadeIn" data-wow-delay="0.2s">
         <h2 v-html="$replaceNewLines(title)" v-if="page === 'home'"></h2>
-        <router-link to="/project/">
+        <Link :href="route('project')">
           <div class="more" v-if="page === 'home'">
             <span>{{ more }}</span>
             <svg
@@ -28,7 +28,7 @@
               </defs>
             </svg>
           </div>
-        </router-link>
+        </Link>
       </div>
       <div class="porfolio__wrapper wow fadeIn" data-wow-delay="0.2s" >
         <the-item-list :items="lastItems" v-if="page === 'home'">
@@ -36,7 +36,7 @@
         <the-item-list :items="items" v-else>
         </the-item-list>
       </div>
-      
+
       <div class="porfolio__footer">
         <the-button class="button button--orange first__btn" v-if="page === 'home'"
           ><span>Показать ещё</span></the-button
@@ -50,9 +50,10 @@
 </template>
 
 <script>
-import TheItemList from "./../components/Portfolio/TheItemList.vue";
-import TheButton from "./../components/UI/TheButton.vue";
-import TheSectionCaption from "./../components/TheSectionCaption.vue";
+import TheItemList from "./../Components/Portfolio/TheItemList.vue";
+import TheButton from "./../Components/UI/TheButton.vue";
+import {Link} from "@inertiajs/vue3";
+import TheSectionCaption from "./../Components/TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
   props:{
@@ -62,13 +63,14 @@ export default {
     }
   },
   components: {
+      Link,
     TheItemList,
     TheButton,
     TheSectionCaption,
   },
   data() {
     return {
-      
+
       sectionCaption: "Portfolio",
     };
   },
@@ -93,7 +95,7 @@ export default {
     })
   },
   watch: {
-    
+
   },
 };
 </script>

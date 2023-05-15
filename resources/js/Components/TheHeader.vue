@@ -34,14 +34,14 @@
       </button>
     </div>
   </header>
-<!--  <the-burger-->
-<!--    :class="{ show: isBurgerVisible, visibility: isBurgerVisible }"-->
-<!--  ></the-burger>-->
+  <the-burger
+    :class="{ show: isBurgerVisible, visibility: isBurgerVisible }"
+  ></the-burger>
 </template>
 
 <script>
-import TheBurger from "../components/TheBurger.vue";
-import TheLinkList from "../components/TheLinkList.vue";
+import TheBurger from "../Components/TheBurger.vue";
+import TheLinkList from "../Components/TheLinkList.vue";
 import {Link} from "@inertiajs/vue3";
 
 export default {

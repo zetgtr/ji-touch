@@ -1,5 +1,5 @@
 <template>
-  <section id="first" class="first" :class="classes">
+  <section id="first" class="first">
     <div class="container first-container">
       <div class="first__wrapper">
         <div class="caption">
@@ -48,8 +48,8 @@
 </template>
 
 <script>
-import TheButton from "./../components/UI/TheButton.vue";
-import TheSectionCaption from "./../components/TheSectionCaption.vue";
+import TheButton from "./../Components/UI/TheButton.vue";
+import TheSectionCaption from "./../Components/TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
   components: {
@@ -87,7 +87,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .first {
   height: 100vh;
   padding: 115px 0;

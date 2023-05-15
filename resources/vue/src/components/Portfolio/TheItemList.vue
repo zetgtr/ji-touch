@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
 import VanillaTilt from "vanilla-tilt";
 import { onMounted, nextTick, ref } from "vue";
 
@@ -58,19 +58,19 @@ export default {
         }, 100);
       });
 
-      gsap.registerPlugin(ScrollTrigger);
-      const array = mobile.value;
-      gsap.utils.toArray(array).forEach((el) => {
-        let tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: el,
-            start: "top 60%",
-            end: "top 20%",
-            scrub: 1,
-          },
-        });
-        tl.to(el, { y: 40, duration: 2 });
-      });
+      // gsap.registerPlugin(ScrollTrigger);
+      // const array = mobile.value;
+      // gsap.utils.toArray(array).forEach((el) => {
+      //   let tl = gsap.timeline({
+      //     scrollTrigger: {
+      //       trigger: el,
+      //       start: "top 60%",
+      //       end: "top 20%",
+      //       scrub: 1,
+      //     },
+      //   });
+      //   tl.to(el, { y: 40, duration: 2 });
+      // });
 
       const elements = tiltableItem.value;
       Array.prototype.forEach.call(elements, function (el) {

@@ -155,7 +155,7 @@ export default {
 
     onMounted(() => {
       countSwiper.value = 1;
-    
+
     });
 
     const goToSlide = (slideNumber) => {
@@ -174,7 +174,7 @@ export default {
     };
   },
   mounted(){
-    
+
 
   }
 };

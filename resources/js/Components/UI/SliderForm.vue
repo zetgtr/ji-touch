@@ -1,12 +1,14 @@
 <template>
-  <div class="inputbox">
-    <span>Бюджет проекта</span>
-    <Slider :value="value" :min="min" :max="max" @input="updateBudget" :format="format"  />
-  </div>
+    <div class="container-price">
+        <div class="inputbox">
+            <span>Бюджет проекта</span>
+            <Slider :value="value" :min="min" :max="max" @input="updateBudget" :format="format"  />
+        </div>
+    </div>
 </template>
 
 <script>
-import Slider from "@vueform/slider";
+import Slider from "../slider/src/Slider.vue";
 
 export default {
   components: { Slider },
@@ -40,23 +42,29 @@ export default {
 </style>
 <style src="@vueform/slider/themes/default.css">
 </style>
-<style lang="scss" scoped>
-.inputbox {
-  height: 90px;
-  display: flex;
-  width: 100%;
-  grid-area: 3 / span 2;
-
-  .slider-horizontal {
-    height: 2px;
+<style lang="scss">
+.container-price{
+    height: 90px;
+    display: flex;
     width: 100%;
-    width: 95%;
-    margin: auto auto 0;
-  }
-  .slider-horizontal .slider-tooltip-top {
-    font-size: 14px !important;
-    background: var(--c-primary) !important;
-    border-color: var(--c-primary) !important;
-  }
+    grid-area: 3 / span 2;
+    .inputbox {
+        height: 90px;
+        display: flex;
+        width: 100%;
+        grid-area: 3 / span 2;
+
+        .slider-horizontal {
+            height: 2px;
+            width: 100%;
+            width: 95%;
+            margin: auto auto 0;
+        }
+        .slider-horizontal .slider-tooltip-top {
+            font-size: 14px !important;
+            background: var(--c-primary) !important;
+            border-color: var(--c-primary) !important;
+        }
+    }
 }
 </style>

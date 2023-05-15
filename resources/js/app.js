@@ -10,7 +10,7 @@ import store from '../vue/src/store';
 //
 // app.use(store).use(router).mount('#app');
 
-import { createApp, h } from 'vue'
+import {createApp, createSSRApp, h} from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 createInertiaApp({
     resolve: name => {
@@ -18,7 +18,7 @@ createInertiaApp({
         return pages[`./Pages/${name}.vue`]
     },
     setup({el, App, props, plugin}) {
-        const app = createApp({render: () => h(App, props)})
+        const app = createSSRApp({render: () => h(App, props)})
         app.config.globalProperties.$replaceNewLines = function (string) {
             return string.replace(/\/\/n/g, '<br>');
         }

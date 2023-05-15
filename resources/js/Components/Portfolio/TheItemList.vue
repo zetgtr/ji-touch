@@ -5,11 +5,12 @@
     :key="item.id"
     ref="tiltableItem"
   >
-    <a
+    <Link
       class="main-container shadow-bottom"
       stas="Poollavka"
-      :href="item.subtitle"
+      :href="'http://'+item.subtitle"
       target="_blank"
+      rel="noopener"
     >
       <img :src="item.img" alt="" />
       <div class="contentBx">
@@ -17,12 +18,12 @@
           <img :src="item.bg_img" alt="" />
         </div>
       </div>
-    </a>
+    </Link>
     <a class="porfolio__item-mobile" ref="mobile">
       <img :src="item.img_mobile" alt="" />
     </a>
     <div class="porfolio__item__logo">
-      <img src="../../assets/img/logo-001.png" alt="" />
+      <img src="../../../assets/img/logo-001.png" alt="" />
     </div>
     <div class="porfolio__item__text">
       <span>{{ item.title }}</span>
@@ -32,8 +33,9 @@
 </template>
 
 <script>
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {Link} from "@inertiajs/vue3";
 import VanillaTilt from "vanilla-tilt";
 import { onMounted, nextTick, ref } from "vue";
 
@@ -44,6 +46,9 @@ export default {
       required: true,
     },
   },
+    components: {
+        Link,
+    },
   setup(props) {
     const tiltableItem = ref(null);
     const mobile = ref(null);
@@ -58,19 +63,19 @@ export default {
         }, 100);
       });
 
-      gsap.registerPlugin(ScrollTrigger);
-      const array = mobile.value;
-      gsap.utils.toArray(array).forEach((el) => {
-        let tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: el,
-            start: "top 60%",
-            end: "top 20%",
-            scrub: 1,
-          },
-        });
-        tl.to(el, { y: 40, duration: 2 });
-      });
+      // gsap.registerPlugin(ScrollTrigger);
+      // const array = mobile.value;
+      // gsap.utils.toArray(array).forEach((el) => {
+      //   let tl = gsap.timeline({
+      //     scrollTrigger: {
+      //       trigger: el,
+      //       start: "top 60%",
+      //       end: "top 20%",
+      //       scrub: 1,
+      //     },
+      //   });
+      //   tl.to(el, { y: 40, duration: 2 });
+      // });
 
       const elements = tiltableItem.value;
       Array.prototype.forEach.call(elements, function (el) {

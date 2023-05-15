@@ -14,9 +14,9 @@ import {articleModule} from "./infusions/articleModule";
 import createPersistedState from 'vuex-persistedstate';
 
 export default createStore({
-    plugins: [createPersistedState({
-        paths: ['cartModule']
-    })],
+    // plugins: [createPersistedState({
+    //     paths: ['cartModule']
+    // })],
     state: {
       isAuth: false,
     },

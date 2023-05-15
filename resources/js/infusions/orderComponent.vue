@@ -11,17 +11,17 @@
           </div>
         </div>
       </div>
-      <the-section-caption
-        :sectionCaption="sectionCaption"
-      ></the-section-caption>
+<!--      <the-section-caption-->
+<!--        :sectionCaption="sectionCaption"-->
+<!--      ></the-section-caption>-->
     </div>
   </section>
 </template>
 
 <script>
-import TheOrderContent from "./../components/Order/TheOrderContent.vue";
-import TheOrderForm from "./../components/Order/TheOrderForm.vue";
-import TheSectionCaption from "./../components/TheSectionCaption.vue";
+import TheOrderContent from "./../Components/Order/TheOrderContent.vue";
+import TheOrderForm from "./../Components/Order/TheOrderForm.vue";
+import TheSectionCaption from "./../Components/TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
   components: {
@@ -51,7 +51,7 @@ export default {
       desc: (state) => state.order.desc,
       phone: (state) => state.contact.phone,
       email: (state) => state.contact.email,
-      
+
     }),
     ...mapGetters({
       row: "order/row",
@@ -73,6 +73,6 @@ export default {
     position: relative;
     background: #fff;
   }
-  
+
 }
 </style>

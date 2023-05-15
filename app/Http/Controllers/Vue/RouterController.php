@@ -33,4 +33,24 @@ class RouterController extends Controller
             'title'=>'Контакты'
         ]);
     }
+    public function price(){
+        return \inertia('Price',[
+            'title'=>'Услуги'
+        ]);
+    }
+    public function reviews(){
+        return \inertia('Reviews',[
+            'title'=>'Наши отзывы'
+        ]);
+    }
+    public function education(){
+        return \inertia('Education',[
+            'title'=>'О компании'
+        ]);
+    }
+    public function jobs(){
+        return \inertia('Jobs',[
+            'title'=>'Вакансии'
+        ]);
+    }
 }

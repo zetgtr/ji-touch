@@ -12,7 +12,7 @@
           :activeIndex="activeIndex"
           v-on:goToSlide="goToSlide"
           v-on:activeIndexChanged="activeIndexChanged"
-          :dataSlider="slider"
+          :dataSlider="slider?slider:[]"
         ></the-swiper>
       </div>
       <div class="services__wrapper__text">
@@ -35,8 +35,8 @@
 
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
-import TheSectionCaption from "./../components/TheSectionCaption.vue";
-import TheSwiper from "./../components/Services/TheSwiper.vue";
+import TheSectionCaption from "./../Components/TheSectionCaption.vue";
+import TheSwiper from "./../Components/Services/TheSwiper.vue";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { EffectFade, Navigation, Pagination } from "swiper";

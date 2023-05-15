@@ -53,7 +53,7 @@
 
 <script>
 import { onMounted, nextTick, ref } from "vue";
-import Fancybox from "./../UI/Fancybox.vue";
+// import Fancybox from "./../UI/Fancybox.vue";
 
 export default {
   props: {

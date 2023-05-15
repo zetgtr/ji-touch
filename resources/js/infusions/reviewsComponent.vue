@@ -6,12 +6,12 @@
       </div>
     </div>
   </div>
-  
+
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
-import ReviewItem from '../components/Reviews/ReviewItem.vue';
+import ReviewItem from '../Components/Reviews/ReviewItem.vue';
 export default {
   components: {
     ReviewItem

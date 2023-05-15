@@ -1,7 +1,10 @@
 import { createInertiaApp } from '@inertiajs/vue3'
 import createServer from '@inertiajs/vue3/server'
 import { renderToString } from '@vue/server-renderer'
-import { createSSRApp, h } from 'vue'
+import {createSSRApp, h} from 'vue'
+import store from "../vue/src/store";
+import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+
 
 createServer(page =>
     createInertiaApp({
@@ -12,9 +15,17 @@ createServer(page =>
             return pages[`./Pages/${name}.vue`]
         },
         setup({ App, props, plugin }) {
-            return createSSRApp({
-                render: () => h(App, props),
-            }).use(plugin)
+
+            const app = createSSRApp({render: () => h(App, props)})
+            app.config.globalProperties.$replaceNewLines = function (string) {
+                return string.replace(/\/\/n/g, '<br>');
+            }
+            return app.use(plugin)
+                .use(store)
+                .use(ZiggyVue, {
+                    ...page.props.ziggy,
+                    location: new URL(page.props.ziggy.location),
+                });
         },
     }),
 )

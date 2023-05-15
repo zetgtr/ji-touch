@@ -1,7 +1,7 @@
 <template>
   <ul class="list-reset" :class="classes">
     <li class="nav__item" v-for="(tab, index) in tabs" :key="index">
-      <router-link :to="tab.link"><span>{{ tab.title }}</span></router-link>
+<!--      <router-link :to="tab.link"><span>{{ tab.title }}</span></router-link>-->
     </li>
   </ul>
 </template>
