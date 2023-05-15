@@ -18,4 +18,19 @@ class RouterController extends Controller
             'title'=>'Наши работы'
         ]);
     }
+    public function about(){
+        return \inertia('About',[
+            'title'=>'О компании'
+        ]);
+    }
+    public function agency(){
+        return \inertia('Agency',[
+            'title'=>'Агенство'
+        ]);
+    }
+    public function contact(){
+        return \inertia('Contact',[
+            'title'=>'Контакты'
+        ]);
+    }
 }

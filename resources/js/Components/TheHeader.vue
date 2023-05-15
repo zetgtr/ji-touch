@@ -59,21 +59,21 @@ export default {
           title: "Проекты",
           link: "project",
         },
-        // {
-        //   id: 2,
-        //   title: "О компании",
-        //   link: "/about/",
-        // },
-        // {
-        //   id: 3,
-        //   title: "Агенство",
-        //   link: "/agency/",
-        // },
-        // {
-        //   id: 4,
-        //   title: "Контакты",
-        //   link: "/contact/",
-        // },
+        {
+          id: 2,
+          title: "О компании",
+          link: "about",
+        },
+        {
+          id: 3,
+          title: "Агенство",
+          link: "agency",
+        },
+        {
+          id: 4,
+          title: "Контакты",
+          link: "contact",
+        },
       ],
       classes: "nav__list",
       isBurgerVisible: false,

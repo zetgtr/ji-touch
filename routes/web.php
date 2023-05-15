@@ -147,3 +147,6 @@ Route::get('robots.txt', function() {
 
 Route::get('/',[RouterController::class,'index'])->name('home');
 Route::get('/project',[RouterController::class,'project'])->name('project');
+Route::get('/about',[RouterController::class,'about'])->name('about');
+Route::get('/agency',[RouterController::class,'agency'])->name('agency');
+Route::get('/contact',[RouterController::class,'contact'])->name('contact');

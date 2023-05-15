@@ -1,9 +1,9 @@
 <template>
+    <Head :title="title" />
   <the-header></the-header>
   <div class="content">
     <div class="container">
-      <h1>{{captionTitle}}</h1>
-      <BreadCrumbs :breadcrumbs="breadcrumbs"></BreadCrumbs>
+      <h1>{{title}}</h1>
     </div>
     <contact-component></contact-component>
     <order-component></order-component>
@@ -12,29 +12,22 @@
 </template>
 
 <script>
-// import BreadCrumbs from "../components/BreadCrumbs.vue";
-import { BreadCrumbs } from "../router";
-import TheHeader from "./../components/TheHeader.vue";
+import TheHeader from "../Components/TheHeader.vue";
 import orderComponent from "./../infusions/orderComponent.vue";
 import contactComponent from "./../infusions/contactComponent.vue";
-import TheFooterVue from '../components/TheFooter.vue';
+import TheFooterVue from '../Components/TheFooter.vue';
+import {Head} from "@inertiajs/vue3";
 
 export default {
+    props: {
+       title: String
+    },
   components: {
+      Head,
     TheHeader,
-    BreadCrumbs,
     orderComponent,
     contactComponent,
     TheFooterVue
-  },
-  data(){
-    return{
-      captionTitle: 'Контакты',
-    }
-  },
-  created() {
-    this.breadcrumbs = this.$route.meta.breadcrumbs;
-    console.log(this.breadcrumbs);
   },
 };
 </script>
