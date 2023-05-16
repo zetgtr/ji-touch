@@ -22,7 +22,7 @@
         </clipPath>
       </defs>
     </svg>
-    
+
   </a>
 </template>
 
@@ -33,65 +33,5 @@ export default {
 </script>
 
 <style lang='scss'>
-.more {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: var(--c-primary);
-  margin-top: auto;
-  margin-bottom: 10px;
-  span {
-    position: relative;
-    z-index: 1;
-    transition: 0.3s linear;
-  }
-  svg {
-    width: 40px;
-    height: 13px;
-    position: relative;
-    path {
-      transition: 0.3s linear;
-      fill: var(--c-secondary);
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: -100%;
-      transition: 0.3s linear;
-      background-color: var(--c-primary);
-    }
-  }
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 0;
-    height: 0;
-    transform: translate(-50%, -50%);
-    background-color: #e9f4f890;
-    border-radius: 50%;
-    z-index: 0;
-    transition: 0.4s linear;
-  }
-  &:hover {
-    &::before {
-      width: 60px;
-      height: 60px;
-    }
-    span {
-      color: var(--c-secondary);
-    }
-    svg {
-      path {
-        fill: var(--c-primary);
-      }
-    }
-  }
-}
 </style>

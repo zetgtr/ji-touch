@@ -3,14 +3,24 @@
 namespace App\Http\Controllers\Vue;
 
 use App\Http\Controllers\Controller;
+use App\QueryBuilder\Admin\Page\PageBuilder;
+use App\QueryBuilder\Admin\Page\PageDataPanelBuilder;
+use App\QueryBuilder\Admin\Panel\PanelBuilder;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Ramsey\Collection\Collection;
 
 class RouterController extends Controller
 {
-    public function index(){
+    public function index(PanelBuilder $panelBuilder){
         return \inertia('Home',[
-            'title'=>'Главная'
+            'title'=>'Главная',
+            'first' => $panelBuilder->getAlias("first"),
+            'services' => $panelBuilder->getAlias("services"),
+            'portfolio' => $panelBuilder->getAlias("portfolio"),
+            'company' => $panelBuilder->getAlias("company"),
+            'order' => $panelBuilder->getAlias("order"),
+            'contact' => $panelBuilder->getAlias("contact"),
         ]);
     }
     public function project(){
@@ -51,6 +61,14 @@ class RouterController extends Controller
     public function jobs(){
         return \inertia('Jobs',[
             'title'=>'Вакансии'
+        ]);
+    }
+
+    public function pages($pages){
+        $pageBuilder = new PageDataPanelBuilder();
+        return \inertia('Pages',[
+            'title'=> $pages->custom_title,
+            'panels' => $pageBuilder->getDataPanel($pages->id)
         ]);
     }
 }

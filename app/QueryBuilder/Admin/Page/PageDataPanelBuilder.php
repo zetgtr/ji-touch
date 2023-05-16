@@ -5,6 +5,7 @@ namespace App\QueryBuilder\Admin\Page;
 use App\Models\Admin\Page\PageCreate;
 use App\Models\Admin\Panel\DataPanel;
 use App\Models\Admin\Panel\Panel;
+use App\QueryBuilder\Admin\Panel\PanelBuilder;
 use App\QueryBuilder\QueryBuilder;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -24,8 +25,10 @@ class PageDataPanelBuilder extends QueryBuilder
             if($datum->type !== 'text') {
                 if (empty($datum['content'])) {
                     $data[$key]['content'] = json_decode($panel->data);
-                } else
+                } else {
                     $data[$key]['content'] = json_decode($datum['content']);
+                }
+                $data[$key]['alias'] = $panel->alias;
                 $data[$key]['title'] = $panel->title;
             }
         }
@@ -35,5 +38,20 @@ class PageDataPanelBuilder extends QueryBuilder
     public function getAll(): Collection
     {
         return $this->model->get();
+    }
+
+    public function getDataPanel(int $id)
+    {
+        $panelBuilder = new PanelBuilder();
+        $data = $this->getPagePanels($id);
+        foreach ($data as $key=>$datum)
+        {
+            if($datum->type === "panel")
+            {
+                $data[$key]->content = $panelBuilder->setItemData((array)$datum->content);
+            }
+        }
+
+        return $data;
     }
 }

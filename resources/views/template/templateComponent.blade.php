@@ -1,33 +1,34 @@
 <template></template>
 
 <script>
-import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
+  props: {
+    {{ $alias }}: Array
+  },
   components: {},
   data() {
-    return {};
+    return {
+    };
   },
-  methods: {
-    ...mapMutations({}),
-    ...mapActions({
-      // fetchInfo: 'название модуля + / + fetchInfo'
-      fetchInfo: "{{ $alias }}/fetchInfo",
-    }),
-  },
-  mounted() {
-    this.fetchInfo();
-  },
-  computed: {
-    // название aliasa: (state) => state.order.название aliasa,
-    ...mapState({
-  @foreach($data[0] as $key=>$item)
-      {{ $key }}: (state) => state.order.{{$key}},
-  @endforeach
-    }),
-  },
-  watch: {},
 };
 </script>
-
-<style lang='scss'>
-</style>
+{{--  @foreach($data[0] as $key=>$item)--}}
+{{--      @if(is_array($item))--}}
+{{--{{setArray($item,"[".$key."]",$alias)}}--}}
+{{--      @else--}}
+{{--      {{ $key }}: this.{{ $alias }}[0].{{$key}},--}}
+{{--      @endif--}}
+{{--  @endforeach--}}
+{{--@php--}}
+{{--    function setArray(array $array,string $keySecond,string $alias){--}}
+{{--        $data = "";--}}
+{{--        foreach ($array as $key=>$item){--}}
+{{--            if(is_array($item)){--}}
+{{--                $data .= setArray($item,$keySecond."[".$key."]",$alias);--}}
+{{--            }else{--}}
+{{--                $data .= $key.": this.".$alias."[0]".$keySecond.".".$key.",".PHP_EOL;--}}
+{{--            }--}}
+{{--        }--}}
+{{--        return $data;--}}
+{{--    }--}}
+{{--@endphp--}}

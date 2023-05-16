@@ -2,7 +2,7 @@ import { createInertiaApp } from '@inertiajs/vue3'
 import createServer from '@inertiajs/vue3/server'
 import { renderToString } from '@vue/server-renderer'
 import {createSSRApp, h} from 'vue'
-import store from "../vue/src/store";
+import store from './Store';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
 

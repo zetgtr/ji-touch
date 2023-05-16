@@ -109,13 +109,5 @@ export default {
 </script>
 
 <style lang="scss" >
-.innerLayout{
-  .header{
-    background: var(--c-bg);
-    background: transparent;
-    &.header_fix{
-      background: var(--c-bg);
-    }
-  }
-}
+
 </style>

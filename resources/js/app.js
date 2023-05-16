@@ -1,6 +1,6 @@
 // import { createApp } from 'vue';
 // import App from '../vue/src/App.vue';
-import store from '../vue/src/store';
+import store from './Store';
 // import components from '../vue/src/components/UI';
 //
 // const app = createApp(App)

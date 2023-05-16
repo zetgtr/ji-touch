@@ -51,8 +51,8 @@ class PageController extends Controller
         if ($page) {
             $pageCreate = new PageCreate();
             $pageCreate->setPanelData($request,$page);
-            $pageBuilder->createPage($page);
-            $pageBuilder->createPage($page);
+//            $pageBuilder->createPage($page);
+//            $pageBuilder->createPage($page);
             return \redirect()->route('admin.page-create.index')->with('success', __('messages.admin.page.create.success'));
         }
 
@@ -83,7 +83,6 @@ class PageController extends Controller
         $pageCreate = $pageCreate->fill($request->validated());
         if ($pageCreate->save()) {
             $pageCreate->setPanelData($request,$pageCreate);
-            $pageBuilder->createPage($pageCreate);
             return \redirect()->route('admin.page-create.index')->with('success', __('messages.admin.settings.update.success'));
         }
 

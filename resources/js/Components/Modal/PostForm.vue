@@ -64,24 +64,7 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-form {
-  display: flex;
-  flex-direction: column;
-}
-h2{
-  margin-bottom: 2rem;
-}
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-.button-click {
-  color: #ffffff;
-  &:hover {
-    color: var(--c-primary);
-  }
-}
+
 
 
 </style>

@@ -156,7 +156,7 @@ class PanelBuilder extends QueryBuilder
         return $this->model->get();
     }
 
-    private function setItemData(array $array)
+    public function setItemData(array $array)
     {
 
         if (count($array['data']) == 0) {
@@ -195,7 +195,7 @@ class PanelBuilder extends QueryBuilder
 
     public function getAlias(string $alias)
     {
-        $datas = $this->model->where('alias',$alias)->where('publish',true)->get();
+        $datas = Panel::query()->where('alias',$alias)->where('publish',true)->get();
         foreach ($datas as $data)
             $data->data = json_decode($data->data);
 
@@ -210,25 +210,14 @@ class PanelBuilder extends QueryBuilder
     public function createPanel(mixed $panel)
     {
         $panelValue = $panel['alias'];
-        $newContent = view("template.templateModule",[
-            'data'=>$this->setItemData(json_decode($panel['data'], true)),
-            'title' => $panel['title'],
-            'alias' => $panel['alias']
-        ])->render();
-        $newFileName = $panelValue.'Module.js';
-        $newFilePath = resource_path('vue/src/store/infusions').'/' . $newFileName;
-        file_put_contents($newFilePath, $newContent);
         $newContent = view("template.templateComponent",[
             'data'=>$this->setItemData(json_decode($panel['data'], true)),
             'title' => $panel['title'],
             'alias' => $panel['alias']
         ])->render();
-        $newFileName = $panelValue.'Component.vue';
-        $newFilePath = resource_path('vue/src/infusions').'/' . $newFileName;
+        $newFileName = ucfirst($panelValue).'.vue';
+        $newFilePath = resource_path('js/Components/Panels').'/' . $newFileName;
         file_put_contents($newFilePath, $newContent);
-        $file = explode('modules: {',file_get_contents(resource_path('vue/src/store/index.js')));
-        $fileContent = $file[0].'modules: {'.PHP_EOL."        ".$panel['alias'].": ".$panel['alias']."Module,".$file[1];
-        file_put_contents(resource_path('vue/src/store/index.js'), $fileContent);
     }
 
     public function removePanel(Panel $panel)

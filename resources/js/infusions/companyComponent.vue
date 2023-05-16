@@ -35,6 +35,9 @@ import TheButton from "./../Components/UI/TheButton.vue";
 import TheSectionCaption from "./../Components/TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
+  props: {
+      company: Array
+  },
   components: {
     TheMoreButton,
     TheButton,
@@ -42,81 +45,16 @@ export default {
   },
   data() {
     return {
+        subtitle: this.company[0].subtitle,
+        title: this.company[0].title,
+        text: this.company[0].text,
+        desc: this.company[0].desc,
+        more: this.company[0].more,
     };
-  },
-  methods: {
-    ...mapMutations({
-    }),
-    ...mapActions({
-      company: 'company/fetchInfo'
-    }),
-  },
-  mounted() {
-    this.company();
-  },
-  computed: {
-   ...mapState({
-      subtitle: (state) => state.company.subtitle,
-      title: (state) => state.company.title,
-      text: (state) => state.company.text,
-      desc: (state) => state.company.desc,
-      more: (state) => state.company.more,
-    }),
-  },
-  watch: {
-
   },
 };
 </script>
 
 <style lang='scss'>
-.about {
-  padding-top: 120px;
-  padding-bottom: 140px;
-  position: relative;
-  background-color: #e9f5f9;
-  &__header {
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0;
-      margin-bottom: 3.5rem;
-    }
-  }
-  &__wrapper {
-    background: #fff;
-    position: relative;
-    &-content {
-      padding-top: 90px;
-      padding-bottom: 90px;
-    }
-  }
-  &__item {
-    &-title {
-      font-size: 50px;
-      font-weight: 700;
-      color: var(--c-title);
-      margin-bottom: 0;
-      &-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-      }
-    }
-    &-subtitle {
-      font-size: var(--fz-l);
-      color: var(--c-title);
-      margin-bottom: 50px;
-      line-height: 1.2;
-    }
-    &-right {
-      p {
-        font-size: var(--fz-s);
-        color: var(--c-def);
-        margin-bottom: 80px;
-        max-width: 75%;
-      }
-    }
-  }
-}
+
 </style>

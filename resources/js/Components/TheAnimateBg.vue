@@ -43,29 +43,5 @@ export default {
 </script>
 
 <style lang='scss'>
-.animate {
-  z-index: -1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  &-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    align-items: center;
-  }
-  .element {
-    position: relative;
-    width: 10px;
-    height: 10px;
-    background-color: #e9f5f9;
-    // background-color: red;
-    justify-self: center;
-    border-radius: 50%;
-  }
-}
+
 </style>

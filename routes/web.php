@@ -21,10 +21,12 @@ use App\Http\Controllers\Vue\RouterController;
 use App\Models\Admin\HeaderAndFooter\HeaderAndFooter;
 use App\Models\Admin\Menu;
 use App\Models\Admin\Navigation\NavigationList;
+use App\QueryBuilder\Admin\Page\PageBuilder;
 use App\Utils\Lfm;
 use http\Client\Response;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -154,3 +156,21 @@ Route::get('/price',[RouterController::class,'price'])->name('price');
 Route::get('/reviews',[RouterController::class,'reviews'])->name('reviews');
 Route::get('/education',[RouterController::class,'education'])->name('education');
 Route::get('/jobs',[RouterController::class,'jobs'])->name('jobs');
+$pageBuilder = new PageBuilder();
+
+function setRoute($pages,$url = "") {
+    foreach ($pages as $page) {
+        $url .= "/". $page->url;
+        Route::get($url, function () use ($page) {
+            $routerController = new RouterController();
+            return $routerController->pages($page);
+        })->name($page->title);
+
+        if (is_object($page->parent)) {
+            setRoute($page->parent,$url);
+        }
+    }
+}
+
+setRoute($pageBuilder->getPagesParent());
+

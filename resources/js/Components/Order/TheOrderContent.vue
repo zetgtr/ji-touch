@@ -27,39 +27,3 @@ export default {
   },
 };
 </script>
-
-<style lang='scss'>
-.order {
-  &-left {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    h2 {
-      font-size: 60px;
-      line-height: 1.2 !important;
-      margin-bottom: 4rem;
-    }
-    p {
-      max-width: 80%;
-    }
-    .order-contacts {
-      margin-top: auto;
-
-      &-mail {
-        color: var(--c-def);
-      }
-      &-tel {
-        font-size: 1.5rem;
-        color: var(--c-title);
-      }
-    }
-  }
-
-  &-contacts {
-    display: flex;
-    align-items: baseline;
-    flex-direction: column;
-  }
-  
-}
-</style>

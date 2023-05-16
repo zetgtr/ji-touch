@@ -4,7 +4,7 @@
       <div class="order-container__wrapper">
         <div class="row">
           <div class="col-6">
-            <the-order-content :row="row" :contact="rowContact"></the-order-content>
+            <the-order-content :row="rowOrder()" :contact="rowContact()"></the-order-content>
           </div>
           <div class="col-6">
             <the-order-form></the-order-form>
@@ -24,55 +24,59 @@ import TheOrderForm from "./../Components/Order/TheOrderForm.vue";
 import TheSectionCaption from "./../Components/TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
+    props: {
+        order: Array,
+        contact: Array
+    },
   components: {
     TheOrderContent,
     TheOrderForm,
     TheSectionCaption,
   },
   data() {
+      console.log(this.contact[0])
     return {
+      title: this.order[0].title,
+      desc: this.order[0].desc,
+      phone: this.contact.phone.value,
+      email: this.contact.email.value,
+      telegram: this.contact.telegram.value,
+      whatsapp: this.contact.whatsapp.value,
+      address: this.contact.address.value,
+      worktime: this.contact.worktime.value,
       sectionCaption: "contacts",
     };
   },
   methods: {
-    ...mapMutations({}),
-    ...mapActions({
-      order: "order/fetchInfo",
-      contact: "contact/fetchInfo",
-    }),
+      rowOrder() {
+          const state = {
+              title: this.title,
+              desc: this.desc
+          }
+          return Object.keys(state).reduce((obj, key) => {
+              obj[key] = state[key];
+              return obj;
+          }, {});
+      },
+      rowContact() {
+          const state = {
+              phone: this.phone,
+              email: this.email,
+              telegram: this.telegram,
+              whatsapp: this.whatsapp,
+              address: this.address,
+              worktime: this.worktime
+          }
+          return Object.keys(state).reduce((obj, key) => {
+              obj[key] = state[key];
+              return obj;
+          }, {});
+      },
   },
-  mounted() {
-    this.order();
-    this.contact();
-  },
-  computed: {
-    ...mapState({
-      title: (state) => state.order.title,
-      desc: (state) => state.order.desc,
-      phone: (state) => state.contact.phone,
-      email: (state) => state.contact.email,
-
-    }),
-    ...mapGetters({
-      row: "order/row",
-      rowContact: "contact/row"
-    })
-  },
-  watch: {},
 };
 </script>
 
 
 <style lang='scss'>
-.order {
-  position: relative;
-  padding-top: 110px;
-  padding-bottom: 145px;
-  &-container__wrapper {
-    z-index: 2;
-    position: relative;
-    background: #fff;
-  }
 
-}
 </style>
