@@ -13,8 +13,8 @@
 
 <script>
 import TheHeader from "../Components/TheHeader.vue";
-import orderComponent from "./../infusions/orderComponent.vue";
-import contactComponent from "./../infusions/contactComponent.vue";
+import orderComponent from "../Components/Panels/Order.vue";
+import contactComponent from "../Components/Panels/Contact.vue";
 import TheFooterVue from '../Components/TheFooter.vue';
 import {Head} from "@inertiajs/vue3";
 

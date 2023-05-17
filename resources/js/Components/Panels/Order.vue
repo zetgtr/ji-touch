@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import TheOrderContent from "./../Components/Order/TheOrderContent.vue";
-import TheOrderForm from "./../Components/Order/TheOrderForm.vue";
-import TheSectionCaption from "./../Components/TheSectionCaption.vue";
+import TheOrderContent from "../Order/TheOrderContent.vue";
+import TheOrderForm from "../Order/TheOrderForm.vue";
+import TheSectionCaption from "../TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
     props: {

@@ -35,8 +35,8 @@
 
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
-import TheSectionCaption from "./../Components/TheSectionCaption.vue";
-import TheSwiper from "./../Components/Services/TheSwiper.vue";
+import TheSectionCaption from "../TheSectionCaption.vue";
+import TheSwiper from "../Services/TheSwiper.vue";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { EffectFade, Navigation, Pagination } from "swiper";

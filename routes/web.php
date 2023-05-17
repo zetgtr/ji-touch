@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\Page\PageController;
 use App\Http\Controllers\Admin\Panel\PanelController;
 use App\Http\Controllers\Admin\RolesController as AdminRolesController;
 use App\Http\Controllers\Admin\SettingsMenuController;
+use App\Http\Controllers\Admin\SitemapController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\ProfileController;
@@ -76,6 +77,7 @@ Route::middleware('auth')->group(function () {
 //            Route::resource('category', NewsCategoryController::class);
 //        });
 //
+        Route::get('/sitemap',[SitemapController::class,'index'])->name('sitemap');
         Route::resource('packages_settings', PackagesSettings::class);
         Route::resource('navigation', NavigationController::class);
 
@@ -159,15 +161,17 @@ Route::get('/jobs',[RouterController::class,'jobs'])->name('jobs');
 $pageBuilder = new PageBuilder();
 
 function setRoute($pages,$url = "") {
+
     foreach ($pages as $page) {
-        $url .= "/". $page->url;
-        Route::get($url, function () use ($page) {
+        $secondUrl = $url ."/". $page->url;
+        Route::get($secondUrl, function () use ($page) {
             $routerController = new RouterController();
             return $routerController->pages($page);
         })->name($page->title);
 
         if (is_object($page->parent)) {
-            setRoute($page->parent,$url);
+            ;
+            setRoute($page->parent,$secondUrl);
         }
     }
 }

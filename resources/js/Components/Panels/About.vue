@@ -82,7 +82,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import TheAboutListVue from "../components/About/TheAboutList.vue";
+import TheAboutListVue from "../../components/About/TheAboutList.vue";
 import { Pagination, Navigation } from "swiper";
 
 export default {

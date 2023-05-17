@@ -48,8 +48,8 @@
 </template>
 
 <script>
-import TheButton from "./../Components/UI/TheButton.vue";
-import TheSectionCaption from "./../Components/TheSectionCaption.vue";
+import TheButton from "./../UI/TheButton.vue";
+import TheSectionCaption from "./../TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
     props: {

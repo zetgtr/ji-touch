@@ -28,12 +28,12 @@ import { messageMixin } from "../Components/mixins/messageMixin";
 
 // panels
 
-import firstComponent from "./../infusions/firstComponent.vue";
-import servicesComponent from "./../infusions/servicesComponent.vue";
-import portfolioComponent from "./../infusions/portfolioComponent.vue";
-import companyComponent from "./../infusions/companyComponent.vue";
-import orderComponent from "./../infusions/orderComponent.vue";
-import TheFooterVue from '../components/TheFooter.vue';
+import firstComponent from "./../Components/Panels/First.vue";
+import servicesComponent from "../Components/Panels/Services.vue";
+import portfolioComponent from "../Components/Panels/Portfolio.vue";
+import companyComponent from "../Components/Panels/Company.vue";
+import orderComponent from "../Components/Panels/Order.vue";
+import TheFooterVue from '../Components/TheFooter.vue';
 
 import {Head} from "@inertiajs/vue3";
 import {mapActions} from "vuex";

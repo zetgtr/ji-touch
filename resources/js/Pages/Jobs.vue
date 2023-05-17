@@ -14,7 +14,7 @@
 import {Head} from "@inertiajs/vue3";
 import TheHeader from './../Components/TheHeader.vue'
 import TheFooterVue from './../Components/TheFooter.vue';
-import jobsComponentVue from '../infusions/jobsComponent.vue';
+import jobsComponentVue from '../Components/Panels/Jobs.vue';
 export default{
     props: {
         title: String

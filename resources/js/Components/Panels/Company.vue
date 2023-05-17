@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import TheMoreButton from "./../Components/UI/TheMoreButton.vue";
-import TheButton from "./../Components/UI/TheButton.vue";
-import TheSectionCaption from "./../Components/TheSectionCaption.vue";
+import TheMoreButton from "../UI/TheMoreButton.vue";
+import TheButton from "../UI/TheButton.vue";
+import TheSectionCaption from "../TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
   props: {

@@ -1,9 +1,9 @@
-<template></template>
+<template> {{test}}</template>
 
 <script>
 export default {
   props: {
-    content: Array
+    test: Array
   },
   components: {},
   data() {

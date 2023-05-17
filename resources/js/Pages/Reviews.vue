@@ -16,7 +16,7 @@
 import {Head} from "@inertiajs/vue3";
 import TheHeader from "./../Components/TheHeader.vue";
 import TheFooterVue from "./../Components/TheFooter.vue";
-import reviewsComponent from "./../infusions/reviewsComponent.vue";
+import reviewsComponent from "../Components/Panels/Reviews.vue";
 
 export default {
     props: {

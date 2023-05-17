@@ -15,7 +15,7 @@
 <script>
 // import BreadCrumbs from "../components/BreadCrumbs.vue";
 import TheHeader from "../Components/TheHeader.vue";
-import portfolioComponent from "./../infusions/portfolioComponent.vue";
+import portfolioComponent from "../Components/Panels/Portfolio.vue";
 
 import {Head} from "@inertiajs/vue3";
 

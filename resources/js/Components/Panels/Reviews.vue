@@ -1,40 +1,39 @@
 <template>
-  <div class="jobs">
+  <div class="reviews" >
     <div class="container">
-      <jobs-list-vue
-    :items="items"
-  />
+      <div class="rewievs__wrapper wow fadeIn" data-wow-delay="0.2s">
+        <review-item :items="items" ></review-item>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
-import JobsItemVue from "./../Components/Jobs/JobsItem.vue";
-import JobsListVue from "./../Components/Jobs/JobsList.vue";
-
+import ReviewItem from '../Reviews/ReviewItem.vue';
 export default {
   components: {
-    JobsItemVue,
-    JobsListVue,
+    ReviewItem
   },
   data() {
-    return {};
+    return{
+    }
   },
   methods: {
     ...mapMutations({}),
     ...mapActions({
-      // jobs: 'название модуля + / + jobs'
-      jobs: "jobs/fetchInfo",
+      // reviews: 'название модуля + / + reviews'
+      reviews: "reviews/fetchInfo",
     }),
   },
   mounted() {
-    this.jobs();
+    this.reviews()
   },
   computed: {
     // название aliasa: (state) => state.order.название aliasa,
     ...mapState({
-      items: (state) => state.jobs.items,
+      items: (state) => state.reviews.items,
     }),
   },
   watch: {},
@@ -42,4 +41,9 @@ export default {
 </script>
 
 <style lang='scss'>
+.rewievs__wrapper{
+  display: grid;
+  gap: 1.5rem;
+
+}
 </style>

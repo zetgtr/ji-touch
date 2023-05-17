@@ -1,4 +1,4 @@
-<template></template>
+<template> {{ '{{'.$alias.'}'.'}' }}</template>
 
 <script>
 export default {

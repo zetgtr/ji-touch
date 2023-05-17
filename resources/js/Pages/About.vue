@@ -13,10 +13,10 @@
 <script>
 import TheHeader from "../Components/TheHeader.vue";
 import TheFooterVue from "../Components/TheFooter.vue";
-import reviewsComponentVue from "../infusions/reviewsComponent.vue";
-import jobsComponentVue from "../infusions/jobsComponent.vue";
-import aboutComponentVue from "../infusions/aboutComponent.vue";
-import firstComponentVue from '../infusions/firstComponent.vue';
+import reviewsComponentVue from "../Components/Panels/Reviews.vue";
+import jobsComponentVue from "../Components/Panels/Jobs.vue";
+import aboutComponentVue from "../Components/Panels/About.vue";
+import firstComponentVue from '../Components/Panels/First.vue';
 
 import {Head} from "@inertiajs/vue3";
 
