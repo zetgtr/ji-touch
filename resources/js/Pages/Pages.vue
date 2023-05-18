@@ -3,7 +3,7 @@
     <the-header></the-header>
     <div class="container" v-for="item in panels" :key="item.id">
         <component :is="components[item.alias]" :[item.alias]="item.content" v-bind="item.props" v-if="item.type === 'panel'" />
-        <div v-if="item.type === 'text'" v-html="item.content" />
+        <div v-if="item.type === 'text'"  @click="handleLinkClick" v-html="item.content" />
     </div>
     <the-footer></the-footer>
 </template>
@@ -11,7 +11,7 @@
 <script>
 
 import {defineAsyncComponent, markRaw} from "@vue/runtime-core";
-import TheHeader from "@/Components/TheHeader.vue";
+import TheHeader from "../Components/TheHeader.vue";
 import TheFooter from "../../vue/src/components/TheFooter.vue";
 
 export default {
@@ -20,11 +20,17 @@ export default {
         title: String,
         panels: Array
     },
-    created() {
-
+    methods: {
+        handleLinkClick(event) {
+            const target = event.target;
+            if (target.tagName === 'A') {
+                event.preventDefault();
+                const href = target.getAttribute('href');
+                this.$inertia.visit(href);
+            }
+        }
     },
     data() {
-        console.log(this.title)
         const components = {}
         for (const item of this.panels) {
             if (item.type === 'panel') {

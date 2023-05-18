@@ -51,7 +51,6 @@ class PageDataPanelBuilder extends QueryBuilder
                 $data[$key]->content = $panelBuilder->setItemData((array)$datum->content);
             }
         }
-
         return $data;
     }
 }
