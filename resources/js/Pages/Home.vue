@@ -4,11 +4,11 @@
     </Head>
     <the-header></the-header>
     <TheAnimateBg></TheAnimateBg>
-    <first-component :first="first" v-on:modal="showModal"></first-component>
-    <services-component :services="services"></services-component>
-    <portfolio-component :portfolio="portfolio" :page='"home"'></portfolio-component>
-    <company-component :company="company"></company-component>
-    <order-component :order="order" :contact="contact"></order-component>
+    <first-component v-on:modal="showModal"></first-component>
+    <services-component></services-component>
+    <portfolio-component></portfolio-component>
+    <company-component></company-component>
+    <order-component :order="this.$page.props?.order"></order-component>
     <my-dialog v-model:show="dialogVisible" @accepted="showModal">
         <post-form @create="fetchForm" />
     </my-dialog>
@@ -39,15 +39,6 @@ import {Head} from "@inertiajs/vue3";
 import {mapActions} from "vuex";
 
 export default {
-    props: {
-        title: String,
-        first: Array,
-        services: Array,
-        portfolio: Array,
-        company: Array,
-        order: Array,
-        contact: Array
-    },
     components: {
         Head,
         TheHeader,

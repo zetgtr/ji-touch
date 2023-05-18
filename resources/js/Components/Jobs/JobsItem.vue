@@ -7,11 +7,37 @@
           <img :src="item.img" alt="" />
         </div>
       </div>
-      <div class="col-7" style="display: flex; flex-direction: column">
-        <div class="desc" v-html="item.desc"></div>
-        <div class="price">
-          <span>{{ item.price }}</span>
+      <div
+        class="col-7"
+        style="display: flex; flex-direction: column; row-gap: 1.5rem"
+      >
+        <div class="tabs">
+          <TheTabButton
+            :isActive="activeTab === 'requirements'"
+            @click="changeTab('requirements')"
+            >Требования</TheTabButton
+          >
+          <TheTabButton
+            :isActive="activeTab === 'responsibilities'"
+            @click="changeTab('responsibilities')"
+            >Обязанности</TheTabButton
+          >
         </div>
+        <div class="desc">
+          <div
+            class="desc"
+            v-if="activeTab === 'requirements'"
+            v-html="item.requirements"
+          ></div>
+          <div
+            class="desc"
+            v-if="activeTab === 'responsibilities'"
+            v-html="item.responsibilities"
+          ></div>
+        </div>
+        <!-- <div class="price">
+          <span>{{ item.price }}</span>
+        </div> -->
       </div>
     </div>
     <div class="hover">
@@ -32,11 +58,25 @@
 </template>
 
 <script>
+import TheTabButton from "./../UI/TheTabButton.vue";
 export default {
+  components: {
+    TheTabButton,
+  },
   props: {
     item: {
       type: Object,
       required: true,
+    },
+  },
+  data() {
+    return {
+      activeTab: "requirements", // Начально выбранная вкладка
+    };
+  },
+  methods: {
+    changeTab(tab) {
+      this.activeTab = tab;
     },
   },
 };
@@ -59,7 +99,12 @@ export default {
       }
     }
   }
-
+  .tabs {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: flex-end;
+  }
   &-logo {
     margin-top: auto;
     img {
@@ -70,8 +115,13 @@ export default {
     }
   }
   .desc {
-    font-size: 0.8rem;
+    &-text {
+      font-size: 0.8rem;
+    }
     & > ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -81,10 +131,10 @@ export default {
     }
   }
 }
-.price{
-    margin-top: auto;
-    color: var(--c-title);
-    font-weight: 700;
+.price {
+  margin-top: auto;
+  color: var(--c-title);
+  font-weight: 700;
 }
 h2 {
   transition: 0.3s linear;

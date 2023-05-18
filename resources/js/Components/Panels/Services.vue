@@ -61,12 +61,11 @@ export default {
   },
   data() {
     const activeIndex = ref(0);
-      console.log(this.services[0]);
     return {
       sectionCaption: "Services",
-      desc: this.services[0].desc,
-      slider: this.services[0].slider[0].slider_item,
-      slider_thumb: this.services[0].slider[0].slider_thumb,
+      desc: this.$page.props.services[0]?.desc,
+      slider: this.$page.props.services[0]?.slider[0]?.slider_item,
+      slider_thumb: this.$page.props.services[0]?.slider[0]?.slider_thumb,
       slideIndex: 1,
       activeIndex,
     };

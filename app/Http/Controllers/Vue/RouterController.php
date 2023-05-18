@@ -43,11 +43,6 @@ class RouterController extends Controller
             'title'=>'Контакты'
         ]);
     }
-    public function price(){
-        return \inertia('Price',[
-            'title'=>'Услуги'
-        ]);
-    }
     public function reviews(){
         return \inertia('Reviews',[
             'title'=>'Наши отзывы'
@@ -61,6 +56,11 @@ class RouterController extends Controller
     public function jobs(){
         return \inertia('Jobs',[
             'title'=>'Вакансии'
+        ]);
+    }
+    public function services(){
+        return \inertia('Services',[
+            'title'=>'Услуги'
         ]);
     }
 

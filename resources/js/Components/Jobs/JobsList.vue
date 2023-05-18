@@ -1,6 +1,5 @@
 <template>
   <div v-if="items.length > 0">
-    <h3 style="margin-bottom: 2rem">Список вакансий</h3>
     <div class="wrapper">
       <transition-group name="user-list">
         <jobs-item-vue

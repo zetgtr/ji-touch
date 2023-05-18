@@ -39,7 +39,7 @@
   ></the-burger>
 </template>
 
-<script>
+<script>  
 import TheBurger from "../Components/TheBurger.vue";
 import TheLinkList from "../Components/TheLinkList.vue";
 import {Link} from "@inertiajs/vue3";
@@ -53,28 +53,7 @@ export default {
   },
   data() {
     return {
-      items: [
-        {
-          id: 1,
-          title: "Проекты",
-          link: "project",
-        },
-        {
-          id: 2,
-          title: "О компании",
-          link: "about",
-        },
-        {
-          id: 3,
-          title: "Агенство",
-          link: "agency",
-        },
-        {
-          id: 4,
-          title: "Контакты",
-          link: "contact",
-        },
-      ],
+      items: this.$page.props.navigation_burger,
       classes: "nav__list",
       isBurgerVisible: false,
       isHeaderFixed: false,

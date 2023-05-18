@@ -35,9 +35,6 @@ import TheButton from "../UI/TheButton.vue";
 import TheSectionCaption from "../TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
-  props: {
-      company: Array
-  },
   components: {
     TheMoreButton,
     TheButton,
@@ -45,11 +42,11 @@ export default {
   },
   data() {
     return {
-        subtitle: this.company[0].subtitle,
-        title: this.company[0].title,
-        text: this.company[0].text,
-        desc: this.company[0].desc,
-        more: this.company[0].more,
+        subtitle: this.$page.props.company[0]?.subtitle,
+        title: this.$page.props.company[0]?.title,
+        text: this.$page.props.company[0]?.text,
+        desc: this.$page.props.company[0]?.desc,
+        more: this.$page.props.company[0]?.more,
     };
   },
 };

@@ -11,9 +11,9 @@
           </div>
         </div>
       </div>
-<!--      <the-section-caption-->
+     <!-- <the-section-caption-->
 <!--        :sectionCaption="sectionCaption"-->
-<!--      ></the-section-caption>-->
+<!--      ></the-section-caption> -->
     </div>
   </section>
 </template>
@@ -24,26 +24,25 @@ import TheOrderForm from "../Order/TheOrderForm.vue";
 import TheSectionCaption from "../TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
-    props: {
-        order: Array,
-        contact: Array
-    },
   components: {
     TheOrderContent,
     TheOrderForm,
     TheSectionCaption,
   },
+  props:{
+    order: Array
+  },
   data() {
-      console.log(this.contact[0])
+    console.log(this.order);
     return {
       title: this.order[0].title,
       desc: this.order[0].desc,
-      phone: this.contact.phone.value,
-      email: this.contact.email.value,
-      telegram: this.contact.telegram.value,
-      whatsapp: this.contact.whatsapp.value,
-      address: this.contact.address.value,
-      worktime: this.contact.worktime.value,
+      phone: this.$page.props?.contact?.phone.value,
+      email: this.$page.props?.contact?.email.value,
+      telegram: this.$page.props?.contact?.telegram.value,
+      whatsapp: this.$page.props?.contact?.whatsapp.value,
+      address: this.$page.props?.contact?.address.value,
+      worktime: this.$page.props?.contact?.worktime.value,
       sectionCaption: "contacts",
     };
   },

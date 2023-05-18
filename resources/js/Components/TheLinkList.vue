@@ -1,7 +1,7 @@
 <template>
   <ul class="list-reset" :class="classes">
     <li class="nav__item" v-for="item in items" :key="item.id">
-      <Link :href="route(item.link)" :data-text="item.text" @click="handleClick">{{
+      <Link :href="route(item.url)" :data-text="item.title" @click="handleClick">{{
         item.title
       }}</Link>
     </li>
@@ -32,6 +32,3 @@ export default {
   },
 };
 </script>
-
-<style lang='scss' scoped>
-</style>

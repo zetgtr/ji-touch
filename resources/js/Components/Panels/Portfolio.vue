@@ -56,13 +56,6 @@ import {Link} from "@inertiajs/vue3";
 import TheSectionCaption from "../TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
-  props:{
-    portfolio: Array,
-    page:{
-      type: String,
-      default: "home",
-    }
-  },
   components: {
       Link,
     TheItemList,
@@ -71,10 +64,10 @@ export default {
   },
   data() {
     return {
-      title: this.portfolio[0].title,
-      more: this.portfolio[0].more,
-      items: this.portfolio[0].items,
-      setBtn: this.portfolio[0].setBtn,
+      title: this.$page.props.portfolio[0]?.title,
+      more: this.$page.props.portfolio[0]?.more,
+      items: this.$page.props.portfolio[0]?.items,
+      setBtn: this.$page.props.portfolio[0]?.setBtn,
       sectionCaption: "Portfolio",
     };
   },

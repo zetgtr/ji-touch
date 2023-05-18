@@ -52,9 +52,6 @@ import TheButton from "./../UI/TheButton.vue";
 import TheSectionCaption from "./../TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
-    props: {
-        first: Array
-    },
   components: {
     TheButton,
     TheSectionCaption,
@@ -62,6 +59,7 @@ export default {
   data() {
       console.log(this.first)
     return {
+      first: this.$page.props.first,
       sectionCaption: "DIgital-Агентство",
     };
   },

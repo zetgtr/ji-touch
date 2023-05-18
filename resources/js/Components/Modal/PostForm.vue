@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent>
-    <h2>Создание поста</h2>
+    <h2>Оставить заявку</h2>
     <div class="wrapper">
       <InputBox
         :value="form.name"
