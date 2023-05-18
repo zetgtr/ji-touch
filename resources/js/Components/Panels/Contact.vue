@@ -106,11 +106,7 @@
         </ul>
       </div>
     </div>
-    <!-- <div class="container"> -->
-      <!-- <div class="map-container"> -->
         <div class="iframe" v-html="map"></div>
-      <!-- </div> -->
-    <!-- </div> -->
   </div>
 </template>
 
@@ -262,7 +258,7 @@ export default {
 }
 .iframe {
   margin-top: 1.5rem;
-  // margin-bottom: 1.5rem;
+  display: flex;
 }
 
 @keyframes fly-1 {
