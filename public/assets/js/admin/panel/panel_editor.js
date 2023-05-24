@@ -1059,6 +1059,7 @@ function send_all(type) {
     'type': $('.clRS').filter('.active').attr('id'),
     'data': JSON.stringify(renamenewline(all_table_array)),
     'id': id,
+    'update': $('#update').is(':checked') ? 1 : 0,
     'service': $('#detached').is(':checked') ? 1 : 0,
   }
 

@@ -95,7 +95,10 @@ class NavigationBuilder extends QueryBuilder
     public function getAlias(string $alias)
     {
         $data = $this->navigationList->where('alias',$alias)->first();
-        return $this->setList($data->links()->where('parent',null)->orderBy('order')->get(),$data->id);
+        if($data)
+            return $this->setList($data->links()->where('parent',null)->orderBy('order')->get(),$data->id);
+        else
+            return [];
     }
 
 

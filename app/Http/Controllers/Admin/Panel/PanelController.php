@@ -81,7 +81,8 @@ class PanelController extends Controller
     public function update(UpdateRequest $request, Panel $panel,PanelBuilder $panelBuilder)
     {
         $panel = $panel->fill($request->validated());
-        $panelBuilder->createPanel($panel);
+        if ($request->get('update') == 1)
+            $panelBuilder->createPanel($panel);
         if ($panel->save()) {
             return ['message'=>'Панель успешно обновлена','status'=>true,'id'=>$panel->id];
         }

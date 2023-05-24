@@ -29,6 +29,10 @@
         <button type="button" onclick="send_all(true);" class="btn btn-sm btn btn-outline-primary">Сохранить и выйти</button>
         <button style="width: 100px; margin-left: 50px;" type="button" onclick="send_all(false);" class="btn btn-sm btn-outline-success">Сохранить</button>
         <a style="width: 80px;" href="{{ route('admin.panel.index') }}" class="btn btn-sm btn-outline-danger redir">Отмена</a>
+        <div class="detachedVue">
+            <input type="checkbox" name="update" id="update">
+            <label class="btn btn-sm btn btn-outline-danger" for="update" value="1">Обновить vue</label>
+        </div>
         <div class="detached">
             <input type="checkbox" name="detached" id="detached">
             <label class="btn btn-sm btn btn-outline-info" for="detached" value="1">Сервисная панель</label>

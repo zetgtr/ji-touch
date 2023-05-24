@@ -817,7 +817,6 @@ window.panelEditor = panel_editor_fucken();
     }
 
     setOutData(data) {
-      console.log(data)
       this.title = data.title;
       this.display = data.display;
       this.anchor = data.anchor;
@@ -829,7 +828,6 @@ window.panelEditor = panel_editor_fucken();
       [this.content.safe, this.content.frame, this.empty] = clearPanelData(
         data.content
       );
-
       this.content.frame = JSON.stringify(this.content.frame);
       this.content.safe = JSON.stringify(this.content.safe);
 
@@ -846,6 +844,7 @@ window.panelEditor = panel_editor_fucken();
         set: (target, prop, val, receiver) => {
           if (prop == "frame" || prop == "safe") return false;
           [val, , this.empty] = clearPanelData(JSON.parse(val));
+
           val = JSON.stringify(val);
           if (target.safe == val) this.safe_mod = true;
           else this.safe_mod = false;
@@ -1232,6 +1231,7 @@ window.panelEditor = panel_editor_fucken();
           },1000)
         // $(this.shield.warn).tooltip("dispose");
       } else {
+
         this.empty = true;
         this.line.querySelector(".line__name").innerText = "Заполните блок";
         this.line.dataset.warn = "Пустой блок";
@@ -1515,7 +1515,7 @@ window.panelEditor = panel_editor_fucken();
         if (!Object.keys(this.hub).length) return 1;
 
         let node = this.hub[id];
-
+          console.log(node)
         let node_data = {};
         switch (node.type) {
           case "section":
@@ -1536,7 +1536,7 @@ window.panelEditor = panel_editor_fucken();
             else node_data.content = node.content.work;
 
 
-            if (node.empty) return 1;
+            // if (node.empty) return 1;
             break;
         }
         node_data = {
@@ -1548,7 +1548,7 @@ window.panelEditor = panel_editor_fucken();
           },
           ...node_data,
         };
-          console.log(node_data)
+          // console.log(node_data)
         res.push(node_data);
       });
       return res;
@@ -1683,8 +1683,6 @@ window.panelEditor = panel_editor_fucken();
   dataHub.add_panel.addEventListener("click", () => {
     dataHub.addPanel();
   });
-
-    console.log(dataHub)
 
   dataHub.form.addEventListener("submit", (e) => {
       // e.preventDefault()
