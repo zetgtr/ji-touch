@@ -9980,16 +9980,16 @@
         },
         {
             "name": "zetgtr/catalog",
-            "version": "1.0.3",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/zetgtr/catalog.git",
-                "reference": "8338ca88a6d2fb38193f9d1312598a3d0b046a59"
+                "reference": "c307d8b746f7ade66e9f17707f673ef1c902faf6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/zetgtr%2Fcatalog/repository/archive.zip?sha=8338ca88a6d2fb38193f9d1312598a3d0b046a59",
-                "reference": "8338ca88a6d2fb38193f9d1312598a3d0b046a59",
+                "url": "https://gitlab.com/api/v4/projects/zetgtr%2Fcatalog/repository/archive.zip?sha=c307d8b746f7ade66e9f17707f673ef1c902faf6",
+                "reference": "c307d8b746f7ade66e9f17707f673ef1c902faf6",
                 "shasum": ""
             },
             "require": {
@@ -10012,7 +10012,7 @@
             },
             "autoload-dev": {
                 "psr-4": {
-                    "News\\Test\\": "tests/"
+                    "Catalog\\Test\\": "tests/"
                 }
             },
             "scripts": {
@@ -10035,9 +10035,9 @@
                 "package"
             ],
             "support": {
-                "source": "https://gitlab.com/zetgtr/catalog/-/tree/1.0.3"
+                "source": "https://gitlab.com/zetgtr/catalog/-/tree/1.0.6"
             },
-            "time": "2023-05-25T21:14:36+03:00"
+            "time": "2023-05-26T14:57:10+03:00"
         }
     ],
     "packages-dev": [

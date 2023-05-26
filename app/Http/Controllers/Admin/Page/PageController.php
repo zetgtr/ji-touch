@@ -21,7 +21,8 @@ class PageController extends Controller
      */
     public function index(PageBuilder $pageBuilder)
     {
-        dispatch(new JobSitemapGenerate("https://qsgrp.com/"));
+//        dispatch(new JobSitemapGenerate("https://qsgrp.com/"));
+//        SitemapGenerator::create("https://qsgrp.com/")->getSitemap()->writeToDisk('public', 'sitemap.xml');
         return view('admin.page-create.index',['pages'=>$pageBuilder->getPagesParent()]);
     }
 

@@ -10,14 +10,14 @@ import {jobsModule} from "./infusions/jobsModule";
 import {aboutModule} from "./infusions/aboutModule";
 import {articleModule} from "./infusions/articleModule";
 import createPersistedState from 'vuex-persistedstate';
-import {cartModule} from "./cartModule";
+import {cart} from "./cart";
 
 const options = {
     state: {
         isAuth: false,
     },
     modules: {
-        cart: cartModule,
+        cart,
         article: articleModule,
         first: firstModule,
         services: servicesModule,
@@ -34,7 +34,7 @@ const options = {
 if(typeof window !== 'undefined'){
     options.plugins = [
         createPersistedState({
-            paths: ['cartModule']
+            paths: ['cart']
         })]
 }
 
