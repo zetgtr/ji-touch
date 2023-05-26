@@ -8,22 +8,17 @@ import {orderModule} from "./infusions/orderModule";
 import {reviewsModule} from "./infusions/reviewsModule";
 import {jobsModule} from "./infusions/jobsModule";
 import {aboutModule} from "./infusions/aboutModule";
-import {test2Module} from "./infusions/test2Module";
-import {testModule} from "./testModule";
 import {articleModule} from "./infusions/articleModule";
 import createPersistedState from 'vuex-persistedstate';
+import {cartModule} from "./cartModule";
 
-export default createStore({
-    // plugins: [createPersistedState({
-    //     paths: ['cartModule']
-    // })],
+const options = {
     state: {
-      isAuth: false,
+        isAuth: false,
     },
     modules: {
-        test: testModule,
+        cart: cartModule,
         article: articleModule,
-        test2: test2Module,
         first: firstModule,
         services: servicesModule,
         portfolio: portfolioModule,
@@ -34,4 +29,13 @@ export default createStore({
         jobs: jobsModule,
         about: aboutModule,
     }
-})
+}
+
+if(typeof window !== 'undefined'){
+    options.plugins = [
+        createPersistedState({
+            paths: ['cartModule']
+        })]
+}
+
+export default createStore(options)

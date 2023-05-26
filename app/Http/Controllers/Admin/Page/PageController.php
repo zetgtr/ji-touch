@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Page\CreateRequest;
 use App\Http\Requests\Admin\Page\DataPanelCreateRequest;
 use App\Http\Requests\Admin\Page\UpdateRequest;
+use App\Jobs\JobSitemapGenerate;
 use App\Models\Admin\Page\PageCreate;
 use App\Models\Admin\Panel\DataPanel;
 use App\QueryBuilder\Admin\Page\PageBuilder;
 use App\QueryBuilder\Admin\Page\PageDataPanelBuilder;
 use Illuminate\Http\Request;
+use Spatie\Sitemap\SitemapGenerator;
 
 class PageController extends Controller
 {
@@ -19,6 +21,7 @@ class PageController extends Controller
      */
     public function index(PageBuilder $pageBuilder)
     {
+        dispatch(new JobSitemapGenerate("https://qsgrp.com/"));
         return view('admin.page-create.index',['pages'=>$pageBuilder->getPagesParent()]);
     }
 

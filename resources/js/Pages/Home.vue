@@ -8,7 +8,7 @@
     <services-component></services-component>
     <portfolio-component></portfolio-component>
     <company-component></company-component>
-    <order-component :order="this.$page.props?.order"></order-component>
+    <order-component></order-component>
     <my-dialog v-model:show="dialogVisible" @accepted="showModal">
         <post-form @create="fetchForm" />
     </my-dialog>

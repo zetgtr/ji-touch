@@ -28,7 +28,8 @@
         "symfony/http-client": "*",
         "symfony/mailgun-mailer": "*",
         "tightenco/ziggy": "^1.6",
-        "unisharp/laravel-filemanager": "^2.6"
+        "unisharp/laravel-filemanager": "^2.6",
+        "zetgtr/catalog": "^1.0"
     },
     "require-dev": {
         "barryvdh\/laravel-debugbar": "^3.8",
@@ -83,5 +84,11 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https:\/\/gitlab.com\/zetgtr\/catalog"
+        }
+    ]
 }

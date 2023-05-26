@@ -1,8 +1,8 @@
+import { mapMutations, mapActions, mapGetters, mapState, useStore, createStore } from "vuex";
+import { ssrRenderList, ssrInterpolate, ssrRenderComponent, ssrRenderAttr, ssrRenderAttrs, ssrRenderClass, ssrRenderSlot, ssrGetDirectiveProps, ssrRenderStyle, ssrRenderVNode } from "vue/server-renderer";
+import { useSSRContext, resolveComponent, mergeProps, withCtx, createVNode, toDisplayString, createTextVNode, ref, onMounted, openBlock, createBlock, Fragment, renderList, resolveDirective, createCommentVNode, toRefs, computed, onUnmounted, watch, resolveDynamicComponent, createSSRApp, h as h$1 } from "vue";
 import { Link, Head, createInertiaApp } from "@inertiajs/vue3";
-import { useSSRContext, resolveComponent, mergeProps, withCtx, createTextVNode, toDisplayString, createVNode, ref, onMounted, openBlock, createBlock, Fragment, renderList, resolveDirective, createCommentVNode, toRefs, computed, onUnmounted, watch, resolveDynamicComponent, createSSRApp, h as h$1 } from "vue";
-import { ssrRenderAttrs, ssrRenderList, ssrRenderComponent, ssrInterpolate, ssrRenderClass, ssrRenderAttr, ssrRenderSlot, ssrGetDirectiveProps, ssrRenderStyle, ssrRenderVNode } from "vue/server-renderer";
 import anime from "animejs";
-import { useStore, mapMutations, mapGetters, createStore } from "vuex";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/vue";
 import { EffectFade } from "swiper";
 import { vMaska } from "maska";
@@ -14,7 +14,7 @@ import nouislider from "nouislider";
 import { markRaw, defineAsyncComponent } from "@vue/runtime-core";
 import createServer from "@inertiajs/vue3/server";
 import { renderToString } from "@vue/server-renderer";
-import "vuex-persistedstate";
+import createPersistedState from "vuex-persistedstate";
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -22,6 +22,289 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
+const _sfc_main$y = {
+  data() {
+    return {};
+  },
+  methods: {
+    ...mapMutations({}),
+    ...mapActions({
+      addCart: "cartModule/addCart",
+      deleteCart: "cartModule/deleteCart",
+      removeCart: "cartModule/removeCart",
+      deleteProductCart: "cartModule/deleteProductCart"
+    })
+  },
+  computed: {
+    ...mapGetters({
+      totalPrice: "cartModule/totalPrice"
+    }),
+    ...mapState({
+      cart: (state) => state.cartModule.cart,
+      count: (state) => state.cartModule.count
+    })
+  },
+  mounted() {
+    document.title = "Корзина";
+  },
+  watch: {}
+};
+function _sfc_ssrRender$y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<!--[--> Product <div class="container"><!--[-->`);
+  ssrRenderList(_ctx.cart, (item, index) => {
+    _push(`<div class="cart_items">`);
+    if (item) {
+      _push(`<div class="cart_product"><p>${ssrInterpolate(item.title)}</p><button>-</button><button>+</button><button>x</button><p>${ssrInterpolate(item.count)}</p></div>`);
+    } else {
+      _push(`<!---->`);
+    }
+    _push(`</div>`);
+  });
+  _push(`<!--]--><button>Очистить корзину</button><div><p>Общая стоимость: ${ssrInterpolate(_ctx.totalPrice)} руб.</p></div></div><!--]-->`);
+}
+const _sfc_setup$y = _sfc_main$y.setup;
+_sfc_main$y.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Catalog/Cart.vue");
+  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
+};
+const Cart = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["ssrRender", _sfc_ssrRender$y]]);
+const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: Cart
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$x = {
+  components: {
+    Link
+  }
+  // computed: {
+  //     ...mapState({
+  //         count: (state) => state.cartModule.count,
+  //     }),
+  // },
+};
+function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_Link = resolveComponent("Link");
+  _push(ssrRenderComponent(_component_Link, mergeProps({
+    href: "/catalog/cart",
+    class: "cart ml-5"
+  }, _attrs), {
+    default: withCtx((_, _push2, _parent2, _scopeId) => {
+      if (_push2) {
+        _push2(`<i class="fad fa-shopping-cart"${_scopeId}></i><div class="cart_count"${_scopeId}>1</div>`);
+      } else {
+        return [
+          createVNode("i", { class: "fad fa-shopping-cart" }),
+          createVNode("div", { class: "cart_count" }, "1")
+        ];
+      }
+    }),
+    _: 1
+  }, _parent));
+}
+const _sfc_setup$x = _sfc_main$x.setup;
+_sfc_main$x.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/catalog/cart/CatalogCart.vue");
+  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
+};
+const CatalogCart = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["ssrRender", _sfc_ssrRender$x]]);
+const _sfc_main$w = {
+  components: {
+    Link
+  }
+};
+function _sfc_ssrRender$w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_Link = resolveComponent("Link");
+  _push(`<!--[-->`);
+  ssrRenderList(_ctx.$page.props.catalog.categories, (category) => {
+    _push(ssrRenderComponent(_component_Link, {
+      class: "col-lg-4 container_category category-link",
+      href: _ctx.route("catalog.category", { category: category.url }),
+      key: category.id
+    }, {
+      default: withCtx((_, _push2, _parent2, _scopeId) => {
+        if (_push2) {
+          _push2(`<img${ssrRenderAttr("src", category.images)} alt="Category Image" class="category-image"${_scopeId}><h3 class="category-title"${_scopeId}>${ssrInterpolate(category.title)}</h3><div class="category-description"${_scopeId}>${category.description}</div>`);
+        } else {
+          return [
+            createVNode("img", {
+              src: category.images,
+              alt: "Category Image",
+              class: "category-image"
+            }, null, 8, ["src"]),
+            createVNode("h3", { class: "category-title" }, toDisplayString(category.title), 1),
+            createVNode("div", {
+              class: "category-description",
+              innerHTML: category.description
+            }, null, 8, ["innerHTML"])
+          ];
+        }
+      }),
+      _: 2
+    }, _parent));
+  });
+  _push(`<!--]-->`);
+}
+const _sfc_setup$w = _sfc_main$w.setup;
+_sfc_main$w.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/catalog/categories/CatalogCategory.vue");
+  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
+};
+const CatalogCategory = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["ssrRender", _sfc_ssrRender$w]]);
+const _sfc_main$v = {
+  components: {
+    Link
+  }
+};
+function _sfc_ssrRender$v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_Link = resolveComponent("Link");
+  _push(`<!--[-->`);
+  ssrRenderList(_ctx.$page.props.catalog.products, (product) => {
+    _push(ssrRenderComponent(_component_Link, {
+      class: "col-lg-4 container_category category-link",
+      href: _ctx.route("catalog.product", { product: product.url }),
+      key: product.id
+    }, {
+      default: withCtx((_, _push2, _parent2, _scopeId) => {
+        if (_push2) {
+          _push2(`<img${ssrRenderAttr("src", product.images)} alt="Category Image" class="category-image"${_scopeId}><h3 class="category-title"${_scopeId}>${ssrInterpolate(product.title)}</h3><div class="category-description"${_scopeId}>${product.description}</div>`);
+        } else {
+          return [
+            createVNode("img", {
+              src: product.images,
+              alt: "Category Image",
+              class: "category-image"
+            }, null, 8, ["src"]),
+            createVNode("h3", { class: "category-title" }, toDisplayString(product.title), 1),
+            createVNode("div", {
+              class: "category-description",
+              innerHTML: product.description
+            }, null, 8, ["innerHTML"])
+          ];
+        }
+      }),
+      _: 2
+    }, _parent));
+  });
+  _push(`<!--]-->`);
+}
+const _sfc_setup$v = _sfc_main$v.setup;
+_sfc_main$v.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/catalog/categories/CatalogProducts.vue");
+  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
+};
+const CatalogProducts = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["ssrRender", _sfc_ssrRender$v]]);
+const _sfc_main$u = {
+  components: {
+    Head,
+    CatalogCategory,
+    CatalogProducts,
+    CatalogCart,
+    Link
+  }
+};
+function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_Head = resolveComponent("Head");
+  const _component_Link = resolveComponent("Link");
+  const _component_CatalogCart = resolveComponent("CatalogCart");
+  const _component_CatalogCategory = resolveComponent("CatalogCategory");
+  const _component_CatalogProducts = resolveComponent("CatalogProducts");
+  _push(`<!--[--> category <div class="breadcrumbs">`);
+  _push(ssrRenderComponent(_component_Head, {
+    title: _ctx.$page.props.title
+  }, null, _parent));
+  _push(ssrRenderComponent(_component_Link, {
+    href: _ctx.route("home")
+  }, {
+    default: withCtx((_, _push2, _parent2, _scopeId) => {
+      if (_push2) {
+        _push2(`Главная`);
+      } else {
+        return [
+          createTextVNode("Главная")
+        ];
+      }
+    }),
+    _: 1
+  }, _parent));
+  _push(ssrRenderComponent(_component_Link, {
+    href: _ctx.route("catalog")
+  }, {
+    default: withCtx((_, _push2, _parent2, _scopeId) => {
+      if (_push2) {
+        _push2(`Каталог`);
+      } else {
+        return [
+          createTextVNode("Каталог")
+        ];
+      }
+    }),
+    _: 1
+  }, _parent));
+  _push(`<!--[-->`);
+  ssrRenderList(_ctx.$page.props.breadcrumbs, (item) => {
+    _push(ssrRenderComponent(_component_Link, {
+      href: _ctx.route("catalog.category", { category: item.url })
+    }, {
+      default: withCtx((_, _push2, _parent2, _scopeId) => {
+        if (_push2) {
+          _push2(`${ssrInterpolate(item.title)}`);
+        } else {
+          return [
+            createTextVNode(toDisplayString(item.title), 1)
+          ];
+        }
+      }),
+      _: 2
+    }, _parent));
+  });
+  _push(`<!--]--></div><div class="container row">`);
+  _push(ssrRenderComponent(_component_CatalogCart, null, null, _parent));
+  _push(ssrRenderComponent(_component_CatalogCategory, null, null, _parent));
+  _push(ssrRenderComponent(_component_CatalogProducts, null, null, _parent));
+  _push(`</div><!--]-->`);
+}
+const _sfc_setup$u = _sfc_main$u.setup;
+_sfc_main$u.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Catalog/Category.vue");
+  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
+};
+const Category = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["ssrRender", _sfc_ssrRender$u]]);
+const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: Category
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$t = {
+  components: { CatalogCart },
+  data() {
+    return {};
+  },
+  methods: {
+    addCart() {
+    }
+  }
+};
+function _sfc_ssrRender$t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_CatalogCart = resolveComponent("CatalogCart");
+  _push(`<!--[--> Product <div class="container">`);
+  _push(ssrRenderComponent(_component_CatalogCart, null, null, _parent));
+  _push(`<div class="product"><img${ssrRenderAttr("src", _ctx.$page.props.product.images)} alt="Product image"><h2 class="product-title">${ssrInterpolate(_ctx.$page.props.product.title)}</h2><div class="product-description">${_ctx.$page.props.product.description}</div><p class="product-price">${ssrInterpolate(_ctx.$page.props.product.price)}</p><button class="add-to-cart-btn">Добавить в корзину</button></div></div><!--]-->`);
+}
+const _sfc_setup$t = _sfc_main$t.setup;
+_sfc_main$t.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Catalog/Product.vue");
+  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
+};
+const Product = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["ssrRender", _sfc_ssrRender$t]]);
+const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: Product
+}, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$s = {
   components: {
     Link
@@ -1660,7 +1943,7 @@ function useSlider(props, context, dependencies) {
     merge,
     id,
     disabled,
-    options,
+    options: options2,
     classes,
     format,
     lazy,
@@ -1735,7 +2018,7 @@ function useSlider(props, context, dependencies) {
     context.emit("update", val);
   };
   const init = () => {
-    slider$.value = nouislider.create(slider.value, Object.assign({}, defaultOptions.value, options.value));
+    slider$.value = nouislider.create(slider.value, Object.assign({}, defaultOptions.value, options2.value));
     if (tooltips.value && isRange.value && merge.value >= 0) {
       tooltipsMerge(slider.value, merge.value, " - ");
     }
@@ -1810,7 +2093,7 @@ function useSlider(props, context, dependencies) {
   watch(tooltips, refresh, { immediate: false });
   watch(merge, refresh, { immediate: false });
   watch(format, refresh, { immediate: false, deep: true });
-  watch(options, refresh, { immediate: false, deep: true });
+  watch(options2, refresh, { immediate: false, deep: true });
   watch(classes, refresh, { immediate: false, deep: true });
   watch(value, (value2, old) => {
     if (!old) {
@@ -2281,15 +2564,11 @@ const _sfc_main$5 = {
     TheOrderForm,
     TheSectionCaption
   },
-  props: {
-    order: Array
-  },
   data() {
     var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l;
-    console.log(this.order);
     return {
-      title: this.order[0].title,
-      desc: this.order[0].desc,
+      title: this.$page.props.order[0].title,
+      desc: this.$page.props.order[0].desc,
       phone: (_b = (_a = this.$page.props) == null ? void 0 : _a.contact) == null ? void 0 : _b.phone.value,
       email: (_d = (_c = this.$page.props) == null ? void 0 : _c.contact) == null ? void 0 : _d.email.value,
       telegram: (_f = (_e = this.$page.props) == null ? void 0 : _e.contact) == null ? void 0 : _f.telegram.value,
@@ -2418,7 +2697,6 @@ const _sfc_main$3 = {
   }
 };
 function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  var _a;
   const _component_Head = resolveComponent("Head");
   const _component_the_header = resolveComponent("the-header");
   const _component_TheAnimateBg = resolveComponent("TheAnimateBg");
@@ -2450,9 +2728,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_services_component, null, null, _parent));
   _push(ssrRenderComponent(_component_portfolio_component, null, null, _parent));
   _push(ssrRenderComponent(_component_company_component, null, null, _parent));
-  _push(ssrRenderComponent(_component_order_component, {
-    order: (_a = this.$page.props) == null ? void 0 : _a.order
-  }, null, _parent));
+  _push(ssrRenderComponent(_component_order_component, null, null, _parent));
   _push(ssrRenderComponent(_component_my_dialog, {
     show: $data.dialogVisible,
     "onUpdate:show": ($event) => $data.dialogVisible = $event,
@@ -2481,7 +2757,7 @@ _sfc_main$3.setup = (props, ctx) => {
   return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
 const Home = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$3]]);
-const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Home
 }, Symbol.toStringTag, { value: "Module" }));
@@ -2544,7 +2820,7 @@ const _sfc_main = {
         const componentName = item.alias.charAt(0).toUpperCase() + item.alias.slice(1);
         components[item.alias] = markRaw(
           defineAsyncComponent(
-            () => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../Components/Panels/About.vue": () => import("./assets/About-162e538d.mjs"), "../Components/Panels/About_inner.vue": () => import("./assets/About_inner-1bdfa9fa.mjs"), "../Components/Panels/Article.vue": () => import("./assets/Article-aa334487.mjs"), "../Components/Panels/Company.vue": () => Promise.resolve().then(() => Company), "../Components/Panels/Contact.vue": () => import("./assets/Contact-c9555475.mjs"), "../Components/Panels/First.vue": () => Promise.resolve().then(() => First), "../Components/Panels/Jobs.vue": () => import("./assets/Jobs-d7711f3d.mjs"), "../Components/Panels/Order.vue": () => Promise.resolve().then(() => Order), "../Components/Panels/Portfolio.vue": () => Promise.resolve().then(() => Portfolio), "../Components/Panels/Reviews.vue": () => import("./assets/Reviews-988dface.mjs"), "../Components/Panels/Services.vue": () => Promise.resolve().then(() => Services), "../Components/Panels/Test.vue": () => import("./assets/Test-6ef279db.mjs") }), `../Components/Panels/${componentName}.vue`)
+            () => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../Components/Panels/About.vue": () => import("./assets/About-162e538d.mjs"), "../Components/Panels/About_inner.vue": () => import("./assets/About_inner-1bdfa9fa.mjs"), "../Components/Panels/Article.vue": () => import("./assets/Article-b872514c.mjs"), "../Components/Panels/Company.vue": () => Promise.resolve().then(() => Company), "../Components/Panels/Contact.vue": () => import("./assets/Contact-0f766bd1.mjs"), "../Components/Panels/First.vue": () => Promise.resolve().then(() => First), "../Components/Panels/Jobs.vue": () => import("./assets/Jobs-d7711f3d.mjs"), "../Components/Panels/Order.vue": () => Promise.resolve().then(() => Order), "../Components/Panels/Portfolio.vue": () => Promise.resolve().then(() => Portfolio), "../Components/Panels/Reviews.vue": () => import("./assets/Reviews-988dface.mjs"), "../Components/Panels/Services.vue": () => Promise.resolve().then(() => Services) }), `../Components/Panels/${componentName}.vue`)
           )
         );
       }
@@ -2600,7 +2876,7 @@ _sfc_main.setup = (props, ctx) => {
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
 const Pages = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
-const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Pages
 }, Symbol.toStringTag, { value: "Module" }));
@@ -2961,58 +3237,6 @@ const aboutModule = {
   },
   namespaced: true
 };
-const test2Module = {
-  state: () => ({
-    // тут алиас столбцов : тип данных
-    test2: ""
-  }),
-  getters: {},
-  mutations: {
-    // для каждого алиаса свой set
-    setTest2(state, test2) {
-      state.test2 = test2;
-    }
-  },
-  actions: {
-    async fetchInfo({ state, commit }, argument) {
-      try {
-        const response = await axios.get("/api/panel_data/test2", {
-          data: argument,
-          params: {}
-        });
-        commit("setTest2", response.data[0].test2);
-      } catch (e2) {
-        console.log(e2);
-      } finally {
-      }
-    }
-  },
-  namespaced: true
-};
-const testModule = {
-  state: () => ({
-    row: []
-  }),
-  getters: {},
-  mutations: {},
-  actions: {
-    async fetchInfo({ state, commit }, argument) {
-      try {
-        const response = await axios.get("/api/panel_data/test", {
-          data: argument,
-          params: {}
-        });
-        console.group("запрос");
-        console.log(response);
-        console.groupEnd();
-      } catch (e2) {
-        console.log(e2);
-      } finally {
-      }
-    }
-  },
-  namespaced: true
-};
 const articleModule = {
   state: () => ({
     // тут алиас столбцов : тип данных
@@ -3041,17 +3265,73 @@ const articleModule = {
   },
   namespaced: true
 };
-const store = createStore({
-  // plugins: [createPersistedState({
-  //     paths: ['cartModule']
-  // })],
+const cartModule = {
+  state: () => ({
+    cart: [],
+    count: 0,
+    price: 0
+  }),
+  getters: {
+    totalPrice(state) {
+      return state.cart.reduce((total, product) => {
+        if (product)
+          return total + product.price * product.count;
+        console.log(state.cart);
+      }, 0);
+    }
+  },
+  mutations: {
+    addCart(state, product) {
+      const index = state.cart.findIndex((item) => item && item.id === product.id);
+      if (index === -1) {
+        state.cart.push({ ...product, count: 1 });
+      } else {
+        state.cart[index].count++;
+      }
+      state.count++;
+    },
+    deleteCart(state, product) {
+      const index = state.cart.findIndex((item) => item && item.id === product.id);
+      if (state.cart[index].count > 1) {
+        state.cart[index].count--;
+      } else {
+        state.cart.splice(index, 1);
+      }
+      state.count--;
+    },
+    deleteProductCart(state, product) {
+      const index = state.cart.findIndex((item) => item && item.id === product.id);
+      state.count = state.count - state.cart[index].count;
+      state.cart.splice(index, 1);
+    },
+    removeCart(state) {
+      state.count = 0;
+      state.cart = [];
+    }
+  },
+  actions: {
+    async addCart({ state, commit }, product) {
+      commit("addCart", product);
+    },
+    async deleteCart({ state, commit }, product) {
+      commit("deleteCart", product);
+    },
+    async removeCart({ state, commit }) {
+      commit("removeCart");
+    },
+    async deleteProductCart({ state, commit }, product) {
+      commit("deleteProductCart", product);
+    }
+  },
+  namespaced: true
+};
+const options = {
   state: {
     isAuth: false
   },
   modules: {
-    test: testModule,
+    cart: cartModule,
     article: articleModule,
-    test2: test2Module,
     first: firstModule,
     services: servicesModule,
     portfolio: portfolioModule,
@@ -3062,7 +3342,17 @@ const store = createStore({
     jobs: jobsModule,
     about: aboutModule
   }
-});
+};
+console.log(123);
+if (typeof window !== "undefined") {
+  console.log(111);
+  options.plugins = [
+    createPersistedState({
+      paths: ["cartModule"]
+    })
+  ];
+}
+const store = createStore(options);
 function t(t4, r2) {
   for (var n2 = 0; n2 < r2.length; n2++) {
     var e2 = r2[n2];
@@ -3543,7 +3833,7 @@ createServer(
     page,
     render: renderToString,
     resolve: (name) => {
-      const pages = /* @__PURE__ */ Object.assign({ "./Pages/Home.vue": __vite_glob_0_0, "./Pages/Pages.vue": __vite_glob_0_1 });
+      const pages = /* @__PURE__ */ Object.assign({ "./Pages/Catalog/Cart.vue": __vite_glob_0_0, "./Pages/Catalog/Category.vue": __vite_glob_0_1, "./Pages/Catalog/Product.vue": __vite_glob_0_2, "./Pages/Home.vue": __vite_glob_0_3, "./Pages/Pages.vue": __vite_glob_0_4 });
       return pages[`./Pages/${name}.vue`];
     },
     setup({ App, props, plugin }) {

@@ -99,6 +99,13 @@ class PackagesBuilder extends QueryBuilder
                 '--tag' => 'script',
             ]);
         }
+        if($packageData['vue'])
+        {
+            Artisan::call('vendor:publish', [
+                '--provider' => $packageData['provider'],
+                '--tag' => 'vue',
+            ]);
+        }
     }
 
     public function edit(string $id, EditRequest $request)

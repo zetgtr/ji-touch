@@ -29,14 +29,10 @@ export default {
     TheOrderForm,
     TheSectionCaption,
   },
-  props:{
-    order: Array
-  },
   data() {
-    console.log(this.order);
     return {
-      title: this.order[0].title,
-      desc: this.order[0].desc,
+      title: this.$page.props.order[0].title,
+      desc: this.$page.props.order[0].desc,
       phone: this.$page.props?.contact?.phone.value,
       email: this.$page.props?.contact?.email.value,
       telegram: this.$page.props?.contact?.telegram.value,

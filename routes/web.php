@@ -1,30 +1,21 @@
 <?php
 
-use App\Http\Controllers\Admin\Catalog\CatalogCategoryController;
-use App\Http\Controllers\Admin\Catalog\CatalogProductController;
-use App\Http\Controllers\Admin\Catalog\CatalogSettingsController;
+
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\Navigation\NavigationController;
-use App\Http\Controllers\Admin\News\CategoryController as NewsCategoryController;
-use App\Http\Controllers\Admin\News\NewsController as AdminNewsController;
-use App\Http\Controllers\Admin\News\SettingsController as NewsSettingsController;
 use App\Http\Controllers\Admin\Packages\PackagesController;
 use App\Http\Controllers\Admin\Packages\PackagesSettings;
 use App\Http\Controllers\Admin\Page\PageController;
 use App\Http\Controllers\Admin\Panel\PanelController;
-use App\Http\Controllers\Admin\RolesController as AdminRolesController;
 use App\Http\Controllers\Admin\SettingsMenuController;
 use App\Http\Controllers\Admin\SitemapController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\SocialController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Vue\RouterController;
-use App\Models\Admin\HeaderAndFooter\HeaderAndFooter;
 use App\Models\Admin\Menu;
-use App\Models\Admin\Navigation\NavigationList;
 use App\QueryBuilder\Admin\Page\PageBuilder;
 use App\Utils\Lfm;
-use http\Client\Response;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -57,26 +48,6 @@ Route::middleware('auth')->group(function () {
 
         Route::post('panel/select', [PanelController::class,'getSelectTable'])->name('panel-select');
 
-        Route::group(['prefix' => 'catalog', 'as' => 'catalog.'], static function() {
-            Route::resource('product', CatalogProductController::class);
-            Route::resource('category', CatalogCategoryController::class);
-            Route::resource('settings', CatalogSettingsController::class);
-            Route::post('category/order', [CatalogCategoryController::class,'order'])->name('category.order');
-            Route::post('product/order', [CatalogProductController::class,'order'])->name('product.order');
-            Route::get('category/publish/{category}', [CatalogCategoryController::class,'publish'])->name('category.publish');
-            Route::get('product/publish/{product}', [CatalogProductController::class,'publish'])->name('product.publish');
-        });
-
-//        Route::resource('user', AdminUserController::class);
-//        Route::resource('roles', AdminRolesController::class);
-//        Route::resource('news', AdminNewsController::class);
-
-//        Route::resource('news', AdminNewsController::class);
-//
-//        Route::group(['prefix' => 'news', 'as' => 'news.'], static function(){
-//            Route::resource('category', NewsCategoryController::class);
-//        });
-//
         Route::get('/sitemap',[SitemapController::class,'index'])->name('sitemap');
         Route::resource('packages_settings', PackagesSettings::class);
         Route::resource('navigation', NavigationController::class);
@@ -112,6 +83,9 @@ Route::middleware('auth')->group(function () {
                     }
                 }
             }
+            $pageBuilder = new PageBuilder();
+            setRoute($pageBuilder->getPagesParent());
+
         } catch (Exception $exception)
         {
 
@@ -144,10 +118,9 @@ Route::get('robots.txt', function() {
     return Response::make($output, 200, ['Content-Type' => 'text/plain']);
 });
 
-//Route::get('/{vue_capture?}', function() {
-//    return view('welcome', ['data'=> HeaderAndFooter::query()->find(1)]);
-//})->where('vue_capture', '[\/\w\.-]*')
-//    ->name('home');
+Route::get('/process-queue', function () {
+    Artisan::call('queue:work');
+});
 
 Route::get('/',[RouterController::class,'index'])->name('home');
 Route::get('/project',[RouterController::class,'project'])->name('project');
@@ -158,7 +131,7 @@ Route::get('/agency',[RouterController::class,'agency'])->name('agency');
 Route::get('/education',[RouterController::class,'education'])->name('education');
 // Route::get('/jobs',[RouterController::class,'jobs'])->name('jobs');
 Route::get('/services',[RouterController::class,'services'])->name('services');
-$pageBuilder = new PageBuilder();
+
 
 function setRoute($pages,$url = "") {
 
@@ -170,11 +143,8 @@ function setRoute($pages,$url = "") {
         })->name($page->url);
 
         if (is_object($page->parent)) {
-            ;
             setRoute($page->parent,$secondUrl);
         }
     }
 }
-
-setRoute($pageBuilder->getPagesParent());
 

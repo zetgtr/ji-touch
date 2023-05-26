@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\Vue;
 
 use App\Http\Controllers\Controller;
-use App\QueryBuilder\Admin\Page\PageBuilder;
 use App\QueryBuilder\Admin\Page\PageDataPanelBuilder;
 use App\QueryBuilder\Admin\Panel\PanelBuilder;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
-use Ramsey\Collection\Collection;
 
 class RouterController extends Controller
 {
+
+
     public function index(PanelBuilder $panelBuilder){
         return \inertia('Home',[
             'title'=>'Главная',

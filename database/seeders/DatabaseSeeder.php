@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
             HeaderAndFooterSeeder::class,
             PackagesSettingsSeed::class,
-            SettingCatalogSeeder::class
         ]);
     }
 }
