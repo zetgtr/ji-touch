@@ -9,7 +9,7 @@
     <SwiperSlide v-for="(item, index) in dataSlider" :key="index">
       <div class="services__item">
         <div class="row">
-          <div class="col-5">
+          <div class="col-md-5">
             <div class="services__left">
               <h2 class="services__item-title"  v-html="$replaceNewLines(item.title)">
               </h2>
@@ -70,7 +70,7 @@
               </div>
             </div>
           </div>
-          <div class="col-7">
+          <div class="col-md-7">
             <div class="services__item-content">
               <h4 class="services__item-subtitle" v-html="$replaceNewLines(item.subtitle)">
               </h4>

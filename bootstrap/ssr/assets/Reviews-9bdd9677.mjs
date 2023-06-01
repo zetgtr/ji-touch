@@ -1,8 +1,9 @@
 import { mapMutations, mapActions, mapState } from "vuex";
-import { useSSRContext, mergeProps, resolveComponent, withCtx, createVNode, openBlock, createBlock } from "vue";
-import { Fancybox as Fancybox$1 } from "@fancyapps/ui";
-import { ssrRenderAttrs, ssrRenderSlot, ssrRenderList, ssrRenderStyle, ssrInterpolate, ssrRenderAttr, ssrRenderComponent } from "vue/server-renderer";
+import { resolveComponent, withCtx, createVNode, openBlock, createBlock, useSSRContext, mergeProps } from "vue";
+import { F as Fancybox } from "./Fancybox-f894d5d1.mjs";
+import { ssrRenderList, ssrRenderStyle, ssrInterpolate, ssrRenderAttr, ssrRenderComponent, ssrRenderAttrs } from "vue/server-renderer";
 import { _ as _export_sfc } from "../ssr.mjs";
+import "@fancyapps/ui";
 import "@inertiajs/vue3";
 import "animejs";
 import "swiper/vue";
@@ -17,39 +18,6 @@ import "@vue/runtime-core";
 import "@inertiajs/vue3/server";
 import "@vue/server-renderer";
 import "vuex-persistedstate";
-const fancybox = "";
-const _sfc_main$2 = {
-  props: {
-    options: Object
-  },
-  mounted() {
-    Fancybox$1.bind(this.$refs.container, "[data-fancybox]", {
-      ...this.options || {}
-    });
-  },
-  updated() {
-    Fancybox$1.unbind(this.$refs.container);
-    Fancybox$1.close();
-    Fancybox$1.bind(this.$refs.container, "[data-fancybox]", {
-      ...this.options || {}
-    });
-  },
-  unmounted() {
-    Fancybox$1.destroy();
-  }
-};
-function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  _push(`<div${ssrRenderAttrs(mergeProps({ ref: "container" }, _attrs))}>`);
-  ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
-  _push(`</div>`);
-}
-const _sfc_setup$2 = _sfc_main$2.setup;
-_sfc_main$2.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UI/Fancybox.vue");
-  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
-};
-const Fancybox = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", _sfc_ssrRender$2]]);
 const ReviewItem_vue_vue_type_style_index_0_lang = "";
 const _sfc_main$1 = {
   props: {

@@ -1,10 +1,9 @@
-import { computed, onMounted, resolveComponent, mergeProps, withCtx, createVNode, openBlock, createBlock, Fragment, renderList, useSSRContext } from "vue";
+import { mergeProps, useSSRContext, computed, onMounted, resolveComponent, withCtx, createVNode, openBlock, createBlock, Fragment, renderList } from "vue";
 import { useStore } from "vuex";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { _ as _export_sfc } from "../ssr.mjs";
-import { T as TheAboutListVue } from "./TheAboutList-4467da9c.mjs";
+import { ssrRenderAttrs, ssrRenderList, ssrRenderComponent, ssrRenderAttr } from "vue/server-renderer";
 import { Pagination, Navigation } from "swiper";
-import { ssrRenderAttrs, ssrRenderComponent, ssrRenderList, ssrRenderAttr } from "vue/server-renderer";
 import "@inertiajs/vue3";
 import "animejs";
 import "maska";
@@ -17,6 +16,36 @@ import "@vue/runtime-core";
 import "@inertiajs/vue3/server";
 import "@vue/server-renderer";
 import "vuex-persistedstate";
+const TheAboutList_vue_vue_type_style_index_0_scoped_e57388c2_lang = "";
+const _sfc_main$1 = {
+  props: {
+    tabs: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    handleClick() {
+      this.$emit("burger");
+    }
+  }
+};
+function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<ul${ssrRenderAttrs(mergeProps({
+    class: ["list-reset", _ctx.classes]
+  }, _attrs))} data-v-e57388c2><!--[-->`);
+  ssrRenderList($props.tabs, (tab, index) => {
+    _push(`<li class="nav__item" data-v-e57388c2></li>`);
+  });
+  _push(`<!--]--></ul>`);
+}
+const _sfc_setup$1 = _sfc_main$1.setup;
+_sfc_main$1.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/About/TheAboutList.vue");
+  return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
+};
+const TheAboutListVue = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-e57388c2"]]);
 const About_inner_vue_vue_type_style_index_0_lang = "";
 const _sfc_main = {
   components: {

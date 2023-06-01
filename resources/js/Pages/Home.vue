@@ -6,9 +6,9 @@
     <TheAnimateBg></TheAnimateBg>
     <first-component v-on:modal="showModal"></first-component>
     <services-component></services-component>
-    <portfolio-component></portfolio-component>
+    <portfolio-component :portfolio="this.$page.props.portfolio"></portfolio-component>
     <company-component></company-component>
-    <order-component></order-component>
+    <order-component ></order-component>
     <my-dialog v-model:show="dialogVisible" @accepted="showModal">
         <post-form @create="fetchForm" />
     </my-dialog>
@@ -60,7 +60,7 @@ export default {
     },
     mixins: [messageMixin],
     methods: {
-        showModal() {
+        showModal(item,flag = false) {
             this.dialogVisible = true;
             document.body.classList.add('overflow')
         },

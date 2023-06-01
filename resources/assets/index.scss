@@ -5,7 +5,6 @@
 @import './scss/fonts.scss';
 @import './scss/form_wraper.scss';
 @import './scss/pages/index.scss';
-@import './scss/components/index.scss';
 
 @font-face {
   font-family: 'Mont';
@@ -117,11 +116,7 @@ html {
     line-height: 1.2;
   }
 
-  .container {
-    margin: 0 auto;
-    padding: 0 calc(var(--container-offset)) 0 var(--container-offset);
-    max-width: var(--container-width);
-  }
+  
   .site-container {
   }
 
@@ -347,3 +342,5 @@ html {
     background-color: #fff;
     z-index: 2;
 }
+
+@import './scss/components/index.scss';

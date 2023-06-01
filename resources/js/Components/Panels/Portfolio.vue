@@ -62,12 +62,16 @@ export default {
     TheButton,
     TheSectionCaption,
   },
+  props: {
+    portfolio: Array
+  },
   data() {
+    // if(this.$page.props.portfolio) this.portfolio = this.$page.props.portfolio
     return {
-      title: this.$page.props.portfolio[0]?.title,
-      more: this.$page.props.portfolio[0]?.more,
-      items: this.$page.props.portfolio[0]?.items,
-      setBtn: this.$page.props.portfolio[0]?.setBtn,
+      title: this.portfolio[0]?.title,
+      more: this.portfolio[0]?.more,
+      items: this.portfolio[0]?.items,
+      setBtn: this.portfolio[0]?.setBtn,
       sectionCaption: "Portfolio",
     };
   },

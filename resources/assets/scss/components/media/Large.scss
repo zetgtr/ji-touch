@@ -1,0 +1,64 @@
+@media (max-width: 991px) {
+    :root {
+        --fz: 14px;
+    }
+
+    .first {
+        height: 100vh;
+        padding: 115px 0;
+        min-height: 700px;
+        max-height: 890px;
+    }
+
+    .services .slider__btns-container {
+        left: 40px;
+    }
+
+    .services__item {
+        padding: 60px 40px;
+    }
+
+    .porfolio__item__logo {
+        max-width: 80px;
+    }
+
+    .porfolio__item__text span {
+        font-size: 1rem;
+
+    }
+
+    .porfolio__item__text {
+        left: 15px;
+        bottom: 15px;
+    }
+
+    .porfolio__item .main-container {
+        padding-bottom: 88%;
+    }
+
+    .about {
+        padding-top: 60px;
+    }
+
+    .about__item-title {
+        font-size: 2rem;
+    }
+
+    .order-container__wrapper .row {
+        row-gap: 2.5rem;
+    }
+
+    .order {
+        padding-bottom: 50px;
+    }
+
+    .footer__wrapper {
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 20px;
+        flex-shrink: 0;
+    }
+    .footer{
+        height: auto;
+    }
+}

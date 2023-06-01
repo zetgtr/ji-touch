@@ -1,0 +1,19 @@
+@media (min-width: 1600px) {
+    .container {
+        margin: 0 auto;
+        padding: 0 calc(var(--container-offset)) 0 var(--container-offset);
+        max-width: var(--container-width);
+    }
+}
+
+@media (max-width: 1600px) {
+    :root {}
+
+    .first__wrapper {
+        padding: 0 5rem;
+    }
+
+    .porfolio {
+        padding: 70px 0;
+    }
+}

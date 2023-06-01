@@ -2,7 +2,7 @@
   <nav class="breadcrumbs">
     <ul>
       <li v-for="(item, index) in breadcrumbs" :key="index" class="breadcrumb">
-<!--        <router-link :to="item.path">{{ item.name }}</router-link>-->
+{# <!--        <router-link :to="item.path">{{ item.name }}</router-link>--> #}
       </li>
     </ul>
   </nav>
@@ -22,7 +22,7 @@ export default {
   }
 };
 </script>
-image.png
+<!-- image.png -->
 <style lang='scss'>
 .breadcrumbs {
   margin-bottom: 20px;

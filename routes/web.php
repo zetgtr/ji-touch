@@ -131,7 +131,7 @@ Route::get('/agency',[RouterController::class,'agency'])->name('agency');
 Route::get('/education',[RouterController::class,'education'])->name('education');
 // Route::get('/jobs',[RouterController::class,'jobs'])->name('jobs');
 Route::get('/services',[RouterController::class,'services'])->name('services');
-
+$pageBuilder = new PageBuilder();
 
 function setRoute($pages,$url = "") {
 
@@ -148,3 +148,4 @@ function setRoute($pages,$url = "") {
     }
 }
 
+setRoute($pageBuilder->getPagesParent());

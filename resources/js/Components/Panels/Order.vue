@@ -3,10 +3,10 @@
     <div class="container order-container">
       <div class="order-container__wrapper">
         <div class="row">
-          <div class="col-6">
+          <div class="col-lg-6">
             <the-order-content :row="rowOrder()" :contact="rowContact()"></the-order-content>
           </div>
-          <div class="col-6">
+          <div class="col-xl-6">
             <the-order-form></the-order-form>
           </div>
         </div>
@@ -29,10 +29,15 @@ export default {
     TheOrderForm,
     TheSectionCaption,
   },
+  props:{
+    order: Array,
+  },
   data() {
+    console.log(this.$page.props.order);
+    const order = this.$page.props.order ? this.$page.props.order : this.order;
     return {
-      title: this.$page.props.order[0].title,
-      desc: this.$page.props.order[0].desc,
+      title: order[0].title,
+      desc: order[0].desc,
       phone: this.$page.props?.contact?.phone.value,
       email: this.$page.props?.contact?.email.value,
       telegram: this.$page.props?.contact?.telegram.value,

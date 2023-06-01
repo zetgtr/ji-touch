@@ -1,0 +1,150 @@
+.about-component {
+    padding-bottom: 3rem;
+
+    .wrapper-container {
+        max-width: 100%;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+    .requisits{
+        order: 2;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #fff;
+        gap: 1.5rem;
+        .button{
+            margin-top: 0;
+            padding: 10px 50px;
+        }
+        & > span{
+            font-size: 3rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+    }
+    .swiper {
+        overflow: hidden;
+        max-width: 100%;
+        width: 100%;
+        order: 2;
+        background-color: var(--c-white);
+    }
+}
+
+.about__inner {
+    padding: 60px 0;
+
+    z-index: 3;
+    position: relative;
+    background: var(--c-bg);
+}
+
+
+
+.description {
+
+    p {
+        font-size: var(--fz-s) !important;
+    }
+}
+
+.wrapper {
+    display: grid;
+    // grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+}
+
+.about__item {
+    background-color: var(--c-white);
+    padding: 1rem;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 5fr 8fr;
+    gap: 1rem;
+
+    h3 {
+        color: var(--c-primary);
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .desc {
+        font-size: var(--fz-s);
+        text-align: center;
+    }
+}
+
+.img-container {
+    display: block;
+    position: relative;
+    padding-bottom: 70%;
+    height: 0;
+
+    img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+    }
+}
+
+.slider__btns-container {
+    margin-top: 0;
+    display: flex;
+    padding-top: 1rem;
+    justify-content: center;
+    align-items: baseline;
+    gap: 1rem;
+    position: relative;
+    bottom: 60px;
+    z-index: 9;
+
+    .pagination {
+        width: auto;
+        gap: 5px;
+
+        .current {
+            color: var(--c-primary) !important;
+            font-weight: 700 !important;
+        }
+
+        .swiper-pagination span {
+            font-size: 16px !important;
+        }
+
+        .total {
+            color: var(--c-title) !important;
+            font-weight: 700 !important;
+        }
+    }
+
+    .next,
+    .prev {
+        cursor: pointer;
+        width: 50px;
+
+        svg {
+            path {
+                fill: var(--c-secondary);
+                transition: 0.3s linear;
+            }
+        }
+
+        &:hover {
+            svg {
+                path {
+                    fill: var(--c-primary);
+                }
+            }
+        }
+    }
+}

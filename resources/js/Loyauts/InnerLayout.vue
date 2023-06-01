@@ -7,6 +7,7 @@
 .innerLayout {
   background: var(--c-bg);
   .content {
+    min-height: 90vh;
     padding-top: 115px;
     padding-top: 155px;
     background: var(--c-bg);

@@ -29,23 +29,20 @@ const _sfc_main$y = {
   methods: {
     ...mapMutations({}),
     ...mapActions({
-      addCart: "cartModule/addCart",
-      deleteCart: "cartModule/deleteCart",
-      removeCart: "cartModule/removeCart",
-      deleteProductCart: "cartModule/deleteProductCart"
+      addCart: "cart/addCart",
+      deleteCart: "cart/deleteCart",
+      removeCart: "cart/removeCart",
+      deleteProductCart: "cart/deleteProductCart"
     })
   },
   computed: {
     ...mapGetters({
-      totalPrice: "cartModule/totalPrice"
+      totalPrice: "cart/totalPrice"
     }),
     ...mapState({
-      cart: (state) => state.cartModule.cart,
-      count: (state) => state.cartModule.count
+      cart: (state) => state.cart.cart,
+      count: (state) => state.cart.count
     })
-  },
-  mounted() {
-    document.title = "Корзина";
   },
   watch: {}
 };
@@ -76,12 +73,12 @@ const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
 const _sfc_main$x = {
   components: {
     Link
+  },
+  computed: {
+    ...mapState({
+      count: (state) => state.cart.count
+    })
   }
-  // computed: {
-  //     ...mapState({
-  //         count: (state) => state.cartModule.count,
-  //     }),
-  // },
 };
 function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = resolveComponent("Link");
@@ -91,11 +88,11 @@ function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _attrs), {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<i class="fad fa-shopping-cart"${_scopeId}></i><div class="cart_count"${_scopeId}>1</div>`);
+        _push2(`<i class="fad fa-shopping-cart"${_scopeId}></i><div class="cart_count"${_scopeId}>${ssrInterpolate(_ctx.count)}</div>`);
       } else {
         return [
           createVNode("i", { class: "fad fa-shopping-cart" }),
-          createVNode("div", { class: "cart_count" }, "1")
+          createVNode("div", { class: "cart_count" }, toDisplayString(_ctx.count), 1)
         ];
       }
     }),
@@ -207,12 +204,15 @@ const _sfc_main$u = {
   }
 };
 function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_the_header = resolveComponent("the-header");
   const _component_Head = resolveComponent("Head");
   const _component_Link = resolveComponent("Link");
   const _component_CatalogCart = resolveComponent("CatalogCart");
   const _component_CatalogCategory = resolveComponent("CatalogCategory");
   const _component_CatalogProducts = resolveComponent("CatalogProducts");
-  _push(`<!--[--> category <div class="breadcrumbs">`);
+  _push(`<!--[--> category `);
+  _push(ssrRenderComponent(_component_the_header, null, null, _parent));
+  _push(`<div class="breadcrumbs">`);
   _push(ssrRenderComponent(_component_Head, {
     title: _ctx.$page.props.title
   }, null, _parent));
@@ -230,6 +230,7 @@ function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     }),
     _: 1
   }, _parent));
+  _push(`<span>&gt;</span>`);
   _push(ssrRenderComponent(_component_Link, {
     href: _ctx.route("catalog")
   }, {
@@ -244,7 +245,7 @@ function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     }),
     _: 1
   }, _parent));
-  _push(`<!--[-->`);
+  _push(`<span>&gt;</span><!--[-->`);
   ssrRenderList(_ctx.$page.props.breadcrumbs, (item) => {
     _push(ssrRenderComponent(_component_Link, {
       href: _ctx.route("catalog.category", { category: item.url })
@@ -281,11 +282,14 @@ const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
 const _sfc_main$t = {
   components: { CatalogCart },
   data() {
+    console.log(this.$page.props.product);
     return {};
   },
   methods: {
-    addCart() {
-    }
+    ...mapMutations({}),
+    ...mapActions({
+      addCart: "cart/addCart"
+    })
   }
 };
 function _sfc_ssrRender$t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
@@ -957,17 +961,35 @@ const toggleMixin = {
   }
   // ...
 };
+const MyDialog_vue_vue_type_style_index_0_scoped_925ac48f_lang = "";
 const _sfc_main$n = {
   name: "my-dialog",
   mixins: [toggleMixin],
+  props: {
+    item: {
+      type: Object,
+      required: false
+    },
+    flag: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    showFullscreen() {
+      return this.flag;
+    }
+  },
   mounted() {
-    console.log("dialog mounted");
+    console.log("flag", this.flag);
   }
 };
 function _sfc_ssrRender$n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   if (_ctx.show) {
-    _push(`<div${ssrRenderAttrs(mergeProps({ class: "dialog" }, _attrs))}><div class="${ssrRenderClass([{ show: _ctx.show, hide: !_ctx.show }, "dialog__content"])}"><span class="dialog__close"></span>`);
-    ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
+    _push(`<div${ssrRenderAttrs(mergeProps({ class: "dialog" }, _attrs))} data-v-925ac48f><div class="${ssrRenderClass([{ show: _ctx.show, hide: !_ctx.show, fullscreen: $options.showFullscreen }, "dialog__content"])}" data-v-925ac48f><span class="dialog__close" data-v-925ac48f></span>`);
+    ssrRenderSlot(_ctx.$slots, "default", {}, () => {
+      _push(`<h2 data-v-925ac48f>${ssrInterpolate($props.item.title)}</h2><p data-v-925ac48f>${_ctx.$replaceNewLines($props.item.desc)}</p>`);
+    }, _push, _parent);
     _push(`</div></div>`);
   } else {
     _push(`<!---->`);
@@ -979,7 +1001,7 @@ _sfc_main$n.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UI/MyDialog.vue");
   return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const MyDialog = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["ssrRender", _sfc_ssrRender$n]]);
+const MyDialog = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["ssrRender", _sfc_ssrRender$n], ["__scopeId", "data-v-925ac48f"]]);
 const _sfc_main$m = {
   directives: { maska: vMaska },
   props: {
@@ -1459,13 +1481,16 @@ const _sfc_main$f = {
     TheButton,
     TheSectionCaption
   },
+  props: {
+    portfolio: Array
+  },
   data() {
     var _a, _b, _c, _d;
     return {
-      title: (_a = this.$page.props.portfolio[0]) == null ? void 0 : _a.title,
-      more: (_b = this.$page.props.portfolio[0]) == null ? void 0 : _b.more,
-      items: (_c = this.$page.props.portfolio[0]) == null ? void 0 : _c.items,
-      setBtn: (_d = this.$page.props.portfolio[0]) == null ? void 0 : _d.setBtn,
+      title: (_a = this.portfolio[0]) == null ? void 0 : _a.title,
+      more: (_b = this.portfolio[0]) == null ? void 0 : _b.more,
+      items: (_c = this.portfolio[0]) == null ? void 0 : _c.items,
+      setBtn: (_d = this.portfolio[0]) == null ? void 0 : _d.setBtn,
       sectionCaption: "Portfolio"
     };
   },
@@ -2664,7 +2689,7 @@ const _sfc_main$3 = {
   },
   mixins: [messageMixin],
   methods: {
-    showModal() {
+    showModal(item, flag = false) {
       this.dialogVisible = true;
       document.body.classList.add("overflow");
     },
@@ -2726,7 +2751,9 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_TheAnimateBg, null, null, _parent));
   _push(ssrRenderComponent(_component_first_component, { onModal: $options.showModal }, null, _parent));
   _push(ssrRenderComponent(_component_services_component, null, null, _parent));
-  _push(ssrRenderComponent(_component_portfolio_component, null, null, _parent));
+  _push(ssrRenderComponent(_component_portfolio_component, {
+    portfolio: this.$page.props.portfolio
+  }, null, _parent));
   _push(ssrRenderComponent(_component_company_component, null, null, _parent));
   _push(ssrRenderComponent(_component_order_component, null, null, _parent));
   _push(ssrRenderComponent(_component_my_dialog, {
@@ -2820,7 +2847,7 @@ const _sfc_main = {
         const componentName = item.alias.charAt(0).toUpperCase() + item.alias.slice(1);
         components[item.alias] = markRaw(
           defineAsyncComponent(
-            () => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../Components/Panels/About.vue": () => import("./assets/About-162e538d.mjs"), "../Components/Panels/About_inner.vue": () => import("./assets/About_inner-1bdfa9fa.mjs"), "../Components/Panels/Article.vue": () => import("./assets/Article-b872514c.mjs"), "../Components/Panels/Company.vue": () => Promise.resolve().then(() => Company), "../Components/Panels/Contact.vue": () => import("./assets/Contact-0f766bd1.mjs"), "../Components/Panels/First.vue": () => Promise.resolve().then(() => First), "../Components/Panels/Jobs.vue": () => import("./assets/Jobs-d7711f3d.mjs"), "../Components/Panels/Order.vue": () => Promise.resolve().then(() => Order), "../Components/Panels/Portfolio.vue": () => Promise.resolve().then(() => Portfolio), "../Components/Panels/Reviews.vue": () => import("./assets/Reviews-988dface.mjs"), "../Components/Panels/Services.vue": () => Promise.resolve().then(() => Services) }), `../Components/Panels/${componentName}.vue`)
+            () => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../Components/Panels/About.vue": () => import("./assets/About-4644c66e.mjs"), "../Components/Panels/About_inner.vue": () => import("./assets/About_inner-52d769aa.mjs"), "../Components/Panels/Article.vue": () => import("./assets/Article-b872514c.mjs"), "../Components/Panels/Company.vue": () => Promise.resolve().then(() => Company), "../Components/Panels/Contact.vue": () => import("./assets/Contact-0f766bd1.mjs"), "../Components/Panels/First.vue": () => Promise.resolve().then(() => First), "../Components/Panels/Jobs.vue": () => import("./assets/Jobs-d7711f3d.mjs"), "../Components/Panels/Order.vue": () => Promise.resolve().then(() => Order), "../Components/Panels/Portfolio.vue": () => Promise.resolve().then(() => Portfolio), "../Components/Panels/Reviews.vue": () => import("./assets/Reviews-9bdd9677.mjs"), "../Components/Panels/Services.vue": () => Promise.resolve().then(() => Services), "../Components/Panels/Services_inner.vue": () => import("./assets/Services_inner-931cc3ba.mjs") }), `../Components/Panels/${componentName}.vue`)
           )
         );
       }
@@ -3265,7 +3292,7 @@ const articleModule = {
   },
   namespaced: true
 };
-const cartModule = {
+const cart = {
   state: () => ({
     cart: [],
     count: 0,
@@ -3330,7 +3357,7 @@ const options = {
     isAuth: false
   },
   modules: {
-    cart: cartModule,
+    cart,
     article: articleModule,
     first: firstModule,
     services: servicesModule,
@@ -3343,12 +3370,10 @@ const options = {
     about: aboutModule
   }
 };
-console.log(123);
 if (typeof window !== "undefined") {
-  console.log(111);
   options.plugins = [
     createPersistedState({
-      paths: ["cartModule"]
+      paths: ["cart"]
     })
   ];
 }
@@ -3849,5 +3874,7 @@ createServer(
   })
 );
 export {
+  MyDialog as M,
+  TheMoreButton as T,
   _export_sfc as _
 };
