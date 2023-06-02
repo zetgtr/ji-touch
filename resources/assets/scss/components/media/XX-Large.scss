@@ -2,4 +2,20 @@
     .first__wrapper{
         padding: 0;
     }
+    .contact-info__item-address .address p{
+        font-size: 1.1rem;
+    }
+    .contact .phone a{
+        font-size: 1.1rem;
+    }
+    .services_inner-wrapper .services_inner__item-logo-container span{
+        font-size: 1rem;
+    }
+    .services_inner-wrapper .services_inner__item h2, .services_inner-wrapper .services_inner__item .h2{
+        font-size: 1.1rem;
+    }
+    .services_inner-wrapper .services_inner__item{
+        min-height: 420px;
+        padding: 1rem;
+    }
 }

@@ -117,4 +117,20 @@
         left: inherit;
         font-size: 2rem;
     }
+    .contact .contact-info__item{
+        padding: 15px;
+    }
+    .services_inner-wrapper .services_inner__item h2, .services_inner-wrapper .services_inner__item .h2{
+        font-size: 1.3rem;
+    }
+    .services_inner-wrapper .services_inner__item-desc p{
+        font-size: 1.1rem;
+    }
+    .services_inner-wrapper .services_inner__item-logo-container{
+        display: none;
+    }
+
+    .about__item{
+        grid-template-columns: 1fr;
+    }
 }

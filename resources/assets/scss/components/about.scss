@@ -79,23 +79,24 @@
         font-size: var(--fz-s);
         text-align: center;
     }
-}
-
-.img-container {
-    display: block;
-    position: relative;
-    padding-bottom: 70%;
-    height: 0;
-
-    img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        top: 0;
-        left: 0;
+    .img-container {
+        display: block;
+        position: relative;
+        padding-bottom: 70%;
+        height: 0;
+    
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+        }
     }
 }
+
+
 
 .slider__btns-container {
     margin-top: 0;

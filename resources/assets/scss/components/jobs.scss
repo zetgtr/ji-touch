@@ -1,0 +1,98 @@
+.job {
+    position: relative;
+    background-color: #fff;
+    height: 100%;
+    padding: 60px 90px;
+    z-index: 2;
+
+    &:hover {
+        .hover {
+            opacity: 1;
+        }
+
+        .job-logo {
+            img {
+                opacity: 1;
+            }
+        }
+    }
+
+    .tabs {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    &-logo {
+        margin-top: auto;
+
+        img {
+            opacity: 0.5;
+            transition: 0.3s linear;
+            max-width: 100%;
+            height: 60px;
+        }
+    }
+
+    .desc {
+        &-text {
+            font-size: 0.8rem;
+        }
+
+        &>ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                font-size: 0.8rem !important;
+            }
+        }
+    }
+
+    .price {
+        margin-top: auto;
+        color: var(--c-title);
+        font-weight: 700;
+    }
+    
+    h2 {
+        transition: 0.3s linear;
+        font-size: 34px;
+        font-weight: 700;
+    }
+    
+    .hover {
+        transition: 0.3s linear;
+        opacity: 0;
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: -10px;
+        transform: translateY(-50%) translateX(-50%);
+        animation: animateSamolet 1s infinite;
+    
+        svg {
+            width: 50px;
+            height: auto;
+        }
+    }
+}
+
+
+
+@keyframes animateSamolet {
+
+    0%,
+    100% {
+        transform: translateY(-50%) translateX(-50%);
+    }
+
+    50% {
+        transform: translateY(-50%) translateX(-60%);
+    }
+}

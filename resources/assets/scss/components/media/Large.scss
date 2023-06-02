@@ -58,7 +58,37 @@
         gap: 20px;
         flex-shrink: 0;
     }
-    .footer{
+
+    .footer {
         height: auto;
+    }
+
+    .contact .contact-info__list {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info__item-address .address p {
+        font-size: 1.1rem;
+    }
+
+    .contact .phone a {
+        font-size: 1.1rem;
+    }
+    .services_inner-wrapper .row .services_inner__item-container:nth-child(3n-1){
+        margin-top: 0;
+    }
+    .services_inner-wrapper .services_inner__item{
+        min-height: 320px;
+    }
+
+    .reviews__item{
+        .col-lg-5{
+            flex-direction: row;
+        }
+    }
+    .job{
+        .col-lg-5{
+            flex-direction: row;
+        }
     }
 }

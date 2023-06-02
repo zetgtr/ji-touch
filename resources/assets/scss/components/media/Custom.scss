@@ -4,6 +4,7 @@
         padding: 0 calc(var(--container-offset)) 0 var(--container-offset);
         max-width: var(--container-width);
     }
+    
 }
 
 @media (max-width: 1600px) {
@@ -15,5 +16,13 @@
 
     .porfolio {
         padding: 70px 0;
+    }
+    .contact-info__item-address{
+        .worktime{
+            margin-top: auto;
+        }
+        .address p{
+            font-size: 1.3rem;
+        }
     }
 }

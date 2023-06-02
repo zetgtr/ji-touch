@@ -89,4 +89,23 @@
     .about-component .wrapper-container{
         grid-template-columns: 1fr;
     }
+
+    .tabButton{
+        font-size: 0.9rem;
+    padding: 10px 15px;
+    }
+    .job{
+        padding: 20px 30px;
+    }
+    .job h2, .job .h2{
+        font-size: 22px;
+    }
+    .jobs{
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .review__item {
+        padding: 20px 30px;
+    }
 }
