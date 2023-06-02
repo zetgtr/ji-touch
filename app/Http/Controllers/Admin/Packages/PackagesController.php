@@ -14,6 +14,7 @@ use Illuminate\Support\Composer;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\ProcessUtils;
 use News\Remove\RemovePackage;
 use Symfony\Component\Process\PhpExecutableFinder;
@@ -27,6 +28,20 @@ class PackagesController extends Controller
      */
     public function index(PackagesBuilder $packagesBuilder)
     {
+//        $process = new Process(['command', 'arg1', 'arg2']);
+
+// Запускаем процесс
+        exec("cd .. && composer update".' --ignore-platform-req=ext-sodium 2>&1', $msg, $resultCode);
+
+    dd($msg);
+// Получаем вывод команды
+        $output = $result->output();
+
+// Получаем код возврата команды
+        $exitCode = $result->exitCode();
+
+        dd($output);
+
         return view('admin.packages.index', [
             'packages'=>$packagesBuilder->getPackages(),
             'packagesInstall' => $packagesBuilder->getInstall(),
