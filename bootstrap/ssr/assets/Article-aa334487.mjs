@@ -1,8 +1,8 @@
 import { mapMutations, mapActions, mapState } from "vuex";
 import { useSSRContext } from "vue";
 import { _ as _export_sfc } from "../ssr.mjs";
-import "vue/server-renderer";
 import "@inertiajs/vue3";
+import "vue/server-renderer";
 import "animejs";
 import "swiper/vue";
 import "swiper";
