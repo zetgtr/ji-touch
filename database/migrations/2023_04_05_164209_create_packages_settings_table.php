@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('packages_settings', function (Blueprint $table) {
             $table->id();
+            $table->boolean('docker')->default(true);
             $table->string('user');
             $table->string('url');
-            $table->string('php');
-            $table->string('composer');
+            $table->string('php')->nullable();
+            $table->string('composer')->nullable();
             $table->timestamps();
         });
     }
