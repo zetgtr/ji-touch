@@ -83,8 +83,6 @@ Route::middleware('auth')->group(function () {
                     }
                 }
             }
-            $pageBuilder = new PageBuilder();
-            setRoute($pageBuilder->getPagesParent());
 
         } catch (Exception $exception)
         {
@@ -131,21 +129,28 @@ Route::get('/agency',[RouterController::class,'agency'])->name('agency');
 Route::get('/education',[RouterController::class,'education'])->name('education');
 // Route::get('/jobs',[RouterController::class,'jobs'])->name('jobs');
 Route::get('/services',[RouterController::class,'services'])->name('services');
-$pageBuilder = new PageBuilder();
 
-function setRoute($pages,$url = "") {
+try {
+    $pageBuilder = new PageBuilder();
 
-    foreach ($pages as $page) {
-        $secondUrl = $url ."/". $page->url;
-        Route::get($secondUrl, function () use ($page) {
-            $routerController = new RouterController();
-            return $routerController->pages($page);
-        })->name($page->url);
+    function setRoute($pages,$url = "") {
 
-        if (is_object($page->parent)) {
-            setRoute($page->parent,$secondUrl);
+        foreach ($pages as $page) {
+            $secondUrl = $url ."/". $page->url;
+            Route::get($secondUrl, function () use ($page) {
+                $routerController = new RouterController();
+                return $routerController->pages($page);
+            })->name($page->url);
+
+            if (is_object($page->parent)) {
+                setRoute($page->parent,$secondUrl);
+            }
         }
     }
-}
 
-setRoute($pageBuilder->getPagesParent());
+    setRoute($pageBuilder->getPagesParent());
+
+} catch (Exception $exception)
+{
+
+}
