@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use News\Remove\RemovePackage;
+use function Clue\StreamFilter\remove;
 
 class PackagesBuilder extends QueryBuilder
 {
@@ -68,8 +69,14 @@ class PackagesBuilder extends QueryBuilder
         File::put(base_path('composer.json'), json_encode($composerJson, JSON_PRETTY_PRINT));
 
         chdir(base_path());
-        exec($settings->php.'\php.exe '.$settings->composer.'\composer.phar require '.$package.' --ignore-platform-req=ext-sodium 2>&1', $msg, $resultCode);
-//dd($msg);
+        try {
+            if(!$settings->docker) exec($settings->php.'\php.exe '.$settings->composer.'\composer.phar require '.$package.' --ignore-platform-req=ext-sodium 2>&1', $msg, $resultCode);
+            else exec('composer require '.$package.' --ignore-platform-req=ext-sodium 2>&1', $msg, $resultCode);
+        } catch (\Exception $exception)
+        {
+            return ['type'=>"error",'message'=>"Ошибка установки пакета: ".$exception->getMessage()];
+        }
+
         return $resultCode;
     }
 
@@ -78,33 +85,40 @@ class PackagesBuilder extends QueryBuilder
         $settings = $this->getSettings();
         $packageData = $this->firebase->getReference('/packages/'.$id)->getValue();
         chdir(base_path());
-        if($packageData['migration']) {
+        try {
+            if($packageData['migration']) {
 //            exec($settings->php.'\php.exe artisan vendor:publish --tag=migrations 2>&1',$msg);
-            Artisan::call('vendor:publish', [
-                '--provider' => $packageData['provider'],
-                '--tag' => 'migrations',
-            ]);
-            Artisan::call('migrate', ['--verbose' => true]);
-        }
-        if($packageData['seeder'])
+                Artisan::call('vendor:publish', [
+                    '--provider' => $packageData['provider'],
+                    '--tag' => 'migrations',
+                ]);
+                Artisan::call('migrate', ['--verbose' => true]);
+            }
+            if($packageData['seeder'])
+            {
+                Artisan::call('db:seed', [
+                    '--class' => $packageData['name_seeder'],
+                ]);
+            }
+            if($packageData['script'])
+            {
+                Artisan::call('vendor:publish', [
+                    '--provider' => $packageData['provider'],
+                    '--tag' => 'script',
+                ]);
+            }
+            if($packageData['vue'])
+            {
+                Artisan::call('vendor:publish', [
+                    '--provider' => $packageData['provider'],
+                    '--tag' => 'vue',
+                ]);
+            }
+            return ['status'=>true];
+        }catch (\Exception $exception)
         {
-            Artisan::call('db:seed', [
-                '--class' => $packageData['name_seeder'],
-            ]);
-        }
-        if($packageData['script'])
-        {
-            Artisan::call('vendor:publish', [
-                '--provider' => $packageData['provider'],
-                '--tag' => 'script',
-            ]);
-        }
-        if($packageData['vue'])
-        {
-            Artisan::call('vendor:publish', [
-                '--provider' => $packageData['provider'],
-                '--tag' => 'vue',
-            ]);
+            $this->remove($id);
+            return ['status'=>false,"message"=>$exception->getMessage()];
         }
     }
 
@@ -135,13 +149,13 @@ class PackagesBuilder extends QueryBuilder
         $packageData = $this->firebase->getReference('/packages/'.$id)->getValue();
         $packageRemove = new $packageData['delete']();
         $settings = $this->getSettings();
-        $packageRemove->run($settings,true,true);
+        $packageRemove->run($settings, true, true);
         $composerJson = json_decode(File::get(base_path('composer.json')), true);
         if(count($composerJson["repositories"])>1)
         {
             $key = array_search([
                 "type" => "vcs",
-                "url" => "https://".$packageData['url']."/".$packageData['user']."/".$packageData['name']
+                "url" => "https://".$packageData['url']."/".$settings->user."/".$packageData['name']
             ], $composerJson["repositories"]);
             if ($key !== false) {
                 array_splice($composerJson["repositories"], $key, 1);
@@ -152,7 +166,8 @@ class PackagesBuilder extends QueryBuilder
         unset($composerJson['require'][$settings->user.'/'.$packageData['name']]);
 
         File::put(base_path('composer.json'), json_encode($composerJson, JSON_PRETTY_PRINT));
-        exec($settings->php.'\php.exe '.$settings->composer.'\composer.phar update');
+        if(!$settings->docker) exec($settings->php.'\php.exe '.$settings->composer.'\composer.phar update');
+        else exec('composer update');
         Packages::query()->where('id_package',$id)->delete();
         return true;
     }

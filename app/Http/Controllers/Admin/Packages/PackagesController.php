@@ -31,16 +31,16 @@ class PackagesController extends Controller
 //        $process = new Process(['command', 'arg1', 'arg2']);
 
 // Запускаем процесс
-        exec("cd .. && composer update".' --ignore-platform-req=ext-sodium 2>&1', $msg, $resultCode);
-
-    dd($msg);
+//        exec("cd .. && composer update".' 2>&1', $msg, $resultCode);
+////
+//    dd($msg);
 // Получаем вывод команды
-        $output = $result->output();
+//        $output = $result->output();
 
 // Получаем код возврата команды
-        $exitCode = $result->exitCode();
+//        $exitCode = $result->exitCode();
 
-        dd($output);
+//        dd($output);
 
         return view('admin.packages.index', [
             'packages'=>$packagesBuilder->getPackages(),
@@ -67,8 +67,12 @@ class PackagesController extends Controller
 
     public function setData(Request $request, PackagesBuilder $packagesBuilder)
     {
-        $packagesBuilder->setData($request->input('id'));
-        return \redirect()->route('admin.packages.index')->with('success', "Пакет успешно установлен");
+        $data = $packagesBuilder->setData($request->input('id'));
+        if ($data['status'])
+            return ['type'=>'success','message'=> "Пакет успешно установлен"];
+        else
+            return ['type'=>'error','message'=> "Ошибка установки пакета: ".$data['message']];
+
     }
 
     /**
@@ -79,16 +83,16 @@ class PackagesController extends Controller
         if($request->input("packages_install"))
         {
             if(Packages::query()->where('id_package',$request->input("packages_install"))->first())
-                return \redirect()->route('admin.packages.index')->with('error', "Пакет уже установлен");
+                return ['type'=>"error",'message' => "Пакет уже установлен"];
             if($packagesBuilder->install($request) == 0)
             {
                 $id = $request->input("packages_install");
                 Packages::query()->create(['id_package'=>$id]);
-                return \redirect()->route('admin.packages.set-data',['id'=>$request->input("packages_install")]);
+                return ['type'=>"success",'route'=> route('admin.packages.set-data',['id'=>$request->input("packages_install")])];
             }
-            return \redirect()->route('admin.packages.index')->with('error', "Ошибка установки пакета");
+            return ['type'=>"error",'message'=>"Ошибка установки пакета"];
         }
-        return \redirect()->route('admin.packages.index')->with('error', "Не выбран пакет для установки");
+        return ['type'=>"error",'message'=>"Не выбран пакет для установки"];
     }
 
     /**

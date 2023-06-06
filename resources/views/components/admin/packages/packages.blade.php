@@ -1,3 +1,4 @@
+<link href="{{ asset('assets/css/admin/loader.css') }}" rel="stylesheet">
 <div class="row">
     <x-warning />
     <form action="{{ route('admin.packages.destroy', ['package' => 1]) }}" method="post" class="col-lg-7">
@@ -16,7 +17,7 @@
         <input type="submit" class="btn btn-danger mt-3" value="Удалить">
     </form>
     <div class="col-lg-5">
-        <form action="{{ route('admin.packages.set') }}" method="post">
+        <form action="{{ route('admin.packages.set') }}" id="form-install" method="post">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -28,7 +29,7 @@
                     @endforeach
                 </select>
             </div>
-            <input type="submit" value="Установить" class="btn btn-success">
+            <div type="button" class="btn btn-success modal-effect install-packages" data-url="/admin/packages/" data-bs-effect="effect-fall" data-bs-toggle="modal" data-bs-target="#modaldemo8">Установить</div>
             <div type="button" class="btn btn-info add-packages modal-effect" data-bs-effect="effect-fall" data-bs-toggle="modal" data-bs-target="#modaldemo8">Добавить</div>
             <div type="button" class="btn btn-default edit-packages modal-effect" data-url="/admin/packages/" data-bs-effect="effect-fall" data-bs-toggle="modal" data-bs-target="#modaldemo8">Редактировать</div>
         </form>

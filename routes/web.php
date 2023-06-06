@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
 
         Route::group(['prefix' => 'packages', 'as' => 'packages.'], static function() {
             Route::put('packages/set', [PackagesController::class, 'store'])->name('set');
-            Route::get('packages/set-data', [PackagesController::class, 'setData'])->name('set-data');
+            Route::put('packages/set-data', [PackagesController::class, 'setData'])->name('set-data');
         });
 
         Route::group(['prefix' => 'panel', 'as' => 'panel.'], static function() {

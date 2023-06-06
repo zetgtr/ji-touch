@@ -26,6 +26,51 @@ $(document).ready(()=>{
         $('#button_success').val('Добавить')
         seeder()
     })
+    $('.install-packages').on('click',(e)=>{
+        title.text('Установка')
+        container.html("")
+        let containerLoader = document.createElement('div')
+        let text = document.createElement('p')
+        let loader = document.createElement('div')
+        loader.classList.add('loader')
+        containerLoader.classList.add('d-flex')
+        containerLoader.classList.add('flex-column')
+        containerLoader.classList.add('align-items-center')
+        text.innerText = "Идет установка пожалуйста подождите!"
+        containerLoader.append(text)
+        containerLoader.append(loader)
+        container.append(containerLoader)
+        const form = $('#form-install')
+        const data = new FormData(form[0])
+        $.ajax({
+            type: "PUT",
+            url: form.attr('action'),
+            data: {
+                packages_install: data.get('packages_install')
+            },
+            dataType: "json",
+            success(data){
+                if(data.type == "success")
+                {
+                    $.ajax({
+                        type: "PUT",
+                        url: data.route,
+                        dataType: "json",
+                        success(val){
+                            container.html("")
+                            let text = document.createElement('p')
+                            // if(val.type == "success")
+                            // {
+                            // }
+                            text.innerText = val.message
+                            container.append(text)
+
+                        }
+                    })
+                }
+            }
+        })
+    })
     $('.edit-packages').on('click',(e)=>{
         title.text('Редактировать пакет ...')
         container.html("")

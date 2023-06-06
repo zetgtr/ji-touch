@@ -27,7 +27,15 @@ class UpdateSettingsRequest extends FormRequest
             'user' => ['required'],
             'url' => ['required'],
             'php' => ['required'],
+            'docker' => ['required'],
             'composer' => ['required']
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'docker' => $this->input('docker') ? false : true
+        ]);
     }
 }

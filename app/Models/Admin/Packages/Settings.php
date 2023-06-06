@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Settings extends Model
 {
     use HasFactory;
-    protected $fillable = ['user','url','php','composer'];
+    protected $fillable = ['user','url','php','composer','docker'];
     protected $table = 'packages_settings';
 }
