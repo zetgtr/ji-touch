@@ -20,3 +20,14 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.success-text{
+    margin-top: 10px;
+    font-size: 17px;
+    color: green;
+}
+.error-text{
+    margin-top: 10px;
+    font-size: 17px;
+    color: red;
+}

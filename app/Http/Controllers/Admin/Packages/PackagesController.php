@@ -7,17 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Packages\EditRequest;
 use App\Models\Admin\Packages\Packages;
 use App\QueryBuilder\Admin\Packages\PackagesBuilder;
-use Composer\Installers\Installer;
-use Gitlab\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Composer;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\File;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Process;
-use Illuminate\Support\ProcessUtils;
-use News\Remove\RemovePackage;
-use Symfony\Component\Process\PhpExecutableFinder;
+
 
 
 class PackagesController extends Controller
@@ -28,20 +19,6 @@ class PackagesController extends Controller
      */
     public function index(PackagesBuilder $packagesBuilder)
     {
-//        $process = new Process(['command', 'arg1', 'arg2']);
-
-// Запускаем процесс
-//        exec("cd .. && composer update".' 2>&1', $msg, $resultCode);
-////
-//    dd($msg);
-// Получаем вывод команды
-//        $output = $result->output();
-
-// Получаем код возврата команды
-//        $exitCode = $result->exitCode();
-
-//        dd($output);
-
         return view('admin.packages.index', [
             'packages'=>$packagesBuilder->getPackages(),
             'packagesInstall' => $packagesBuilder->getInstall(),
@@ -59,7 +36,7 @@ class PackagesController extends Controller
         $ref = $database->getReference('/packages');
         if($ref->push($request->all()))
         {
-            return \redirect()->route('admin.packages.index')->with('success', "Пакет успешно добавлен");
+            return \redirect()->route('admin.packages.index')->with('success', "Плагин успешно добавлен");
         }else{
             return \redirect()->route('admin.packages.index')->with('error', "Ошибка добавления");
         }
@@ -69,9 +46,9 @@ class PackagesController extends Controller
     {
         $data = $packagesBuilder->setData($request->input('id'));
         if ($data['status'])
-            return ['type'=>'success','message'=> "Пакет успешно установлен"];
+            return ['type'=>'success','message'=> "Плагин успешно установлен!"];
         else
-            return ['type'=>'error','message'=> "Ошибка установки пакета: ".$data['message']];
+            return ['type'=>'error','message'=> "Ошибка установки плагина: ".$data['message']];
 
     }
 
@@ -83,16 +60,16 @@ class PackagesController extends Controller
         if($request->input("packages_install"))
         {
             if(Packages::query()->where('id_package',$request->input("packages_install"))->first())
-                return ['type'=>"error",'message' => "Пакет уже установлен"];
+                return ['type'=>"error",'message' => "Плагин уже установлен!"];
             if($packagesBuilder->install($request) == 0)
             {
                 $id = $request->input("packages_install");
                 Packages::query()->create(['id_package'=>$id]);
                 return ['type'=>"success",'route'=> route('admin.packages.set-data',['id'=>$request->input("packages_install")])];
             }
-            return ['type'=>"error",'message'=>"Ошибка установки пакета"];
+            return ['type'=>"error",'message'=>"Ошибка установки плагина!"];
         }
-        return ['type'=>"error",'message'=>"Не выбран пакет для установки"];
+        return ['type'=>"error",'message'=>"Не выбран плагин для установки!"];
     }
 
     /**
@@ -110,9 +87,9 @@ class PackagesController extends Controller
     {
         if($packagesBuilder->edit($id, $request))
         {
-            return \redirect()->route('admin.packages.index')->with('success', "Пакет успешно обновлен");
+            return \redirect()->route('admin.packages.index')->with('success', "Плагин успешно обновлен");
         }
-        return \redirect()->route('admin.packages.index')->with('error', "Ошибка обновления пакета");
+        return \redirect()->route('admin.packages.index')->with('error', "Ошибка обновления плагина");
     }
 
     /**
@@ -130,8 +107,8 @@ class PackagesController extends Controller
     {
         if($packagesBuilder->remove($request->input("packages")))
         {
-            return \redirect()->route('admin.packages.index')->with('success', "Пакет успешно удален");
+            return \redirect()->route('admin.packages.index')->with('success', "Плагин успешно удален");
         }
-        return \redirect()->route('admin.packages.index')->with('success', "Ошибка удаления пакета");
+        return \redirect()->route('admin.packages.index')->with('success', "Ошибка удаления плагина");
     }
 }

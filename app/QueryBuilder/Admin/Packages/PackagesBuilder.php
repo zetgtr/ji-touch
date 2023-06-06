@@ -71,10 +71,10 @@ class PackagesBuilder extends QueryBuilder
         chdir(base_path());
         try {
             if(!$settings->docker) exec($settings->php.'\php.exe '.$settings->composer.'\composer.phar require '.$package.' --ignore-platform-req=ext-sodium 2>&1', $msg, $resultCode);
-            else exec('composer require '.$package.' --ignore-platform-req=ext-sodium 2>&1', $msg, $resultCode);
+            else exec('composer require '.$package.' 2>&1', $msg, $resultCode);
         } catch (\Exception $exception)
         {
-            return ['type'=>"error",'message'=>"Ошибка установки пакета: ".$exception->getMessage()];
+            return ['type'=>"error",'message'=>"Ошибка установки плагина: ".$exception->getMessage()];
         }
 
         return $resultCode;
@@ -82,12 +82,10 @@ class PackagesBuilder extends QueryBuilder
 
     public function setData($id)
     {
-        $settings = $this->getSettings();
         $packageData = $this->firebase->getReference('/packages/'.$id)->getValue();
         chdir(base_path());
         try {
             if($packageData['migration']) {
-//            exec($settings->php.'\php.exe artisan vendor:publish --tag=migrations 2>&1',$msg);
                 Artisan::call('vendor:publish', [
                     '--provider' => $packageData['provider'],
                     '--tag' => 'migrations',
@@ -112,6 +110,13 @@ class PackagesBuilder extends QueryBuilder
                 Artisan::call('vendor:publish', [
                     '--provider' => $packageData['provider'],
                     '--tag' => 'vue',
+                ]);
+            }
+            if($packageData['view'])
+            {
+                Artisan::call('vendor:publish', [
+                    '--provider' => $packageData['provider'],
+                    '--tag' => 'view',
                 ]);
             }
             return ['status'=>true];
@@ -147,11 +152,15 @@ class PackagesBuilder extends QueryBuilder
     public function remove(string $id)
     {
         $packageData = $this->firebase->getReference('/packages/'.$id)->getValue();
-        $packageRemove = new $packageData['delete']();
         $settings = $this->getSettings();
-        $packageRemove->run($settings, true, true);
+
+        if (class_exists($packageData['delete'])) {
+            $packageRemove = new $packageData['delete']();
+            $packageRemove->run($settings, true, true);
+        }
+
         $composerJson = json_decode(File::get(base_path('composer.json')), true);
-        if(count($composerJson["repositories"])>1)
+        if(!empty($composerJson["repositories"]) && count($composerJson["repositories"])>1)
         {
             $key = array_search([
                 "type" => "vcs",

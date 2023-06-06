@@ -59,12 +59,11 @@ $(document).ready(()=>{
                         success(val){
                             container.html("")
                             let text = document.createElement('p')
-                            // if(val.type == "success")
-                            // {
-                            // }
+                            let containerPackages = $($("#"+val.type+"-template")[0].content.children[0]).clone()
                             text.innerText = val.message
-                            container.append(text)
-
+                            text.classList.add(val.type+"-text")
+                            containerPackages.append(text)
+                            container.append(containerPackages)
                         }
                     })
                 }
