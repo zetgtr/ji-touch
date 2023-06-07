@@ -26,7 +26,14 @@ $(document).ready(()=>{
         $('#button_success').val('Добавить')
         seeder()
     })
+    function preventUnload(event) {
+        event.preventDefault();
+        event.returnValue = '';
+    }
     $('.install-packages').on('click',(e)=>{
+
+        window.addEventListener('beforeunload', preventUnload);
+        // modal.on('')
         title.text('Установка')
         container.html("")
         let containerLoader = document.createElement('div')
@@ -36,7 +43,7 @@ $(document).ready(()=>{
         containerLoader.classList.add('d-flex')
         containerLoader.classList.add('flex-column')
         containerLoader.classList.add('align-items-center')
-        text.innerText = "Идет установка пожалуйста подождите!"
+        text.innerText = "Идет установка, пожалуйста, подождите!"
         containerLoader.append(text)
         containerLoader.append(loader)
         container.append(containerLoader)
@@ -50,6 +57,16 @@ $(document).ready(()=>{
             },
             dataType: "json",
             success(data){
+                const text = document.createElement('p')
+                const containerBtnNode = document.createElement('div')
+                const btnNode = document.createElement('button')
+                containerBtnNode.classList.add('container_btn_modal')
+                btnNode.classList.add('btn')
+                btnNode.classList.add('btn-sm')
+                btnNode.classList.add('btn-primary')
+                $(btnNode).attr('aria-label',"Close")
+                $(btnNode).attr('data-bs-dismiss',"modal")
+                btnNode.innerText = "Закрыть"
                 if(data.type == "success")
                 {
                     $.ajax({
@@ -58,15 +75,89 @@ $(document).ready(()=>{
                         dataType: "json",
                         success(val){
                             container.html("")
-                            let text = document.createElement('p')
-                            let containerPackages = $($("#"+val.type+"-template")[0].content.children[0]).clone()
+                            const containerPackages = $($("#"+val.type+"-template")[0].content.children[0]).clone()
+                            if(val.type == "success")
+                            {
+                                const selectRemoveNode = $('#packages')
+                                const optionInstallNode = $('#packages_install option:selected')
+                                const optionNode = document.createElement('option')
+                                optionNode.value = optionInstallNode.val()
+                                optionNode.id = "package-"+optionInstallNode.val()
+                                optionNode.innerText = optionInstallNode.text()
+                                selectRemoveNode.append(optionNode)
+                            }
+
                             text.innerText = val.message
                             text.classList.add(val.type+"-text")
                             containerPackages.append(text)
                             container.append(containerPackages)
+                            containerBtnNode.append(btnNode)
+                            window.removeEventListener('beforeunload', preventUnload);
+                            container.append(containerBtnNode)
                         }
                     })
+                }else {
+                    window.removeEventListener('beforeunload', preventUnload);
+                    const containerPackages = $($("#"+data.type+"-template")[0].content.children[0]).clone()
+                    container.html("")
+                    text.innerText = data.message
+                    text.classList.add(data.type+"-text")
+                    containerPackages.append(text)
+                    container.append(containerPackages)
+                    containerBtnNode.append(btnNode)
+                    container.append(containerBtnNode)
                 }
+            }
+        })
+    })
+    $('.delete-packages').on('click',()=> {
+        window.addEventListener('beforeunload', preventUnload);
+        title.text('Удаление')
+        container.html("")
+        let containerLoader = document.createElement('div')
+        let text = document.createElement('p')
+        let loader = document.createElement('div')
+        loader.classList.add('loader')
+        containerLoader.classList.add('d-flex')
+        containerLoader.classList.add('flex-column')
+        containerLoader.classList.add('align-items-center')
+        text.innerText = "Идет удаление, пожалуйста, подождите!"
+        containerLoader.append(text)
+        containerLoader.append(loader)
+        container.append(containerLoader)
+        const form = $('#form-remove')
+        const data = new FormData(form[0])
+        $.ajax({
+            type: "DELETE",
+            url: form.attr('action'),
+            data: {
+                packages: data.get('packages')
+            },
+            success(val) {
+                container.html("")
+                window.removeEventListener('beforeunload', preventUnload);
+                const text = document.createElement('p')
+                const containerBtnNode = document.createElement('div')
+                const btnNode = document.createElement('button')
+                containerBtnNode.classList.add('container_btn_modal')
+                btnNode.classList.add('btn')
+                btnNode.classList.add('btn-sm')
+                btnNode.classList.add('btn-primary')
+                $(btnNode).attr('aria-label', "Close")
+                $(btnNode).attr('data-bs-dismiss', "modal")
+                btnNode.innerText = "Закрыть"
+                const containerPackages = $($("#" + val.type + "-template")[0].content.children[0]).clone()
+                if (val.type == "success") {
+
+                    const optionRemoveNode = $('#package-' + data.get('packages'))
+                    optionRemoveNode.remove()
+                }
+                text.innerText = val.message
+                text.classList.add(val.type + "-text")
+                containerPackages.append(text)
+                container.append(containerPackages)
+                containerBtnNode.append(btnNode)
+                container.append(containerBtnNode)
             }
         })
     })

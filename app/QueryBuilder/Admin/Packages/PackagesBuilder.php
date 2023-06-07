@@ -149,7 +149,7 @@ class PackagesBuilder extends QueryBuilder
         return Packages::query()->get();
     }
 
-    public function remove(string $id)
+    public function remove($id)
     {
         $packageData = $this->firebase->getReference('/packages/'.$id)->getValue();
         $settings = $this->getSettings();

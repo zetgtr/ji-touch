@@ -4,8 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef6040934b40ea62b51606c78575cd4a",
+    "content-hash": "760a2d0a305fcacce033ba98e1a247ff",
     "packages": [
+        {
+            "name": "axp-dev/ya-metrika",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axp-dev/ya-metrika.git",
+                "reference": "ef396ba9aee361551bfa3d0d644564e35f698137"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axp-dev/ya-metrika/zipball/ef396ba9aee361551bfa3d0d644564e35f698137",
+                "reference": "ef396ba9aee361551bfa3d0d644564e35f698137",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.4.3",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "monolog/monolog": "^2.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AXP\\YaMetrika\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Pushkarev",
+                    "email": "axp-dev@yandex.com",
+                    "homepage": "https://github.com/axp-dev"
+                }
+            ],
+            "description": "Yandex Metrika API Library",
+            "homepage": "https://github.com/axp-dev/ya-metrika",
+            "keywords": [
+                "api",
+                "metrika",
+                "yandex"
+            ],
+            "support": {
+                "issues": "https://github.com/axp-dev/ya-metrika/issues",
+                "source": "https://github.com/axp-dev/ya-metrika/tree/2.2.0"
+            },
+            "time": "2022-07-30T14:55:45+00:00"
+        },
         {
             "name": "bacon/bacon-qr-code",
             "version": "2.0.8",
@@ -10028,6 +10079,67 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "zetgtr/catalog",
+            "version": "1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/zetgtr/catalog.git",
+                "reference": "de54a854479cafa33fe7a084f240e949e0a28806"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/zetgtr%2Fcatalog/repository/archive.zip?sha=de54a854479cafa33fe7a084f240e949e0a28806",
+                "reference": "de54a854479cafa33fe7a084f240e949e0a28806",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Catalog\\Providers\\CatalogServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Catalog\\": "src/",
+                    "Catalog\\Seeders\\": "database/seeders/",
+                    "Catalog\\Remove\\": "remove"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Catalog\\Test\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artem",
+                    "email": "artem.kudrin70@gmail.com"
+                }
+            ],
+            "description": "My package description",
+            "keywords": [
+                "laravel",
+                "package"
+            ],
+            "support": {
+                "source": "https://gitlab.com/zetgtr/catalog/-/tree/1.0.9"
+            },
+            "time": "2023-06-06T20:31:11+00:00"
         }
     ],
     "packages-dev": [
@@ -10504,16 +10616,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.6.1",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "a8dd186f07ea667c1e3abd2176bfab0ab161ea94"
+                "reference": "13a7fa2642c76c58fa2806ef7f565344c817a191"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/a8dd186f07ea667c1e3abd2176bfab0ab161ea94",
-                "reference": "a8dd186f07ea667c1e3abd2176bfab0ab161ea94",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/13a7fa2642c76c58fa2806ef7f565344c817a191",
+                "reference": "13a7fa2642c76c58fa2806ef7f565344c817a191",
                 "shasum": ""
             },
             "require": {
@@ -10532,7 +10644,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4.x-dev"
+                    "dev-main": "1.6.x-dev"
                 }
             },
             "autoload": {
@@ -10576,9 +10688,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mockery/mockery/issues",
-                "source": "https://github.com/mockery/mockery/tree/1.6.1"
+                "source": "https://github.com/mockery/mockery/tree/1.6.2"
             },
-            "time": "2023-06-05T13:59:03+00:00"
+            "time": "2023-06-07T09:07:52+00:00"
         },
         {
             "name": "myclabs/deep-copy",

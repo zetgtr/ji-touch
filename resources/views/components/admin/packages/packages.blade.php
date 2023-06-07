@@ -1,7 +1,7 @@
 <link href="{{ asset('assets/css/admin/loader.css') }}" rel="stylesheet">
 <div class="row">
     <x-warning />
-    <form action="{{ route('admin.packages.destroy', ['package' => 1]) }}" method="post" class="col-lg-7">
+    <form action="{{ route('admin.packages.destroy', ['package' => 1]) }}" method="post" id="form-remove" class="col-lg-7">
         @csrf
         @method('DELETE')
         <label for="packages" class="form-label">Установленные пакеты</label>
@@ -9,12 +9,12 @@
             @foreach($packages as $key=>$package)
                 @foreach($packagesInstall as $install)
                     @if($install->id_package == $key)
-                        <option data-url="{{ route('admin.packages.show',['package'=>$key]) }}" data-edit="{{ route('admin.packages.edit',['package'=>$key]) }}" value="{{$key}}">{{$package['name']}}</option>
+                        <option id="package-{{$key}}" value="{{$key}}">{{$package['name']}}</option>
                     @endif
                 @endforeach
             @endforeach
         </select>
-        <input type="submit" class="btn btn-danger mt-3" value="Удалить">
+        <div type="button" class="btn btn-danger mt-3 modal-effect delete-packages" data-url="/admin/packages/" data-bs-effect="effect-fall" data-bs-toggle="modal" data-bs-target="#modaldemo8">Удалить</div>
     </form>
     <div class="col-lg-5">
         <form action="{{ route('admin.packages.set') }}" id="form-install" method="post">

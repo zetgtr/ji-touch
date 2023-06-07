@@ -103,12 +103,12 @@ class PackagesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id,PackagesBuilder $packagesBuilder, Request $request)
+    public function destroy($id,PackagesBuilder $packagesBuilder, Request $request)
     {
         if($packagesBuilder->remove($request->input("packages")))
         {
-            return \redirect()->route('admin.packages.index')->with('success', "Плагин успешно удален");
+            return ['type'=>'success','message'=> "Плагин успешно удален!"];
         }
-        return \redirect()->route('admin.packages.index')->with('success', "Ошибка удаления плагина");
+        return ['type'=>'error','message'=> "Ошибка удаления плагина!"];
     }
 }
