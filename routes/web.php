@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\Home\IndexController as AdminController;
 use App\Http\Controllers\Admin\Navigation\NavigationController;
 use App\Http\Controllers\Admin\Packages\PackagesController;
 use App\Http\Controllers\Admin\Packages\PackagesSettings;
@@ -35,7 +35,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware('auth')->group(function () {
     Route::group(['prefix'=>"admin", 'as'=>'admin.', 'middleware' => 'is_admin'],static function(){
-        Route::get("/", AdminController::class)
+        Route::get("/", [AdminController::class,'index'])
             ->name('index');
 //        Route::get('user', )
         Route::group(['prefix' => 'settings', 'as' => 'settings.'], static function(){

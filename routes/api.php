@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Catalog\CatalogCategoryController;
+use App\Http\Controllers\Admin\Home\IndexController;
 use App\Http\Controllers\Admin\Navigation\NavigationController;
 use App\Http\Controllers\Admin\Navigation\NavigationListController;
 use App\Http\Controllers\Admin\Page\PageController;
@@ -28,6 +29,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function() {
     Route::get('get_page/{page}',[PageController::class,'show']);
+    Route::post('get_devices',[IndexController::class,'getDevices']);
+    Route::post('get_browsers',[IndexController::class,'getBrowsers']);
     Route::get('catalog_search/{text}',[CatalogProductController::class,'search']);
 });
 

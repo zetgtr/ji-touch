@@ -10,6 +10,8 @@ $(document).ready(()=>{
         pageviews.push(el.pageviews)
         users.push(el.users)
     })
+
+
     const visitsChart = setChart('visits-table',visits,dates,'Количество визитов')
     const pageviewsChart = setChart('pageviews-table',pageviews,dates,'Количество просмотров')
     const usersChart = setChart('users-table',users,dates,'Количество пользователей')
@@ -52,6 +54,10 @@ $(document).ready(()=>{
                 }]
             },
             options: {
+                elements: {
+                    shadow: false // отключение теней на графике
+                },
+
                 responsive: true,
                 maintainAspectRatio: false,
                 onClick: function (e, activeElements) {
@@ -61,6 +67,20 @@ $(document).ready(()=>{
 
                         // Выполняйте нужные вам действия при клике на точку графика
                         console.log('Выбранный день:', selectedDate);
+
+                        axios.post('/api/admin/get_devices',{
+                            date: selectedDate
+                        }).then(({data})=>{
+                            $('.device-title').text("Устройства на "+selectedDate)
+                            $('#devices').val(JSON.stringify(data)).trigger('change');
+                        })
+                        axios.post('/api/admin/get_browsers',{
+                            date: selectedDate
+                        }).then(({data})=>{
+                            $('.title-browser').text("Браузеры на "+selectedDate)
+                            $('#browser').val(JSON.stringify(data)).trigger('change');
+                        })
+
                         const colors = this.data.labels.map(() => '#fff')
                         charts.forEach(el=>{
                             el.data.datasets[0].pointBackgroundColor = colors;
