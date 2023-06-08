@@ -49,12 +49,13 @@ class HomeBuilder extends QueryBuilder
 
     public function getNavigatinMetrika()
     {
-        $links = [MetrikaEnums::VISITS->value => ['url'=> MetrikaEnums::VISITS->value, 'name' => 'Количество посещений'],
+        $links = [
+            MetrikaEnums::USERS->value => ['url'=> MetrikaEnums::USERS->value,  'name' => 'Пользователи'],
             MetrikaEnums::PAGEVIEWS->value => ['url'=> MetrikaEnums::PAGEVIEWS->value,  'name' => 'Просмотры'],
-            MetrikaEnums::USERS->value => ['url'=> MetrikaEnums::USERS->value,  'name' => 'Пользователи']
+            MetrikaEnums::VISITS->value => ['url'=> MetrikaEnums::VISITS->value, 'name' => 'Визиты']
         ];
 
-        $links[MetrikaEnums::VISITS->value]['active'] = true;
+        $links[MetrikaEnums::USERS->value]['active'] = true;
 
         return $links;
     }

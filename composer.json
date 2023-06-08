@@ -90,6 +90,10 @@
         {
             "type": "vcs",
             "url": "https:\/\/gitlab.com\/zetgtr\/catalog"
+        },
+        {
+            "type": "vcs",
+            "url": "https:\/\/gitlab.com\/zetgtr\/catalog"
         }
     ]
 }

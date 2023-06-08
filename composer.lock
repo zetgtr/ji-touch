@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "760a2d0a305fcacce033ba98e1a247ff",
+    "content-hash": "e0df4f071b9c4e544e6991b799f49b43",
     "packages": [
         {
             "name": "axp-dev/ya-metrika",

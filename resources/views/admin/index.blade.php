@@ -8,20 +8,20 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Посищаемость сайта</h3>
+                                <h3 class="card-title">Посещаемость сайта</h3>
                             </div>
                             <x-admin.navigatin-js :links="$links" />
                             <div class="card-body">
                                 <div class="tab-content">
-                                    <div class="tab-pane fade active show" id="{{ App\Enums\MetrikaEnums::VISITS->value }}" role="tabpanel" aria-labelledby="{{ App\Enums\MetrikaEnums::VISITS->value }}-link">
+                                    <div class="tab-pane fade active show" id="{{ App\Enums\MetrikaEnums::USERS->value }}" role="tabpanel" aria-labelledby="{{ App\Enums\MetrikaEnums::USERS->value }}-link">
                                         <div class="d-flex mx-auto text-center justify-content-center mb-4">
                                             <div class="d-flex text-center justify-content-center me-3">
                                                 <span class="dot-label bg-primary my-auto"></span>
-                                                Количество посещений
+                                                Пользователи
                                             </div>
                                         </div>
                                         <div class="chartjs-wrapper-demo">
-                                            <canvas id="{{ App\Enums\MetrikaEnums::VISITS->value }}-table" class="chart-dropshadow table-metrika"></canvas>
+                                            <canvas id="{{ App\Enums\MetrikaEnums::USERS->value }}-table" class="chart-dropshadow table-metrika"></canvas>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="{{ App\Enums\MetrikaEnums::PAGEVIEWS->value }}" role="tabpanel" aria-labelledby="{{ App\Enums\MetrikaEnums::PAGEVIEWS->value }}-link">
@@ -35,15 +35,15 @@
                                             <canvas id="{{ App\Enums\MetrikaEnums::PAGEVIEWS->value }}-table" class="chart-dropshadow table-metrika"></canvas>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="{{ App\Enums\MetrikaEnums::USERS->value }}" role="tabpanel" aria-labelledby="{{ App\Enums\MetrikaEnums::USERS->value }}-link">
+                                    <div class="tab-pane fade" id="{{ App\Enums\MetrikaEnums::VISITS->value }}" role="tabpanel" aria-labelledby="{{ App\Enums\MetrikaEnums::VISITS->value }}-link">
                                         <div class="d-flex mx-auto text-center justify-content-center mb-4">
                                             <div class="d-flex text-center justify-content-center me-3">
                                                 <span class="dot-label bg-primary my-auto"></span>
-                                                Пользователи
+                                                Визиты
                                             </div>
                                         </div>
                                         <div class="chartjs-wrapper-demo">
-                                            <canvas id="{{ App\Enums\MetrikaEnums::USERS->value }}-table" class="chart-dropshadow table-metrika"></canvas>
+                                            <canvas id="{{ App\Enums\MetrikaEnums::VISITS->value }}-table" class="chart-dropshadow table-metrika"></canvas>
                                         </div>
                                     </div>
                                 </div>

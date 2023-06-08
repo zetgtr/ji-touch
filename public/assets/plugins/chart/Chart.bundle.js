@@ -7793,6 +7793,7 @@
                 , {[i]: o} = t.getProps([i], s);
             return Math.abs(e - o) < n.radius + n.hitRadius
         }
+
         qn.id = "line",
             qn.defaults = {
                 borderCapStyle: "butt",
@@ -7954,6 +7955,8 @@
                 radius: t.radius
             }
         }
+
+
         Gn.id = "point",
             Gn.defaults = {
                 borderWidth: 1,
