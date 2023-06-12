@@ -3,6 +3,7 @@
 namespace App\QueryBuilder\Admin\Home;
 
 use App\Enums\MetrikaEnums;
+use App\Models\Admin\Home\Metrika;
 use App\Models\Admin\Settings\Settings;
 use App\QueryBuilder\QueryBuilder;
 use AXP\YaMetrika\Client;
@@ -12,14 +13,14 @@ use Illuminate\Database\Eloquent\Collection;
 class HomeBuilder extends QueryBuilder
 {
     private YaMetrika $metrika;
-    private Settings $settings;
+    private Metrika $metrikaModel;
     public function __construct()
     {
         $token = 'y0_AgAAAAANClWCAAoE-gAAAADk6m_e6pY626ToTPGmD_JytPPKL7swDFw';
         $counterId = '90983527';
         $client = new Client($token, $counterId);
         $this->metrika = new YaMetrika($client);
-        $this->settings = Settings::query()->find(1);
+        $this->metrikaModel = Metrika::query()->find(1);
     }
 
     public function getMetrikaTable(){
@@ -85,17 +86,39 @@ class HomeBuilder extends QueryBuilder
         $data = [];
         foreach ($totalCounts as $key=>$totalCount)
         {
-            if($this->settings->count_browser < $totalCount)
+            if($this->metrikaModel->count_browser < $totalCount)
             {
-                $this->settings->count_browser = $totalCount;
-                $this->settings->save();
+                $this->metrikaModel->count_browser = $totalCount;
+                $this->metrikaModel->save();
             }
             $data[] = [
                 'name'=>$key,
                 'count'=>$totalCount
             ];
         }
-        $data[]['count_browser'] = $this->settings->count_browser;
+        $data[]['count_browser'] = $this->metrikaModel->count_browser;
+        return $data;
+    }
+
+    public function getMetrikaAge($date)
+    {
+        $params = [
+            'date1' => $date,
+            'date2' => $date,
+            'metrics' => 'ym:s:users',
+            'dimensions' => 'ym:s:ageIntervalName	',
+
+        ];
+        $visitors = $this->metrika->customQuery($params)->formatData();
+
+        $data = [];
+
+        foreach ($visitors['data'] as $visitor)
+        {
+            $data[] = ['name'=>$visitor['dimensions']['ageIntervalName']['name'],'count'=>$visitor['metrics']['users']];
+        }
+
+
         return $data;
     }
 

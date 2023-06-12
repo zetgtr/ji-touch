@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('catalog_orders', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('phone');
-            $table->string('email');
-            $table->integer('product_id');
-            $table->integer('count')->default(1);
-            $table->integer('price')->default(0);
+        Schema::create('metrika', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('key')->nullable();
+            $table->longText('counter_id')->nullable();
+            $table->unsignedTinyInteger('count_browser')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('catalog_orders');
+        //
     }
 };

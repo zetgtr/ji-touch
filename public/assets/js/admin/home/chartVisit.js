@@ -80,6 +80,12 @@ $(document).ready(()=>{
                             $('.title-browser').text("Браузеры на "+selectedDate)
                             $('#browser').val(JSON.stringify(data)).trigger('change');
                         })
+                        axios.post('/api/admin/get_age',{
+                            date: selectedDate
+                        }).then(({data})=>{
+                            $('.age-title').text("Возраст на "+selectedDate)
+                            $('#age').val(JSON.stringify(data)).trigger('change');
+                        })
 
                         const colors = this.data.labels.map(() => '#fff')
                         charts.forEach(el=>{

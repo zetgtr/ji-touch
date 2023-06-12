@@ -34,6 +34,7 @@ class MenuSeeder extends Seeder
             ['id'=>14,'name'=>'Пакеты','position'=>'right','logo'=>'fad fa-box-open','controller'=>'Admin\Packages\PackagesController','url'=>'packages','parent'=>3,"controller_type"=>null],
             ['id'=>15,'name'=>'Обратная связь','position'=>'left','logo'=>'fal fa-comments','controller'=>'Admin\FeedBack\FeedBackController','url'=>'feedback','parent'=>5,"controller_type"=>null],
             ['id'=>16,'name'=>'Навигация','position'=>'left','logo'=>'fal fa-map-marked-alt','controller'=>'Admin\Navigation\NavigationListController','url'=>'navigation_list','parent'=>5,"controller_type"=>null],
+            ['id'=>17,'name'=>'Карта сайта','position'=>'right','logo'=>'fad fa-sitemap','controller'=>'Admin\SiteMap\IndexController','url'=>'site_map','parent'=>3,"controller_type"=>true],
         ];
     }
 }

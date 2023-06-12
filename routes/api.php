@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function() {
     Route::get('get_page/{page}',[PageController::class,'show']);
     Route::post('get_devices',[IndexController::class,'getDevices']);
     Route::post('get_browsers',[IndexController::class,'getBrowsers']);
+    Route::post('get_age',[IndexController::class,'getAge']);
     Route::get('catalog_search/{text}',[CatalogProductController::class,'search']);
 });
 

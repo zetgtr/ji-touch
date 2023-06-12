@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0df4f071b9c4e544e6991b799f49b43",
+    "content-hash": "a97ecc19475c075be970a409359f0c97",
     "packages": [
         {
             "name": "axp-dev/ya-metrika",
@@ -2182,16 +2182,16 @@
         },
         {
             "name": "kreait/firebase-php",
-            "version": "7.3.0",
+            "version": "7.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kreait/firebase-php.git",
-                "reference": "cae5ad89c534388eb39698cbef3b1b0e6404b4e8"
+                "reference": "d96256ce3ae0fa1b870ce00bc66e91cb167894be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kreait/firebase-php/zipball/cae5ad89c534388eb39698cbef3b1b0e6404b4e8",
-                "reference": "cae5ad89c534388eb39698cbef3b1b0e6404b4e8",
+                "url": "https://api.github.com/repos/kreait/firebase-php/zipball/d96256ce3ae0fa1b870ce00bc66e91cb167894be",
+                "reference": "d96256ce3ae0fa1b870ce00bc66e91cb167894be",
                 "shasum": ""
             },
             "require": {
@@ -2212,21 +2212,20 @@
                 "mtdowling/jmespath.php": "^2.6.1",
                 "php": "~8.1.0|~8.2.0",
                 "psr/cache": "^1.0.1|^2.0|^3.0",
-                "psr/http-message": "^1.0.1|^2.0",
                 "psr/log": "^1.1|^2.0|^3.0",
                 "riverline/multipart-parser": "^2.0.9"
             },
             "require-dev": {
-                "beste/php-cs-fixer-config": "~2.0.0",
-                "friendsofphp/php-cs-fixer": "~3.16.0",
-                "google/cloud-firestore": "^1.31.0",
-                "phpstan/extension-installer": "^1.3",
-                "phpstan/phpstan": "^1.10.14",
-                "phpstan/phpstan-phpunit": "^1.3.11",
-                "phpunit/phpunit": "^10.1.2",
-                "rector/rector": "~0.16.0",
+                "beste/php-cs-fixer-config": "^2.1",
+                "friendsofphp/php-cs-fixer": "^3.17",
+                "google/cloud-firestore": "^1.34.0",
+                "phpstan/extension-installer": "^1.3.1",
+                "phpstan/phpstan": "^1.10.18",
+                "phpstan/phpstan-phpunit": "^1.3.13",
+                "phpunit/phpunit": "^10.2.1",
+                "rector/rector": "~0.17.0",
                 "roave/backward-compatibility-check": "^8.3",
-                "symfony/var-dumper": "^6.2.10"
+                "symfony/var-dumper": "^6.3.0"
             },
             "suggest": {
                 "google/cloud-firestore": "^1.0 to use the Firestore component"
@@ -2275,7 +2274,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-03T07:03:34+00:00"
+            "time": "2023-06-10T06:40:26+00:00"
         },
         {
             "name": "kreait/firebase-tokens",
@@ -2493,16 +2492,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.13.2",
+            "version": "v10.13.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "fd4619b56b56308e2c2c1840fedd0b8ebb73dfc5"
+                "reference": "03106ae9ba2ec4b36dc973b7bdca6fad81e032b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/fd4619b56b56308e2c2c1840fedd0b8ebb73dfc5",
-                "reference": "fd4619b56b56308e2c2c1840fedd0b8ebb73dfc5",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/03106ae9ba2ec4b36dc973b7bdca6fad81e032b4",
+                "reference": "03106ae9ba2ec4b36dc973b7bdca6fad81e032b4",
                 "shasum": ""
             },
             "require": {
@@ -2689,7 +2688,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-06-05T15:48:15+00:00"
+            "time": "2023-06-08T20:25:36+00:00"
         },
         {
             "name": "laravel/helpers",
@@ -6291,16 +6290,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.57.6",
+            "version": "3.57.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "41382e013a00a62a7b2f2945a615d73e59b3a907"
+                "reference": "83332d0821bd3d61c03873d76d5dfff6e31985b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/41382e013a00a62a7b2f2945a615d73e59b3a907",
-                "reference": "41382e013a00a62a7b2f2945a615d73e59b3a907",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/83332d0821bd3d61c03873d76d5dfff6e31985b7",
+                "reference": "83332d0821bd3d61c03873d76d5dfff6e31985b7",
                 "shasum": ""
             },
             "require": {
@@ -6345,7 +6344,7 @@
                 "webpage"
             ],
             "support": {
-                "source": "https://github.com/spatie/browsershot/tree/3.57.6"
+                "source": "https://github.com/spatie/browsershot/tree/3.57.7"
             },
             "funding": [
                 {
@@ -6353,7 +6352,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-01-03T19:12:47+00:00"
+            "time": "2023-06-08T18:27:05+00:00"
         },
         {
             "name": "spatie/crawler",
@@ -10079,67 +10078,6 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
-        },
-        {
-            "name": "zetgtr/catalog",
-            "version": "1.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.com/zetgtr/catalog.git",
-                "reference": "de54a854479cafa33fe7a084f240e949e0a28806"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/zetgtr%2Fcatalog/repository/archive.zip?sha=de54a854479cafa33fe7a084f240e949e0a28806",
-                "reference": "de54a854479cafa33fe7a084f240e949e0a28806",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Catalog\\Providers\\CatalogServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Catalog\\": "src/",
-                    "Catalog\\Seeders\\": "database/seeders/",
-                    "Catalog\\Remove\\": "remove"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Catalog\\Test\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpunit"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Artem",
-                    "email": "artem.kudrin70@gmail.com"
-                }
-            ],
-            "description": "My package description",
-            "keywords": [
-                "laravel",
-                "package"
-            ],
-            "support": {
-                "source": "https://gitlab.com/zetgtr/catalog/-/tree/1.0.9"
-            },
-            "time": "2023-06-06T20:31:11+00:00"
         }
     ],
     "packages-dev": [
@@ -11280,16 +11218,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.2.1",
+            "version": "10.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "599b33294350e8f51163119d5670512f98b0490d"
+                "reference": "1ab521b24b88b88310c40c26c0cc4a94ba40ff95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/599b33294350e8f51163119d5670512f98b0490d",
-                "reference": "599b33294350e8f51163119d5670512f98b0490d",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1ab521b24b88b88310c40c26c0cc4a94ba40ff95",
+                "reference": "1ab521b24b88b88310c40c26c0cc4a94ba40ff95",
                 "shasum": ""
             },
             "require": {
@@ -11361,7 +11299,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.1"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.2"
             },
             "funding": [
                 {
@@ -11377,7 +11315,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-05T05:15:51+00:00"
+            "time": "2023-06-11T06:15:20+00:00"
         },
         {
             "name": "sebastian/cli-parser",
