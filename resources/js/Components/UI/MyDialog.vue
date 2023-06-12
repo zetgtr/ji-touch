@@ -1,17 +1,15 @@
 <template>
-  <transition name="dialog" appear>
-    <div class="dialog" v-if="show" @click.stop="hideDialog">
+  <transition name="dialog">
+    <div class="dialog" v-if="show" @click.stop="hideDialog" >
       <div
         @click.stop
         class="dialog__content"
-        :class="{ show: show, hide: !show , fullscreen: showFullscreen}"
+        :class="{ show: show, hide: !show, fullscreen: showFullscreen }"
       >
         <span class="dialog__close" @click.stop="hideDialog"></span>
         <slot>
-          <!-- Добавьте код для отображения свойства item -->
           <h2>{{ item.title }}</h2>
           <p v-html="$replaceNewLines(item.desc)"></p>
-          <!-- и т.д. -->
         </slot>
       </div>
     </div>
@@ -20,6 +18,7 @@
 
 <script>
 import toggleMixin from "./../../Components/mixins/toggleMixin";
+import { ref } from 'vue';
 
 export default {
   name: "my-dialog",
@@ -39,6 +38,7 @@ export default {
       return this.flag;
     },
   },
+ 
 
   mounted() {
     console.log("flag", this.flag);

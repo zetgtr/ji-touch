@@ -32,11 +32,7 @@
         font-size: 32px;
     }
 
-    .services .slider__btns-container {
-        right: inherit;
-        left: 20px;
-        bottom: 20px;
-    }
+   
 
     .services__item {
         padding: 20px 30px 60px 20px;
@@ -132,5 +128,13 @@
 
     .about__item{
         grid-template-columns: 1fr;
+    }
+
+    .services__item-content{
+        margin-bottom: 2rem;
+    }
+
+    .services .swiper-button-next, .services .swiper-button-prev{
+        width: 25px;
     }
 }

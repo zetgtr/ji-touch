@@ -9,9 +9,12 @@
         min-height: 700px;
         max-height: 890px;
     }
-
+    .services{
+        padding: 45px 0;
+    }
     .services .slider__btns-container {
-        left: 40px;
+        left: initial;
+        right: 40px;
     }
 
     .services__item {
@@ -26,10 +29,11 @@
         font-size: 1rem;
 
     }
+    
 
     .porfolio__item__text {
-        left: 15px;
-        bottom: 15px;
+        left: 30px;
+        bottom: 30px;
     }
 
     .porfolio__item .main-container {
@@ -90,5 +94,32 @@
         .col-lg-5{
             flex-direction: row;
         }
+    }
+
+
+    .form__wrapper .subm{
+        align-items: center;
+        .button{
+            margin-top: 0;
+        }
+        .sogl{
+            margin-bottom: 0;
+        }
+    }
+
+    .porfolio__item .main-container img{
+        object-fit: cover;
+    }
+
+    .section-caption{
+        position: static;
+        right: 0;
+        transform: none;
+        writing-mode: initial;
+        text-align: end;
+        margin-top: 1rem;
+    }
+    .job-top{
+        margin-top: 2.5rem;
     }
 }

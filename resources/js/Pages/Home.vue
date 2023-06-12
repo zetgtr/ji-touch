@@ -12,7 +12,6 @@
     <my-dialog v-model:show="dialogVisible" @accepted="showModal">
         <post-form @create="fetchForm" />
     </my-dialog>
-     <the-swiper></the-swiper>
     <div id="messages"></div>
     <the-footer-vue></the-footer-vue>
 </template>

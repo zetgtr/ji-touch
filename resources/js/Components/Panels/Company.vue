@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-<!--      <the-section-caption :sectionCaption="sectionCaption" class="color"></the-section-caption>-->
+     <the-section-caption :sectionCaption="sectionCaption" class="color"></the-section-caption>
     </div>
   </section>
 </template>
@@ -47,6 +47,7 @@ export default {
         text: this.$page.props.company[0]?.text,
         desc: this.$page.props.company[0]?.desc,
         more: this.$page.props.company[0]?.more,
+        sectionCaption: "Company",
     };
   },
 };

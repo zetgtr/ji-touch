@@ -96,3 +96,20 @@
         transform: translateY(-50%) translateX(-60%);
     }
 }
+
+@media (max-width: 1199px) {
+    .job-top{
+        flex-direction: row !important;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        h2{
+            margin-bottom: 0;
+        }
+    }
+}
+@media (max-width: 576px) {
+    .job-logo img{
+        height: 30px;
+    }
+}

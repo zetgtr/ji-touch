@@ -11,9 +11,9 @@
           </div>
         </div>
       </div>
-     <!-- <the-section-caption-->
-<!--        :sectionCaption="sectionCaption"-->
-<!--      ></the-section-caption> -->
+     <the-section-caption
+       :sectionCaption="sectionCaption"
+     ></the-section-caption>
     </div>
   </section>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <a class="more" href="">
+  <div style='cursor:pointer;' class="more" href="">
     <slot></slot>
     <svg
       width="38"
@@ -23,7 +23,7 @@
       </defs>
     </svg>
 
-  </a>
+  </div>
 </template>
 
 <script>

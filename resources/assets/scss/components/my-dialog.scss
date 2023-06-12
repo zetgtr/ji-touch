@@ -19,11 +19,13 @@
     min-width: 300px;
     min-height: 50px;
     padding: 20px;
-    &.fullscreen{
-        max-width: calc(100% - 20px);
-        height: calc(100% - 20px);
+
+    &.fullscreen {
+        max-width: calc(100% - 200px);
+        height: calc(100% - 200px);
     }
 }
+
 .dialog__close {
     display: flex;
     align-items: center;
@@ -37,24 +39,65 @@
     top: 20px;
     right: 20px;
     transition: background-color 0.3s;
+
     &:after {
         content: "\f00d";
         font-family: "Font Awesome 5 Free";
         font-weight: bold;
         font-size: 12px;
     }
+
     &:hover {
         background-color: var(--c-primary);
     }
 }
-.dialog__content {
-    opacity: 0;
-    transform: translateY(100%);
-    transition: all 0.3s ease-in-out;
+
+.dialog .button {
+    padding: 10px 35px;
 }
 
-.dialog__content.show {
-    opacity: 1;
-    transform: translateY(0%);
-    transition-delay: 0.1s;
+
+// Анимации для открытия и закрытия
+.dialog-enter-active,
+.dialog-leave-active {
+    transition: opacity 0.3s
 }
+
+.dialog-enter,
+.dialog-leave-to {
+    opacity: 0
+}
+
+.dialog-enter-active .dialog__content,
+.dialog-leave-active .dialog__content {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dialog-enter-from .dialog__content {
+    opacity: 0;
+    transform: translateY(20%);
+}
+
+.dialog-leave-to .dialog__content {
+    opacity: 0;
+    transform: translateY(20%);
+}
+
+
+@media (max-width: 991px) {
+    .dialog__content {
+        &.fullscreen {
+            max-width: calc(100% - 100px);
+            height: calc(100% - 100px);
+        }
+    }
+}
+@media (max-width: 576px) {
+    .dialog__content {
+        &.fullscreen {
+            max-width: calc(100% - 20px);
+            height: auto;
+        }
+    }
+}
+
