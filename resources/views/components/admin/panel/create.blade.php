@@ -42,5 +42,4 @@
 <input type="hidden" name="_method" id="method" value="POST">
 @vite('resources/sass/admin/panel.scss')
 <script> $ar=`{"header":[""],"type":["text"],"data":[[""]]}`; id = 'none';</script>
-<script src="{{ asset('assets/js/admin/lfm.js') }}"></script>
 <script type='text/javascript' src='{{ asset('assets/js/admin/panel/panel_editor.js') }}'></script>

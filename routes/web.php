@@ -8,7 +8,6 @@ use App\Http\Controllers\Admin\Packages\PackagesSettings;
 use App\Http\Controllers\Admin\Page\PageController;
 use App\Http\Controllers\Admin\Panel\PanelController;
 use App\Http\Controllers\Admin\SettingsMenuController;
-use App\Http\Controllers\Admin\SitemapController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\Vue\RouterController;
@@ -47,8 +46,6 @@ Route::middleware('auth')->group(function () {
         Route::post('panel/get_all', [PanelController::class,'getAllPanel'])->name('panel-all-get');
 
         Route::post('panel/select', [PanelController::class,'getSelectTable'])->name('panel-select');
-
-        Route::get('/sitemap',[SitemapController::class,'index'])->name('sitemap');
         Route::resource('packages_settings', PackagesSettings::class);
         Route::resource('navigation', NavigationController::class);
 
@@ -83,7 +80,6 @@ Route::middleware('auth')->group(function () {
                     }
                 }
             }
-
         } catch (Exception $exception)
         {
 

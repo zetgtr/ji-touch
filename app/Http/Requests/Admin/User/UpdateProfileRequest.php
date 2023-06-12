@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin\User;
 
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class UpdateProfileRequest extends FormRequest
@@ -27,6 +28,7 @@ class UpdateProfileRequest extends FormRequest
             'id'=>['required'],
             'last_name'=>['nullable'],
             'first_name'=>['nullable'],
+            'avatar'=>['nullable'],
             'name'=>['required',Rule::unique(User::class)->ignore($this->id, 'id')],
             'email'=>['required','email',Rule::unique(User::class)->ignore($this->id, 'id')],
             'is_admin'=>['boolean'],
@@ -43,6 +45,14 @@ class UpdateProfileRequest extends FormRequest
             $this->merge([
                 'is_admin' => false
             ]);
+        }
+        if ($this->file('avatar_file')) {
+            $file = $this->file('avatar_file');
+            $path = Storage::disk('public')->putFileAs('avatars', $file, 'avatar'.$this->id.'.jpg');
+            $this->merge([
+                'avatar' => "/storage/".$path
+            ]);
+
         }
     }
 }

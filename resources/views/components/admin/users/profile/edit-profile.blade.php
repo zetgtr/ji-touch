@@ -1,4 +1,4 @@
-<form action="{{ route('admin.user.update', ['user'=>$user]) }}" method="POST">
+<form action="{{ route('admin.user.update', ['user'=>$user]) }}" enctype="multipart/form-data" method="POST">
     @csrf
     @method('PUT')
     <input type="hidden" name="id" value="{{ $user->id }}">
@@ -37,12 +37,7 @@
                 <div class="form-group col-md-6">
                     <label for="">Автар</label>
                     <div class="input-group">
-                    <span class="input-group-btn">
-                      <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-default">
-                        <i class="fa fa-picture-o"></i> Загрузка
-                      </a>
-                    </span>
-                        <input id="thumbnail" class="form-control" type="text" name="avatar" value="{{ old("avatar") ? old("avatar") : $user->avatar }}">
+                        <input id="thumbnail" class="form-control" type="file" name="avatar_file" value="{{ old("avatar") ? old("avatar") : $user->avatar }}">
                         <x-error error-value="images" />
                     </div>
                     <div class="pb-0 mt-3">

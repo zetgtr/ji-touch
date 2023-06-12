@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function() {
 Route::post('navigation/set/{id}', [NavigationListController::class,'setLink']);
 
 Route::get('navigation/get/{alias}', [NavigationListController::class,'getAlias']);
+Route::post('panel_photo', [PanelController::class,'setPhoto'])->name('photo');
 
 Route::get('panel_data/{name}', [PanelController::class, 'show']);
 Route::get('page_route', [PageController::class, 'getPageRouter']);

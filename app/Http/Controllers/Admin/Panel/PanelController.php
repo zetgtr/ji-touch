@@ -10,6 +10,7 @@ use App\Models\Admin\Panel\DataPanel;
 use App\Models\Admin\Panel\Panel;
 use App\QueryBuilder\Admin\Panel\PanelBuilder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PanelController extends Controller
 {
@@ -50,6 +51,31 @@ class PanelController extends Controller
             return ['message'=>'Панель успешно сохранена','status'=>true,'id'=>$panel->id];
         }
         return ['message'=>'Ошибка сохранения панели','status'=>false];
+    }
+
+    public function setPhoto(Request $request){
+        $file = $request->file('img');
+
+        // Создание экземпляра Imagick изображения
+        $image = new \Imagick($file->getRealPath());
+
+        // Установка формата изображения в WebP
+        $image->setImageFormat('webp');
+
+        // Установка качества сжатия
+        $image->setImageCompressionQuality(70);
+
+        // Генерация уникального имени файла
+        $fileName = 'panel/' . uniqid() . '.webp';
+
+        // Сохранение изображения в указанном формате и диске
+        $image->writeImage(public_path('storage/' . $fileName));
+
+        // Освобождение ресурсов
+        $image->clear();
+        $image->destroy();
+
+        return "/storage/" . $fileName;
     }
 
     /**

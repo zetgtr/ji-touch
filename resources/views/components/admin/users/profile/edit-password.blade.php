@@ -11,7 +11,7 @@
             <div class="text-center chat-image mb-5">
                 <div class="avatar avatar-xxl chat-profile mb-3 brround">
                     <a class="" href="profile.html">
-                        <img alt="avatar" src="{{asset('assets/images/users/13.jpg')}}" class="brround">
+                        <img alt="avatar" src="{{$user->avatar? $user->avatar : asset('assets/images/users/13.jpg')}}" class="brround">
                     </a>
                 </div>
                 <div class="">
