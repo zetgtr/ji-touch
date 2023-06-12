@@ -2,12 +2,12 @@
 @section('title',"Главные настройки")
 @section('content')
     <div class="card">
-        <form action="{{ route('admin.settings.update', ['setting' => 1]) }}" method="POST" class="row card-body">
+        <form action="{{ route('admin.settings.update', ['setting' => 1]) }}" method="POST" enctype="multipart/form-data" class="row card-body">
             @csrf
             @method('PUT')
             <x-warning />
             <div class="col-xl-4">
-              <x-admin.settings_global.name-site :settings="$settings" />
+              <x-admin.settings_global.name-site :settings="$settings" :metrika="$metrika" />
             </div>
             <div class="col-xl-8">
                 <x-admin.settings_global.info :settings="$settings" />

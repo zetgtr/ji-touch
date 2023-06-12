@@ -56,7 +56,7 @@ class MenuBuilder extends QueryBuilder
     private function checkMenu(Collection $menus){
         foreach ($menus as $key=>$menu){
             if(!$menu->url && count($menu->parent) == 0){
-                unset($menus[$key]);
+//                unset($menus[$key]);
             }
         }
         return $menus;
@@ -74,13 +74,14 @@ class MenuBuilder extends QueryBuilder
                 $this->setMenuParent($menu,$item->parent);
             }
         }
-
+//        dd($items);
         return $this->checkMenu($items);
     }
 
     public function getMenu(string|MenuEnums $menu): Collection
     {
         $menus = $this->model->where('position','=',$menu)->where('parent','=',null)->orderBy('order')->get();
+
         return $this->setMenuParent($menu, $menus);
     }
     public function getAll(): Collection

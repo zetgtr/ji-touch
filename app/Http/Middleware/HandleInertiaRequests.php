@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Admin\Settings\Settings;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -52,6 +53,9 @@ class HandleInertiaRequests extends Middleware
             'contact' => function () {
                 $navigationBuilder = new PanelBuilder();
                 return $navigationBuilder->getAlias('contact');
+            },
+            'settings' => function () {
+                return Settings::query()->find(1);
             },
         ]);
     }

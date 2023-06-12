@@ -204,15 +204,12 @@ const _sfc_main$u = {
   }
 };
 function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_the_header = resolveComponent("the-header");
   const _component_Head = resolveComponent("Head");
   const _component_Link = resolveComponent("Link");
   const _component_CatalogCart = resolveComponent("CatalogCart");
   const _component_CatalogCategory = resolveComponent("CatalogCategory");
   const _component_CatalogProducts = resolveComponent("CatalogProducts");
-  _push(`<!--[--> category `);
-  _push(ssrRenderComponent(_component_the_header, null, null, _parent));
-  _push(`<div class="breadcrumbs">`);
+  _push(`<!--[--> category <div class="breadcrumbs">`);
   _push(ssrRenderComponent(_component_Head, {
     title: _ctx.$page.props.title
   }, null, _parent));
@@ -230,7 +227,6 @@ function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     }),
     _: 1
   }, _parent));
-  _push(`<span>&gt;</span>`);
   _push(ssrRenderComponent(_component_Link, {
     href: _ctx.route("catalog")
   }, {
@@ -245,7 +241,7 @@ function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     }),
     _: 1
   }, _parent));
-  _push(`<span>&gt;</span><!--[-->`);
+  _push(`<!--[-->`);
   ssrRenderList(_ctx.$page.props.breadcrumbs, (item) => {
     _push(ssrRenderComponent(_component_Link, {
       href: _ctx.route("catalog.category", { category: item.url })
@@ -596,12 +592,12 @@ function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
           _push2(ssrRenderComponent(_component_SwiperSlide, { key: index }, {
             default: withCtx((_2, _push3, _parent3, _scopeId2) => {
               if (_push3) {
-                _push3(`<div class="services__item"${_scopeId2}><div class="row"${_scopeId2}><div class="col-5"${_scopeId2}><div class="services__left"${_scopeId2}><h2 class="services__item-title"${_scopeId2}>${_ctx.$replaceNewLines(item.title)}</h2></div><div class="slider__btns-container"${_scopeId2}><div class="swiper-button-prev"${_scopeId2}><svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg"${_scopeId2}><g clip-path="url(#clip0_11_36)"${_scopeId2}><path d="M0.21968 5.46967C-0.0732197 5.76256 -0.0732197 6.23744 0.21968 6.53033L4.99268 11.3033C5.28558 11.5962 5.76048 11.5962 6.05338 11.3033C6.34618 11.0104 6.34618 10.5355 6.05338 10.2426L1.81068 6L6.05338 1.7574C6.34618 1.4645 6.34618 0.989604 6.05338 0.696704C5.76048 0.403804 5.28558 0.403804 4.99268 0.696704L0.21968 5.46967ZM37.329 5.25L0.75008 5.25L0.75008 6.75L37.329 6.75L37.329 5.25Z" fill="black"${_scopeId2}></path><rect x="29" y="5" width="2" height="2" fill="white"${_scopeId2}></rect><rect x="34" y="5" width="1" height="2" fill="white"${_scopeId2}></rect></g><defs${_scopeId2}><clipPath id="clip0_11_36"${_scopeId2}><rect width="38" height="12" fill="white"${_scopeId2}></rect></clipPath></defs></svg></div><div class="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal"${_scopeId2}><span class="swiper-pagination-current"${_scopeId2}>${ssrInterpolate(index + 1)}</span> / <span class="swiper-pagination-total"${_scopeId2}>${ssrInterpolate($props.dataSlider.length)}</span></div><div class="swiper-button-next"${_scopeId2}><svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg"${_scopeId2}><g clip-path="url(#clip0_6_2)"${_scopeId2}><path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"${_scopeId2}></path><rect x="7" y="5" width="2" height="2" fill="white"${_scopeId2}></rect><rect x="3" y="5" width="2" height="2" fill="white"${_scopeId2}></rect></g><defs${_scopeId2}><clipPath id="clip0_6_2"${_scopeId2}><rect width="38" height="12" fill="white"${_scopeId2}></rect></clipPath></defs></svg></div></div></div><div class="col-7"${_scopeId2}><div class="services__item-content"${_scopeId2}><h4 class="services__item-subtitle"${_scopeId2}>${_ctx.$replaceNewLines(item.subtitle)}</h4><p${_scopeId2}>${_ctx.$replaceNewLines(item.desc)}</p><a class="more" href=""${_scopeId2}><span${_scopeId2}>Узнать больше</span><svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg"${_scopeId2}><g clip-path="url(#clip0_6_2)"${_scopeId2}><path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"${_scopeId2}></path><rect x="7" y="5" width="2" height="2" fill="white"${_scopeId2}></rect><rect x="3" y="5" width="2" height="2" fill="white"${_scopeId2}></rect></g><defs${_scopeId2}><clipPath id="clip0_6_2"${_scopeId2}><rect width="38" height="12" fill="white"${_scopeId2}></rect></clipPath></defs></svg></a></div></div></div></div>`);
+                _push3(`<div class="services__item"${_scopeId2}><div class="row"${_scopeId2}><div class="col-lg-5"${_scopeId2}><div class="services__left"${_scopeId2}><h2 class="services__item-title"${_scopeId2}>${_ctx.$replaceNewLines(item.title)}</h2></div><div class="slider__btns-container"${_scopeId2}><div class="swiper-button-prev"${_scopeId2}><svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg"${_scopeId2}><g clip-path="url(#clip0_11_36)"${_scopeId2}><path d="M0.21968 5.46967C-0.0732197 5.76256 -0.0732197 6.23744 0.21968 6.53033L4.99268 11.3033C5.28558 11.5962 5.76048 11.5962 6.05338 11.3033C6.34618 11.0104 6.34618 10.5355 6.05338 10.2426L1.81068 6L6.05338 1.7574C6.34618 1.4645 6.34618 0.989604 6.05338 0.696704C5.76048 0.403804 5.28558 0.403804 4.99268 0.696704L0.21968 5.46967ZM37.329 5.25L0.75008 5.25L0.75008 6.75L37.329 6.75L37.329 5.25Z" fill="black"${_scopeId2}></path><rect x="29" y="5" width="2" height="2" fill="white"${_scopeId2}></rect><rect x="34" y="5" width="1" height="2" fill="white"${_scopeId2}></rect></g><defs${_scopeId2}><clipPath id="clip0_11_36"${_scopeId2}><rect width="38" height="12" fill="white"${_scopeId2}></rect></clipPath></defs></svg></div><div class="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal"${_scopeId2}><span class="swiper-pagination-current"${_scopeId2}>${ssrInterpolate(index + 1)}</span> / <span class="swiper-pagination-total"${_scopeId2}>${ssrInterpolate($props.dataSlider.length)}</span></div><div class="swiper-button-next"${_scopeId2}><svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg"${_scopeId2}><g clip-path="url(#clip0_6_2)"${_scopeId2}><path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"${_scopeId2}></path><rect x="7" y="5" width="2" height="2" fill="white"${_scopeId2}></rect><rect x="3" y="5" width="2" height="2" fill="white"${_scopeId2}></rect></g><defs${_scopeId2}><clipPath id="clip0_6_2"${_scopeId2}><rect width="38" height="12" fill="white"${_scopeId2}></rect></clipPath></defs></svg></div></div></div><div class="col-lg-7"${_scopeId2}><div class="services__item-content"${_scopeId2}><h4 class="services__item-subtitle"${_scopeId2}>${_ctx.$replaceNewLines(item.subtitle)}</h4><p${_scopeId2}>${_ctx.$replaceNewLines(item.desc)}</p><a class="more" href=""${_scopeId2}><span${_scopeId2}>Узнать больше</span><svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg"${_scopeId2}><g clip-path="url(#clip0_6_2)"${_scopeId2}><path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"${_scopeId2}></path><rect x="7" y="5" width="2" height="2" fill="white"${_scopeId2}></rect><rect x="3" y="5" width="2" height="2" fill="white"${_scopeId2}></rect></g><defs${_scopeId2}><clipPath id="clip0_6_2"${_scopeId2}><rect width="38" height="12" fill="white"${_scopeId2}></rect></clipPath></defs></svg></a></div></div></div></div>`);
               } else {
                 return [
                   createVNode("div", { class: "services__item" }, [
                     createVNode("div", { class: "row" }, [
-                      createVNode("div", { class: "col-5" }, [
+                      createVNode("div", { class: "col-lg-5" }, [
                         createVNode("div", { class: "services__left" }, [
                           createVNode("h2", {
                             class: "services__item-title",
@@ -700,7 +696,7 @@ function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                           ], 8, ["onClick"])
                         ])
                       ]),
-                      createVNode("div", { class: "col-7" }, [
+                      createVNode("div", { class: "col-lg-7" }, [
                         createVNode("div", { class: "services__item-content" }, [
                           createVNode("h4", {
                             class: "services__item-subtitle",
@@ -770,7 +766,7 @@ function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
               default: withCtx(() => [
                 createVNode("div", { class: "services__item" }, [
                   createVNode("div", { class: "row" }, [
-                    createVNode("div", { class: "col-5" }, [
+                    createVNode("div", { class: "col-lg-5" }, [
                       createVNode("div", { class: "services__left" }, [
                         createVNode("h2", {
                           class: "services__item-title",
@@ -869,7 +865,7 @@ function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                         ], 8, ["onClick"])
                       ])
                     ]),
-                    createVNode("div", { class: "col-7" }, [
+                    createVNode("div", { class: "col-lg-7" }, [
                       createVNode("div", { class: "services__item-content" }, [
                         createVNode("h4", {
                           class: "services__item-subtitle",
@@ -950,6 +946,11 @@ const toggleMixin = {
       default: false
     }
   },
+  data() {
+    return {
+      modalContent: null
+    };
+  },
   methods: {
     hideDialog() {
       this.$emit("update:show", false);
@@ -961,7 +962,7 @@ const toggleMixin = {
   }
   // ...
 };
-const MyDialog_vue_vue_type_style_index_0_scoped_925ac48f_lang = "";
+const MyDialog_vue_vue_type_style_index_0_scoped_e81ee647_lang = "";
 const _sfc_main$n = {
   name: "my-dialog",
   mixins: [toggleMixin],
@@ -986,9 +987,9 @@ const _sfc_main$n = {
 };
 function _sfc_ssrRender$n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   if (_ctx.show) {
-    _push(`<div${ssrRenderAttrs(mergeProps({ class: "dialog" }, _attrs))} data-v-925ac48f><div class="${ssrRenderClass([{ show: _ctx.show, hide: !_ctx.show, fullscreen: $options.showFullscreen }, "dialog__content"])}" data-v-925ac48f><span class="dialog__close" data-v-925ac48f></span>`);
+    _push(`<div${ssrRenderAttrs(mergeProps({ class: "dialog" }, _attrs))} data-v-e81ee647><div class="${ssrRenderClass([{ show: _ctx.show, hide: !_ctx.show, fullscreen: $options.showFullscreen }, "dialog__content"])}" data-v-e81ee647><span class="dialog__close" data-v-e81ee647></span>`);
     ssrRenderSlot(_ctx.$slots, "default", {}, () => {
-      _push(`<h2 data-v-925ac48f>${ssrInterpolate($props.item.title)}</h2><p data-v-925ac48f>${_ctx.$replaceNewLines($props.item.desc)}</p>`);
+      _push(`<h2 data-v-e81ee647>${ssrInterpolate($props.item.title)}</h2><p data-v-e81ee647>${_ctx.$replaceNewLines($props.item.desc)}</p>`);
     }, _push, _parent);
     _push(`</div></div>`);
   } else {
@@ -1001,7 +1002,7 @@ _sfc_main$n.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UI/MyDialog.vue");
   return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const MyDialog = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["ssrRender", _sfc_ssrRender$n], ["__scopeId", "data-v-925ac48f"]]);
+const MyDialog = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["ssrRender", _sfc_ssrRender$n], ["__scopeId", "data-v-e81ee647"]]);
 const _sfc_main$m = {
   directives: { maska: vMaska },
   props: {
@@ -1619,12 +1620,13 @@ const _sfc_main$e = {
   name: "the-more-button"
 };
 function _sfc_ssrRender$e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  _push(`<a${ssrRenderAttrs(mergeProps({
+  _push(`<div${ssrRenderAttrs(mergeProps({
+    style: { "cursor": "pointer" },
     class: "more",
     href: ""
   }, _attrs))}>`);
   ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
-  _push(`<svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_6_2)"><path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"></path><rect x="7" y="5" width="2" height="2" fill="white"></rect><rect x="3" y="5" width="2" height="2" fill="white"></rect></g><defs><clipPath id="clip0_6_2"><rect width="38" height="12" fill="white"></rect></clipPath></defs></svg></a>`);
+  _push(`<svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_6_2)"><path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"></path><rect x="7" y="5" width="2" height="2" fill="white"></rect><rect x="3" y="5" width="2" height="2" fill="white"></rect></g><defs><clipPath id="clip0_6_2"><rect width="38" height="12" fill="white"></rect></clipPath></defs></svg></div>`);
 }
 const _sfc_setup$e = _sfc_main$e.setup;
 _sfc_main$e.setup = (props, ctx) => {
@@ -1646,16 +1648,18 @@ const _sfc_main$d = {
       title: (_b = this.$page.props.company[0]) == null ? void 0 : _b.title,
       text: (_c = this.$page.props.company[0]) == null ? void 0 : _c.text,
       desc: (_d = this.$page.props.company[0]) == null ? void 0 : _d.desc,
-      more: (_e = this.$page.props.company[0]) == null ? void 0 : _e.more
+      more: (_e = this.$page.props.company[0]) == null ? void 0 : _e.more,
+      sectionCaption: "Company"
     };
   }
 };
 function _sfc_ssrRender$d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_the_more_button = resolveComponent("the-more-button");
+  const _component_the_section_caption = resolveComponent("the-section-caption");
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "about",
     class: "about"
-  }, _attrs))}><div class="container about-container"><div class="about__header wow fadeIn" data-wow-delay="0.4s"><h2>${$data.subtitle}</h2></div><div class="about__wrapper"><div class="row about__wrapper-content"><div class="col-6 wow fadeIn" data-wow-delay="0.4s"><div class="about__item-title-container"><h3 class="about__item-title">${_ctx.$replaceNewLines($data.title)}</h3></div></div><div class="col-6 wow fadeIn" data-wow-delay="0.4s"><div class="about__item-right"><h3 class="about__item-subtitle">${ssrInterpolate($data.text)}</h3><p>${ssrInterpolate($data.desc)}</p>`);
+  }, _attrs))}><div class="container about-container"><div class="about__header wow fadeIn" data-wow-delay="0.4s"><h2>${$data.subtitle}</h2></div><div class="about__wrapper"><div class="row about__wrapper-content"><div class="col-md-6 wow fadeIn" data-wow-delay="0.4s"><div class="about__item-title-container"><h3 class="about__item-title">${_ctx.$replaceNewLines($data.title)}</h3></div></div><div class="col-md-6 wow fadeIn" data-wow-delay="0.4s"><div class="about__item-right"><h3 class="about__item-subtitle">${ssrInterpolate($data.text)}</h3><p>${ssrInterpolate($data.desc)}</p>`);
   _push(ssrRenderComponent(_component_the_more_button, { class: "more" }, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -1668,7 +1672,12 @@ function _sfc_ssrRender$d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     }),
     _: 1
   }, _parent));
-  _push(`</div></div></div></div></div></section>`);
+  _push(`</div></div></div></div>`);
+  _push(ssrRenderComponent(_component_the_section_caption, {
+    sectionCaption: $data.sectionCaption,
+    class: "color"
+  }, null, _parent));
+  _push(`</div></section>`);
 }
 const _sfc_setup$d = _sfc_main$d.setup;
 _sfc_main$d.setup = (props, ctx) => {
@@ -2589,11 +2598,16 @@ const _sfc_main$5 = {
     TheOrderForm,
     TheSectionCaption
   },
+  props: {
+    order: Array
+  },
   data() {
     var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l;
+    console.log(this.$page.props.order);
+    const order = this.$page.props.order ? this.$page.props.order : this.order;
     return {
-      title: this.$page.props.order[0].title,
-      desc: this.$page.props.order[0].desc,
+      title: order[0].title,
+      desc: order[0].desc,
       phone: (_b = (_a = this.$page.props) == null ? void 0 : _a.contact) == null ? void 0 : _b.phone.value,
       email: (_d = (_c = this.$page.props) == null ? void 0 : _c.contact) == null ? void 0 : _d.email.value,
       telegram: (_f = (_e = this.$page.props) == null ? void 0 : _e.contact) == null ? void 0 : _f.telegram.value,
@@ -2633,17 +2647,20 @@ const _sfc_main$5 = {
 function _sfc_ssrRender$5(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_the_order_content = resolveComponent("the-order-content");
   const _component_the_order_form = resolveComponent("the-order-form");
+  const _component_the_section_caption = resolveComponent("the-section-caption");
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "order",
     class: "order"
-  }, _attrs))}><div class="container order-container"><div class="order-container__wrapper"><div class="row"><div class="col-6">`);
+  }, _attrs))}><div class="container order-container"><div class="order-container__wrapper"><div class="row"><div class="col-lg-6">`);
   _push(ssrRenderComponent(_component_the_order_content, {
     row: $options.rowOrder(),
     contact: $options.rowContact()
   }, null, _parent));
-  _push(`</div><div class="col-6">`);
+  _push(`</div><div class="col-xl-6">`);
   _push(ssrRenderComponent(_component_the_order_form, null, null, _parent));
-  _push(`</div></div></div></div></section>`);
+  _push(`</div></div></div>`);
+  _push(ssrRenderComponent(_component_the_section_caption, { sectionCaption: $data.sectionCaption }, null, _parent));
+  _push(`</div></section>`);
 }
 const _sfc_setup$5 = _sfc_main$5.setup;
 _sfc_main$5.setup = (props, ctx) => {
@@ -2732,7 +2749,6 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   const _component_order_component = resolveComponent("order-component");
   const _component_my_dialog = resolveComponent("my-dialog");
   const _component_post_form = resolveComponent("post-form");
-  const _component_the_swiper = resolveComponent("the-swiper");
   const _component_the_footer_vue = resolveComponent("the-footer-vue");
   _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_Head, null, {
@@ -2752,7 +2768,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_first_component, { onModal: $options.showModal }, null, _parent));
   _push(ssrRenderComponent(_component_services_component, null, null, _parent));
   _push(ssrRenderComponent(_component_portfolio_component, {
-    portfolio: this.$page.props.portfolio
+    portfolio: _ctx.$page.props.portfolio
   }, null, _parent));
   _push(ssrRenderComponent(_component_company_component, null, null, _parent));
   _push(ssrRenderComponent(_component_order_component, null, null, _parent));
@@ -2772,7 +2788,6 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     }),
     _: 1
   }, _parent));
-  _push(ssrRenderComponent(_component_the_swiper, null, null, _parent));
   _push(`<div id="messages"></div>`);
   _push(ssrRenderComponent(_component_the_footer_vue, null, null, _parent));
   _push(`<!--]-->`);
@@ -2847,7 +2862,7 @@ const _sfc_main = {
         const componentName = item.alias.charAt(0).toUpperCase() + item.alias.slice(1);
         components[item.alias] = markRaw(
           defineAsyncComponent(
-            () => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../Components/Panels/About.vue": () => import("./assets/About-4644c66e.mjs"), "../Components/Panels/About_inner.vue": () => import("./assets/About_inner-52d769aa.mjs"), "../Components/Panels/Article.vue": () => import("./assets/Article-b872514c.mjs"), "../Components/Panels/Company.vue": () => Promise.resolve().then(() => Company), "../Components/Panels/Contact.vue": () => import("./assets/Contact-0f766bd1.mjs"), "../Components/Panels/First.vue": () => Promise.resolve().then(() => First), "../Components/Panels/Jobs.vue": () => import("./assets/Jobs-d7711f3d.mjs"), "../Components/Panels/Order.vue": () => Promise.resolve().then(() => Order), "../Components/Panels/Portfolio.vue": () => Promise.resolve().then(() => Portfolio), "../Components/Panels/Reviews.vue": () => import("./assets/Reviews-9bdd9677.mjs"), "../Components/Panels/Services.vue": () => Promise.resolve().then(() => Services), "../Components/Panels/Services_inner.vue": () => import("./assets/Services_inner-931cc3ba.mjs") }), `../Components/Panels/${componentName}.vue`)
+            () => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../Components/Panels/About.vue": () => import("./assets/About-e0c3ca1f.mjs"), "../Components/Panels/Article.vue": () => import("./assets/Article-b872514c.mjs"), "../Components/Panels/Company.vue": () => Promise.resolve().then(() => Company), "../Components/Panels/Contact.vue": () => import("./assets/Contact-0f766bd1.mjs"), "../Components/Panels/First.vue": () => Promise.resolve().then(() => First), "../Components/Panels/Jobs.vue": () => import("./assets/Jobs-cba44e45.mjs"), "../Components/Panels/Order.vue": () => Promise.resolve().then(() => Order), "../Components/Panels/Portfolio.vue": () => Promise.resolve().then(() => Portfolio), "../Components/Panels/Reviews.vue": () => import("./assets/Reviews-9bdd9677.mjs"), "../Components/Panels/Services.vue": () => Promise.resolve().then(() => Services), "../Components/Panels/Services_inner.vue": () => import("./assets/Services_inner-b47be774.mjs") }), `../Components/Panels/${componentName}.vue`)
           )
         );
       }
@@ -3875,6 +3890,8 @@ createServer(
 );
 export {
   MyDialog as M,
-  TheMoreButton as T,
-  _export_sfc as _
+  TheButton as T,
+  _export_sfc as _,
+  TheMoreButton as a,
+  toggleMixin as t
 };

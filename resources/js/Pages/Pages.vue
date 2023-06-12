@@ -1,10 +1,12 @@
 <template>
-  <Head
-    ><title>{{ title }}</title></Head
-  >
+    <Head>
+        <title>{{meta.title}}</title>
+        <meta name="description" :content="meta.description ?? $page.props.settings.description">
+        <meta name="keywords" :content="meta.keywords ?? $page.props.settings.keywords">
+    </Head>
   <the-header></the-header>
     <div class="content">
-      <div class="container"><h2>{{ title }}</h2></div>
+      <div class="container"><h2>{{ meta.title }}</h2></div>
       <div v-for="item in panels" :key="item.id">
         <component
           :is="components[item.alias]"
@@ -27,12 +29,13 @@ import { defineAsyncComponent, markRaw } from "@vue/runtime-core";
 import TheHeader from "../Components/TheHeader.vue";
 import TheFooter from "../../vue/src/components/TheFooter.vue";
 import InnerLayoutVue from "../Loyauts/InnerLayout.vue";
+import {Head} from "@inertiajs/vue3";
 
 export default {
-  components: { TheFooter, TheHeader, InnerLayoutVue },
+  components: { TheFooter,Head, TheHeader, InnerLayoutVue },
   layout: InnerLayoutVue,
   props: {
-    title: String,
+    meta: Array,
     panels: Array,
   },
   methods: {

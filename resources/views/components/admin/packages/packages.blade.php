@@ -4,7 +4,7 @@
     <form action="{{ route('admin.packages.destroy', ['package' => 1]) }}" method="post" id="form-remove" class="col-lg-7">
         @csrf
         @method('DELETE')
-        <label for="packages" class="form-label">Установленные пакеты</label>
+        <label for="packages" class="form-label">Установленные плагины</label>
         <select name="packages" multiple class="form-control" id="packages" >
             @foreach($packages as $key=>$package)
                 @foreach($packagesInstall as $install)
@@ -21,7 +21,7 @@
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="packages_install" class="form-label">Установить пакет</label>
+                <label for="packages_install" class="form-label">Установить плагин</label>
                 <select name="packages_install" id="packages_install" class="form-select">
                     <option value="0">-- Выберете --</option>
                     @foreach($packages as $key=>$package)

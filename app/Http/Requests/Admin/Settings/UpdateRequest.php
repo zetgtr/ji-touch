@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Settings;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Storage;
 
 class UpdateRequest extends FormRequest
 {
@@ -30,5 +31,16 @@ class UpdateRequest extends FormRequest
             'description' => ['nullable'],
             'keywords' => ['nullable']
         ];
+    }
+
+    public function prepareForValidation(){
+        if ($this->file('image')) {
+            $file = $this->file('image');
+            $path = Storage::disk('public')->putFileAs('icon', $file, 'icon.jpg');
+            $this->merge([
+                'site_banner' => "/storage/".$path
+            ]);
+
+        }
     }
 }

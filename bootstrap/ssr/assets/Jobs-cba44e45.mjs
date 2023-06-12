@@ -38,7 +38,6 @@ _sfc_main$4.setup = (props, ctx) => {
   return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
 const TheTabButton = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender$4]]);
-const JobsItem_vue_vue_type_style_index_0_lang = "";
 const _sfc_main$3 = {
   components: {
     TheTabButton
@@ -63,7 +62,7 @@ const _sfc_main$3 = {
 };
 function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_TheTabButton = resolveComponent("TheTabButton");
-  _push(`<div${ssrRenderAttrs(mergeProps({ class: "job" }, _attrs))}><div class="row"><div class="col-5" style="${ssrRenderStyle({ "display": "flex", "flex-direction": "column" })}"><h2>${ssrInterpolate($props.item.title)}</h2><div class="job-logo"><img${ssrRenderAttr("src", $props.item.img)} alt=""></div></div><div class="col-7" style="${ssrRenderStyle({ "display": "flex", "flex-direction": "column", "row-gap": "1.5rem" })}"><div class="tabs">`);
+  _push(`<div${ssrRenderAttrs(mergeProps({ class: "job" }, _attrs))}><div class="row"><div class="col-xl-5 job-top" style="${ssrRenderStyle({ "display": "flex", "flex-direction": "column" })}"><h2>${ssrInterpolate($props.item.title)}</h2><div class="job-logo"><img${ssrRenderAttr("src", $props.item.img)} alt=""></div></div><div class="col-xl-7" style="${ssrRenderStyle({ "display": "flex", "flex-direction": "column", "row-gap": "1.5rem" })}"><div class="tabs">`);
   _push(ssrRenderComponent(_component_TheTabButton, {
     isActive: $data.activeTab === "requirements",
     onClick: ($event) => $options.changeTab("requirements")

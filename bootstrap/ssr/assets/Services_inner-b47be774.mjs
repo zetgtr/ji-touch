@@ -1,4 +1,4 @@
-import { _ as _export_sfc, T as TheMoreButton, M as MyDialog } from "../ssr.mjs";
+import { _ as _export_sfc, a as TheMoreButton, M as MyDialog, t as toggleMixin } from "../ssr.mjs";
 import { resolveComponent, withCtx, createVNode, useSSRContext } from "vue";
 import { F as Fancybox } from "./Fancybox-f894d5d1.mjs";
 import { ssrRenderList, ssrInterpolate, ssrRenderComponent } from "vue/server-renderer";
@@ -73,23 +73,32 @@ const _sfc_main = {
     ServicesItem,
     MyDialog
   },
+  mixins: [toggleMixin],
   data() {
     console.log(this.$page.props);
     return {
+      dialogElement: null,
       dialogVisible: false,
       selectedItem: null,
       fullscreen: false
     };
+  },
+  mounted() {
+    this.dialogElement = this.$refs.dialogElement;
+    console.log(this);
   },
   methods: {
     showModal(item, flag = false) {
       if (!!flag) {
         this.fullscreen = true;
       }
+      this.beforeOpenDialog(this.dialogElement, item);
       this.selectedItem = item;
       this.dialogVisible = true;
-      console.log(flag);
       document.body.classList.add("overflow");
+    },
+    beforeOpenDialog(dialogElement, item) {
+      console.log("Before opening dialog");
     }
   }
 };
@@ -103,6 +112,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
   }, null, _parent));
   _push(`</div></div></div></div>`);
   _push(ssrRenderComponent(_component_my_dialog, {
+    ref: "dialogElement",
     item: $data.selectedItem,
     flag: $data.fullscreen,
     show: $data.dialogVisible,

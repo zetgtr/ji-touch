@@ -35,7 +35,7 @@ class NavigationBuilder extends QueryBuilder
     }
     public function getAll(): Collection
     {
-        return $this->navigation->get();
+        return $this->navigation->orderBy('title')->get();
     }
 
     public function getNavigationLinks($navigationListId)
@@ -60,7 +60,7 @@ class NavigationBuilder extends QueryBuilder
 
     public function getListAll()
     {
-        return $this->navigationList->get();
+        return $this->navigationList->orderBy('title')->get();
     }
 
     private function setOrder(array $pages, int $parent = null,$id)

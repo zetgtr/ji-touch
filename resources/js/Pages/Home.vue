@@ -6,7 +6,7 @@
     <TheAnimateBg></TheAnimateBg>
     <first-component v-on:modal="showModal"></first-component>
     <services-component></services-component>
-    <portfolio-component :portfolio="this.$page.props.portfolio"></portfolio-component>
+    <portfolio-component :portfolio="$page?.props.portfolio"></portfolio-component>
     <company-component></company-component>
     <order-component ></order-component>
     <my-dialog v-model:show="dialogVisible" @accepted="showModal">

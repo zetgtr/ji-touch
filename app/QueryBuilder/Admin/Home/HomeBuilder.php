@@ -16,11 +16,11 @@ class HomeBuilder extends QueryBuilder
     private Metrika $metrikaModel;
     public function __construct()
     {
-        $token = 'y0_AgAAAAANClWCAAoE-gAAAADk6m_e6pY626ToTPGmD_JytPPKL7swDFw';
-        $counterId = '90983527';
+        $this->metrikaModel = Metrika::query()->find(1);
+        $token = $this->metrikaModel->key;
+        $counterId = $this->metrikaModel->counter_id;
         $client = new Client($token, $counterId);
         $this->metrika = new YaMetrika($client);
-        $this->metrikaModel = Metrika::query()->find(1);
     }
 
     public function getMetrikaTable(){

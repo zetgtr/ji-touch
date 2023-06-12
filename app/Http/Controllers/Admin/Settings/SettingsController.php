@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Settings\UpdateRequest;
+use App\Models\Admin\Home\Metrika;
 use App\Models\Admin\Settings\Settings;
 use App\QueryBuilder\Admin\Settings\SettingsBuilder;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class SettingsController extends Controller
      */
     public function index(SettingsBuilder $settingsBuilder)
     {
-        return view('admin.settings.index',['settings'=>$settingsBuilder->get()]);
+        return view('admin.settings.index',['settings'=>$settingsBuilder->get(),'metrika'=>Metrika::query()->find(1)]);
     }
 
     /**
@@ -56,8 +57,11 @@ class SettingsController extends Controller
     public function update(UpdateRequest $request, int $id)
     {
         $updated = Settings::query()->find($id);
+        $metrika = Metrika::query()->find(1);
+        $metrika->key = $request->get('key');
+        $metrika->counter_id = $request->get('counter_id');
         $updated = $updated->fill($request->validated());
-        if ($updated->save()) {
+        if ($updated->save() && $metrika->save()) {
             return \redirect()->route('admin.settings.index')->with('success', __('messages.admin.settings.update.success'));
         }
 
