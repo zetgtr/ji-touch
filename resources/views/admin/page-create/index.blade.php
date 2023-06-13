@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header card-header-divider">
                     <div>
-                        <h4>Редактирование страницы</h4>
+                        <h3 class="card-title">Редактирование страницы</h3>
                     </div>
                 </div>
                 <div class="card-body">
@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 order-md-first d-flex align-items-start justify-content-end">
-                            <a href="{{ route('admin.page-create.create') }}" class="btn btn-primary">Добавить страницу</a>
+                            <a href="{{ route('admin.page-create.create') }}" class="btn btn-sm btn-primary">Добавить страницу</a>
                         </div>
                     </div>
                 </div>

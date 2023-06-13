@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Users;
 
-use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\CreateUserRequest;
 use App\Http\Requests\Admin\User\PasswordUpdateRequest;
 use App\Http\Requests\Admin\User\UpdateProfileRequest;
 use App\Models\User;
@@ -26,17 +26,26 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create(): View
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(CreateUserRequest $request): RedirectResponse
     {
-        //
+        $user = User::create($request->validated());
+        if ($user) {
+            if($request->handle($user))
+                return redirect()->route('admin.user.index',['user'=>$user])->with('success','Пользователь успешно добавлен');
+            else
+                return redirect()->back()->with('error', 'Не удалось обновить пароль пользователя!');
+
+        }
+        return redirect()->back()->with('error', 'Произошла ошибка добавления пользователя!');
+
     }
 
     /**
@@ -60,9 +69,13 @@ class UserController extends Controller
      */
     public function update(UpdateProfileRequest $updateProfileRequest, User $user): RedirectResponse
     {
-        $user = $user->fill($updateProfileRequest->validated());
+        $user = $user->fill($updateProfileRequest->except('password', 'password_confirmation'));
         if ($user->save()){
-            return redirect()->route('admin.user.edit',['user'=>$user])->with('success','Пользователь успешно обновлен');
+            if($updateProfileRequest->handle())
+                return redirect()->route('admin.user.edit',['user'=>$user])->with('success','Пользователь успешно обновлен');
+            else
+                return redirect()->route('admin.user.edit',['user'=>$user])->with('error','Не удалось обновить пароль пользователя');
+
         }
 
         return redirect()->route('admin.user.edit',['user'=>$user])->with('error','Не удалось обновить пользователя');

@@ -6,6 +6,7 @@ use App\Models\Admin\Roles;
 use App\Models\Admin\Roles\RolesHasMenus;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class RolesBuilder extends QueryBuilder
 {
@@ -21,7 +22,6 @@ class RolesBuilder extends QueryBuilder
             ['menu_id' => $menuId, 'role_id' => $roleId]
         );
 
-        // Меняем значение show на противоположное, если запись уже существует
         if ($record->wasRecentlyCreated) {
             $record->show = true;
         } else {
@@ -33,7 +33,7 @@ class RolesBuilder extends QueryBuilder
     }
 
     public function get(){
-        return $this->model->where('id','!=',1)->get();
+        return $this->model->where('id','!=',1)->where('id','!=',Auth::user()->role_id)->get();
     }
 
     public function getAll(): Collection

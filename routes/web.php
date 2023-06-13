@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\Packages\PackagesSettings;
 use App\Http\Controllers\Admin\Page\PageController;
 use App\Http\Controllers\Admin\Panel\PanelController;
 use App\Http\Controllers\Admin\SettingsMenuController;
-use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\Users\UserController as AdminUserController;
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\Vue\RouterController;
 use App\Models\Admin\Menu;
@@ -16,7 +16,6 @@ use App\QueryBuilder\Admin\Page\PageBuilder;
 use App\Utils\Lfm;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
 
 
 /*
@@ -117,11 +116,6 @@ Route::get('/process-queue', function () {
 });
 
 Route::get('/',[RouterController::class,'index'])->name('home');
-// Route::get('/project',[RouterController::class,'project'])->name('project');
-// Route::get('/about',[RouterController::class,'about'])->name('about');
-// Route::get('/agency',[RouterController::class,'agency'])->name('agency');
-// Route::get('/education',[RouterController::class,'education'])->name('education');
-// Route::get('/services',[RouterController::class,'services'])->name('services');
 
 try {
     $pageBuilder = new PageBuilder();

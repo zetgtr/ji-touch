@@ -16,7 +16,11 @@ class SettingsController extends Controller
      */
     public function index(SettingsBuilder $settingsBuilder)
     {
-        return view('admin.settings.index',['settings'=>$settingsBuilder->get(),'metrika'=>Metrika::query()->find(1)]);
+        return view('admin.settings.index',[
+            'settings'=>$settingsBuilder->get(),
+            'metrika'=>Metrika::query()->find(1),
+            'key'=>app('firebase.database')->getReference('/metrika/key')->getValue()
+        ]);
     }
 
     /**
@@ -58,7 +62,9 @@ class SettingsController extends Controller
     {
         $updated = Settings::query()->find($id);
         $metrika = Metrika::query()->find(1);
-        $metrika->key = $request->get('key');
+        $database = app('firebase.database');
+        $ref = $database->getReference('/metrika/key');
+        $ref->set($request->get('key'));
         $metrika->counter_id = $request->get('counter_id');
         $updated = $updated->fill($request->validated());
         if ($updated->save() && $metrika->save()) {

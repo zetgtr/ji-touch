@@ -4,6 +4,7 @@ namespace App\QueryBuilder;
 
 use App\Enums\MenuEnums;
 use App\Models\Admin\Menu;
+use App\Models\Admin\Roles;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,19 +23,21 @@ class MenuBuilder extends QueryBuilder
         return $links;
     }
 
-    public function getMenuRoles(int $roleId): Collection|array
+    public function getMenuRoles(Roles $role): Collection|array
     {
         $menus = $this->model
             ->select('menus.*', 'roles_has_menus.show')
-            ->leftJoin('roles_has_menus', function ($join) use ($roleId) {
+            ->leftJoin('roles_has_menus', function ($join) use ($role) {
                 $join->on('menus.id', '=', 'roles_has_menus.menu_id')
-                    ->where('roles_has_menus.role_id', '=', $roleId);
+                    ->where('roles_has_menus.role_id', '=', $role->id);
             })
             ->where('url', '!=', null)
             ->get();
-//        dd($menus);
        foreach ($menus as $key=>$menu){
            if(!Auth::user()->hasMenu($menu->id)){
+               unset($menus[$key]);
+           }
+           if(Auth::user()->role_id !== 1 && $menu->id === 9){
                unset($menus[$key]);
            }
        }

@@ -1,11 +1,20 @@
 @extends('layouts.admin')
 @section('title', __('admin/user.title'))
 @section('content')
+
     <div class="row row-cards">
         <div class="col-lg-12 col-xl-12">
             <div class="card">
+                <div class="card-header card-header-divider">
+                    <div>
+                        <h3  class="card-title">{{__('admin/user.title')}}</h3>
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="e-table px-5 pb-5">
+                        <div class="d-flex justify-content-end mb-3">
+                            <a href="{{ route('admin.user.create') }}" class="btn btn-sm btn-primary ">Добавить пользователя</a>
+                        </div>
                         <div class="table-responsive table-lg">
                             <table id="example2" class="table table-bordered text-nowrap border-bottom">
                                 <x-admin.users.table.head />

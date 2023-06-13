@@ -7,8 +7,8 @@
         </div>
         <x-admin.navigatin-js :links="$links" />
         <div class="card-body">
-            <div class="form-group">
-                <a href="{{ route('admin.panel.create') }}" class="btn btn-light btn-sm"><i class="fas fa-plus"></i> Добавить панель</a>
+            <div class="form-group d-flex justify-content-end">
+                <a href="{{ route('admin.panel.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Добавить панель</a>
             </div>
             <div class="tab-content">
                 <x-admin.panel.panel-list />

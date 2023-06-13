@@ -17,7 +17,7 @@ class HomeBuilder extends QueryBuilder
     public function __construct()
     {
         $this->metrikaModel = Metrika::query()->find(1);
-        $token = $this->metrikaModel->key;
+        $token = app('firebase.database')->getReference('/metrika/key')->getValue();
         $counterId = $this->metrikaModel->counter_id;
         $client = new Client($token, $counterId);
         $this->metrika = new YaMetrika($client);

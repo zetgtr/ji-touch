@@ -1,9 +1,3 @@
-<div class="card-header card-header-divider mb-5">
-    <div>
-        <h4>Название сайта</h4>
-    </div>
-</div>
-
 <div class="form-group">
     <label for="sitename">Название сайта:</label>
     <input type="text" name="site_name" value="{{ old('site_name') ? old('site_name') : $settings->site_name }}" maxlength="255" class="form-control @error('site_name') is-invalid @enderror">
@@ -16,7 +10,7 @@
             <label for="username">Ваше имя:</label>
             <input type="text" name="user_name" value="{{ old('user_name') ? old('user_name') : $settings->user_name }}" maxlength="32" class="form-control @error('user_name') is-invalid @enderror">
             <x-error error-value="useimager_name" />
-        </div>image
+        </div>
     </div>
     <div class="col-xl-6">
         <div class="form-group">
@@ -29,8 +23,8 @@
 <div class="row">
     <div class="col-xl-8">
         <div class="form-group">
-            <label for="username">Ключ метрики:</label>
-            <input type="text" name="key" value="{{ old('key') ? old('key') : $metrika->key }}" class="form-control @error('key') is-invalid @enderror">
+            <label for="username">API токен метрики:</label>
+            <input type="text" name="key" value="{{ old('key') ? old('key') : $key }}" class="form-control @error('key') is-invalid @enderror">
             <x-error error-value="key" />
         </div>
     </div>

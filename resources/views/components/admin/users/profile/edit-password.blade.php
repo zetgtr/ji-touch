@@ -1,23 +1,21 @@
-<div class="card">
-    <div class="card-header">
-        <div class="card-title">Изменить пароль</div>
-    </div>
-    <form action="{{ route('admin.password-update') }}" method="POST">
-        <div class="card-body">
+
+
+        <div class="card-body col-lg-4">
             <x-warning />
-            @csrf
-            @method('PUT')
             <input type="hidden" name="id" value="{{ $user->id }}">
             <div class="text-center chat-image mb-5">
                 <div class="avatar avatar-xxl chat-profile mb-3 brround">
-                    <a class="" href="profile.html">
-                        <img alt="avatar" src="{{$user->avatar? $user->avatar : asset('assets/images/users/13.jpg')}}" class="brround">
-                    </a>
+                    <img alt="avatar" src="{{$user->avatar ?? asset('assets/images/users/13.jpg')}}" class="brround">
                 </div>
                 <div class="">
-                    <a href="profile.html">
-                        <h5 class="mb-1 text-dark fw-semibold">{{ $user->name }}</h5>
-                    </a>
+                    <h5 class="mb-1 text-dark fw-semibold">{{ $user->name }}</h5>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Автар</label>
+                <div class="input-group">
+                    <input id="thumbnail" class="form-control" type="file" name="avatar_file" value="{{ old("avatar") ? old("avatar") : $user->avatar }}">
+                    <x-error error-value="images" />
                 </div>
             </div>
             <div class="form-group">
@@ -39,10 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-footer text-end">
-            <button type="submit" class="btn btn-success">Сохранить</button>
-        </div>
-    </form>
-</div>
+
+
 
 <script src="{{ asset('assets/js/show-password.min.js') }}"></script>

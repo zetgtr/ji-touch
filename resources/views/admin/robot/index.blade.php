@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header card-header-divider">
                     <div>
-                        <h4>robots.txt</h4>
+                        <h3  class="card-title">robots.txt</h3>
                         <span class="card-header-subtitle">Вы можете найти более подробную информацию и помощь о robots.txt <a href="http://www.robotstxt.org/" target="_blank">здесь</a></span>
                     </div>
                 </div>

@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header card-header-divider">
                     <div>
-                        <h4>Создание страницы</h4>
+                        <h3 class="card-title">Создание страницы</h3>
                         <span class="card-header-subtitle">Внесите необходимые изменения и сохраните страницу.</span>
                     </div>
                 </div>

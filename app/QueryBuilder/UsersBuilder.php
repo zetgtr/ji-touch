@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 
 class UsersBuilder extends QueryBuilder
 {
@@ -28,6 +29,9 @@ class UsersBuilder extends QueryBuilder
 
     public function getAll(): Collection
     {
-        return $this->model->get();
+        if(Auth::user()->role_id === 1)
+            return $this->model->get();
+        else
+            return $this->model->where('role_id','!=',1)->get();
     }
 }

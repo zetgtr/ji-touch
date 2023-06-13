@@ -1,9 +1,4 @@
-<div class="card-header card-header-divider">
-    <div>
-        <h4>Информация</h4>
-    </div>
-</div>
-<div class="card-body">
+
     <div class="form-group">
         <label for="description">Описание сайта: <span class="small">(description)</span></label>
         <textarea name="description" cols="50" rows="3" class="form-control @error('description') is-invalid @enderror">{{ old('description') ? old('description') : $settings->description }}</textarea>
@@ -19,4 +14,4 @@
         <textarea name="footer" cols="50" rows="3" class="form-control @error('footer') is-invalid @enderror">{{ old('footer') ? old('footer') : $settings->footer }}</textarea>
         <x-error error-value="footer" />
     </div>
-</div>
+

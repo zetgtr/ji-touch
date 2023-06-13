@@ -7,10 +7,12 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\ValidationException;
 
-class UpdateProfileRequest extends FormRequest
+class CreateUserRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     */
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -27,7 +29,6 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id'=>['required'],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
             'password_confirmation' => ['nullable', 'string'],
             'last_name'=>['nullable'],
@@ -39,22 +40,19 @@ class UpdateProfileRequest extends FormRequest
             'role_id'=>['exists:roles,id','required']
         ];
     }
-    public function handle()
+    public function handle($user)
     {
-        $user = User::findOrFail($this->validated('id'));
         if($this->input('password') === $this->input('password_confirmation')) {
             $user->update(['password' => Hash::make($this->input('password'))]);
             return true;
         }
+
         return false;
     }
-
     public function prepareForValidation(){
-
         $this->merge([
             'is_admin' => $this->input('is_admin') === "on"
         ]);
-
         if ($this->file('avatar_file')) {
             $file = $this->file('avatar_file');
             $path = Storage::disk('public')->putFileAs('avatars', $file, 'avatar'.$this->id.'.jpg');

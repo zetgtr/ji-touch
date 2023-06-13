@@ -51,7 +51,7 @@ class RolesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(int $role, MenuBuilder $menuBuilder): Collection|null
+    public function edit(Roles $role, MenuBuilder $menuBuilder): Collection|null
     {
         return $menuBuilder->getMenuRoles($role);
     }
