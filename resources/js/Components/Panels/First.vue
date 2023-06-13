@@ -3,14 +3,14 @@
     <div class="container first-container">
       <div class="first__wrapper">
         <div class="caption">
-          <h1
-            class="wow zoomInUp"
-            data-wow-delay="0.3s"
-            v-html="$replaceNewLines(first[0].title)"
-          ></h1>
-          <p class="wow zoomInUp" data-wow-delay="0.3s">
-            {{ first[0].desc }}
-          </p>
+          <AosWrapper>
+            <div data-aos="fade-up">
+              <h1 v-html="$replaceNewLines(first[0].title)"></h1>
+              <p>
+                {{ first[0].desc }}
+              </p>
+            </div>
+          </AosWrapper>
         </div>
         <the-button
           class="button button-click button--orange first__btn"
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import AosWrapper from "./../AosWrapper.vue";
 import TheButton from "./../UI/TheButton.vue";
 import TheSectionCaption from "./../TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
@@ -55,9 +56,10 @@ export default {
   components: {
     TheButton,
     TheSectionCaption,
+    AosWrapper,
   },
   data() {
-      console.log(this.first)
+    console.log(this.first);
     return {
       first: this.$page.props.first,
       sectionCaption: "DIgital-Агентство",
@@ -65,7 +67,7 @@ export default {
   },
   methods: {
     ...mapMutations({}),
-    showModal(){
+    showModal() {
       this.$emit("modal");
     },
   },
@@ -73,5 +75,4 @@ export default {
 </script>
 
 <style lang="scss" >
-
 </style>

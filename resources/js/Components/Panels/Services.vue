@@ -1,30 +1,51 @@
 <template>
   <section id="services" class="services">
     <div class="container services-container">
-      <div class="services__header wow fadeIn" data-wow-delay="0.2s">
-        <p>
-          {{ desc }}
-        </p>
-      </div>
-      <div class="services__wrapper wow fadeIn" data-wow-delay="0.4s">
-        <the-swiper
-          ref="mySwiper"
-          :activeIndex="activeIndex"
-          v-on:goToSlide="goToSlide"
-          v-on:activeIndexChanged="activeIndexChanged"
-          :dataSlider="slider ? slider : []"
-        ></the-swiper>
-      </div>
-      <div class="services__wrapper__text">
-        <div
-          class="thumb__item"
-          v-for="(item, index) in slider_thumb"
-          :key="index"
-          :class="{ active: activeIndex === index }"
-        >
-          <span @click="goToSlide(index)">{{ item.title }}</span>
+      <AosWrapper>
+        <div data-aos="fade-up">
+          <div class="services__header">
+            <p>
+              {{ desc }}
+            </p>
+          </div>
         </div>
-      </div>
+      </AosWrapper>
+      <AosWrapper>
+        <div
+          data-aos="fade-in"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000"
+          data-aos-delay="50"
+        >
+          <div class="services__wrapper wow fadeIn" data-wow-delay="0.4s">
+            <the-swiper
+              ref="mySwiper"
+              :activeIndex="activeIndex"
+              v-on:goToSlide="goToSlide"
+              v-on:activeIndexChanged="activeIndexChanged"
+              :dataSlider="slider ? slider : []"
+            ></the-swiper>
+          </div>
+        </div>
+      </AosWrapper>
+      <AosWrapper>
+        <div
+          data-aos="fade-up"
+          data-aos-easing="ease-out-cubic"
+          data-aos-delay="50"
+        >
+          <div class="services__wrapper__text">
+            <div
+              class="thumb__item"
+              v-for="(item, index) in slider_thumb"
+              :key="index"
+              :class="{ active: activeIndex === index }"
+            >
+              <span @click="goToSlide(index)">{{ item.title }}</span>
+            </div>
+          </div>
+        </div>
+      </AosWrapper>
       <the-section-caption
         :sectionCaption="sectionCaption"
         class="color"

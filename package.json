@@ -27,6 +27,7 @@
         "air-datepicker": "^3.3.5",
         "animate.css": "^4.1.1",
         "animejs": "^3.2.1",
+        "aos": "^2.3.4",
         "bootstrap": "^5.2.3",
         "gsap": "^3.11.4",
         "lodash": "^4.17.21",
