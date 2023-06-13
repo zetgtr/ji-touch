@@ -1,6 +1,6 @@
 import { mapMutations, mapActions, mapGetters, mapState, useStore, createStore } from "vuex";
 import { ssrRenderList, ssrInterpolate, ssrRenderComponent, ssrRenderAttr, ssrRenderAttrs, ssrRenderClass, ssrRenderSlot, ssrGetDirectiveProps, ssrRenderStyle, ssrRenderVNode } from "vue/server-renderer";
-import { useSSRContext, resolveComponent, mergeProps, withCtx, createVNode, toDisplayString, createTextVNode, ref, onMounted, openBlock, createBlock, Fragment, renderList, resolveDirective, createCommentVNode, toRefs, computed, onUnmounted, watch, resolveDynamicComponent, createSSRApp, h as h$1 } from "vue";
+import { useSSRContext, resolveComponent, mergeProps, withCtx, createVNode, toDisplayString, createTextVNode, ref, onMounted, openBlock, createBlock, Fragment, renderList, resolveDirective, toRefs, computed, onUnmounted, watch, resolveDynamicComponent, createSSRApp, h as h$1 } from "vue";
 import { Link, Head, createInertiaApp } from "@inertiajs/vue3";
 import anime from "animejs";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/vue";
@@ -22,7 +22,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$y = {
+const _sfc_main$z = {
   data() {
     return {};
   },
@@ -46,7 +46,7 @@ const _sfc_main$y = {
   },
   watch: {}
 };
-function _sfc_ssrRender$y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$z(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<!--[--> Product <div class="container"><!--[-->`);
   ssrRenderList(_ctx.cart, (item, index) => {
     _push(`<div class="cart_items">`);
@@ -59,18 +59,18 @@ function _sfc_ssrRender$y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   });
   _push(`<!--]--><button>Очистить корзину</button><div><p>Общая стоимость: ${ssrInterpolate(_ctx.totalPrice)} руб.</p></div></div><!--]-->`);
 }
-const _sfc_setup$y = _sfc_main$y.setup;
-_sfc_main$y.setup = (props, ctx) => {
+const _sfc_setup$z = _sfc_main$z.setup;
+_sfc_main$z.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Catalog/Cart.vue");
-  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
+  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
 };
-const Cart = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["ssrRender", _sfc_ssrRender$y]]);
+const Cart = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["ssrRender", _sfc_ssrRender$z]]);
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Cart
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$x = {
+const _sfc_main$y = {
   components: {
     Link
   },
@@ -80,7 +80,7 @@ const _sfc_main$x = {
     })
   }
 };
-function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$y(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = resolveComponent("Link");
   _push(ssrRenderComponent(_component_Link, mergeProps({
     href: "/catalog/cart",
@@ -99,19 +99,19 @@ function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
 }
-const _sfc_setup$x = _sfc_main$x.setup;
-_sfc_main$x.setup = (props, ctx) => {
+const _sfc_setup$y = _sfc_main$y.setup;
+_sfc_main$y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/catalog/cart/CatalogCart.vue");
-  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
+  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
 };
-const CatalogCart = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["ssrRender", _sfc_ssrRender$x]]);
-const _sfc_main$w = {
+const CatalogCart = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["ssrRender", _sfc_ssrRender$y]]);
+const _sfc_main$x = {
   components: {
     Link
   }
 };
-function _sfc_ssrRender$w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$x(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = resolveComponent("Link");
   _push(`<!--[-->`);
   ssrRenderList(_ctx.$page.props.catalog.categories, (category) => {
@@ -143,19 +143,19 @@ function _sfc_ssrRender$w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   });
   _push(`<!--]-->`);
 }
-const _sfc_setup$w = _sfc_main$w.setup;
-_sfc_main$w.setup = (props, ctx) => {
+const _sfc_setup$x = _sfc_main$x.setup;
+_sfc_main$x.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/catalog/categories/CatalogCategory.vue");
-  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
+  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
 };
-const CatalogCategory = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["ssrRender", _sfc_ssrRender$w]]);
-const _sfc_main$v = {
+const CatalogCategory = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["ssrRender", _sfc_ssrRender$x]]);
+const _sfc_main$w = {
   components: {
     Link
   }
 };
-function _sfc_ssrRender$v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$w(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = resolveComponent("Link");
   _push(`<!--[-->`);
   ssrRenderList(_ctx.$page.props.catalog.products, (product) => {
@@ -187,14 +187,14 @@ function _sfc_ssrRender$v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   });
   _push(`<!--]-->`);
 }
-const _sfc_setup$v = _sfc_main$v.setup;
-_sfc_main$v.setup = (props, ctx) => {
+const _sfc_setup$w = _sfc_main$w.setup;
+_sfc_main$w.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/catalog/categories/CatalogProducts.vue");
-  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
+  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
 };
-const CatalogProducts = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["ssrRender", _sfc_ssrRender$v]]);
-const _sfc_main$u = {
+const CatalogProducts = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["ssrRender", _sfc_ssrRender$w]]);
+const _sfc_main$v = {
   components: {
     Head,
     CatalogCategory,
@@ -203,7 +203,7 @@ const _sfc_main$u = {
     Link
   }
 };
-function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$v(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Head = resolveComponent("Head");
   const _component_Link = resolveComponent("Link");
   const _component_CatalogCart = resolveComponent("CatalogCart");
@@ -264,18 +264,18 @@ function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_CatalogProducts, null, null, _parent));
   _push(`</div><!--]-->`);
 }
-const _sfc_setup$u = _sfc_main$u.setup;
-_sfc_main$u.setup = (props, ctx) => {
+const _sfc_setup$v = _sfc_main$v.setup;
+_sfc_main$v.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Catalog/Category.vue");
-  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
+  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
 };
-const Category = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["ssrRender", _sfc_ssrRender$u]]);
+const Category = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["ssrRender", _sfc_ssrRender$v]]);
 const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Category
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$t = {
+const _sfc_main$u = {
   components: { CatalogCart },
   data() {
     console.log(this.$page.props.product);
@@ -288,24 +288,24 @@ const _sfc_main$t = {
     })
   }
 };
-function _sfc_ssrRender$t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$u(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_CatalogCart = resolveComponent("CatalogCart");
   _push(`<!--[--> Product <div class="container">`);
   _push(ssrRenderComponent(_component_CatalogCart, null, null, _parent));
   _push(`<div class="product"><img${ssrRenderAttr("src", _ctx.$page.props.product.images)} alt="Product image"><h2 class="product-title">${ssrInterpolate(_ctx.$page.props.product.title)}</h2><div class="product-description">${_ctx.$page.props.product.description}</div><p class="product-price">${ssrInterpolate(_ctx.$page.props.product.price)}</p><button class="add-to-cart-btn">Добавить в корзину</button></div></div><!--]-->`);
 }
-const _sfc_setup$t = _sfc_main$t.setup;
-_sfc_main$t.setup = (props, ctx) => {
+const _sfc_setup$u = _sfc_main$u.setup;
+_sfc_main$u.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Catalog/Product.vue");
-  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
+  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
 };
-const Product = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["ssrRender", _sfc_ssrRender$t]]);
+const Product = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["ssrRender", _sfc_ssrRender$u]]);
 const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Product
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$s = {
+const _sfc_main$t = {
   components: {
     Link
   },
@@ -325,7 +325,7 @@ const _sfc_main$s = {
     }
   }
 };
-function _sfc_ssrRender$s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$t(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = resolveComponent("Link");
   _push(`<ul${ssrRenderAttrs(mergeProps({
     class: ["list-reset", $props.classes]
@@ -352,14 +352,14 @@ function _sfc_ssrRender$s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   });
   _push(`<!--]--></ul>`);
 }
-const _sfc_setup$s = _sfc_main$s.setup;
-_sfc_main$s.setup = (props, ctx) => {
+const _sfc_setup$t = _sfc_main$t.setup;
+_sfc_main$t.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/TheLinkList.vue");
-  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
+  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
 };
-const TheLinkList = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["ssrRender", _sfc_ssrRender$s]]);
-const _sfc_main$r = {
+const TheLinkList = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["ssrRender", _sfc_ssrRender$t]]);
+const _sfc_main$s = {
   components: {
     TheLinkList
   },
@@ -381,7 +381,7 @@ const _sfc_main$r = {
     }
   }
 };
-function _sfc_ssrRender$r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$s(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_TheLinkList = resolveComponent("TheLinkList");
   _push(`<section${ssrRenderAttrs(mergeProps({
     class: "bur",
@@ -394,15 +394,15 @@ function _sfc_ssrRender$r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`<div class="bur__footer"><div class="address"><h4 class="title">г. Санкт-Петербург</h4><p> г. Петергоф, Санкт-Петербургский пр., <br> д. 60, лит. Ф, БЦ «Ракета», офис 210 </p></div><div class="contacts"><a href="tel:+7 905 262 49 68">+7 905 262 49 68</a><b></b><a href="mailto:info@ji-touch.ru">info@ji-touch.ru</a></div><div class="social"><a href="https://vk.com/jitouch" target="_blank" class="item vk"></a></div></div></div></div></section>`);
 }
-const _sfc_setup$r = _sfc_main$r.setup;
-_sfc_main$r.setup = (props, ctx) => {
+const _sfc_setup$s = _sfc_main$s.setup;
+_sfc_main$s.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/TheBurger.vue");
-  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
+  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
 };
-const TheBurger = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["ssrRender", _sfc_ssrRender$r]]);
-const _imports_0$1 = "/build/assets/logotype-6830d1b9.svg";
-const _sfc_main$q = {
+const TheBurger = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["ssrRender", _sfc_ssrRender$s]]);
+const _imports_0 = "/build/assets/logotype-6830d1b9.svg";
+const _sfc_main$r = {
   name: "TheHeader",
   components: {
     Link,
@@ -442,7 +442,7 @@ const _sfc_main$q = {
     }
   }
 };
-function _sfc_ssrRender$q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$r(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = resolveComponent("Link");
   const _component_TheLinkList = resolveComponent("TheLinkList");
   const _component_the_burger = resolveComponent("the-burger");
@@ -452,11 +452,11 @@ function _sfc_ssrRender$q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<img${ssrRenderAttr("src", _imports_0$1)} alt="Logo"${_scopeId}>`);
+        _push2(`<img${ssrRenderAttr("src", _imports_0)} alt="Logo"${_scopeId}>`);
       } else {
         return [
           createVNode("img", {
-            src: _imports_0$1,
+            src: _imports_0,
             alt: "Logo"
           })
         ];
@@ -475,20 +475,20 @@ function _sfc_ssrRender$q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$q = _sfc_main$q.setup;
-_sfc_main$q.setup = (props, ctx) => {
+const _sfc_setup$r = _sfc_main$r.setup;
+_sfc_main$r.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/TheHeader.vue");
-  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
+  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
 };
-const TheHeader = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["ssrRender", _sfc_ssrRender$q]]);
-const _sfc_main$p = {
+const TheHeader = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["ssrRender", _sfc_ssrRender$r]]);
+const _sfc_main$q = {
   data() {
     return {};
   },
   mounted() {
     let cont = document.querySelector(".animate-container");
-    for (let i2 = 1; i2 <= 100; i2++) {
+    for (let i2 = 1; i2 <= 150; i2++) {
       let dot = document.createElement("div");
       dot.classList.add("element");
       cont.appendChild(dot);
@@ -512,19 +512,19 @@ const _sfc_main$p = {
     });
   }
 };
-function _sfc_ssrRender$p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$q(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<section${ssrRenderAttrs(mergeProps({ class: "animate" }, _attrs))}><div class="animate-container"></div></section>`);
 }
-const _sfc_setup$p = _sfc_main$p.setup;
-_sfc_main$p.setup = (props, ctx) => {
+const _sfc_setup$q = _sfc_main$q.setup;
+_sfc_main$q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/TheAnimateBg.vue");
-  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
+  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
 };
-const TheAnimateBg = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["ssrRender", _sfc_ssrRender$p]]);
+const TheAnimateBg = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["ssrRender", _sfc_ssrRender$q]]);
 const swiperBundle = "";
 const effectFade_min = "";
-const _sfc_main$o = {
+const _sfc_main$p = {
   components: {
     Swiper,
     SwiperSlide
@@ -574,7 +574,7 @@ const _sfc_main$o = {
   mounted() {
   }
 };
-function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$p(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Swiper = resolveComponent("Swiper");
   const _component_SwiperSlide = resolveComponent("SwiperSlide");
   _push(`<!--[-->`);
@@ -932,13 +932,13 @@ function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<div class="${ssrRenderClass([{ move: $setup.isMoving }, "count"])}">${ssrInterpolate($setup.countSwiper)}</div><!--]-->`);
 }
-const _sfc_setup$o = _sfc_main$o.setup;
-_sfc_main$o.setup = (props, ctx) => {
+const _sfc_setup$p = _sfc_main$p.setup;
+_sfc_main$p.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Services/TheSwiper.vue");
-  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
+  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
-const TheSwiper = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["ssrRender", _sfc_ssrRender$o]]);
+const TheSwiper = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["ssrRender", _sfc_ssrRender$p]]);
 const toggleMixin = {
   props: {
     show: {
@@ -962,8 +962,8 @@ const toggleMixin = {
   }
   // ...
 };
-const MyDialog_vue_vue_type_style_index_0_scoped_e81ee647_lang = "";
-const _sfc_main$n = {
+const MyDialog_vue_vue_type_style_index_0_scoped_6e62aaac_lang = "";
+const _sfc_main$o = {
   name: "my-dialog",
   mixins: [toggleMixin],
   props: {
@@ -985,25 +985,25 @@ const _sfc_main$n = {
     console.log("flag", this.flag);
   }
 };
-function _sfc_ssrRender$n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$o(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   if (_ctx.show) {
-    _push(`<div${ssrRenderAttrs(mergeProps({ class: "dialog" }, _attrs))} data-v-e81ee647><div class="${ssrRenderClass([{ show: _ctx.show, hide: !_ctx.show, fullscreen: $options.showFullscreen }, "dialog__content"])}" data-v-e81ee647><span class="dialog__close" data-v-e81ee647></span>`);
+    _push(`<div${ssrRenderAttrs(mergeProps({ class: "dialog" }, _attrs))} data-v-6e62aaac><div class="${ssrRenderClass([{ show: _ctx.show, hide: !_ctx.show, fullscreen: $options.showFullscreen }, "dialog__content"])}" data-v-6e62aaac><span class="dialog__close" data-v-6e62aaac></span>`);
     ssrRenderSlot(_ctx.$slots, "default", {}, () => {
-      _push(`<h2 data-v-e81ee647>${ssrInterpolate($props.item.title)}</h2><p data-v-e81ee647>${_ctx.$replaceNewLines($props.item.desc)}</p>`);
+      _push(`<h2 data-v-6e62aaac>${ssrInterpolate($props.item.title)}</h2><p data-v-6e62aaac>${_ctx.$replaceNewLines($props.item.desc)}</p>`);
     }, _push, _parent);
     _push(`</div></div>`);
   } else {
     _push(`<!---->`);
   }
 }
-const _sfc_setup$n = _sfc_main$n.setup;
-_sfc_main$n.setup = (props, ctx) => {
+const _sfc_setup$o = _sfc_main$o.setup;
+_sfc_main$o.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UI/MyDialog.vue");
-  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
+  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
-const MyDialog = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["ssrRender", _sfc_ssrRender$n], ["__scopeId", "data-v-e81ee647"]]);
-const _sfc_main$m = {
+const MyDialog = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["ssrRender", _sfc_ssrRender$o], ["__scopeId", "data-v-6e62aaac"]]);
+const _sfc_main$n = {
   directives: { maska: vMaska },
   props: {
     value: {
@@ -1024,7 +1024,7 @@ const _sfc_main$m = {
     }
   }
 };
-function _sfc_ssrRender$m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$n(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _directive_maska = resolveDirective("maska");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "inputbox" }, _attrs))}><input${ssrRenderAttrs(mergeProps({
     value: $props.value,
@@ -1032,17 +1032,17 @@ function _sfc_ssrRender$m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     "data-maska": $props.mask
   }, ssrGetDirectiveProps(_ctx, _directive_maska)))}><span>${ssrInterpolate($props.label)}</span><i></i></div>`);
 }
-const _sfc_setup$m = _sfc_main$m.setup;
-_sfc_main$m.setup = (props, ctx) => {
+const _sfc_setup$n = _sfc_main$n.setup;
+_sfc_main$n.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UI/InputBox.vue");
-  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
+  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const InputBox = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["ssrRender", _sfc_ssrRender$m]]);
-const _sfc_main$l = {
+const InputBox = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["ssrRender", _sfc_ssrRender$n]]);
+const _sfc_main$m = {
   name: "the-button"
 };
-function _sfc_ssrRender$l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$m(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<a${ssrRenderAttrs(mergeProps({
     href: "",
     class: "button button-click button--orange first__btn wow fadeIn",
@@ -1051,14 +1051,14 @@ function _sfc_ssrRender$l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`<b></b><s></s></a>`);
 }
-const _sfc_setup$l = _sfc_main$l.setup;
-_sfc_main$l.setup = (props, ctx) => {
+const _sfc_setup$m = _sfc_main$m.setup;
+_sfc_main$m.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UI/TheButton.vue");
-  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
+  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
 };
-const TheButton = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["ssrRender", _sfc_ssrRender$l]]);
-const _sfc_main$k = {
+const TheButton = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["ssrRender", _sfc_ssrRender$m]]);
+const _sfc_main$l = {
   directives: { maska: vMaska },
   components: {
     InputBox,
@@ -1082,7 +1082,7 @@ const _sfc_main$k = {
     }
   }
 };
-function _sfc_ssrRender$k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$l(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_InputBox = resolveComponent("InputBox");
   const _component_the_button = resolveComponent("the-button");
   const _directive_maska = resolveDirective("maska");
@@ -1098,7 +1098,7 @@ function _sfc_ssrRender$k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     class: { "has-value": $data.form.tel !== "" },
     onDich: ($event) => $data.form.tel = $event,
     label: "Телефон",
-    mask: "+1 ### ###-##-##"
+    mask: "+7 ### ###-##-##"
   }, ssrGetDirectiveProps(_ctx, _directive_maska)), null, _parent));
   _push(ssrRenderComponent(_component_InputBox, {
     value: $data.form.email,
@@ -1108,16 +1108,16 @@ function _sfc_ssrRender$k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div>`);
   _push(ssrRenderComponent(_component_the_button, {
-    style: { "align-self": "flex-end", "margin-top": "15px" },
+    style: { "align-self": "flex-end", "margin-top": "auto" },
     onClick: $options.fetchForm,
     type: "submit"
   }, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<span${_scopeId}>Создать</span>`);
+        _push2(`<span${_scopeId}>Отправить</span>`);
       } else {
         return [
-          createVNode("span", null, "Создать")
+          createVNode("span", null, "Отправить")
         ];
       }
     }),
@@ -1125,13 +1125,13 @@ function _sfc_ssrRender$k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`</form>`);
 }
-const _sfc_setup$k = _sfc_main$k.setup;
-_sfc_main$k.setup = (props, ctx) => {
+const _sfc_setup$l = _sfc_main$l.setup;
+_sfc_main$l.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Modal/PostForm.vue");
-  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
+  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
-const PostForm = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["ssrRender", _sfc_ssrRender$k]]);
+const PostForm = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["ssrRender", _sfc_ssrRender$l]]);
 const messageMixin = {
   methods: {
     message(mes, status = null, dismissible = false, duration = 3e3) {
@@ -1231,7 +1231,7 @@ const messageMixin = {
     }
   }
 };
-const _sfc_main$j = {
+const _sfc_main$k = {
   name: "section-caption",
   props: {
     sectionCaption: {
@@ -1243,21 +1243,21 @@ const _sfc_main$j = {
     return {};
   }
 };
-function _sfc_ssrRender$j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$k(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "section-caption" }, _attrs))}>`);
   ssrRenderSlot(_ctx.$slots, "default", {}, () => {
     _push(`${ssrInterpolate($props.sectionCaption)}`);
   }, _push, _parent);
   _push(`</div>`);
 }
-const _sfc_setup$j = _sfc_main$j.setup;
-_sfc_main$j.setup = (props, ctx) => {
+const _sfc_setup$k = _sfc_main$k.setup;
+_sfc_main$k.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/TheSectionCaption.vue");
-  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
+  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
-const TheSectionCaption = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["ssrRender", _sfc_ssrRender$j]]);
-const _sfc_main$i = {
+const TheSectionCaption = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["ssrRender", _sfc_ssrRender$k]]);
+const _sfc_main$j = {
   components: {
     TheButton,
     TheSectionCaption
@@ -1276,7 +1276,7 @@ const _sfc_main$i = {
     }
   }
 };
-function _sfc_ssrRender$i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$j(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_the_button = resolveComponent("the-button");
   const _component_the_section_caption = resolveComponent("the-section-caption");
   _push(`<section${ssrRenderAttrs(mergeProps({
@@ -1303,13 +1303,13 @@ function _sfc_ssrRender$i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_the_section_caption, { sectionCaption: $data.sectionCaption }, null, _parent));
   _push(`</div></section>`);
 }
-const _sfc_setup$i = _sfc_main$i.setup;
-_sfc_main$i.setup = (props, ctx) => {
+const _sfc_setup$j = _sfc_main$j.setup;
+_sfc_main$j.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Panels/First.vue");
-  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
+  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
 };
-const firstComponent = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["ssrRender", _sfc_ssrRender$i]]);
+const firstComponent = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["ssrRender", _sfc_ssrRender$j]]);
 const First = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: firstComponent
@@ -1317,7 +1317,7 @@ const First = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePropert
 const swiper_min = "";
 const navigation_min = "";
 const pagination_min = "";
-const _sfc_main$h = {
+const _sfc_main$i = {
   props: {
     services: Array
   },
@@ -1329,43 +1329,37 @@ const _sfc_main$h = {
     TheSwiper
   },
   data() {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g;
+    console.log((_b = (_a = this.$page.props.services[0]) == null ? void 0 : _a.slider[0]) == null ? void 0 : _b.slider_thumb);
     const activeIndex = ref(0);
     return {
       sectionCaption: "Services",
-      desc: (_a = this.$page.props.services[0]) == null ? void 0 : _a.desc,
-      slider: (_c = (_b = this.$page.props.services[0]) == null ? void 0 : _b.slider[0]) == null ? void 0 : _c.slider_item,
-      slider_thumb: (_e = (_d = this.$page.props.services[0]) == null ? void 0 : _d.slider[0]) == null ? void 0 : _e.slider_thumb,
+      desc: (_c = this.$page.props.services[0]) == null ? void 0 : _c.desc,
+      slider: (_e = (_d = this.$page.props.services[0]) == null ? void 0 : _d.slider[0]) == null ? void 0 : _e.slider_item,
+      slider_thumb: (_g = (_f = this.$page.props.services[0]) == null ? void 0 : _f.slider[0]) == null ? void 0 : _g.slider_thumb,
       slideIndex: 1,
       activeIndex
     };
   },
   methods: {
-    ...mapMutations({}),
-    // ...mapActions({
-    //   services: "services/fetchInfo",
-    // }),
     goToSlide(slideNumber) {
+      console.log(slideNumber);
       this.$refs.mySwiper.goToSlide(slideNumber);
     },
     activeIndexChanged(slideNumber) {
       this.activeIndex = slideNumber - 1;
     }
   },
-  computed: {
-    ...mapGetters({
-      SliderThumbWithId: "services/SliderThumbWithId"
-    })
-  },
+  computed: {},
   watch: {}
 };
-function _sfc_ssrRender$h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$i(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_the_swiper = resolveComponent("the-swiper");
   const _component_the_section_caption = resolveComponent("the-section-caption");
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "services",
     class: "services"
-  }, _attrs))}><div class="container services-container"><div class="services__header wow fadeIn" data-wow-delay="0.2s"><p></p></div><div class="services__wrapper wow fadeIn" data-wow-delay="0.4s">`);
+  }, _attrs))}><div class="container services-container"><div class="services__header wow fadeIn" data-wow-delay="0.2s"><p>${ssrInterpolate($data.desc)}</p></div><div class="services__wrapper wow fadeIn" data-wow-delay="0.4s">`);
   _push(ssrRenderComponent(_component_the_swiper, {
     ref: "mySwiper",
     activeIndex: $data.activeIndex,
@@ -1374,8 +1368,8 @@ function _sfc_ssrRender$h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     dataSlider: $data.slider ? $data.slider : []
   }, null, _parent));
   _push(`</div><div class="services__wrapper__text"><!--[-->`);
-  ssrRenderList(_ctx.SliderThumbWithId, (item, index) => {
-    _push(`<div class="${ssrRenderClass([{ active: $data.activeIndex === item.id }, "thumb__item"])}"><span>${ssrInterpolate(item.title)}</span></div>`);
+  ssrRenderList($data.slider_thumb, (item, index) => {
+    _push(`<div class="${ssrRenderClass([{ active: $data.activeIndex === index }, "thumb__item"])}"><span>${ssrInterpolate(item.title)}</span></div>`);
   });
   _push(`<!--]--></div>`);
   _push(ssrRenderComponent(_component_the_section_caption, {
@@ -1384,19 +1378,18 @@ function _sfc_ssrRender$h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div></section>`);
 }
-const _sfc_setup$h = _sfc_main$h.setup;
-_sfc_main$h.setup = (props, ctx) => {
+const _sfc_setup$i = _sfc_main$i.setup;
+_sfc_main$i.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Panels/Services.vue");
-  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
+  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
 };
-const servicesComponent = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$h]]);
+const servicesComponent = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["ssrRender", _sfc_ssrRender$i]]);
 const Services = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: servicesComponent
 }, Symbol.toStringTag, { value: "Module" }));
-const _imports_0 = "/build/assets/logo-001-b56b70d8.png";
-const _sfc_main$g = {
+const _sfc_main$h = {
   props: {
     items: {
       type: Array,
@@ -1430,52 +1423,21 @@ const _sfc_main$g = {
     return { tiltableItem, mobile };
   }
 };
-function _sfc_ssrRender$g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_Link = resolveComponent("Link");
+function _sfc_ssrRender$h(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<!--[-->`);
   ssrRenderList($props.items, (item) => {
-    _push(`<div class="porfolio__item">`);
-    _push(ssrRenderComponent(_component_Link, {
-      class: "main-container shadow-bottom",
-      stas: "Poollavka",
-      href: "http://" + item.subtitle,
-      target: "_blank",
-      rel: "noopener"
-    }, {
-      default: withCtx((_, _push2, _parent2, _scopeId) => {
-        if (_push2) {
-          _push2(`<img${ssrRenderAttr("src", item.img)} alt=""${_scopeId}><div class="contentBx"${_scopeId}><div${_scopeId}><img${ssrRenderAttr("src", item.bg_img)} alt=""${_scopeId}></div></div>`);
-        } else {
-          return [
-            createVNode("img", {
-              src: item.img,
-              alt: ""
-            }, null, 8, ["src"]),
-            createVNode("div", { class: "contentBx" }, [
-              createVNode("div", null, [
-                createVNode("img", {
-                  src: item.bg_img,
-                  alt: ""
-                }, null, 8, ["src"])
-              ])
-            ])
-          ];
-        }
-      }),
-      _: 2
-    }, _parent));
-    _push(`<a class="porfolio__item-mobile"><img${ssrRenderAttr("src", item.img_mobile)} alt=""></a><div class="porfolio__item__logo"><img${ssrRenderAttr("src", _imports_0)} alt=""></div><div class="porfolio__item__text"><span>${ssrInterpolate(item.title)}</span><a>${ssrInterpolate(item.subtitle)}</a></div></div>`);
+    _push(`<div class="porfolio__item"><a class="main-container shadow-bottom" stas="Poollavka"${ssrRenderAttr("href", "http://" + item.subtitle)} target="_blank" rel="noopener"><img${ssrRenderAttr("src", item.img)} alt=""><div class="contentBx"><div><img${ssrRenderAttr("src", item.bg_img)} alt=""></div></div></a><a class="porfolio__item-mobile"><img${ssrRenderAttr("src", item.img_mobile)} alt=""></a><div class="porfolio__item__logo"><img${ssrRenderAttr("src", item.img_logo)} alt=""></div><div class="porfolio__item__text"><span>${ssrInterpolate(item.title)}</span><a>${ssrInterpolate(item.subtitle)}</a></div></div>`);
   });
   _push(`<!--]-->`);
 }
-const _sfc_setup$g = _sfc_main$g.setup;
-_sfc_main$g.setup = (props, ctx) => {
+const _sfc_setup$h = _sfc_main$h.setup;
+_sfc_main$h.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Portfolio/TheItemList.vue");
-  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
+  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
-const TheItemList = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$g]]);
-const _sfc_main$f = {
+const TheItemList = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$h]]);
+const _sfc_main$g = {
   components: {
     Link,
     TheItemList,
@@ -1486,140 +1448,167 @@ const _sfc_main$f = {
     portfolio: Array
   },
   data() {
-    var _a, _b, _c, _d;
+    var _a, _b, _c, _d, _e;
+    console.log();
     return {
       title: (_a = this.portfolio[0]) == null ? void 0 : _a.title,
       more: (_b = this.portfolio[0]) == null ? void 0 : _b.more,
       items: (_c = this.portfolio[0]) == null ? void 0 : _c.items,
       setBtn: (_d = this.portfolio[0]) == null ? void 0 : _d.setBtn,
-      sectionCaption: "Portfolio"
+      sectionCaption: "Portfolio",
+      componentPage: (_e = this.$inertia.page) == null ? void 0 : _e.component,
+      itemsToDisplay: []
     };
   },
   methods: {
-    lastItems() {
-      return this.items.slice(-4);
+    observeSentinel() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              this.loadMoreItems();
+            }
+          });
+        },
+        { threshold: 1 }
+      );
+      observer.observe(this.$refs.sentinel);
+    },
+    loadMoreItems() {
+      var _a, _b, _c, _d;
+      if (((_a = this.portfolio[0]) == null ? void 0 : _a.items) && ((_b = this.portfolio[0]) == null ? void 0 : _b.items.length)) {
+        const totalItems = (_c = this.portfolio[0]) == null ? void 0 : _c.items.length;
+        const displayedItems = this.itemsToDisplay.length;
+        if (displayedItems < totalItems) {
+          const remainingItems = (_d = this.portfolio[0]) == null ? void 0 : _d.items.slice(
+            displayedItems,
+            displayedItems + 10
+          );
+          this.itemsToDisplay = [...this.itemsToDisplay, ...remainingItems];
+        }
+      }
     }
   },
-  watch: {}
+  watch: {},
+  mounted() {
+    var _a;
+    this.itemsToDisplay = (_a = this.portfolio[0]) == null ? void 0 : _a.items.slice(0, 10);
+    this.observeSentinel();
+  }
 };
-function _sfc_ssrRender$f(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$g(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Link = resolveComponent("Link");
   const _component_the_item_list = resolveComponent("the-item-list");
-  const _component_the_button = resolveComponent("the-button");
   const _component_the_section_caption = resolveComponent("the-section-caption");
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "porfolio",
     class: "porfolio"
-  }, _attrs))}><div class="container porfolio-container"><div class="porfolio__header wow fadeIn" data-wow-delay="0.2s">`);
-  if (_ctx.page === "home") {
-    _push(`<h2>${_ctx.$replaceNewLines($data.title)}</h2>`);
-  } else {
-    _push(`<!---->`);
-  }
-  _push(ssrRenderComponent(_component_Link, {
-    href: _ctx.route("project")
-  }, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        if (_ctx.page === "home") {
-          _push2(`<div class="more"${_scopeId}><span${_scopeId}>${ssrInterpolate($data.more)}</span><svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg"${_scopeId}><g clip-path="url(#clip0_6_2)"${_scopeId}><path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"${_scopeId}></path><rect x="7" y="5" width="2" height="2" fill="white"${_scopeId}></rect><rect x="3" y="5" width="2" height="2" fill="white"${_scopeId}></rect></g><defs${_scopeId}><clipPath id="clip0_6_2"${_scopeId}><rect width="38" height="12" fill="white"${_scopeId}></rect></clipPath></defs></svg></div>`);
-        } else {
-          _push2(`<!---->`);
-        }
-      } else {
-        return [
-          _ctx.page === "home" ? (openBlock(), createBlock("div", {
-            key: 0,
-            class: "more"
-          }, [
-            createVNode("span", null, toDisplayString($data.more), 1),
-            (openBlock(), createBlock("svg", {
-              width: "38",
-              height: "12",
-              viewBox: "0 0 38 12",
-              fill: "none",
-              xmlns: "http://www.w3.org/2000/svg"
-            }, [
-              createVNode("g", { "clip-path": "url(#clip0_6_2)" }, [
-                createVNode("path", {
-                  d: "M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z",
-                  fill: "black"
-                }),
-                createVNode("rect", {
-                  x: "7",
-                  y: "5",
-                  width: "2",
-                  height: "2",
-                  fill: "white"
-                }),
-                createVNode("rect", {
-                  x: "3",
-                  y: "5",
-                  width: "2",
-                  height: "2",
-                  fill: "white"
-                })
-              ]),
-              createVNode("defs", null, [
-                createVNode("clipPath", { id: "clip0_6_2" }, [
-                  createVNode("rect", {
-                    width: "38",
-                    height: "12",
-                    fill: "white"
-                  })
-                ])
-              ])
-            ]))
-          ])) : createCommentVNode("", true)
-        ];
-      }
-    }),
-    _: 1
-  }, _parent));
-  _push(`</div><div class="porfolio__wrapper wow fadeIn" data-wow-delay="0.2s">`);
-  if (_ctx.page === "home") {
-    _push(ssrRenderComponent(_component_the_item_list, {
-      items: $options.lastItems()
-    }, null, _parent));
-  } else {
-    _push(ssrRenderComponent(_component_the_item_list, { items: $data.items }, null, _parent));
-  }
-  _push(`</div><div class="porfolio__footer">`);
-  if (_ctx.page === "home") {
-    _push(ssrRenderComponent(_component_the_button, { class: "button button--orange first__btn" }, {
+  }, _attrs))}><div class="container porfolio-container">`);
+  if ($data.componentPage === "Home") {
+    _push(`<div class="porfolio__header wow fadeIn" data-wow-delay="0.2s"><h2>${_ctx.$replaceNewLines($data.title)}</h2>`);
+    _push(ssrRenderComponent(_component_Link, {
+      href: _ctx.route("project")
+    }, {
       default: withCtx((_, _push2, _parent2, _scopeId) => {
         if (_push2) {
-          _push2(`<span${_scopeId}>Показать ещё</span>`);
+          _push2(`<div class="more"${_scopeId}><span${_scopeId}>${ssrInterpolate($data.more)}</span><svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg"${_scopeId}><g clip-path="url(#clip0_6_2)"${_scopeId}><path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"${_scopeId}></path><rect x="7" y="5" width="2" height="2" fill="white"${_scopeId}></rect><rect x="3" y="5" width="2" height="2" fill="white"${_scopeId}></rect></g><defs${_scopeId}><clipPath id="clip0_6_2"${_scopeId}><rect width="38" height="12" fill="white"${_scopeId}></rect></clipPath></defs></svg></div>`);
         } else {
           return [
-            createVNode("span", null, "Показать ещё")
+            createVNode("div", { class: "more" }, [
+              createVNode("span", null, toDisplayString($data.more), 1),
+              (openBlock(), createBlock("svg", {
+                width: "38",
+                height: "12",
+                viewBox: "0 0 38 12",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg"
+              }, [
+                createVNode("g", { "clip-path": "url(#clip0_6_2)" }, [
+                  createVNode("path", {
+                    d: "M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z",
+                    fill: "black"
+                  }),
+                  createVNode("rect", {
+                    x: "7",
+                    y: "5",
+                    width: "2",
+                    height: "2",
+                    fill: "white"
+                  }),
+                  createVNode("rect", {
+                    x: "3",
+                    y: "5",
+                    width: "2",
+                    height: "2",
+                    fill: "white"
+                  })
+                ]),
+                createVNode("defs", null, [
+                  createVNode("clipPath", { id: "clip0_6_2" }, [
+                    createVNode("rect", {
+                      width: "38",
+                      height: "12",
+                      fill: "white"
+                    })
+                  ])
+                ])
+              ]))
+            ])
           ];
         }
       }),
       _: 1
     }, _parent));
+    _push(`</div>`);
   } else {
     _push(`<!---->`);
   }
-  _push(`</div>`);
+  _push(`<div class="porfolio__wrapper wow fadeIn" data-wow-delay="0.2s">`);
+  if ($data.itemsToDisplay.length > 0) {
+    _push(ssrRenderComponent(_component_the_item_list, { items: $data.itemsToDisplay }, null, _parent));
+  } else {
+    _push(`<!---->`);
+  }
+  _push(`<div style="${ssrRenderStyle({ "height": "1px" })}"></div></div>`);
+  if ($data.componentPage === "Home") {
+    _push(`<div class="porfolio__footer">`);
+    _push(ssrRenderComponent(_component_Link, {
+      href: _ctx.route("project"),
+      class: "button button--orange portfolio__btn"
+    }, {
+      default: withCtx((_, _push2, _parent2, _scopeId) => {
+        if (_push2) {
+          _push2(`<span${_scopeId}>Смотреть все</span>`);
+        } else {
+          return [
+            createVNode("span", null, "Смотреть все")
+          ];
+        }
+      }),
+      _: 1
+    }, _parent));
+    _push(`</div>`);
+  } else {
+    _push(`<!---->`);
+  }
   _push(ssrRenderComponent(_component_the_section_caption, { sectionCaption: $data.sectionCaption }, null, _parent));
   _push(`</div></section>`);
 }
-const _sfc_setup$f = _sfc_main$f.setup;
-_sfc_main$f.setup = (props, ctx) => {
+const _sfc_setup$g = _sfc_main$g.setup;
+_sfc_main$g.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Panels/Portfolio.vue");
-  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
+  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
-const portfolioComponent = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["ssrRender", _sfc_ssrRender$f]]);
+const portfolioComponent = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$g]]);
 const Portfolio = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: portfolioComponent
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$e = {
+const _sfc_main$f = {
   name: "the-more-button"
 };
-function _sfc_ssrRender$e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$f(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${ssrRenderAttrs(mergeProps({
     style: { "cursor": "pointer" },
     class: "more",
@@ -1628,14 +1617,14 @@ function _sfc_ssrRender$e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`<svg width="38" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_6_2)"><path d="M37.1093 6.53033C37.4022 6.23744 37.4022 5.76256 37.1093 5.46967L32.3363 0.696698C32.0434 0.403805 31.5685 0.403805 31.2756 0.696698C30.9828 0.989592 30.9828 1.46447 31.2756 1.75736L35.5183 6L31.2756 10.2426C30.9828 10.5355 30.9828 11.0104 31.2756 11.3033C31.5685 11.5962 32.0434 11.5962 32.3363 11.3033L37.1093 6.53033ZM0 6.75H36.5789V5.25H0V6.75Z" fill="black"></path><rect x="7" y="5" width="2" height="2" fill="white"></rect><rect x="3" y="5" width="2" height="2" fill="white"></rect></g><defs><clipPath id="clip0_6_2"><rect width="38" height="12" fill="white"></rect></clipPath></defs></svg></div>`);
 }
-const _sfc_setup$e = _sfc_main$e.setup;
-_sfc_main$e.setup = (props, ctx) => {
+const _sfc_setup$f = _sfc_main$f.setup;
+_sfc_main$f.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UI/TheMoreButton.vue");
-  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
+  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
 };
-const TheMoreButton = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["ssrRender", _sfc_ssrRender$e]]);
-const _sfc_main$d = {
+const TheMoreButton = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["ssrRender", _sfc_ssrRender$f]]);
+const _sfc_main$e = {
   components: {
     TheMoreButton,
     TheButton,
@@ -1653,13 +1642,13 @@ const _sfc_main$d = {
     };
   }
 };
-function _sfc_ssrRender$d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$e(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_the_more_button = resolveComponent("the-more-button");
   const _component_the_section_caption = resolveComponent("the-section-caption");
   _push(`<section${ssrRenderAttrs(mergeProps({
     id: "about",
     class: "about"
-  }, _attrs))}><div class="container about-container"><div class="about__header wow fadeIn" data-wow-delay="0.4s"><h2>${$data.subtitle}</h2></div><div class="about__wrapper"><div class="row about__wrapper-content"><div class="col-md-6 wow fadeIn" data-wow-delay="0.4s"><div class="about__item-title-container"><h3 class="about__item-title">${_ctx.$replaceNewLines($data.title)}</h3></div></div><div class="col-md-6 wow fadeIn" data-wow-delay="0.4s"><div class="about__item-right"><h3 class="about__item-subtitle">${ssrInterpolate($data.text)}</h3><p>${ssrInterpolate($data.desc)}</p>`);
+  }, _attrs))}><div class="container about-container"><div class="about__header wow fadeIn" data-wow-delay="0.4s"><h2>${$data.subtitle}</h2></div><div class="about__wrapper"><div class="row about__wrapper-content"><div class="col-xl-6 wow fadeIn" data-wow-delay="0.4s"><div class="about__item-title-container"><h3 class="about__item-title">${_ctx.$replaceNewLines($data.title)}</h3></div></div><div class="col-xl-6 wow fadeIn" data-wow-delay="0.4s"><div class="about__item-right"><h3 class="about__item-subtitle">${ssrInterpolate($data.text)}</h3><p>${ssrInterpolate($data.desc)}</p>`);
   _push(ssrRenderComponent(_component_the_more_button, { class: "more" }, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -1679,18 +1668,18 @@ function _sfc_ssrRender$d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div></section>`);
 }
-const _sfc_setup$d = _sfc_main$d.setup;
-_sfc_main$d.setup = (props, ctx) => {
+const _sfc_setup$e = _sfc_main$e.setup;
+_sfc_main$e.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Panels/Company.vue");
-  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
+  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
 };
-const companyComponent = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["ssrRender", _sfc_ssrRender$d]]);
+const companyComponent = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["ssrRender", _sfc_ssrRender$e]]);
 const Company = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: companyComponent
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$c = {
+const _sfc_main$d = {
   props: {
     row: {
       type: Object,
@@ -1702,18 +1691,18 @@ const _sfc_main$c = {
     }
   }
 };
-function _sfc_ssrRender$c(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$d(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "order-left" }, _attrs))}><h2>${$props.row.title}</h2><p>${ssrInterpolate($props.row.desc)}</p><div class="order-contacts"><a class="order-contacts-tel" href="{{contact.phone}}">${ssrInterpolate($props.contact.phone)}</a><a class="order-contacts-mail" href="mailto:{{contact.email}}">${ssrInterpolate($props.contact.email)}</a></div></div>`);
 }
-const _sfc_setup$c = _sfc_main$c.setup;
-_sfc_main$c.setup = (props, ctx) => {
+const _sfc_setup$d = _sfc_main$d.setup;
+_sfc_main$d.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Order/TheOrderContent.vue");
-  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
+  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
 };
-const TheOrderContent = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["ssrRender", _sfc_ssrRender$c]]);
+const TheOrderContent = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["ssrRender", _sfc_ssrRender$d]]);
 const BudgetDropdown_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$b = {
+const _sfc_main$c = {
   name: "BudgetDropdown",
   props: {
     placeholder: {
@@ -1737,21 +1726,21 @@ const _sfc_main$b = {
     }
   }
 };
-function _sfc_ssrRender$b(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$c(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "dropdown" }, _attrs))}><input type="text" class="textBox def"${ssrRenderAttr("placeholder", $props.placeholder)} readonly><div class="option"><!--[-->`);
   ssrRenderList($props.options, (option) => {
     _push(`<div>${ssrInterpolate(option)}</div>`);
   });
   _push(`<!--]--></div><i></i></div>`);
 }
-const _sfc_setup$b = _sfc_main$b.setup;
-_sfc_main$b.setup = (props, ctx) => {
+const _sfc_setup$c = _sfc_main$c.setup;
+_sfc_main$c.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UI/BudgetDropdown.vue");
-  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
+  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
 };
-const BudgetDropdown = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["ssrRender", _sfc_ssrRender$b]]);
-const _sfc_main$a = {
+const BudgetDropdown = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["ssrRender", _sfc_ssrRender$c]]);
+const _sfc_main$b = {
   props: {
     value: {
       type: String,
@@ -1768,16 +1757,16 @@ const _sfc_main$a = {
     }
   }
 };
-function _sfc_ssrRender$a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$b(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "inputbox in2" }, _attrs))}><textarea${ssrRenderAttr("placeholder", $props.placeholder)}>${ssrInterpolate($props.value)}</textarea><i></i></div>`);
 }
-const _sfc_setup$a = _sfc_main$a.setup;
-_sfc_main$a.setup = (props, ctx) => {
+const _sfc_setup$b = _sfc_main$b.setup;
+_sfc_main$b.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UI/InputTextarea.vue");
-  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
+  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
 };
-const InputTextareaVue = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["ssrRender", _sfc_ssrRender$a]]);
+const InputTextareaVue = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["ssrRender", _sfc_ssrRender$b]]);
 function isNullish(val) {
   return [null, void 0, false].indexOf(val) !== -1;
 }
@@ -2183,7 +2172,7 @@ const valueProps = {
     required: false
   }
 };
-const _sfc_main$9 = {
+const _sfc_main$a = {
   name: "Slider",
   emits: [
     "input",
@@ -2305,20 +2294,20 @@ const _sfc_main$9 = {
     };
   }
 };
-function _sfc_ssrRender$9(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${ssrRenderAttrs(mergeProps(_ctx.sliderProps, { ref: "slider" }, _attrs))}></div>`);
 }
-const _sfc_setup$9 = _sfc_main$9.setup;
-_sfc_main$9.setup = (props, ctx) => {
+const _sfc_setup$a = _sfc_main$a.setup;
+_sfc_main$a.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/slider/src/Slider.vue");
-  return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
+  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
 };
-const Slider = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["ssrRender", _sfc_ssrRender$9]]);
+const Slider = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["ssrRender", _sfc_ssrRender$a]]);
 const SliderForm_vue_vue_type_style_index_0_lang = "";
 const default_css_vue_type_style_index_1_src_true_lang = "";
 const SliderForm_vue_vue_type_style_index_2_lang = "";
-const _sfc_main$8 = {
+const _sfc_main$9 = {
   components: { Slider },
   props: {
     value: {
@@ -2340,7 +2329,7 @@ const _sfc_main$8 = {
     }
   }
 };
-function _sfc_ssrRender$8(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$9(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Slider = resolveComponent("Slider");
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "container-price" }, _attrs))}><div class="inputbox"><span>Бюджет проекта</span>`);
   _push(ssrRenderComponent(_component_Slider, {
@@ -2352,14 +2341,14 @@ function _sfc_ssrRender$8(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, null, _parent));
   _push(`</div></div>`);
 }
-const _sfc_setup$8 = _sfc_main$8.setup;
-_sfc_main$8.setup = (props, ctx) => {
+const _sfc_setup$9 = _sfc_main$9.setup;
+_sfc_main$9.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UI/SliderForm.vue");
-  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
+  return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-const SliderForm = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["ssrRender", _sfc_ssrRender$8]]);
-const _sfc_main$7 = {
+const SliderForm = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["ssrRender", _sfc_ssrRender$9]]);
+const _sfc_main$8 = {
   props: ["modelValue"],
   methods: {
     onChange(event) {
@@ -2367,17 +2356,17 @@ const _sfc_main$7 = {
     }
   }
 };
-function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$8(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "order__upload" }, _attrs))}><label class="file-input__label" for="myfile"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.8545 9.96878L10.6797 11.1438L7.38924 14.4342C6.10061 15.7225 4.00324 15.7225 2.71384 14.4337C1.42467 13.1449 1.42503 11.0477 2.71384 9.75877L4.5944 7.87803L10.198 2.27443C11.0792 1.39327 12.5139 1.39327 13.3953 2.27443C14.2765 3.15595 14.2765 4.59019 13.3953 5.47175L9.78949 9.07723L8.36797 10.4986L6.51495 12.3518C6.05288 12.8138 5.30105 12.8133 4.83935 12.3518C4.37728 11.8897 4.37728 11.1377 4.83935 10.6756L7.52566 7.98948L8.11352 7.40126L10.6249 4.89022L9.84196 4.10745L6.74307 7.20635L4.05639 9.8937C3.16319 10.7865 3.16301 12.2409 4.05639 13.1348C4.95012 14.0282 6.40431 14.0282 7.2975 13.1348L8.9874 11.4447L10.5722 9.85996L14.1775 6.2543C15.4907 4.94148 15.4907 2.80502 14.1775 1.49161C12.8646 0.178416 10.7278 0.178416 9.41477 1.49161L6.65956 4.24718L3.91141 6.99533L1.93138 8.97572C0.210902 10.696 0.210902 13.4958 1.93138 15.2162C3.65186 16.9369 6.45126 16.9369 8.17188 15.2162L12.637 10.7511L14.8207 8.56753L14.0383 7.78457L11.8545 9.96878Z" fill="#00779F"></path></svg> Прикрепить файл </label><input class="input file-input" id="myfile" multiple type="file"></div>`);
 }
-const _sfc_setup$7 = _sfc_main$7.setup;
-_sfc_main$7.setup = (props, ctx) => {
+const _sfc_setup$8 = _sfc_main$8.setup;
+_sfc_main$8.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UI/FileUploader.vue");
-  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
+  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
-const FileUploader = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["ssrRender", _sfc_ssrRender$7]]);
-const _sfc_main$6 = {
+const FileUploader = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["ssrRender", _sfc_ssrRender$8]]);
+const _sfc_main$7 = {
   directives: { maska: vMaska },
   components: {
     TheButton,
@@ -2500,7 +2489,7 @@ const _sfc_main$6 = {
     }
   }
 };
-function _sfc_ssrRender$6(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_InputBox = resolveComponent("InputBox");
   const _component_slider_form = resolveComponent("slider-form");
   const _component_BudgetDropdown = resolveComponent("BudgetDropdown");
@@ -2585,14 +2574,14 @@ function _sfc_ssrRender$6(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<p class="sogl"> Нажимая на кнопку «Отправить», вы даете согласие на обработку персональных данных и соглашаетесь с политикой конфиденциальности. </p></div></div></form></div>`);
 }
-const _sfc_setup$6 = _sfc_main$6.setup;
-_sfc_main$6.setup = (props, ctx) => {
+const _sfc_setup$7 = _sfc_main$7.setup;
+_sfc_main$7.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Order/TheOrderForm.vue");
-  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
+  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
-const TheOrderForm = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["ssrRender", _sfc_ssrRender$6]]);
-const _sfc_main$5 = {
+const TheOrderForm = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["ssrRender", _sfc_ssrRender$7]]);
+const _sfc_main$6 = {
   components: {
     TheOrderContent,
     TheOrderForm,
@@ -2644,7 +2633,7 @@ const _sfc_main$5 = {
     }
   }
 };
-function _sfc_ssrRender$5(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$6(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_the_order_content = resolveComponent("the-order-content");
   const _component_the_order_form = resolveComponent("the-order-form");
   const _component_the_section_caption = resolveComponent("the-section-caption");
@@ -2662,29 +2651,29 @@ function _sfc_ssrRender$5(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_the_section_caption, { sectionCaption: $data.sectionCaption }, null, _parent));
   _push(`</div></section>`);
 }
-const _sfc_setup$5 = _sfc_main$5.setup;
-_sfc_main$5.setup = (props, ctx) => {
+const _sfc_setup$6 = _sfc_main$6.setup;
+_sfc_main$6.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Panels/Order.vue");
-  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
+  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
 };
-const orderComponent = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["ssrRender", _sfc_ssrRender$5]]);
+const orderComponent = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["ssrRender", _sfc_ssrRender$6]]);
 const Order = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: orderComponent
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$4 = {};
-function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+const _sfc_main$5 = {};
+function _sfc_ssrRender$5(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<footer${ssrRenderAttrs(mergeProps({ class: "footer" }, _attrs))}><div class="container footer-container"><div class="footer__wrapper"><p>2009-2023 © Digital-агентство «Ji-Touch»</p><p>Надёжный партнёр Вашего бизнеса!</p><a href="">Политика конфиденциальности</a></div></div></footer>`);
 }
-const _sfc_setup$4 = _sfc_main$4.setup;
-_sfc_main$4.setup = (props, ctx) => {
+const _sfc_setup$5 = _sfc_main$5.setup;
+_sfc_main$5.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/TheFooter.vue");
-  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
+  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
-const TheFooterVue = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender$4]]);
-const _sfc_main$3 = {
+const TheFooterVue = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["ssrRender", _sfc_ssrRender$5]]);
+const _sfc_main$4 = {
   components: {
     Head,
     TheHeader,
@@ -2729,16 +2718,41 @@ const _sfc_main$3 = {
         });
         const responseData = await response.json();
         console.log(responseData);
-        this.showMessage({ title: "Отправлено", content: "Ваша форма успешно отправлена" }, "success", false, 3e3);
+        if (responseData.status == true) {
+          this.showMessage(
+            { title: "Отправлено", content: "Ваша форма успешно отправлена" },
+            "success",
+            false,
+            3e3
+          );
+        } else {
+          this.showMessage(
+            { title: "Ошибка", content: "Ваша форма не отправлена" },
+            "error",
+            true,
+            3e3
+          );
+        }
         this.dialogVisible = false;
       } catch (error) {
         console.error(error);
-        this.showMessage({ title: "Ошибка", content: "Ваша форма не отправлена" }, "error", true, 3e3);
+        this.showMessage(
+          { title: "Ошибка", content: "Ваша форма не отправлена" },
+          "error",
+          true,
+          3e3
+        );
       }
+    },
+    lastItems() {
+      const portfolio = this.$page.props.portfolio;
+      const lastFourItems = portfolio[0].items.slice(-4);
+      const modifiedPortfolio = [{ ...portfolio[0], items: lastFourItems }];
+      return modifiedPortfolio;
     }
   }
 };
-function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Head = resolveComponent("Head");
   const _component_the_header = resolveComponent("the-header");
   const _component_TheAnimateBg = resolveComponent("TheAnimateBg");
@@ -2768,7 +2782,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_first_component, { onModal: $options.showModal }, null, _parent));
   _push(ssrRenderComponent(_component_services_component, null, null, _parent));
   _push(ssrRenderComponent(_component_portfolio_component, {
-    portfolio: _ctx.$page.props.portfolio
+    portfolio: $options.lastItems()
   }, null, _parent));
   _push(ssrRenderComponent(_component_company_component, null, null, _parent));
   _push(ssrRenderComponent(_component_order_component, null, null, _parent));
@@ -2792,13 +2806,13 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_the_footer_vue, null, null, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$3 = _sfc_main$3.setup;
-_sfc_main$3.setup = (props, ctx) => {
+const _sfc_setup$4 = _sfc_main$4.setup;
+_sfc_main$4.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Home.vue");
-  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
+  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
-const Home = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$3]]);
+const Home = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender$4]]);
 const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Home
@@ -2813,37 +2827,89 @@ const __variableDynamicImportRuntimeHelper = (glob, path) => {
   });
 };
 const TheFooter_vue_vue_type_style_index_0_scoped_9f9b51d5_lang = "";
-const _sfc_main$2 = {};
-function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+const _sfc_main$3 = {};
+function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<footer${ssrRenderAttrs(mergeProps({ class: "footer" }, _attrs))} data-v-9f9b51d5><div class="container footer-container" data-v-9f9b51d5><div class="footer__wrapper" data-v-9f9b51d5><p data-v-9f9b51d5>2009-2023 © Digital-агентство «Ji-Touch»</p><p data-v-9f9b51d5>Надёжный партнёр Вашего бизнеса!</p><a href="" data-v-9f9b51d5>Политика конфиденциальности</a></div></div></footer>`);
 }
-const _sfc_setup$2 = _sfc_main$2.setup;
-_sfc_main$2.setup = (props, ctx) => {
+const _sfc_setup$3 = _sfc_main$3.setup;
+_sfc_main$3.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/vue/src/components/TheFooter.vue");
-  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
-const TheFooter = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", _sfc_ssrRender$2], ["__scopeId", "data-v-9f9b51d5"]]);
+const TheFooter = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$3], ["__scopeId", "data-v-9f9b51d5"]]);
 const InnerLayout_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$1 = {};
-function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs) {
+const _sfc_main$2 = {};
+function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs) {
   _push(`<div${ssrRenderAttrs(mergeProps({ class: "innerLayout" }, _attrs))}>`);
   ssrRenderSlot(_ctx.$slots, "default", { class: "content" }, null, _push, _parent);
   _push(`</div>`);
 }
+const _sfc_setup$2 = _sfc_main$2.setup;
+_sfc_main$2.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Loyauts/InnerLayout.vue");
+  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+};
+const InnerLayoutVue = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", _sfc_ssrRender$2]]);
+const _sfc_main$1 = {
+  props: {
+    breadcrumbs: {
+      type: Object,
+      required: true
+    }
+  },
+  components: {
+    Link
+  }
+};
+function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  const _component_Link = resolveComponent("Link");
+  _push(`<div${ssrRenderAttrs(mergeProps({ class: "container" }, _attrs))}><div class="breadcrumbs"><!--[-->`);
+  ssrRenderList($props.breadcrumbs, (item, index) => {
+    _push(`<!--[-->`);
+    if (index === $props.breadcrumbs.length - 1) {
+      _push(`<span>${ssrInterpolate(item.title)}</span>`);
+    } else {
+      _push(ssrRenderComponent(_component_Link, {
+        href: _ctx.route(item.url)
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<span${_scopeId}>${ssrInterpolate(item.title)}</span>`);
+          } else {
+            return [
+              createVNode("span", null, toDisplayString(item.title), 1)
+            ];
+          }
+        }),
+        _: 2
+      }, _parent));
+    }
+    if (index !== $props.breadcrumbs.length - 1) {
+      _push(`<span> &gt; </span>`);
+    } else {
+      _push(`<!---->`);
+    }
+    _push(`<!--]-->`);
+  });
+  _push(`<!--]--></div></div>`);
+}
 const _sfc_setup$1 = _sfc_main$1.setup;
 _sfc_main$1.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Loyauts/InnerLayout.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Breadcrumbs/TheBreadcrumbs.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const InnerLayoutVue = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["ssrRender", _sfc_ssrRender$1]]);
+const TheBreadcrumbs = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["ssrRender", _sfc_ssrRender$1]]);
 const _sfc_main = {
-  components: { TheFooter, TheHeader, InnerLayoutVue },
+  components: { TheFooter, TheHeader, InnerLayoutVue, TheBreadcrumbs },
   layout: InnerLayoutVue,
   props: {
     title: String,
-    panels: Array
+    bredcrambs: Array,
+    panels: Array,
+    meta: Array
   },
   methods: {
     handleLinkClick(event) {
@@ -2856,13 +2922,14 @@ const _sfc_main = {
     }
   },
   data() {
+    console.log(this.bredcrambs);
     const components = {};
     for (const item of this.panels) {
       if (item.type === "panel") {
         const componentName = item.alias.charAt(0).toUpperCase() + item.alias.slice(1);
         components[item.alias] = markRaw(
           defineAsyncComponent(
-            () => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../Components/Panels/About.vue": () => import("./assets/About-e0c3ca1f.mjs"), "../Components/Panels/Article.vue": () => import("./assets/Article-b872514c.mjs"), "../Components/Panels/Company.vue": () => Promise.resolve().then(() => Company), "../Components/Panels/Contact.vue": () => import("./assets/Contact-0f766bd1.mjs"), "../Components/Panels/First.vue": () => Promise.resolve().then(() => First), "../Components/Panels/Jobs.vue": () => import("./assets/Jobs-cba44e45.mjs"), "../Components/Panels/Order.vue": () => Promise.resolve().then(() => Order), "../Components/Panels/Portfolio.vue": () => Promise.resolve().then(() => Portfolio), "../Components/Panels/Reviews.vue": () => import("./assets/Reviews-9bdd9677.mjs"), "../Components/Panels/Services.vue": () => Promise.resolve().then(() => Services), "../Components/Panels/Services_inner.vue": () => import("./assets/Services_inner-b47be774.mjs") }), `../Components/Panels/${componentName}.vue`)
+            () => __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../Components/Panels/About.vue": () => import("./assets/About-e0c3ca1f.mjs"), "../Components/Panels/Article.vue": () => import("./assets/Article-b872514c.mjs"), "../Components/Panels/Company.vue": () => Promise.resolve().then(() => Company), "../Components/Panels/Contact.vue": () => import("./assets/Contact-dece8535.mjs"), "../Components/Panels/First.vue": () => Promise.resolve().then(() => First), "../Components/Panels/Jobs.vue": () => import("./assets/Jobs-c12e6c1e.mjs"), "../Components/Panels/Order.vue": () => Promise.resolve().then(() => Order), "../Components/Panels/Portfolio.vue": () => Promise.resolve().then(() => Portfolio), "../Components/Panels/Reviews.vue": () => import("./assets/Reviews-afbff439.mjs"), "../Components/Panels/Services.vue": () => Promise.resolve().then(() => Services), "../Components/Panels/Services_inner.vue": () => import("./assets/Services_inner-b47be774.mjs") }), `../Components/Panels/${componentName}.vue`)
           )
         );
       }
@@ -2875,22 +2942,33 @@ const _sfc_main = {
 function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Head = resolveComponent("Head");
   const _component_the_header = resolveComponent("the-header");
+  const _component_the_breadcrumbs = resolveComponent("the-breadcrumbs");
   const _component_the_footer = resolveComponent("the-footer");
   _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_Head, null, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<title${_scopeId}>${ssrInterpolate($props.title)}</title>`);
+        _push2(`<title${_scopeId}>${ssrInterpolate($props.meta.title)}</title><meta name="description"${ssrRenderAttr("content", $props.meta.description ?? _ctx.$page.props.settings.description)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $props.meta.keywords ?? _ctx.$page.props.settings.keywords)}${_scopeId}>`);
       } else {
         return [
-          createVNode("title", null, toDisplayString($props.title), 1)
+          createVNode("title", null, toDisplayString($props.meta.title), 1),
+          createVNode("meta", {
+            name: "description",
+            content: $props.meta.description ?? _ctx.$page.props.settings.description
+          }, null, 8, ["content"]),
+          createVNode("meta", {
+            name: "keywords",
+            content: $props.meta.keywords ?? _ctx.$page.props.settings.keywords
+          }, null, 8, ["content"])
         ];
       }
     }),
     _: 1
   }, _parent));
   _push(ssrRenderComponent(_component_the_header, null, null, _parent));
-  _push(`<div class="content"><div class="container"><h2>${ssrInterpolate($props.title)}</h2></div><!--[-->`);
+  _push(`<div class="content">`);
+  _push(ssrRenderComponent(_component_the_breadcrumbs, { breadcrumbs: $props.bredcrambs }, null, _parent));
+  _push(`<div class="container"><h2>${ssrInterpolate($props.title)}</h2></div><!--[-->`);
   ssrRenderList($props.panels, (item) => {
     _push(`<div>`);
     if (item.type === "panel") {

@@ -22,4 +22,28 @@
     .porfolio__item-mobile img{
         height: 290px;
     }
+    .porfolio__item__text span{
+        font-size: 20px;
+    }
+    .job h2{
+        font-size: 28px;
+    }
+    .innerLayout .content{
+        padding-top: 120px !important;
+    }
+    .section-caption{
+        position: static;
+        right: 0;
+        transform: none;
+        writing-mode: initial;
+        text-align: end;
+        margin-top: 1rem;
+    }
+    .services__header p{
+        max-width: 100%;
+    }
+
+    .about__item-title{
+        font-size: 38px;
+    }
 }

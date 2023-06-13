@@ -47,7 +47,7 @@
         }
     }
     &.burger__open {
-        background: transparent;
+        background: transparent !important;
         box-shadow: none;
     }
     &__right {

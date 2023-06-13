@@ -5,7 +5,7 @@
     :key="item.id"
     ref="tiltableItem"
   >
-    <Link
+    <a
       class="main-container shadow-bottom"
       stas="Poollavka"
       :href="'http://'+item.subtitle"
@@ -18,12 +18,12 @@
           <img :src="item.bg_img" alt="" />
         </div>
       </div>
-    </Link>
+    </a>
     <a class="porfolio__item-mobile" ref="mobile">
       <img :src="item.img_mobile" alt="" />
     </a>
     <div class="porfolio__item__logo">
-      <img src="../../../assets/img/logo-001.png" alt="" />
+      <img :src="item.img_logo" alt="" />
     </div>
     <div class="porfolio__item__text">
       <span>{{ item.title }}</span>

@@ -10,20 +10,28 @@
 }
 
 .dialog__content {
+    display: flex;
     position: relative;
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
     margin: auto;
     background: white;
     border-radius: 12px;
     min-width: 300px;
-    min-height: 50px;
+    min-height: 480px;
     padding: 20px;
 
     &.fullscreen {
         max-width: calc(100% - 200px);
         height: calc(100% - 200px);
     }
+
+    form {
+        width: 100%;
+        height: auto;
+    }
+
+    
 }
 
 .dialog__close {
@@ -92,6 +100,7 @@
         }
     }
 }
+
 @media (max-width: 576px) {
     .dialog__content {
         &.fullscreen {
@@ -100,4 +109,3 @@
         }
     }
 }
-

@@ -14,7 +14,7 @@
         v-on:dich="form.tel = $event"
         label="Телефон"
         v-maska
-        mask="+1 ### ###-##-##"
+        mask="+7 ### ###-##-##"
       />
       <InputBox
         :value="form.email"
@@ -24,11 +24,11 @@
       />
     </div>
     <the-button
-      style="align-self: flex-end; margin-top: 15px"
+      style="align-self: flex-end; margin-top: auto"
       @click.prevent="fetchForm"
       type="submit"
     >
-      <span>Создать</span>
+      <span>Отправить</span>
     </the-button>
   </form>
 </template>

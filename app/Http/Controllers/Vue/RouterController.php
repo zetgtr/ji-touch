@@ -62,10 +62,12 @@ class RouterController extends Controller
         ]);
     }
 
-    public function pages($pages){
+    public function pages($pages,$bredcrambs){
         $pageBuilder = new PageDataPanelBuilder();
         return \inertia('Pages',[
             'meta'=> ['title' => $pages->custom_title ?? $pages->title, 'description' => $pages->description,'keywords'=>$pages->keywords],
+            'title'=> $pages->custom_title ?? $pages->title,
+            'bredcrambs' => $bredcrambs,
             'panels' => $pageBuilder->getDataPanel($pages->id)
         ]);
     }

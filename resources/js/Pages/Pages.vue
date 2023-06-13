@@ -5,22 +5,26 @@
         <meta name="keywords" :content="meta.keywords ?? $page.props.settings.keywords">
     </Head>
   <the-header></the-header>
-    <div class="content">
-      <div class="container"><h2>{{ meta.title }}</h2></div>
-      <div v-for="item in panels" :key="item.id">
-        <component
-          :is="components[item.alias]"
-          :[item.alias]="item.content"
-          v-bind="item.props"
-          v-if="item.type === 'panel'"
-        />
-        <div
-          v-if="item.type === 'text'"
-          @click="handleLinkClick"
-          v-html="item.content"
-        />
-      </div>
+
+  <div class="content">
+    <the-breadcrumbs :breadcrumbs="bredcrambs"></the-breadcrumbs>
+    <div class="container">
+      <h2>{{ title }}</h2>
     </div>
+    <div v-for="item in panels" :key="item.id">
+      <component
+        :is="components[item.alias]"
+        :[item.alias]="item.content"
+        v-bind="item.props"
+        v-if="item.type === 'panel'"
+      />
+      <div
+        v-if="item.type === 'text'"
+        @click="handleLinkClick"
+        v-html="item.content"
+      />
+    </div>
+  </div>
   <the-footer></the-footer>
 </template>
 
@@ -31,12 +35,16 @@ import TheFooter from "../../vue/src/components/TheFooter.vue";
 import InnerLayoutVue from "../Loyauts/InnerLayout.vue";
 import {Head} from "@inertiajs/vue3";
 
+import TheBreadcrumbs from "../Components/Breadcrumbs/TheBreadcrumbs.vue";
+
 export default {
-  components: { TheFooter,Head, TheHeader, InnerLayoutVue },
+  components: { TheFooter, TheHeader, InnerLayoutVue, TheBreadcrumbs },
   layout: InnerLayoutVue,
   props: {
-    meta: Array,
+    title: String,
+    bredcrambs: Array,
     panels: Array,
+     meta: Array,
   },
   methods: {
     handleLinkClick(event) {
@@ -49,6 +57,7 @@ export default {
     },
   },
   data() {
+    console.log(this.bredcrambs);
     const components = {};
     for (const item of this.panels) {
       if (item.type === "panel") {

@@ -1,18 +1,13 @@
 <template>
-  <div
-    class="review__item"
-    v-for="item in items"
-    :key="item.id"
-    ref="tiltableItem"
-  >
+  <div class="review__item" :key="item.id" ref="tiltableItem">
     <div class="row">
-      <div class="col-5" style="display: flex; flex-direction: column">
+      <div class="col-xl-5" style="display: flex; flex-direction: column">
         <h2>{{ item.title }}</h2>
         <div class="review__item-logo">
           <img :src="item.logo" alt="" />
         </div>
       </div>
-      <div class="col-7" style="display: flex; flex-direction: column">
+      <div class="col-xl-7" style="display: flex; flex-direction: column">
         <div class="desc" v-html="item.desc"></div>
         <Fancybox
           style="margin-top: auto"
@@ -23,7 +18,7 @@
           }"
         >
           <a class="more" data-fancybox="gallery" :href="item.img"
-            ><span>Узнать больше</span
+            ><span>Смотреть оригинал</span
             ><svg
               width="38"
               height="12"
@@ -48,6 +43,20 @@
         </Fancybox>
       </div>
     </div>
+    <div class="hover">
+      <svg
+        width="385"
+        height="324"
+        viewBox="0 0 385 324"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M385 135L0.245727 0.89759L72.9843 157.228L10.6498 323.087L385 135Z"
+          fill="#EF7F1A"
+        ></path>
+      </svg>
+    </div>
   </div>
 </template>
 
@@ -57,7 +66,7 @@ import Fancybox from "./../UI/Fancybox.vue";
 
 export default {
   props: {
-    items: {
+    item: {
       type: Array,
       required: true,
     },
@@ -69,46 +78,3 @@ export default {
 };
 </script>
 
-<style lang='scss' >
-.review__item {
-  background-color: #fff;
-  height: 100%;
-  padding: 60px 90px;
-  overflow: hidden;
-  &:hover {
-    h2 {
-      color: var(--c-primary);
-    }
-    .review__item-logo {
-      img {
-        opacity: 1;
-      }
-    }
-  }
-  &-logo {
-    margin-top: auto;
-    img {
-      opacity: 0.5;
-      transition: 0.3s linear;
-      max-width: 100%;
-      height: 60px;
-    }
-  }
-
-  h2 {
-    transition: 0.3s linear;
-    font-size: 34px;
-    font-weight: 700;
-  }
-}
-.desc {
-  margin-bottom: 1.5rem;
-  font-size: 0.8rem !important;
-  p {
-    font-size: 0.8rem !important;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-</style>

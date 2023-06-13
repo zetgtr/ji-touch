@@ -86,26 +86,59 @@
         font-size: 32px;
     }
 
-    .about-component .wrapper-container{
+    .about-component .wrapper-container {
         grid-template-columns: 1fr;
     }
 
-    .tabButton{
+    .tabButton {
         font-size: 0.9rem;
-    padding: 10px 15px;
+        padding: 10px 15px;
     }
-    .job{
+
+    .job {
         padding: 20px 30px;
     }
-    .job h2, .job .h2{
+
+    .job h2,
+    .job .h2 {
         font-size: 22px;
     }
-    .jobs{
+
+    .jobs {
         padding-top: 2rem;
         padding-bottom: 2rem;
     }
 
     .review__item {
         padding: 20px 30px;
+    }
+
+    .porfolio__header {
+        flex-direction: column;
+        margin-bottom: 2.5rem;
+        align-items: baseline;
+        gap: 2rem;
+
+        a {
+            align-self: flex-end;
+        }
+
+        h2 {
+            br {
+                display: none;
+            }
+        }
+    }
+
+    .porfolio__footer {
+        margin-top: 2rem;
+    }
+
+    .form__wrapper .file span {
+        font-size: 12px;
+    }
+
+    .review__item h2 {
+        font-size: 1.8rem;
     }
 }

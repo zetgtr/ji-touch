@@ -1,10 +1,14 @@
 <template>
   <section id="porfolio" class="porfolio">
     <div class="container porfolio-container">
-      <div class="porfolio__header wow fadeIn" data-wow-delay="0.2s">
-        <h2 v-html="$replaceNewLines(title)" v-if="page === 'home'"></h2>
+      <div
+        class="porfolio__header wow fadeIn"
+        data-wow-delay="0.2s"
+        v-if="componentPage === 'Home'"
+      >
+        <h2 v-html="$replaceNewLines(title)"></h2>
         <Link :href="route('project')">
-          <div class="more" v-if="page === 'home'">
+          <div class="more">
             <span>{{ more }}</span>
             <svg
               width="38"
@@ -30,17 +34,18 @@
           </div>
         </Link>
       </div>
-      <div class="porfolio__wrapper wow fadeIn" data-wow-delay="0.2s" >
-        <the-item-list :items="lastItems()" v-if="page === 'home'">
-        </the-item-list>
-        <the-item-list :items="items" v-else>
-        </the-item-list>
+      <div class="porfolio__wrapper wow fadeIn" data-wow-delay="0.2s">
+        <the-item-list
+          v-if="itemsToDisplay.length > 0"
+          :items="itemsToDisplay"
+        ></the-item-list>
+        <div ref="sentinel" style="height: 1px"></div>
       </div>
 
-      <div class="porfolio__footer">
-        <the-button class="button button--orange first__btn" v-if="page === 'home'"
-          ><span>Показать ещё</span></the-button
-        >
+      <div class="porfolio__footer" v-if="componentPage === 'Home'">
+        <Link :href="route('project')" class="button button--orange portfolio__btn">
+            <span>Смотреть все</span>
+        </Link>
       </div>
       <the-section-caption
         :sectionCaption="sectionCaption"
@@ -52,40 +57,77 @@
 <script>
 import TheItemList from "../Portfolio/TheItemList.vue";
 import TheButton from "../UI/TheButton.vue";
-import {Link} from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
 import TheSectionCaption from "../TheSectionCaption.vue";
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
   components: {
-      Link,
+    Link,
     TheItemList,
     TheButton,
     TheSectionCaption,
   },
   props: {
-    portfolio: Array
+    portfolio: Array,
   },
   data() {
     // if(this.$page.props.portfolio) this.portfolio = this.$page.props.portfolio
+    console.log();
     return {
       title: this.portfolio[0]?.title,
       more: this.portfolio[0]?.more,
       items: this.portfolio[0]?.items,
       setBtn: this.portfolio[0]?.setBtn,
       sectionCaption: "Portfolio",
+      componentPage: this.$inertia.page?.component,
+      itemsToDisplay: [],
     };
   },
   methods: {
-      lastItems(){
-          return this.items.slice(-4);
-      }
-  },
-  watch: {
+    observeSentinel() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              this.loadMoreItems();
+            }
+          });
+        },
+        { threshold: 1 }
+      );
 
+      observer.observe(this.$refs.sentinel);
+    },
+    loadMoreItems() {
+      if (this.portfolio[0]?.items && this.portfolio[0]?.items.length) {
+        // Here you can implement the logic to load more items
+        // For example, you can fetch more items from an API or append additional items from the props
+
+        // Assuming this.items is the complete list of items
+        const totalItems = this.portfolio[0]?.items.length;
+        const displayedItems = this.itemsToDisplay.length;
+
+        // Load additional items if not all items have been displayed
+        if (displayedItems < totalItems) {
+          const remainingItems = this.portfolio[0]?.items.slice(
+            displayedItems,
+            displayedItems + 10
+          );
+          this.itemsToDisplay = [...this.itemsToDisplay, ...remainingItems];
+        }
+      }
+    },
+  },
+  watch: {},
+  mounted() {
+    // Initialize the initial set of items to display
+    this.itemsToDisplay = this.portfolio[0]?.items.slice(0, 10);
+
+    // Observe the sentinel element for intersection
+    this.observeSentinel();
   },
 };
 </script>
 
 <style lang='scss'>
-
 </style>

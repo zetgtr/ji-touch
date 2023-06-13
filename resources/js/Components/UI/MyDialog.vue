@@ -7,7 +7,7 @@
         :class="{ show: show, hide: !show, fullscreen: showFullscreen }"
       >
         <span class="dialog__close" @click.stop="hideDialog"></span>
-        <slot>
+          <slot>
           <h2>{{ item.title }}</h2>
           <p v-html="$replaceNewLines(item.desc)"></p>
         </slot>

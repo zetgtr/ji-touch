@@ -10,7 +10,17 @@
     padding: 0px;
     min-width: 30px;
 }
-
+.avatar .brround{
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.avatar{
+    position: relative;
+}
 @media (max-width: 768px) {
     .row-page-create{
         flex-direction: column-reverse;

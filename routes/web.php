@@ -117,34 +117,35 @@ Route::get('/process-queue', function () {
 });
 
 Route::get('/',[RouterController::class,'index'])->name('home');
-Route::get('/project',[RouterController::class,'project'])->name('project');
-Route::get('/about',[RouterController::class,'about'])->name('about');
-Route::get('/agency',[RouterController::class,'agency'])->name('agency');
-// Route::get('/contacts',[RouterController::class,'contacts'])->name('contacts');
-// Route::get('/reviews',[RouterController::class,'reviews'])->name('reviews');
-Route::get('/education',[RouterController::class,'education'])->name('education');
-// Route::get('/jobs',[RouterController::class,'jobs'])->name('jobs');
-Route::get('/services',[RouterController::class,'services'])->name('services');
+// Route::get('/project',[RouterController::class,'project'])->name('project');
+// Route::get('/about',[RouterController::class,'about'])->name('about');
+// Route::get('/agency',[RouterController::class,'agency'])->name('agency');
+// Route::get('/education',[RouterController::class,'education'])->name('education');
+// Route::get('/services',[RouterController::class,'services'])->name('services');
 
 try {
     $pageBuilder = new PageBuilder();
 
-    function setRoute($pages,$url = "") {
+    function setRoute($pages,$url = "",$bredcrambs,$bredcrambsParent = false) {
 
         foreach ($pages as $page) {
+            if($bredcrambsParent)
+                $bredcrambsSecond = array_merge($bredcrambsParent,[['title'=>$page->title,'url'=>$page->url]]);
+            else
+                $bredcrambsSecond = [$bredcrambs, ['title'=>$page->title,'url'=>$page->url]];
             $secondUrl = $url ."/". $page->url;
-            Route::get($secondUrl, function () use ($page) {
+            Route::get($secondUrl, function () use ($page,$bredcrambsSecond) {
                 $routerController = new RouterController();
-                return $routerController->pages($page);
+                return $routerController->pages($page,$bredcrambsSecond);
             })->name($page->url);
 
             if (is_object($page->parent)) {
-                setRoute($page->parent,$secondUrl);
+                setRoute($page->parent,$secondUrl,$page->title,$bredcrambsSecond);
             }
         }
     }
 
-    setRoute($pageBuilder->getPagesParent());
+    setRoute($pageBuilder->getPagesParent(),"",['title'=>"Главная",'url'=>'home']);
 
 } catch (Exception $exception)
 {

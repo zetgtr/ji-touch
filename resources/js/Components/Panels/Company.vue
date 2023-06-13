@@ -6,12 +6,12 @@
       </div>
       <div class="about__wrapper">
         <div class="row about__wrapper-content">
-          <div class="col-md-6 wow fadeIn" data-wow-delay="0.4s">
+          <div class="col-xl-6 wow fadeIn" data-wow-delay="0.4s">
             <div class="about__item-title-container">
               <h3 class="about__item-title" v-html="$replaceNewLines(title)"></h3>
             </div>
           </div>
-          <div class="col-md-6 wow fadeIn" data-wow-delay="0.4s">
+          <div class="col-xl-6 wow fadeIn" data-wow-delay="0.4s">
             <div class="about__item-right">
               <h3 class="about__item-subtitle">
                 {{ text }}

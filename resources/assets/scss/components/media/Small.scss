@@ -82,7 +82,7 @@
     }
 
     .bur__wrapper {
-        padding: 40px 20px 30px;
+        padding: 60px 20px 30px;
     }
 
     .dropdown .def::placeholder {
@@ -136,5 +136,21 @@
 
     .services .swiper-button-next, .services .swiper-button-prev{
         width: 25px;
+    }
+
+    .innerLayout .content{
+        padding-top: 100px !important;
+    }
+    .job-top{
+        flex-direction: column !important;
+        align-items: baseline;
+        gap: 15px;
+    }
+    h1{
+        font-size: 30px;
+    }
+
+    .porfolio__header{
+        
     }
 }

@@ -109,7 +109,7 @@ export default {
 .innerLayout{
   .header{
     background: var(--c-bg);
-    background: transparent;
+    background: transparent !important;
     &.header_fix{
       background: var(--c-bg);
     }

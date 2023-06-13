@@ -27,6 +27,9 @@
               <div class="phone">
                 <a href="tel:{{phone}}">{{ phone }}</a>
               </div>
+              <div class="phone">
+                <a href="tel:{{phone2}}">{{ phone2 }}</a>
+              </div>
               <div class="btn-container">
                 <a target="_blank" href="{{whatsapp}}" class="btn__web">
                   <div class="svg-wrapper-1">
@@ -111,163 +114,25 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
   components: {},
   data() {
-    return {};
+    console.log(this.contact);
+    return {
+      telegram: this.contact?.telegram.value,
+      whatsapp: this.contact?.whatsapp.value,
+      phone: this.contact?.phone.value,
+      phone2: this.contact?.phone2.value,
+      email: this.contact?.email.value,
+      address: this.contact?.address.value,
+      worktime: this.contact?.worktime.value,
+      map: this.contact?.map.value,
+    };
   },
-  methods: {
-    ...mapMutations({}),
-    ...mapActions({
-      contact: "contact/fetchInfo",
-    }),
+  props: {
+    contact: Array,
   },
-  mounted() {
-    this.contact();
-  },
-  computed: {
-    ...mapState({
-      telegram: (state) => state.contact.telegram,
-      whatsapp: (state) => state.contact.whatsapp,
-      phone: (state) => state.contact.phone,
-      email: (state) => state.contact.email,
-      address: (state) => state.contact.address,
-      worktime: (state) => state.contact.worktime,
-      map: (state) => state.contact.map,
-    }),
-  },
-  watch: {},
 };
 </script>
 
-<style lang='scss' scoped>
-.contact-info__list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  grid-gap: 25px;
-}
-.phone {
-  a {
-    font-size: 1.5rem;
-    text-align: center;
-  }
-}
-.address {
-  p {
-    color: var(--c-title);
-    font-size: 1.5rem;
-    text-align: center;
-  }
-}
-.worktime {
-  p {
-    font-size: 18px;
-    color: var(--c-title);
-    margin-bottom: 0;
-    margin-top: auto;
-  }
-}
-.img-container {
-  svg {
-    width: auto;
-    height: 70px;
-    path {
-      fill: var(--c-primary);
-    }
-  }
-}
-.contact-info__item {
-  padding: 30px;
-  border: 5px solid var(--c-bg);
-  background: var(--c-white);
-  transition: 0.3s linear;
-  &:hover {
-    border: 5px solid var(--c-primary);
-  }
-  &-info {
-    grid-column: -1/-2;
-    grid-row: 1/-1;
-  }
 
-  &-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    height: 100%;
-    align-items: center;
-  }
-}
-.btn-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: center;
-}
-.btn__web {
-  font-family: inherit;
-  font-size: 20px;
-  background: var(--c-white);
-  border: 1px solid var(--c-primary);
-  color: var(--c-primary);
-  padding: 0.2em 1em;
-  display: flex;
-  align-items: center;
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.3s;
-}
-
-.btn__web span {
-  display: block;
-  margin-left: 0.3em;
-  transition: all 0.3s linear;
-}
-
-.btn__web svg {
-  width: 20px;
-  display: block;
-  transform-origin: center center;
-  transition: 0.3s linear;
-  path {
-    fill: var(--c-primary);
-    transition: 0.3s linear;
-  }
-}
-
-.btn__web:hover .svg-wrapper {
-  animation: fly-1 0.8s linear infinite alternate;
-}
-.btn__web {
-  &:hover {
-    // background: var(--c-white);
-    // color: var(--c-primary);
-    background: var(--c-primary);
-    color: var(--c-white);
-    svg {
-      path {
-        fill: var(--c-white);
-      }
-    }
-  }
-}
-
-.btn__web:active {
-  transform: scale(0.95);
-}
-.iframe {
-  margin-top: 1.5rem;
-  display: flex;
-}
-
-@keyframes fly-1 {
-  from {
-    transform: translateY(0.1em);
-  }
-
-  to {
-    transform: translateY(-0.1em);
-  }
-}
-</style>

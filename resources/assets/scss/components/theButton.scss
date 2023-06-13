@@ -18,6 +18,7 @@
         padding: 15px 55px;
     }
     span {
+        font-weight: 700;
         position: relative;
         top: -1px;
     }
@@ -76,12 +77,14 @@
             display: flex;
             height: 100%;
             position: absolute;
+            z-index: 0;
             top: 0;
             left: 100%;
             transition: 0.6s linear;
         }
         span {
             z-index: 2;
+            top: 0 !important;
         }
         &:hover {
             s {

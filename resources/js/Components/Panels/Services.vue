@@ -3,7 +3,7 @@
     <div class="container services-container">
       <div class="services__header wow fadeIn" data-wow-delay="0.2s">
         <p>
-<!--          {{ desc }}-->
+          {{ desc }}
         </p>
       </div>
       <div class="services__wrapper wow fadeIn" data-wow-delay="0.4s">
@@ -12,17 +12,17 @@
           :activeIndex="activeIndex"
           v-on:goToSlide="goToSlide"
           v-on:activeIndexChanged="activeIndexChanged"
-          :dataSlider="slider?slider:[]"
+          :dataSlider="slider ? slider : []"
         ></the-swiper>
       </div>
       <div class="services__wrapper__text">
         <div
           class="thumb__item"
-          v-for="(item, index) in SliderThumbWithId"
-          :key="item.id"
-          :class="{ active: activeIndex === item.id }"
+          v-for="(item, index) in slider_thumb"
+          :key="index"
+          :class="{ active: activeIndex === index }"
         >
-          <span @click="goToSlide(item.id)">{{ item.title }}</span>
+          <span @click="goToSlide(index)">{{ item.title }}</span>
         </div>
       </div>
       <the-section-caption
@@ -49,9 +49,9 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 export default {
-    props: {
-        services: Array
-    },
+  props: {
+    services: Array,
+  },
   components: {
     Swiper,
     SwiperSlide,
@@ -60,6 +60,7 @@ export default {
     TheSwiper,
   },
   data() {
+    console.log(this.$page.props.services[0]?.slider[0]?.slider_thumb);
     const activeIndex = ref(0);
     return {
       sectionCaption: "Services",
@@ -71,27 +72,18 @@ export default {
     };
   },
   methods: {
-    ...mapMutations({}),
-    // ...mapActions({
-    //   services: "services/fetchInfo",
-    // }),
-
     goToSlide(slideNumber) {
+      console.log(slideNumber);
       this.$refs.mySwiper.goToSlide(slideNumber);
     },
     activeIndexChanged(slideNumber) {
       this.activeIndex = slideNumber - 1;
     },
   },
-  computed: {
-    ...mapGetters({
-      SliderThumbWithId: "services/SliderThumbWithId"
-    })
-  },
+  computed: {},
   watch: {},
 };
 </script>
 
 <style lang='scss'>
-
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="items.length > 0">
+  <div >
     <div class="wrapper">
       <transition-group name="user-list">
         <jobs-item-vue
@@ -10,9 +10,9 @@
       </transition-group>
     </div>
   </div>
-  <div v-else class="loader-container">
+  <!-- <div v-else class="loader-container">
     <the-loader-vue></the-loader-vue>
-  </div>
+  </div> -->
 </template>
 
 <script>
